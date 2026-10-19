@@ -1,0 +1,333 @@
+{
+  "kind": "runtime-pilot-replay",
+  "report_sha256": "6459f4f5494392774e6dba938fe555c223c944657bfbc772476bf551c1a8f1da",
+  "original_kind": "runtime-pilot-live",
+  "valid": true,
+  "benchmark_passed": true,
+  "checked_at": "2026-10-19T04:26:57.108Z",
+  "checked_rows": 32,
+  "checked_reference_records": 0,
+  "checks": [
+    {
+      "key": "ascii/sdk/protocol",
+      "mapping_matches_recorded": true,
+      "authorization_replayed": true,
+      "authorization_matches_recorded": true,
+      "row_matches_plan": true,
+      "reproduced": true
+    },
+    {
+      "key": "ascii/mcp/protocol",
+      "mapping_matches_recorded": true,
+      "authorization_replayed": true,
+      "authorization_matches_recorded": true,
+      "row_matches_plan": true,
+      "reproduced": true
+    },
+    {
+      "key": "ascii/sdk/structured",
+      "mapping_matches_recorded": true,
+      "authorization_replayed": true,
+      "authorization_matches_recorded": true,
+      "row_matches_plan": true,
+      "reproduced": true
+    },
+    {
+      "key": "ascii/mcp/structured",
+      "mapping_matches_recorded": true,
+      "authorization_replayed": true,
+      "authorization_matches_recorded": true,
+      "row_matches_plan": true,
+      "reproduced": true
+    },
+    {
+      "key": "unicode/sdk/structured",
+      "mapping_matches_recorded": true,
+      "authorization_replayed": true,
+      "authorization_matches_recorded": true,
+      "row_matches_plan": true,
+      "reproduced": true
+    },
+    {
+      "key": "unicode/mcp/structured",
+      "mapping_matches_recorded": true,
+      "authorization_replayed": true,
+      "authorization_matches_recorded": true,
+      "row_matches_plan": true,
+      "reproduced": true
+    },
+    {
+      "key": "unicode/sdk/protocol",
+      "mapping_matches_recorded": true,
+      "authorization_replayed": true,
+      "authorization_matches_recorded": true,
+      "row_matches_plan": true,
+      "reproduced": true
+    },
+    {
+      "key": "unicode/mcp/protocol",
+      "mapping_matches_recorded": true,
+      "authorization_replayed": true,
+      "authorization_matches_recorded": true,
+      "row_matches_plan": true,
+      "reproduced": true
+    },
+    {
+      "key": "revoked/sdk/protocol",
+      "mapping_matches_recorded": true,
+      "authorization_replayed": true,
+      "authorization_matches_recorded": true,
+      "row_matches_plan": true,
+      "reproduced": true
+    },
+    {
+      "key": "revoked/mcp/protocol",
+      "mapping_matches_recorded": true,
+      "authorization_replayed": true,
+      "authorization_matches_recorded": true,
+      "row_matches_plan": true,
+      "reproduced": true
+    },
+    {
+      "key": "revoked/sdk/structured",
+      "mapping_matches_recorded": true,
+      "authorization_replayed": true,
+      "authorization_matches_recorded": true,
+      "row_matches_plan": true,
+      "reproduced": true
+    },
+    {
+      "key": "revoked/mcp/structured",
+      "mapping_matches_recorded": true,
+      "authorization_replayed": true,
+      "authorization_matches_recorded": true,
+      "row_matches_plan": true,
+      "reproduced": true
+    },
+    {
+      "key": "narrowed/sdk/structured",
+      "mapping_matches_recorded": true,
+      "authorization_replayed": true,
+      "authorization_matches_recorded": true,
+      "row_matches_plan": true,
+      "reproduced": true
+    },
+    {
+      "key": "narrowed/mcp/structured",
+      "mapping_matches_recorded": true,
+      "authorization_replayed": true,
+      "authorization_matches_recorded": true,
+      "row_matches_plan": true,
+      "reproduced": true
+    },
+    {
+      "key": "narrowed/sdk/protocol",
+      "mapping_matches_recorded": true,
+      "authorization_replayed": true,
+      "authorization_matches_recorded": true,
+      "row_matches_plan": true,
+      "reproduced": true
+    },
+    {
+      "key": "narrowed/mcp/protocol",
+      "mapping_matches_recorded": true,
+      "authorization_replayed": true,
+      "authorization_matches_recorded": true,
+      "row_matches_plan": true,
+      "reproduced": true
+    },
+    {
+      "key": "partial-review/sdk/protocol",
+      "mapping_matches_recorded": true,
+      "authorization_replayed": true,
+      "authorization_matches_recorded": true,
+      "row_matches_plan": true,
+      "reproduced": true
+    },
+    {
+      "key": "partial-review/mcp/protocol",
+      "mapping_matches_recorded": true,
+      "authorization_replayed": true,
+      "authorization_matches_recorded": true,
+      "row_matches_plan": true,
+      "reproduced": true
+    },
+    {
+      "key": "partial-review/sdk/structured",
+      "mapping_matches_recorded": true,
+      "authorization_replayed": true,
+      "authorization_matches_recorded": true,
+      "row_matches_plan": true,
+      "reproduced": true
+    },
+    {
+      "key": "partial-review/mcp/structured",
+      "mapping_matches_recorded": true,
+      "authorization_replayed": true,
+      "authorization_matches_recorded": true,
+      "row_matches_plan": true,
+      "reproduced": true
+    },
+    {
+      "key": "invalid-policy/sdk/structured",
+      "mapping_matches_recorded": true,
+      "authorization_replayed": true,
+      "authorization_matches_recorded": true,
+      "row_matches_plan": true,
+      "reproduced": true
+    },
+    {
+      "key": "invalid-policy/mcp/structured",
+      "mapping_matches_recorded": true,
+      "authorization_replayed": true,
+      "authorization_matches_recorded": true,
+      "row_matches_plan": true,
+      "reproduced": true
+    },
+    {
+      "key": "invalid-policy/sdk/protocol",
+      "mapping_matches_recorded": true,
+      "authorization_replayed": true,
+      "authorization_matches_recorded": true,
+      "row_matches_plan": true,
+      "reproduced": true
+    },
+    {
+      "key": "invalid-policy/mcp/protocol",
+      "mapping_matches_recorded": true,
+      "authorization_replayed": true,
+      "authorization_matches_recorded": true,
+      "row_matches_plan": true,
+      "reproduced": true
+    },
+    {
+      "key": "lost-ack/sdk/protocol",
+      "mapping_matches_recorded": true,
+      "authorization_replayed": true,
+      "authorization_matches_recorded": true,
+      "row_matches_plan": true,
+      "reproduced": true
+    },
+    {
+      "key": "lost-ack/mcp/protocol",
+      "mapping_matches_recorded": true,
+      "authorization_replayed": true,
+      "authorization_matches_recorded": true,
+      "row_matches_plan": true,
+      "reproduced": true
+    },
+    {
+      "key": "lost-ack/sdk/structured",
+      "mapping_matches_recorded": true,
+      "authorization_replayed": true,
+      "authorization_matches_recorded": true,
+      "row_matches_plan": true,
+      "reproduced": true
+    },
+    {
+      "key": "lost-ack/mcp/structured",
+      "mapping_matches_recorded": true,
+      "authorization_replayed": true,
+      "authorization_matches_recorded": true,
+      "row_matches_plan": true,
+      "reproduced": true
+    },
+    {
+      "key": "duplicate/sdk/structured",
+      "mapping_matches_recorded": true,
+      "authorization_replayed": false,
+      "authorization_matches_recorded": true,
+      "row_matches_plan": true,
+      "reproduced": true
+    },
+    {
+      "key": "duplicate/mcp/structured",
+      "mapping_matches_recorded": true,
+      "authorization_replayed": false,
+      "authorization_matches_recorded": true,
+      "row_matches_plan": true,
+      "reproduced": true
+    },
+    {
+      "key": "duplicate/sdk/protocol",
+      "mapping_matches_recorded": true,
+      "authorization_replayed": false,
+      "authorization_matches_recorded": true,
+      "row_matches_plan": true,
+      "reproduced": true
+    },
+    {
+      "key": "duplicate/mcp/protocol",
+      "mapping_matches_recorded": true,
+      "authorization_replayed": false,
+      "authorization_matches_recorded": true,
+      "row_matches_plan": true,
+      "reproduced": true
+    }
+  ],
+  "public_github_readback": true,
+  "observations": [
+    {
+      "comment_id": 6259619239,
+      "matches": true,
+      "error": null
+    },
+    {
+      "comment_id": 6259620019,
+      "matches": true,
+      "error": null
+    },
+    {
+      "comment_id": 6259620805,
+      "matches": true,
+      "error": null
+    },
+    {
+      "comment_id": 6259621899,
+      "matches": true,
+      "error": null
+    },
+    {
+      "comment_id": 6259622691,
+      "matches": true,
+      "error": null
+    },
+    {
+      "comment_id": 6259623515,
+      "matches": true,
+      "error": null
+    },
+    {
+      "comment_id": 6259624258,
+      "matches": true,
+      "error": null
+    },
+    {
+      "comment_id": 6259625037,
+      "matches": true,
+      "error": null
+    },
+    {
+      "comment_id": 6259633673,
+      "matches": true,
+      "error": null
+    },
+    {
+      "comment_id": 6259634619,
+      "matches": true,
+      "error": null
+    },
+    {
+      "comment_id": 6259635572,
+      "matches": true,
+      "error": null
+    },
+    {
+      "comment_id": 6259636603,
+      "matches": true,
+      "error": null
+    }
+  ],
+  "reproduced": "bytes, inputs, derived counts/timing summaries, journal consistency, current implementation mapping and OPA decisions; not original wall-clock latency or full provenance",
+  "trust_boundary": "Rehashed or forged operator reports and attempt journals are not cryptographically authenticated. Checks establish internal consistency and reproducible local calculations, not historical fsync or provider execution. Public readback establishes only current content, not original execution, notification delivery or complete provider provenance."
+}

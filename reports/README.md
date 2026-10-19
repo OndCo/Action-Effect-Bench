@@ -1,5 +1,21 @@
 # Comparison Reports
 
+## Runtime Pilot 0.2
+
+The [runtime results and replay index](runtime-pilot-summary.md) covers the
+completed MCP/SDK, real OPA and controlled GitHub experiment. It includes all
+raw reports, first-attempt failures, cost, current-content readbacks and limits.
+These results are distinct from the original offline corpus described below.
+
+Current original-corpus run: Spec
+`a9b86f4b529a5e330c2a9bf1b8c4c259a7b36e40`,
+[19 October 2026 03:59:16 UTC](offline-consumers-2026-10-19T03-59-16-707Z.md)
+([raw JSON](offline-consumers-2026-10-19T03-59-16-707Z.json)).
+That is 18 October 2026, 23:59:16 America/Toronto. Both consumers matched all
+102 expected results and all 102 comparisons agreed, with zero adapter faults.
+
+## Original Offline Reports
+
 Each `offline-consumers-*.json` and matching Markdown file describes one actual
 local process run. New runs use a new UTC timestamp and never overwrite an
 existing report. The source inventories, raw response bytes and runtime versions
@@ -19,11 +35,11 @@ Every run separately reports 80 frozen public-development cases and 22
 post-review regressions. Matching those finite cases is not a population-level
 accuracy claim, a production safety guarantee or full core conformance.
 
-Reproduce using [the pinned instructions](../README.md#reproduce). Process startup
+Reproduce using [the pinned instructions](../README.md#reproduce-the-original-corpus). Process startup
 and communication are included in per-invocation diagnostic timings; those values
 must not be interpreted as a runtime performance ranking or an execution SLA.
 
-## Current Verified Snapshot
+## Historical Entry-Point Repair Snapshot
 
 Spec commit: `ff5de37da6402c5a0e42d1a9cc7d4880579e374d`.
 Run: 19 October 2026, 02:28:28 UTC / 18 October 2026, 22:28:28 America/Toronto.
