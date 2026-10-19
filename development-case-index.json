@@ -1,0 +1,146 @@
+{
+  "protocol_version": "0.1.0-draft.1",
+  "status": "public-development-design-only",
+  "cases": [
+    {
+      "case_id": "D01",
+      "base_intent_id": "refund-original",
+      "domain": "payment",
+      "runtime_lanes": [
+        "SDK",
+        "MCP"
+      ],
+      "question": "Does a refund retain exact amount, currency and original destination?",
+      "exposure": "public-development",
+      "execution_status": "not-run"
+    },
+    {
+      "case_id": "D02",
+      "base_intent_id": "document-send",
+      "domain": "document-email",
+      "runtime_lanes": [
+        "SDK",
+        "workflow"
+      ],
+      "question": "Can internal-read and public-send tuples be recombined into exfiltration?",
+      "exposure": "public-development",
+      "execution_status": "not-run"
+    },
+    {
+      "case_id": "D03",
+      "base_intent_id": "git-force",
+      "domain": "repository",
+      "runtime_lanes": [
+        "shell",
+        "SDK"
+      ],
+      "question": "Does force-capable invocation get confused with observed history rewrite?",
+      "exposure": "public-development",
+      "execution_status": "not-run"
+    },
+    {
+      "case_id": "D04",
+      "base_intent_id": "iam-role",
+      "domain": "cloud-iam",
+      "runtime_lanes": [
+        "SDK",
+        "workflow"
+      ],
+      "question": "Does an implementation or inherited-role change invalidate the description?",
+      "exposure": "public-development",
+      "execution_status": "not-run"
+    },
+    {
+      "case_id": "D05",
+      "base_intent_id": "queued-descendant",
+      "domain": "async",
+      "runtime_lanes": [
+        "workflow",
+        "MCP"
+      ],
+      "question": "Are unobserved downstream effects preserved as unknown?",
+      "exposure": "public-development",
+      "execution_status": "not-run"
+    },
+    {
+      "case_id": "D06",
+      "base_intent_id": "binary-tool",
+      "domain": "binary",
+      "runtime_lanes": [
+        "shell"
+      ],
+      "question": "Is binary identity distinguished from complete behavioral analysis?",
+      "exposure": "public-development",
+      "execution_status": "not-run"
+    },
+    {
+      "case_id": "D07",
+      "base_intent_id": "opaque-provider",
+      "domain": "saas",
+      "runtime_lanes": [
+        "SDK"
+      ],
+      "question": "Is a missing response preserved as unknown rather than retried blindly?",
+      "exposure": "public-development",
+      "execution_status": "not-run"
+    },
+    {
+      "case_id": "D08",
+      "base_intent_id": "confusable-path",
+      "domain": "repository",
+      "runtime_lanes": [
+        "shell"
+      ],
+      "question": "Are path names and Unicode identities interpreted by the declared resolver?",
+      "exposure": "public-development",
+      "execution_status": "not-run"
+    },
+    {
+      "case_id": "D09",
+      "base_intent_id": "condition-failure",
+      "domain": "conditions",
+      "runtime_lanes": [
+        "SDK"
+      ],
+      "question": "Are CEL results distinguished from host timeout and malformed configuration?",
+      "exposure": "public-development",
+      "execution_status": "not-run"
+    },
+    {
+      "case_id": "D10",
+      "base_intent_id": "stale-registry",
+      "domain": "distribution",
+      "runtime_lanes": [
+        "SDK",
+        "MCP"
+      ],
+      "question": "Does stale metadata trigger the declared freshness boundary?",
+      "exposure": "public-development",
+      "execution_status": "not-run"
+    },
+    {
+      "case_id": "D11",
+      "base_intent_id": "independent-grant",
+      "domain": "authority",
+      "runtime_lanes": [
+        "SDK",
+        "MCP"
+      ],
+      "question": "Can a registry declaration accidentally grant or widen authority?",
+      "exposure": "public-development",
+      "execution_status": "not-run"
+    },
+    {
+      "case_id": "D12",
+      "base_intent_id": "profile-extension",
+      "domain": "interchange",
+      "runtime_lanes": [
+        "SDK",
+        "MCP"
+      ],
+      "question": "Does an unsupported critical extension cause silent downgrade?",
+      "exposure": "public-development",
+      "execution_status": "not-run"
+    }
+  ]
+}

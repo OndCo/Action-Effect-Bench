@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/action-effect-bench/0.1.0-draft.1/case-manifest.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "protocol_version",
+    "status",
+    "cases"
+  ],
+  "properties": {
+    "protocol_version": {
+      "const": "0.1.0-draft.1"
+    },
+    "status": {
+      "const": "public-development-design-only"
+    },
+    "cases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "case_id",
+          "base_intent_id",
+          "domain",
+          "runtime_lanes",
+          "question",
+          "exposure",
+          "execution_status"
+        ],
+        "properties": {
+          "case_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "base_intent_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "domain": {
+            "type": "string",
+            "minLength": 1
+          },
+          "runtime_lanes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "question": {
+            "type": "string",
+            "minLength": 1
+          },
+          "exposure": {
+            "const": "public-development"
+          },
+          "execution_status": {
+            "const": "not-run"
+          }
+        }
+      }
+    }
+  }
+}

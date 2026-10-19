@@ -1,0 +1,92 @@
+name: Pinned consumer comparison
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: comparison-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  compare:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            node: '22'
+            python: '3.11'
+          - os: macos-latest
+            node: '24'
+            python: '3.13'
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          path: action-effect-bench
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: ${{ matrix.node }}
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Read and validate the specification pin
+        id: spec
+        shell: bash
+        run: |
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import { appendFileSync, readFileSync } from 'node:fs';
+          const pin = JSON.parse(readFileSync('action-effect-bench/spec-lock.json', 'utf8'));
+          assert.equal(pin.repository, 'https://github.com/OndCo/Action-Effect-Spec.git');
+          assert.match(pin.commit, /^[a-f0-9]{40}$/);
+          appendFileSync(process.env.GITHUB_OUTPUT, `commit=${pin.commit}\n`);
+          NODE
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: OndCo/Action-Effect-Spec
+          ref: ${{ steps.spec.outputs.commit }}
+          path: action-effect-spec
+          persist-credentials: false
+      - name: Verify frozen public case sources
+        run: node action-effect-bench/conformance/case-source.mjs --check
+      - name: JavaScript consumer and harness tests
+        run: node --test action-effect-spec/implementations/javascript/consumer.test.mjs action-effect-spec/implementations/javascript/cli.test.mjs action-effect-bench/conformance/runner.test.mjs
+      - name: Python consumer tests
+        run: python3 -B -W error -m unittest discover -s action-effect-spec/implementations/python/tests
+      - name: Compare separately written consumers
+        id: comparison
+        shell: bash
+        run: |
+          node --input-type=module <<'NODE'
+          import { appendFileSync } from 'node:fs';
+          import { relative } from 'node:path';
+          import { runComparison } from './action-effect-bench/conformance/run.mjs';
+          const result = runComparison();
+          const report = relative(process.cwd(), result.report);
+          appendFileSync(process.env.GITHUB_OUTPUT, `report=${report}\nmarkdown=${report.replace(/\.json$/, '.md')}\n`);
+          console.log(JSON.stringify(result, null, 2));
+          if (!result.passed) process.exitCode = 1;
+          NODE
+      - name: Preserve reports, including failures
+        if: always() && steps.comparison.outputs.report != ''
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: comparison-${{ matrix.os }}-node${{ matrix.node }}-python${{ matrix.python }}
+          path: |
+            ${{ steps.comparison.outputs.report }}
+            ${{ steps.comparison.outputs.markdown }}
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Verify tracked inputs were not changed
+        run: |
+          git -C action-effect-spec diff --exit-code
+          git -C action-effect-bench diff --exit-code
