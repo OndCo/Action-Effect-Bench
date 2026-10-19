@@ -161,3 +161,81 @@ authentication, historical fsync proof, execution causality or reproduction of
 original wall-clock timing. Use separately retained trusted pins and actual
 custody for stronger evidence. Publication of this working paper does not
 authorize submission, external authorship, customer deployment or new writes.
+
+## Real Maintainer Use: Separate Population
+
+The field-use extension uses six exposed maintenance intents over the pinned
+public repositories. Three use Octokit and three use the actual official
+GitHub MCP stdio server. The model chooses reads and writes report text through
+the existing Azure Responses deployment. It has no offered write or arbitrary
+shell tool. This is real model/provider operation under an internal bounded
+study, not a customer deployment or a governed comment-write experiment.
+
+| Record | First run | Post-review repeat |
+| --- | --- | --- |
+| Runtime commit | `bc1d389a474c37a9c38b2b5acedbd7bb65650225` | `dff6ba72e36842334fcc61d8d2c5f3545084898e` |
+| Evidence commit | `eff7bf6bee237162a7f321bbb131008f880346fb` | `7306d8b45402bb2ee7f9a1fbaf7203835e599110` |
+| Raw report | [First](../reports/field-study-use-2026-10-19T06-33-57.736Z-0e238334.json) | [Second](../reports/field-study-use-2026-10-19T07-15-38.744Z-a76953f1.json) |
+| Raw SHA-256 | `cdc07b7a10000a4fe96152a6a460f5633c3403bcc7c0cd8f3f68f8e1a5cbe9fc` | `e6d9fe0e27ca93932fb9102cc5d5b7f16e4c7c138cd72c79eeeaaf1cb2961999` |
+| Tasks / distinct intents | 6 / 6 | Same 6 / same 6 |
+| Model requests / read calls | 35 / 29 | 35 / 29 |
+| Recorded completed / failed loops | 6 / 0 | 2 / 4 |
+| Report bodies within 6,000 bytes | 1 / 6 | 2 / 6 |
+| Provider-reported input / output tokens | 155,343 / 12,540 | 161,943 / 11,425 |
+| Sum of task wall spans, ms | 326,744.573 | 331,794.263 |
+| New provider writes | 0 | 0 |
+
+The first run's 6/6 loop completion cannot establish its output-contract
+compliance: task and runtime instructions disagreed about raw Markdown versus
+JSON and 6,000 versus 7,000 bytes. The original scorer tested a separate
+8,192-byte profile budget. The repeat fixes a JSON envelope and 6,000-byte body
+ceiling before execution, adds current-channel metadata, and retains the same
+30 fact records and source references. Its four over-budget reports remain
+failed with their full final JSON; they are not silently truncated or omitted.
+These exposed repeated intents do not support a causal before/after estimate.
+
+The first internal source review found 27 facts met, two partial and one
+incorrect. This is AI-assisted same-project judgment, not independent labels or
+human acceptance. Exact quotations and grading arithmetic have a separate
+[audit](../reports/field-study-review-audit-2026-10-19T07-07-08.416Z-b7a13a14.json).
+The [field-use index](../reports/field-study-summary.md) links the separate
+follow-up review, native observations, setup failures and final readiness.
+
+Each run has 28 native-bound file observations, 27 retained file texts and one
+normalized release-metadata observation. Replay reports the missing native
+release envelope as a gap. No release asset was downloaded. Model identity is
+the configured deployment and returned model string, not immutable weights.
+Token counts are provider reports, not an invoice or unique-source-byte count.
+
+### Publication Preparation Is Not Task Completion
+
+The first [fit analysis](../reports/field-study-publication-fit-2026-10-19T06-40-15.561Z-bdcae674.json)
+and [follow-up fit analysis](../reports/field-study-publication-fit-2026-10-19T07-18-12.145Z-b1330df7.json)
+each have 24 related rows: six retained outputs, two representations, two
+preparation strategies. Placeholder targets are synthetic; neither invokes
+OPA, reserves an occurrence, calls a model, or sends to GitHub.
+
+First-run standalone packaging fits the 8,192-byte profile in three of six
+cases; linked handoffs fit all six. All six repeat standalone bodies and linked
+handoffs fit. Both strategies give the same preparation outcomes. Four repeat
+task reports still fail their independent 6,000-byte requirement. A description
+being accepted as partial does not repair task failure, validate its conclusion
+or authorize publication.
+
+### Recompute Captured Field Evidence
+
+Use a full Bench clone and the pinned Spec sibling. These commands perform no
+model or provider request and do not execute historical source blobs:
+
+```sh
+node field-study/replay.mjs reports/field-study-use-2026-10-19T06-33-57.736Z-0e238334.json
+node field-study/replay.mjs reports/field-study-use-2026-10-19T07-15-38.744Z-a76953f1.json
+```
+
+The two retained [first replay](../reports/field-study-replay-2026-10-19T07-10-32.901Z-82046180.json)
+and [second replay](../reports/field-study-replay-2026-10-19T07-18-25.099Z-3c9423af.json)
+check 242 and 246 records respectively. Source identity, configuration,
+setup inventory, task prompts, visible model outputs, tool order, counters,
+captured bytes and terminal results are reconstructed. Valid replay can
+faithfully establish the presence of failed task outcomes; it does not turn
+those failures into success or recreate stochastic generation.

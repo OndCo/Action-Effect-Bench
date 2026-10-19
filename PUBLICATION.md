@@ -13,7 +13,7 @@ The original local drafting archive, earlier internal reports and review logs
 remain preserved outside this release. No old result is relabeled as a run of
 the public source snapshot. No third-party source archive, Studio application,
 private customer information, secret or active protected research case is
-published. There is no paid service, cloud deployment or model invocation.
+published. That initial release did not invoke a model or deploy a cloud service.
 
 The `v0.2.0-draft.1` release additionally selects the bounded GitHub-comment
 profile implementation, same-project frozen development cases, pinned OPA and
@@ -23,6 +23,21 @@ directory, credentials and installed dependencies are excluded. Public synthetic
 comments are intentionally retained on the dedicated issue as readback evidence.
 The selected upstream OpenAPI excerpt retains GitHub's MIT notice and pinned
 source provenance; it is not an independently labeled governance dataset.
+
+The later field-use extension selects `field-study/`, its no-network unit tests,
+captured public repository reads, visible model tool calls and final reports,
+setup failures, source-based internal assessments and offline replay. It uses
+an existing paid Azure model deployment and the official GitHub MCP executable;
+there is no new cloud deployment or new GitHub mutation in this field study.
+Credentials, encrypted model reasoning, installed upstream binaries and private
+configuration remain excluded. Reported token usage is not an invoice or a
+monetary cost estimate. The recorded sources are the owner's already-public
+repository files and public provider metadata, not customer records.
+
+The first field run and its instruction conflict remain immutable in Git.
+Follow-up runs are explicitly post-review repetitions, not fresh independent
+tasks or a hidden confirmatory cohort. Internal source review is AI-assisted;
+the public release does not claim independent human labels or end-user adoption.
 
 The new working manuscript is a same-project methods and pilot report, not a
 peer-reviewed standard or a claim of independent external validation. No

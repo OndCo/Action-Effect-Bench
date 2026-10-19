@@ -25,8 +25,14 @@ lowercase sibling clones and use that lock:
 git clone https://github.com/OndCo/Action-Effect-Spec.git action-effect-spec
 git clone https://github.com/OndCo/Action-Effect-Bench.git action-effect-bench
 cd action-effect-bench
+git checkout --detach cecde389637be4f5fd3482e4942ce3fd1a623ac6
 git -C ../action-effect-spec checkout --detach "$(node -p "require('./spec-lock.json').commit")"
 ```
+
+That Bench revision reproduces the published **v0.2 runtime pilot**. Select the
+Bench revision before reading its companion lock. The later real-model field
+study has a separate source freeze and reproduction guide; do not attribute a
+current-branch run to the historical pilot.
 
 Run every remaining command from the Bench root:
 
@@ -40,6 +46,11 @@ The dependency lock pins `@modelcontextprotocol/sdk` 1.32.1 and `@octokit/rest`
 in `runtime-pilot/tools.json`. Do not substitute a policy-engine stub.
 If downloading fails, do not bypass verification; an existing binary is usable
 only when its hash matches that manifest.
+Proceed to evaluation only after dependency setup succeeds. A partial download,
+missing binary or failed hash check is a setup failure, not evidence that an
+adapter or policy passed. The published local clean-clone check retained an
+OPA download timeout before recovering with an already cached, same-hash binary.
+It did not demonstrate a second successful fresh download.
 
 ## 2. Test Offline and Replay
 

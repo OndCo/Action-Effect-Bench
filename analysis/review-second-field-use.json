@@ -1,0 +1,1728 @@
+{
+  "version": 1,
+  "id": "review-second-field-use",
+  "review_date": "2026-10-19",
+  "actor": {
+    "role": "same-project AI-assisted source reviewer",
+    "same_project": true,
+    "ai_assisted": true,
+    "human_reviewer": false,
+    "independent_external_reviewer": false
+  },
+  "immutability": {
+    "policy": "Preserve this second-round snapshot. Later reviews/corrections require separate named artifacts; do not overwrite first- or second-round evidence.",
+    "original_reports_or_criteria_modified": false,
+    "first_review_modified": false
+  },
+  "scope": {
+    "cohort": "second field-use run",
+    "population": "exposed ordinary maintainer tasks on the same public Action-Effect sources",
+    "task_count": 6,
+    "fact_count": 30,
+    "held_out_novelty": false,
+    "independent_human_ground_truth": false,
+    "external_validation": false,
+    "actual_human_acceptance": "unknown",
+    "actual_operator_use": "unknown",
+    "business_utility": "unknown",
+    "mapping_or_authorization_grade": false,
+    "provider_delivery_grade": false,
+    "field_preflight_reports_included": false,
+    "completed_task_loops": 2,
+    "failed_task_loops": 4,
+    "retained_failed_outputs_assessed": true
+  },
+  "provenance": {
+    "criteria_version": 2,
+    "original_criteria": {
+      "repository": "OndCo/Action-Effect-Bench",
+      "path": "field-study/criteria.json",
+      "ref": "dff6ba72e36842334fcc61d8d2c5f3545084898e",
+      "raw_sha256": "ff7a7e6472414a916e39e377f3ed5e3181d9fa554d69ff0de848bc39c7a641ac",
+      "byte_length": 82295
+    },
+    "runtime": {
+      "repository": "OndCo/Action-Effect-Bench",
+      "ref": "dff6ba72e36842334fcc61d8d2c5f3545084898e"
+    },
+    "evidence": {
+      "repository": "OndCo/Action-Effect-Bench",
+      "ref": "7306d8b45402bb2ee7f9a1fbaf7203835e599110"
+    },
+    "original_report": {
+      "repository": "OndCo/Action-Effect-Bench",
+      "path": "reports/field-study-use-2026-10-19T07-15-38.744Z-a76953f1.json",
+      "ref": "7306d8b45402bb2ee7f9a1fbaf7203835e599110",
+      "raw_sha256": "e6d9fe0e27ca93932fb9102cc5d5b7f16e4c7c138cd72c79eeeaaf1cb2961999",
+      "byte_length": 390123
+    },
+    "original_journal": {
+      "repository": "OndCo/Action-Effect-Bench",
+      "path": "reports/field-use-2026-10-19T07-10-06.329Z-1a193a.jsonl",
+      "ref": "7306d8b45402bb2ee7f9a1fbaf7203835e599110",
+      "raw_sha256": "c4d5b650ac28cee17e012b05ac2dd07b5d7263e0793742a2d226ebd3aa21e6ca",
+      "byte_length": 3472879
+    },
+    "source_freeze": {
+      "repository": "OndCo/Action-Effect-Bench",
+      "path": "reports/field-study-freeze-2026-10-19T07-10-06.472Z-419977b3.json",
+      "ref": "7306d8b45402bb2ee7f9a1fbaf7203835e599110",
+      "raw_sha256": "9c4c9980bf7bfcf7a47eed7d698fb48580d8988c2e5db6abcca3032b0270f5fa",
+      "byte_length": 32065
+    },
+    "runtime_prompt": {
+      "repository": "OndCo/Action-Effect-Bench",
+      "path": "field-study/study.mjs",
+      "ref": "dff6ba72e36842334fcc61d8d2c5f3545084898e",
+      "raw_sha256": "ee4eab3d1510bce57374923aed79b8df1e95f257ac24c8dd120faff6f8e3e007",
+      "byte_length": 2435
+    },
+    "task_inputs": {
+      "repository": "OndCo/Action-Effect-Bench",
+      "path": "field-study/tasks.json",
+      "ref": "dff6ba72e36842334fcc61d8d2c5f3545084898e",
+      "raw_sha256": "2c7fdb9d451c5c6474f7a0688d92e22d3bc3b8b32d444ec03f96d768a777a0d5",
+      "byte_length": 15626
+    },
+    "task_source_refs": {
+      "OndCo/Action-Effect-Bench": "cecde389637be4f5fd3482e4942ce3fd1a623ac6",
+      "OndCo/Action-Effect-Spec": "a9b86f4b529a5e330c2a9bf1b8c4c259a7b36e40"
+    },
+    "source_rule": "Use criteria and prompts from the round-two source freeze, not the amended working tree. Required fact statements and frozen source references are unchanged from round one.",
+    "first_review_hashes_at_start": [
+      {
+        "path": "analysis/review-first-field-use.json",
+        "sha256": "a540dd6dd90ba36fa9fde8b32ad0b1773eb439ba6bba65098a79b610b17f1182"
+      },
+      {
+        "path": "analysis/review-first-field-use.md",
+        "sha256": "2ab7b6c89ac58321202025f8ee3c1c947baea1c9b72a0cadf0db78faf240f8bf"
+      }
+    ]
+  },
+  "methodology": {
+    "basis": "Read every retained second-round finalOutput, including all four failed loops, and freshly assess all 30 frozen facts against their sources. Literal report quotations below are from these new responses, not copied first-round evidence. Do not equate JSON extraction with a successful loop.",
+    "original_report_sha256_verified": true,
+    "original_journal_sha256_verified": true,
+    "source_freeze_sha256_verified": true,
+    "evidence_commit_report_and_journal_bytes_verified": true,
+    "final_outputs_match_journal": true,
+    "journal_records": 246,
+    "frozen_source_hashes_verified": 20,
+    "frozen_source_quotations_verified": 59,
+    "recorded_pinned_file_observations_matching_sources": 28,
+    "recorded_release_metadata_observations": 1,
+    "observed_citation_entries": 29,
+    "source_crosschecks": "Read-only local git show, recorded native observations, raw-byte hashes, frozen quote line spans and retained finalOutput comparisons. No replay, test suite or model/provider request was executed by this reviewer.",
+    "no_network_model_or_provider_calls_by_reviewer": true,
+    "no_tests_run_by_reviewer": true,
+    "status_semantics": {
+      "met": "The required fact is substantively addressed accurately with attributable evidence.",
+      "partial": "A required component is omitted or insufficiently addressed without a contrary material claim.",
+      "incorrect": "A consequential claim contradicts frozen sources or recorded observations.",
+      "unknown": "The available report/evidence does not permit a factual determination; no facts received this label here."
+    },
+    "retained_output_rule": "The raw mechanical checks say no_result and false/null fields for over-budget loops. Preserve those fields verbatim; separate source review of extractable retained content does not overwrite them."
+  },
+  "overall_report_grading": {
+    "dimension": "substantive_and_markdown_byte_completeness",
+    "applies_to": "All six retained report bodies, including outputs from four failed loops.",
+    "deterministic_rule_order": [
+      {
+        "priority": 1,
+        "condition": "At least one fact has status incorrect.",
+        "grade": "incorrect"
+      },
+      {
+        "priority": 2,
+        "condition": "Otherwise at least one fact is not met, or report_markdown exceeds 6000 UTF-8 bytes.",
+        "grade": "partial"
+      },
+      {
+        "priority": 3,
+        "condition": "Otherwise all facts are met and report_markdown is at most 6000 UTF-8 bytes.",
+        "grade": "complete"
+      }
+    ],
+    "format_evaluated_separately": true,
+    "loop_status_evaluated_separately": true,
+    "grade_does_not_reclassify_loop_outcome": true,
+    "complete_does_not_mean_human_acceptance": true,
+    "derived_report_grades": {
+      "T1": "complete",
+      "T2": "partial",
+      "T3": "partial",
+      "T4": "complete",
+      "T5": "partial",
+      "T6": "partial"
+    }
+  },
+  "confounders": [
+    {
+      "id": "amended-exposed-followup",
+      "applies_to_task_ids": [
+        "release-integrity",
+        "clean-clone-quickstart",
+        "consumer-v1-1-migration",
+        "official-mcp-compatibility",
+        "limits-and-recovery",
+        "conformance-support"
+      ],
+      "description": "Round two follows a reviewed first run on the same exposed tasks. Its explicit JSON/6000-body contract and configured execution metadata are pre-run amendments, not new held-out tasks or independent replication. Required facts and source bytes remain unchanged.",
+      "source": {
+        "repository": "OndCo/Action-Effect-Bench",
+        "path": "field-study/amendment-2.json",
+        "ref": "dff6ba72e36842334fcc61d8d2c5f3545084898e",
+        "line": 20
+      },
+      "response_contract": "The model returns a JSON envelope with task_id, report_markdown, conclusion and citations. report_markdown contains useful Markdown at most 6000 UTF-8 bytes; the limit is neither a token budget nor the later comment-profile limit. This post-review amendment resolves the first run's contradictory Markdown/JSON and 6000/7000 instructions; the original run is retained, not rescored as compliant.",
+      "first_round_format_conflict_present_in_round_two": false
+    },
+    {
+      "id": "retained-failed-output-versus-loop-success",
+      "applies_to_task_ids": [
+        "clean-clone-quickstart",
+        "consumer-v1-1-migration",
+        "limits-and-recovery",
+        "conformance-support"
+      ],
+      "description": "T2/T3/T5/T6 failed report_bytes_exceeded. Full JSON finalOutput survives and is source-reviewable. The raw mechanical summary reports only two valid reports; content fact labels and separately derived report grades must not turn these four failed loops into completed tasks.",
+      "automatic_retry": false
+    },
+    {
+      "id": "channel-metadata-now-supplied",
+      "applies_to_task_ids": [
+        "official-mcp-compatibility"
+      ],
+      "description": "The round-two task is supplied configured channel/startup metadata and acknowledges five current official-MCP reads. Its claims match the recorded startup and native read observations. No categorical no-operation error was found in this response.",
+      "sources": [
+        {
+          "repository": "OndCo/Action-Effect-Bench",
+          "path": "field-study/amendment-2.json",
+          "ref": "dff6ba72e36842334fcc61d8d2c5f3545084898e",
+          "line": 20
+        },
+        {
+          "repository": "OndCo/Action-Effect-Bench",
+          "path": "field-study/run.mjs",
+          "ref": "dff6ba72e36842334fcc61d8d2c5f3545084898e",
+          "line": 67
+        }
+      ],
+      "journal_references": [
+        {
+          "artifact_id": "original_journal",
+          "line": 2
+        },
+        {
+          "artifact_id": "original_journal",
+          "line": 159
+        }
+      ],
+      "limits": "Configured executable identity and successful public reads do not prove official provenance, remote HTTP authentication compatibility, official comment mutation or historical use of that server."
+    }
+  ],
+  "source_catalog": [
+    {
+      "id": "bench-lock",
+      "repository": "OndCo/Action-Effect-Bench",
+      "path": "spec-lock.json",
+      "ref": "cecde389637be4f5fd3482e4942ce3fd1a623ac6",
+      "raw_sha256": "04c3bd7230e86787288feee4c105c19f1fd9b62cad24aaa4f106a87bc43ac711",
+      "byte_length": 291,
+      "line_count": 8
+    },
+    {
+      "id": "runtime-summary",
+      "repository": "OndCo/Action-Effect-Bench",
+      "path": "reports/runtime-pilot-summary.md",
+      "ref": "cecde389637be4f5fd3482e4942ce3fd1a623ac6",
+      "raw_sha256": "b7889dd5e9c8ddd4cb844f0f24b6bd904ff8dbea13123b58d1194eedc6d8e551",
+      "byte_length": 11334,
+      "line_count": 180
+    },
+    {
+      "id": "offline-report",
+      "repository": "OndCo/Action-Effect-Bench",
+      "path": "reports/runtime-pilot-offline-2026-10-19T04-23-54.715Z-6bb423.json",
+      "ref": "cecde389637be4f5fd3482e4942ce3fd1a623ac6",
+      "raw_sha256": "d2244f7a2704d6fb3624969b146e37581a181ced0cc2c88daab8675d72ef8662",
+      "byte_length": 900348,
+      "line_count": 21656
+    },
+    {
+      "id": "offline-checksum",
+      "repository": "OndCo/Action-Effect-Bench",
+      "path": "reports/runtime-pilot-offline-2026-10-19T04-23-54.715Z-6bb423.json.sha256",
+      "ref": "cecde389637be4f5fd3482e4942ce3fd1a623ac6",
+      "raw_sha256": "c9a2b8cd9f7b9b56bbc15b862497fcd1ec222254742da0d5b6a6973e0c91bcaf",
+      "byte_length": 125,
+      "line_count": 1
+    },
+    {
+      "id": "release-note",
+      "repository": "OndCo/Action-Effect-Bench",
+      "path": "docs/release-v0.2.0.md",
+      "ref": "cecde389637be4f5fd3482e4942ce3fd1a623ac6",
+      "raw_sha256": "9065e6376a53060a88ae1abb498880ee4a63fbcbf9c4d6f6717fafe53bfda5a2",
+      "byte_length": 1718,
+      "line_count": 25
+    },
+    {
+      "id": "quickstart",
+      "repository": "OndCo/Action-Effect-Bench",
+      "path": "docs/adoption/quickstart.md",
+      "ref": "cecde389637be4f5fd3482e4942ce3fd1a623ac6",
+      "raw_sha256": "688aae04c0f9c9062284345812d3cbd8d047f7d31a75b84c49381e7273ceb8ef",
+      "byte_length": 6077,
+      "line_count": 127
+    },
+    {
+      "id": "bench-readme",
+      "repository": "OndCo/Action-Effect-Bench",
+      "path": "README.md",
+      "ref": "cecde389637be4f5fd3482e4942ce3fd1a623ac6",
+      "raw_sha256": "5ae23d178749c38a748a3a6ab61b284b8f9d3f5c6fa2d4c1340970e8798414f8",
+      "byte_length": 5667,
+      "line_count": 98
+    },
+    {
+      "id": "release-verification",
+      "repository": "OndCo/Action-Effect-Bench",
+      "path": "reports/release-verification.md",
+      "ref": "cecde389637be4f5fd3482e4942ce3fd1a623ac6",
+      "raw_sha256": "686b57fb47b2334c3821469e6ef74e53d36e348fd1ac298937fe50ff0fb29d79",
+      "byte_length": 3063,
+      "line_count": 58
+    },
+    {
+      "id": "tool-pins",
+      "repository": "OndCo/Action-Effect-Bench",
+      "path": "runtime-pilot/tools.json",
+      "ref": "cecde389637be4f5fd3482e4942ce3fd1a623ac6",
+      "raw_sha256": "3c4de26c48019c83cbfe61f770d1090d82606cf85cf08e834d8328ee59c04585",
+      "byte_length": 663,
+      "line_count": 12
+    },
+    {
+      "id": "consumer-v1",
+      "repository": "OndCo/Action-Effect-Spec",
+      "path": "conformance/consumer-profile-v1.md",
+      "ref": "a9b86f4b529a5e330c2a9bf1b8c4c259a7b36e40",
+      "raw_sha256": "140eeec0b16b291519df90182eecbff7bc50efddc2e9a3f6a0d47db804d0538c",
+      "byte_length": 10211,
+      "line_count": 166
+    },
+    {
+      "id": "consumer-v1-1",
+      "repository": "OndCo/Action-Effect-Spec",
+      "path": "conformance/consumer-profile-v1.1.md",
+      "ref": "a9b86f4b529a5e330c2a9bf1b8c4c259a7b36e40",
+      "raw_sha256": "cedc7c519d46790d61dfdc5a15f655041b77292e50d538b368870b9352766238",
+      "byte_length": 9215,
+      "line_count": 163
+    },
+    {
+      "id": "spec-changelog",
+      "repository": "OndCo/Action-Effect-Spec",
+      "path": "CHANGELOG.md",
+      "ref": "a9b86f4b529a5e330c2a9bf1b8c4c259a7b36e40",
+      "raw_sha256": "4b2284202129df4f29e45241afe8a4fb99ced2c5297807891078de6b08635b2f",
+      "byte_length": 1886,
+      "line_count": 34
+    },
+    {
+      "id": "runtime-readme",
+      "repository": "OndCo/Action-Effect-Bench",
+      "path": "runtime-pilot/README.md",
+      "ref": "cecde389637be4f5fd3482e4942ce3fd1a623ac6",
+      "raw_sha256": "f92d8f1da46024e1cd36e626d308052151f2421921684a87cd10851452d10089",
+      "byte_length": 5940,
+      "line_count": 102
+    },
+    {
+      "id": "pilot-mcp-server",
+      "repository": "OndCo/Action-Effect-Bench",
+      "path": "runtime-pilot/mcp-server.mjs",
+      "ref": "cecde389637be4f5fd3482e4942ce3fd1a623ac6",
+      "raw_sha256": "855d2179f5e3c1ea7c1d7facae8ded3440d3f27b921a0a595d5e25979e4d63c9",
+      "byte_length": 2827,
+      "line_count": 47
+    },
+    {
+      "id": "github-profile",
+      "repository": "OndCo/Action-Effect-Spec",
+      "path": "profiles/github-issue-comment/README.md",
+      "ref": "a9b86f4b529a5e330c2a9bf1b8c4c259a7b36e40",
+      "raw_sha256": "8ca3eadc8f38e220c006ae22cc3f4737250379233271fb5345b68a67e6f3a691",
+      "byte_length": 6396,
+      "line_count": 119
+    },
+    {
+      "id": "runtime-package",
+      "repository": "OndCo/Action-Effect-Bench",
+      "path": "runtime-pilot/package.json",
+      "ref": "cecde389637be4f5fd3482e4942ce3fd1a623ac6",
+      "raw_sha256": "a27ab37caf3a5d2a61afb9bbcdb00c866c7cf3b21c57bfbf0794128bb3ee47ab",
+      "byte_length": 338,
+      "line_count": 14
+    },
+    {
+      "id": "github-provider",
+      "repository": "OndCo/Action-Effect-Bench",
+      "path": "runtime-pilot/provider.mjs",
+      "ref": "cecde389637be4f5fd3482e4942ce3fd1a623ac6",
+      "raw_sha256": "f2b49108e4960c9c4eb48cd201b35550335f46c72308b5532c77f0cc794410db",
+      "byte_length": 3819,
+      "line_count": 65
+    },
+    {
+      "id": "dispatch-gate",
+      "repository": "OndCo/Action-Effect-Bench",
+      "path": "runtime-pilot/gate.mjs",
+      "ref": "cecde389637be4f5fd3482e4942ce3fd1a623ac6",
+      "raw_sha256": "6784925638bfdca47cc1e4639c280a5076e376a749991525dcfe3b1df5237159",
+      "byte_length": 9804,
+      "line_count": 171
+    },
+    {
+      "id": "core-traceability",
+      "repository": "OndCo/Action-Effect-Spec",
+      "path": "conformance/requirements.md",
+      "ref": "a9b86f4b529a5e330c2a9bf1b8c4c259a7b36e40",
+      "raw_sha256": "56c889ae20a85a70b68519f00cc963a4d66d079bc9a271b392f19852743d3aad",
+      "byte_length": 3679,
+      "line_count": 59
+    },
+    {
+      "id": "legacy-runner-guide",
+      "repository": "OndCo/Action-Effect-Bench",
+      "path": "conformance/README.md",
+      "ref": "cecde389637be4f5fd3482e4942ce3fd1a623ac6",
+      "raw_sha256": "94d8df46353ce313e394e779614857150ced6d01cbef6fcfce6f813eb083fcae",
+      "byte_length": 4877,
+      "line_count": 85
+    }
+  ],
+  "tasks": [
+    {
+      "id": "release-integrity",
+      "label": "T1",
+      "title": "Verify release integrity and reproduction identity",
+      "lane": "sdk",
+      "overall_report_grade": "complete",
+      "grade_dimension": "substantive_and_markdown_byte_completeness",
+      "grade_explanation": "All required facts are met; the explicit JSON envelope and extracted Markdown body meet the round-two contract. This is not human acceptance or proven business utility.",
+      "loop_status": "completed",
+      "loop_reason": "final_output",
+      "loop_outcome": {
+        "status": "completed",
+        "reason": "final_output",
+        "full_final_output_retained": true,
+        "automatic_retry": false
+      },
+      "mechanical_checks_recorded": {
+        "report_schema_valid": true,
+        "citations_observed": true,
+        "successful_read_tool_results": 6,
+        "distinct_observed_sources": 6,
+        "unavailable_read_tool_results": 0,
+        "body_bytes": 5168,
+        "fits_comment_profile_bytes": true,
+        "quality": "not_reviewed",
+        "utility": "not_reviewed",
+        "timing": {
+          "model_request_ms": 53243.25412599999,
+          "tool_handling_ms": 29433.795042000012,
+          "other_task_ms": 141.16216499999427,
+          "total_task_ms": 82818.211333
+        },
+        "note": "Schema, byte and citation checks do not grade semantic correctness, novelty, usefulness or permission to publish."
+      },
+      "human_acceptance": "unknown",
+      "actual_operator_use": "unknown",
+      "business_utility": "unknown",
+      "report_evidence": {
+        "artifact_id": "original_report",
+        "json_pointer": "/tasks/0/result/finalOutput",
+        "parsed_report_member": "report_markdown",
+        "journal_artifact_id": "original_journal",
+        "journal_line": 48
+      },
+      "lengths": {
+        "encoding": "UTF-8",
+        "report_markdown_bytes": 5168,
+        "final_output_text_bytes": 6466,
+        "frozen_maximum_report_bytes": 6000,
+        "markdown_within_frozen_budget": true,
+        "final_output_within_frozen_budget": null,
+        "final_output_budget_applies": false,
+        "comment_profile_maximum_bytes": 8192,
+        "markdown_within_comment_profile_budget": true,
+        "excludes_journal_framing": true
+      },
+      "format_deviation": {
+        "contract_version": 2,
+        "expected": "JSON with task_id, report_markdown, conclusion and citations; report_markdown at most 6000 UTF-8 bytes",
+        "observed": "JSON with the four required fields and a retained Markdown body",
+        "original_delivery_compliance": "met",
+        "json_instead_of_markdown": false,
+        "markdown_exceeds_frozen_byte_budget": false,
+        "final_output_exceeds_frozen_byte_budget": null,
+        "outer_final_text_has_no_6000_byte_budget": true,
+        "confounder_id": null,
+        "contradictory_format_instruction": false,
+        "parsed_envelope_shape_valid": true
+      },
+      "citations": {
+        "count": 6,
+        "urls": [
+          "https://github.com/OndCo/Action-Effect-Bench/blob/cecde389637be4f5fd3482e4942ce3fd1a623ac6/reports/runtime-pilot-offline-2026-10-19T04-23-54.715Z-6bb423.json",
+          "https://github.com/OndCo/Action-Effect-Bench/blob/cecde389637be4f5fd3482e4942ce3fd1a623ac6/reports/runtime-pilot-offline-2026-10-19T04-23-54.715Z-6bb423.json.sha256",
+          "https://github.com/OndCo/Action-Effect-Bench/blob/cecde389637be4f5fd3482e4942ce3fd1a623ac6/spec-lock.json",
+          "https://github.com/OndCo/Action-Effect-Bench/blob/cecde389637be4f5fd3482e4942ce3fd1a623ac6/reports/runtime-pilot-summary.md",
+          "https://github.com/OndCo/Action-Effect-Bench/blob/cecde389637be4f5fd3482e4942ce3fd1a623ac6/docs/release-v0.2.0.md",
+          "https://github.com/OndCo/Action-Effect-Bench/releases/tag/v0.2.0-draft.1"
+        ],
+        "all_observed": true,
+        "file_citations_match_frozen_sources": true,
+        "release_metadata_citation_count": 1,
+        "location": "separate JSON citations array as required by round-two contract",
+        "standalone_markdown_has_resolved_citation_urls": false,
+        "publication_note": "The JSON citation array is attributable evidence for review. Publishing only the Markdown body would omit the URL list; publication preparation and byte accounting remain separate."
+      },
+      "material_error_fact_ids": [],
+      "omission_fact_ids": [],
+      "facts": [
+        {
+          "id": "companion-pin",
+          "status": "met",
+          "evidence_quotes": [
+            "summary and lock agree on this commit"
+          ],
+          "assessment": "Correct locked Spec commit, core version and v1 contract; release and measurement roles are distinguished.",
+          "frozen_criterion": "The released Bench spec-lock.json selects Spec commit a9b86f4b529a5e330c2a9bf1b8c4c259a7b36e40, core spec_version 0.1.0-draft.1 and consumer_profile offline-consumer-v1; its repository role is distinct from the Bench release ref.",
+          "frozen_references": [
+            {
+              "source_id": "bench-lock",
+              "start_line": 2,
+              "end_line": 7,
+              "quote": "  \"format\": \"action-effect-spec-lock-v1\",\n  \"repository\": \"https://github.com/OndCo/Action-Effect-Spec.git\",\n  \"commit\": \"a9b86f4b529a5e330c2a9bf1b8c4c259a7b36e40\",\n  \"spec_version\": \"0.1.0-draft.1\",\n  \"consumer_profile\": \"offline-consumer-v1\",\n  \"local_directory\": \"action-effect-spec\""
+            }
+          ]
+        },
+        {
+          "id": "measurement-identity",
+          "status": "met",
+          "evidence_quotes": [
+            "Measured runtime implementation, as declared by the summary; source tree not inspected here"
+          ],
+          "assessment": "Correct measured Bench 9f638df994504ba6f5d82c0b5409922a0be7a72e, distinct publication snapshot, and source-inventory equivalence as a reported rather than newly executed comparison.",
+          "frozen_criterion": "The release summary identifies measured Bench implementation 9f638df994504ba6f5d82c0b5409922a0be7a72e and the same companion Spec pin. A release/documentation commit differing from the measured commit is not itself a runtime-source mismatch; the named source inventory is the relevant comparison.",
+          "frozen_references": [
+            {
+              "source_id": "runtime-summary",
+              "start_line": 118,
+              "end_line": 123,
+              "quote": "Implementation commit:\n[`9f638df994504ba6f5d82c0b5409922a0be7a72e`](https://github.com/OndCo/Action-Effect-Bench/commit/9f638df994504ba6f5d82c0b5409922a0be7a72e).\nSpec commit:\n[`a9b86f4b529a5e330c2a9bf1b8c4c259a7b36e40`](https://github.com/OndCo/Action-Effect-Spec/commit/a9b86f4b529a5e330c2a9bf1b8c4c259a7b36e40).\nRelease-only documentation/report commits do not change the runtime source\ninventory. Install the pinned tools using the [quickstart](../docs/adoption/quickstart.md),"
+            }
+          ]
+        },
+        {
+          "id": "report-byte-comparison",
+          "status": "met",
+          "evidence_quotes": [
+            "Outcome: exact digest and filename agreement."
+          ],
+          "assessment": "The actual inspection returned 900348 bytes and SHA-256 d2244f7a2704d6fb3624969b146e37581a181ced0cc2c88daab8675d72ef8662; the separately read checksum names the same report and matches.",
+          "frozen_criterion": "The selected offline report is reports/runtime-pilot-offline-2026-10-19T04-23-54.715Z-6bb423.json: 900348 raw bytes, SHA-256 d2244f7a2704d6fb3624969b146e37581a181ced0cc2c88daab8675d72ef8662. Its adjacent published checksum names that exact file and matches the independently hashed pinned bytes. A completed model verification must use inspect_repository_file evidence, not merely repeat the checksum text; an actual retrieval failure must be retained.",
+          "frozen_references": [
+            {
+              "source_id": "offline-checksum",
+              "start_line": 1,
+              "end_line": 1,
+              "quote": "d2244f7a2704d6fb3624969b146e37581a181ced0cc2c88daab8675d72ef8662  runtime-pilot-offline-2026-10-19T04-23-54.715Z-6bb423.json"
+            },
+            {
+              "source_id": "runtime-summary",
+              "start_line": 109,
+              "end_line": 112,
+              "quote": "| Artifact | Purpose |\n| --- | --- |\n| [Offline raw report](runtime-pilot-offline-2026-10-19T04-23-54.715Z-6bb423.json) and [.sha256](runtime-pilot-offline-2026-10-19T04-23-54.715Z-6bb423.json.sha256) | All 216 candidate rows, 26 reference-authority checks, 26 diagnostic rows and exact sources. |\n| [Offline replay](runtime-pilot-replay-2026-10-19T04-24-39.129Z-61da80.json) | Recomputed 216 rows plus 52 reference/diagnostic records; valid and benchmark passed. |"
+            }
+          ],
+          "journal_references": [
+            {
+              "artifact_id": "original_journal",
+              "line": 10,
+              "description": "inspect_repository_file reports/runtime-pilot-offline-2026-10-19T04-23-54.715Z-6bb423.json"
+            },
+            {
+              "artifact_id": "original_journal",
+              "line": 17,
+              "description": "read_repository_file reports/runtime-pilot-offline-2026-10-19T04-23-54.715Z-6bb423.json.sha256"
+            }
+          ]
+        },
+        {
+          "id": "verification-boundary",
+          "status": "met",
+          "evidence_quotes": [
+            "not independent authenticity, correctness of report contents, or faithful execution of the historical experiment."
+          ],
+          "assessment": "Correctly limits a byte match and distinguishes source statements, actual public reads, historical experiments and optional unverified PDF bytes.",
+          "frozen_criterion": "Matching bytes, replayable calculations and current content do not establish publisher authenticity, historical execution causality or external validation. The published release remains bounded same-project development evidence, with failures preserved.",
+          "frozen_references": [
+            {
+              "source_id": "runtime-summary",
+              "start_line": 131,
+              "end_line": 135,
+              "quote": "Public GitHub may later change, delete content or rate-limit anonymous requests;\nthe reader must retain an unavailable/changed outcome rather than assuming a\nmatch. These commands never repost. A replay verifies bytes, calculations and\ncurrent content, not historical latency, complete execution causality or the\nhonesty of an operator who could forge both a report and its checksum."
+            },
+            {
+              "source_id": "release-note",
+              "start_line": 21,
+              "end_line": 25,
+              "quote": "These are same-project, bounded development results. External independently\nauthored evaluations remain zero. Direct comment readback does not establish\ncomplete provider provenance or transitive effects. This is not an adopted\nindustry standard, certification or qualified production gateway. Original\nfrozen artifacts and the failed first offline attempt remain preserved."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "clean-clone-quickstart",
+      "label": "T2",
+      "title": "Audit the clean-clone maintainer quickstart",
+      "lane": "mcp",
+      "overall_report_grade": "partial",
+      "grade_dimension": "substantive_and_markdown_byte_completeness",
+      "grade_explanation": "The retained body exceeds 6000 bytes. The recorded loop remains failed/report_bytes_exceeded; retained content is assessed without converting that failure into completion.",
+      "loop_status": "failed",
+      "loop_reason": "report_bytes_exceeded",
+      "loop_outcome": {
+        "status": "failed",
+        "reason": "report_bytes_exceeded",
+        "full_final_output_retained": true,
+        "automatic_retry": false
+      },
+      "mechanical_checks_recorded": {
+        "report_schema_valid": false,
+        "citations_observed": false,
+        "successful_read_tool_results": 5,
+        "distinct_observed_sources": 5,
+        "unavailable_read_tool_results": 0,
+        "body_bytes": null,
+        "fits_comment_profile_bytes": false,
+        "quality": "no_result",
+        "utility": "not_reviewed",
+        "timing": {
+          "model_request_ms": 48341.928625,
+          "tool_handling_ms": 3429.311124999993,
+          "other_task_ms": 122.15191600001708,
+          "total_task_ms": 51893.39166600001
+        },
+        "note": "Schema, byte and citation checks do not grade semantic correctness, novelty, usefulness or permission to publish."
+      },
+      "human_acceptance": "unknown",
+      "actual_operator_use": "unknown",
+      "business_utility": "unknown",
+      "report_evidence": {
+        "artifact_id": "original_report",
+        "json_pointer": "/tasks/1/result/finalOutput",
+        "parsed_report_member": "report_markdown",
+        "journal_artifact_id": "original_journal",
+        "journal_line": 89
+      },
+      "lengths": {
+        "encoding": "UTF-8",
+        "report_markdown_bytes": 6272,
+        "final_output_text_bytes": 7374,
+        "frozen_maximum_report_bytes": 6000,
+        "markdown_within_frozen_budget": false,
+        "final_output_within_frozen_budget": null,
+        "final_output_budget_applies": false,
+        "comment_profile_maximum_bytes": 8192,
+        "markdown_within_comment_profile_budget": true,
+        "excludes_journal_framing": true
+      },
+      "format_deviation": {
+        "contract_version": 2,
+        "expected": "JSON with task_id, report_markdown, conclusion and citations; report_markdown at most 6000 UTF-8 bytes",
+        "observed": "JSON with the four required fields and a retained Markdown body",
+        "original_delivery_compliance": "not_met",
+        "json_instead_of_markdown": false,
+        "markdown_exceeds_frozen_byte_budget": true,
+        "final_output_exceeds_frozen_byte_budget": null,
+        "outer_final_text_has_no_6000_byte_budget": true,
+        "confounder_id": null,
+        "contradictory_format_instruction": false,
+        "parsed_envelope_shape_valid": true
+      },
+      "citations": {
+        "count": 5,
+        "urls": [
+          "https://github.com/OndCo/Action-Effect-Bench/blob/cecde389637be4f5fd3482e4942ce3fd1a623ac6/docs/adoption/quickstart.md",
+          "https://github.com/OndCo/Action-Effect-Bench/blob/cecde389637be4f5fd3482e4942ce3fd1a623ac6/README.md",
+          "https://github.com/OndCo/Action-Effect-Bench/blob/cecde389637be4f5fd3482e4942ce3fd1a623ac6/reports/release-verification.md",
+          "https://github.com/OndCo/Action-Effect-Bench/blob/cecde389637be4f5fd3482e4942ce3fd1a623ac6/spec-lock.json",
+          "https://github.com/OndCo/Action-Effect-Bench/blob/cecde389637be4f5fd3482e4942ce3fd1a623ac6/runtime-pilot/tools.json"
+        ],
+        "all_observed": true,
+        "file_citations_match_frozen_sources": true,
+        "release_metadata_citation_count": 0,
+        "location": "separate JSON citations array as required by round-two contract",
+        "standalone_markdown_has_resolved_citation_urls": false,
+        "publication_note": "The JSON citation array is attributable evidence for review. Publishing only the Markdown body would omit the URL list; publication preparation and byte accounting remain separate."
+      },
+      "material_error_fact_ids": [],
+      "omission_fact_ids": [],
+      "facts": [
+        {
+          "id": "prerequisites-and-layout",
+          "status": "met",
+          "evidence_quotes": [
+            "Pin Bench before reading its lock; do not substitute latest Spec."
+          ],
+          "assessment": "Correct Node/Python/Git prerequisites, OPA platforms, lowercase sibling clones, selected Bench and locked Spec, and explicit working directories.",
+          "frozen_criterion": "The runtime quickstart requires Git, Node.js >=22 with npm and Python >=3.9; its OPA installer supports macOS/Linux arm64/x64. Use lowercase sibling clones, select the intended Bench release before reading its Spec lock, and perform subsequent runtime commands from the Bench root.",
+          "frozen_references": [
+            {
+              "source_id": "quickstart",
+              "start_line": 15,
+              "end_line": 28,
+              "quote": "Use Git, Node.js >=22 with npm, and Python >=3.9. The OPA installer supports\nmacOS and Linux on arm64/x64. Setup downloads source, packages, and an OPA\nbinary; it does not post GitHub comments.\n\nThe published Spec prerelease [v0.2.0-draft.1](https://github.com/OndCo/Action-Effect-Spec/releases/tag/v0.2.0-draft.1)\nis at `a9b86f4b529a5e330c2a9bf1b8c4c259a7b36e40`, the current Bench\n[spec-lock.json](../../spec-lock.json) pin. For a fresh checkout, create two\nlowercase sibling clones and use that lock:\n\n```sh\ngit clone https://github.com/OndCo/Action-Effect-Spec.git action-effect-spec\ngit clone https://github.com/OndCo/Action-Effect-Bench.git action-effect-bench\ncd action-effect-bench\ngit -C ../action-effect-spec checkout --detach \"$(node -p \"require('./spec-lock.json').commit\")\""
+            },
+            {
+              "source_id": "quickstart",
+              "start_line": 31,
+              "end_line": 35,
+              "quote": "Run every remaining command from the Bench root:\n\n```sh\nnpm ci --prefix runtime-pilot --ignore-scripts --no-fund --no-audit\nnode runtime-pilot/install-tools.mjs"
+            },
+            {
+              "source_id": "bench-readme",
+              "start_line": 52,
+              "end_line": 56,
+              "quote": "The explicit lowercase sibling directories matter on case-sensitive filesystems.\nDo not substitute the latest Spec branch for the revision in\n[spec-lock.json](spec-lock.json). To repeat a historical Bench version, check out\nthat version first and then read its lock. Make changes only in a separate\ndevelopment copy when comparing a new candidate."
+            }
+          ]
+        },
+        {
+          "id": "verified-dependency-setup",
+          "status": "met",
+          "evidence_quotes": [
+            "Require successful completion of both before runtime tests or replay."
+          ],
+          "assessment": "Correct npm and installer commands, dependency versions, platform-specific OPA verification and stop-on-setup-failure guidance without bypass.",
+          "frozen_criterion": "The documented runtime setup uses npm ci --prefix runtime-pilot --ignore-scripts --no-fund --no-audit and node runtime-pilot/install-tools.mjs. The dependency versions are MCP SDK 1.32.1, Octokit 22.0.1 and OPA 1.21.2. OPA must match the platform-specific tools.json digest; an unavailable download does not justify bypassing verification or substituting a stub.",
+          "frozen_references": [
+            {
+              "source_id": "quickstart",
+              "start_line": 31,
+              "end_line": 42,
+              "quote": "Run every remaining command from the Bench root:\n\n```sh\nnpm ci --prefix runtime-pilot --ignore-scripts --no-fund --no-audit\nnode runtime-pilot/install-tools.mjs\n```\n\nThe dependency lock pins `@modelcontextprotocol/sdk` 1.32.1 and `@octokit/rest`\n22.0.1. The installer verifies OPA 1.21.2 against the platform-specific SHA-256\nin `runtime-pilot/tools.json`. Do not substitute a policy-engine stub.\nIf downloading fails, do not bypass verification; an existing binary is usable\nonly when its hash matches that manifest."
+            },
+            {
+              "source_id": "tool-pins",
+              "start_line": 2,
+              "end_line": 10,
+              "quote": "  \"opa\": {\n    \"version\": \"1.21.2\",\n    \"release\": \"https://github.com/open-policy-agent/opa/releases/tag/v1.21.2\",\n    \"assets\": {\n      \"darwin-arm64\": {\"name\":\"opa_darwin_arm64\", \"sha256\":\"e358121f0d96a41103499d878184e493cc5ab10956f98e835089b9de0ac2de62\"},\n      \"darwin-x64\": {\"name\":\"opa_darwin_amd64\", \"sha256\":\"4bd9627845899723add7d2dae1bdf97407b2c56fc8d4d15895c6de9c3aa64fec\"},\n      \"linux-x64\": {\"name\":\"opa_linux_amd64_static\", \"sha256\":\"830ab11f61ffec760b5e19db0d7ad02bf037e13f5ef4d665faeaf17632177527\"},\n      \"linux-arm64\": {\"name\":\"opa_linux_arm64_static\", \"sha256\":\"ed13bb8647b8a81e1f11741dd18babe02aced7a304314bd6bf8007793b6d4ff1\"}\n    }"
+            }
+          ]
+        },
+        {
+          "id": "retained-setup-history",
+          "status": "met",
+          "evidence_quotes": [
+            "not a second successful fresh local download."
+          ],
+          "assessment": "Retains the timeout, premature valid:false replay and stopped test process, followed by verified cached OPA rather than a successful fresh download.",
+          "frozen_criterion": "The published fresh-clone verification records an OPA release-asset download timeout and a replay/incomplete test attempt started prematurely. It then used a copied dependency-cache binary verified against the unchanged SHA-256. This is not a second successful fresh local download, and the unsuccessful attempt remains part of the history.",
+          "frozen_references": [
+            {
+              "source_id": "release-verification",
+              "start_line": 23,
+              "end_line": 40,
+              "quote": "`npm ci --ignore-scripts --no-fund --no-audit` installed all pinned packages.\nThe local OPA release-asset download timed out. A replay and part of a test\nsuite were mistakenly started before that dependency was ready: the\n[first clean-clone replay](runtime-pilot-replay-2026-10-19T04-30-54.158Z-7d25e5.json)\nreturned `valid:false`, and the incomplete test process was stopped.\nThese are setup/orchestration failures, not successful evaluations. No provider\nwrite occurred and no original report or frozen input was changed.\n\nThe already downloaded OPA release binary was then copied as a dependency cache\nand verified by the unchanged installer against the published SHA-256:\n\n```text\ne358121f0d96a41103499d878184e493cc5ab10956f98e835089b9de0ac2de62\n```\n\nNo checksum or TLS check was disabled. This local verification therefore used\na hash-verified cached executable; it is not evidence of a second successful\nfresh local download. Remote CI had independently completed its installation."
+            }
+          ]
+        },
+        {
+          "id": "offline-checks-and-replay",
+          "status": "met",
+          "evidence_quotes": [
+            "Replay checks integrity, inputs, source identity, mapping and OPA decisions, not original timing."
+          ],
+          "assessment": "Correct no-credential/no-write scope, retained failed reports, source/checksum rejection and unperformed command status.",
+          "frozen_criterion": "The documented runtime tests and offline evaluation need no GitHub credential or provider writes. Reports and adjacent checksums, including failures, must be retained. Replay checks report integrity, inputs, source identity, mapping and OPA decisions; it does not reproduce original timing or repeat provider writes.",
+          "frozen_references": [
+            {
+              "source_id": "quickstart",
+              "start_line": 46,
+              "end_line": 65,
+              "quote": "These tests and the offline evaluation need no GitHub credential and perform\nno provider writes:\n\n```sh\nnode --test runtime-pilot/tests/*.test.mjs\npython3 -B -W error -m unittest discover -s runtime-pilot/tests -p 'test_*.py'\nnode runtime-pilot/offline-run.mjs\n```\n\nThe runner prints a new report path under `reports/`. Keep its JSON and adjacent\n`.sha256`, including failures. To check the published measured offline report:\n\n```sh\nnode runtime-pilot/replay.mjs reports/runtime-pilot-offline-2026-10-19T04-23-54.715Z-6bb423.json\n```\n\nReplay checks report integrity, recorded inputs, source identity, mapping, and\nOPA decisions; it does not repeat provider writes or reproduce original timing.\nIt refuses source or checksum mismatches. Use the recorded source revision,\nretain nonzero exits, and never replace a failed report with a successful rerun."
+            }
+          ]
+        },
+        {
+          "id": "live-operation-separate",
+          "status": "met",
+          "evidence_quotes": [
+            "never reuse issue #1 or retry uncertain POSTs."
+          ],
+          "assessment": "Separates live owner authorization from offline reproduction and GET-only replay, without inferring another POST or historical causality.",
+          "frozen_criterion": "Live execution is a separate explicitly authorized operation. The completed pilot issue #1 is an evidence resource and must not be rerun. Optional --github replay adds read-only GETs and current-content checks, not another POST or historical execution proof.",
+          "frozen_references": [
+            {
+              "source_id": "quickstart",
+              "start_line": 69,
+              "end_line": 75,
+              "quote": "**This command posts public comments. Do not run it without repository-owner\nauthorization.** It is fixed to `OndCo/Action-Effect-Bench`, not arbitrary\ncustomer repositories.\n\nThe completed study used [issue #1](https://github.com/OndCo/Action-Effect-Bench/issues/1)\nand created 12 comments. **Do not rerun that issue.** It is an evidence resource,\nnot a reusable public test target or permission for readers to post."
+            },
+            {
+              "source_id": "quickstart",
+              "start_line": 99,
+              "end_line": 108,
+              "quote": "For a retained live report, optionally check current public GitHub content:\n\n```sh\nnode runtime-pilot/replay.mjs reports/runtime-pilot-live-2026-10-19T04-26-11.245Z-731e54.json --github\n```\n\n`--github` adds read-only GETs, not new comments. It checks current content, not\nhistorical wall-clock execution or complete provider provenance.\nID-less recovery requires complete preflight and unique new exact body/actor\nmatching on a dedicated single-writer issue. It is not execution attribution."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "consumer-v1-1-migration",
+      "label": "T3",
+      "title": "Prepare the v1 to v1.1 consumer migration note",
+      "lane": "sdk",
+      "overall_report_grade": "partial",
+      "grade_dimension": "substantive_and_markdown_byte_completeness",
+      "grade_explanation": "The retained body exceeds 6000 bytes. The recorded loop remains failed/report_bytes_exceeded; retained content is assessed without converting that failure into completion.",
+      "loop_status": "failed",
+      "loop_reason": "report_bytes_exceeded",
+      "loop_outcome": {
+        "status": "failed",
+        "reason": "report_bytes_exceeded",
+        "full_final_output_retained": true,
+        "automatic_retry": false
+      },
+      "mechanical_checks_recorded": {
+        "report_schema_valid": false,
+        "citations_observed": false,
+        "successful_read_tool_results": 3,
+        "distinct_observed_sources": 3,
+        "unavailable_read_tool_results": 0,
+        "body_bytes": null,
+        "fits_comment_profile_bytes": false,
+        "quality": "no_result",
+        "utility": "not_reviewed",
+        "timing": {
+          "model_request_ms": 41412.745043,
+          "tool_handling_ms": 1929.720375999983,
+          "other_task_ms": 83.12178899999708,
+          "total_task_ms": 43425.58720799998
+        },
+        "note": "Schema, byte and citation checks do not grade semantic correctness, novelty, usefulness or permission to publish."
+      },
+      "human_acceptance": "unknown",
+      "actual_operator_use": "unknown",
+      "business_utility": "unknown",
+      "report_evidence": {
+        "artifact_id": "original_report",
+        "json_pointer": "/tasks/2/result/finalOutput",
+        "parsed_report_member": "report_markdown",
+        "journal_artifact_id": "original_journal",
+        "journal_line": 117
+      },
+      "lengths": {
+        "encoding": "UTF-8",
+        "report_markdown_bytes": 7051,
+        "final_output_text_bytes": 7844,
+        "frozen_maximum_report_bytes": 6000,
+        "markdown_within_frozen_budget": false,
+        "final_output_within_frozen_budget": null,
+        "final_output_budget_applies": false,
+        "comment_profile_maximum_bytes": 8192,
+        "markdown_within_comment_profile_budget": true,
+        "excludes_journal_framing": true
+      },
+      "format_deviation": {
+        "contract_version": 2,
+        "expected": "JSON with task_id, report_markdown, conclusion and citations; report_markdown at most 6000 UTF-8 bytes",
+        "observed": "JSON with the four required fields and a retained Markdown body",
+        "original_delivery_compliance": "not_met",
+        "json_instead_of_markdown": false,
+        "markdown_exceeds_frozen_byte_budget": true,
+        "final_output_exceeds_frozen_byte_budget": null,
+        "outer_final_text_has_no_6000_byte_budget": true,
+        "confounder_id": null,
+        "contradictory_format_instruction": false,
+        "parsed_envelope_shape_valid": true
+      },
+      "citations": {
+        "count": 3,
+        "urls": [
+          "https://github.com/OndCo/Action-Effect-Spec/blob/a9b86f4b529a5e330c2a9bf1b8c4c259a7b36e40/conformance/consumer-profile-v1.md",
+          "https://github.com/OndCo/Action-Effect-Spec/blob/a9b86f4b529a5e330c2a9bf1b8c4c259a7b36e40/conformance/consumer-profile-v1.1.md",
+          "https://github.com/OndCo/Action-Effect-Spec/blob/a9b86f4b529a5e330c2a9bf1b8c4c259a7b36e40/CHANGELOG.md"
+        ],
+        "all_observed": true,
+        "file_citations_match_frozen_sources": true,
+        "release_metadata_citation_count": 0,
+        "location": "separate JSON citations array as required by round-two contract",
+        "standalone_markdown_has_resolved_citation_urls": false,
+        "publication_note": "The JSON citation array is attributable evidence for review. Publishing only the Markdown body would omit the URL list; publication preparation and byte accounting remain separate."
+      },
+      "material_error_fact_ids": [],
+      "omission_fact_ids": [],
+      "facts": [
+        {
+          "id": "version-and-capability-boundary",
+          "status": "met",
+          "evidence_quotes": [
+            "Adds only `contract: offline-consumer-v1.1` to result"
+          ],
+          "assessment": "Correct opt-in processing change, default v1 hello and unchanged core/profile/digest/frozen files/framing/results.",
+          "frozen_criterion": "offline-consumer-v1.1 is an opt-in processing contract for the same finite refund profile, not a new core schema or domain. The wire version, profile URI, manifest digest and seven frozen files are unchanged. Default v1 hello gains no field; v1.1 hello adds contract: offline-consumer-v1.1, while check/canonicalize shapes, digests, framing and limits remain unchanged.",
+          "frozen_references": [
+            {
+              "source_id": "consumer-v1-1",
+              "start_line": 5,
+              "end_line": 13,
+              "quote": "This opt-in processing contract clarifies startup configuration and final-stage\nerror precedence for the finite synthetic refund consumer. It supplements\n[v1](consumer-profile-v1.md); all v1 rules apply except where explicitly clarified\nbelow. It is not a new core wire schema or a new refund domain profile.\n`spec_version` remains `0.1.0-draft.1`, the profile URI remains\n`https://example.org/profiles/refund/0.1.0-draft.1`, and the full canonical\nmanifest SHA-256 remains\n`dddac40519b57620ca8b6fec558746ed8fb1f6ddf77263fd93cf5b2b582f2e00`.\nThe seven original contract/example files and their bytes are unchanged."
+            },
+            {
+              "source_id": "consumer-v1-1",
+              "start_line": 24,
+              "end_line": 37,
+              "quote": "Omitting `--contract`, or selecting `--contract offline-consumer-v1`, retains the\nold v1 behavior and output. In particular, default `hello` gains no new field.\nIn v1.1, `hello` returns exactly:\n\n```json\n{\"status\":\"capabilities\",\"reason\":\"offline_snapshot\",\"authority\":\"not_evaluated\",\"spec_version\":\"0.1.0-draft.1\",\"profile\":\"https://example.org/profiles/refund/0.1.0-draft.1\",\"numeric_domain\":\"safe_integer_tokens_only\",\"acceptance_cache\":false,\"contract\":\"offline-consumer-v1.1\"}\n```\n\nThe adapter wraps this result with the request's `id` as in v1. The extra\n`contract` member identifies processing behavior, not a replacement\n`spec_version` or profile binding. `check` and `canonicalize` result shapes,\ndescription digests, framing, limits and continuation after rejected frames\nare unchanged. A request or description with an extra `contract` field remains\ninvalid under the unchanged adapter or core structure rules, respectively."
+            },
+            {
+              "source_id": "consumer-v1",
+              "start_line": 65,
+              "end_line": 78,
+              "quote": "`hello` returns `status: capabilities`, `reason: offline_snapshot`,\n`authority: not_evaluated`, `spec_version: 0.1.0-draft.1`,\n`profile: https://example.org/profiles/refund/0.1.0-draft.1`,\n`numeric_domain: safe_integer_tokens_only`, `acceptance_cache: false`.\n\n`canonicalize` returns `status: canonicalized`, `reason: supported_subset`,\n`authority: not_evaluated`, `canonical_b64` and `sha256`. This diagnostic is not\ndescription acceptance. Supported values are objects/arrays, scalar-valid\nstrings, null, booleans and integer JSON tokens within +/-9007199254740991.\nNumbers with a fraction/exponent or outside that range yield\n`unsupported_profile/numeric_domain`, not a claim they are invalid JSON.\n`-0` canonicalizes to `0`; quantity string `\"-0\"` is still schema-invalid.\nSort keys by UTF-16 code units per RFC 8785, preserve arrays and strings, escape\nas JSON/ECMAScript requires. No Unicode normalization or full binary64/JCS claim."
+            },
+            {
+              "source_id": "spec-changelog",
+              "start_line": 5,
+              "end_line": 9,
+              "quote": "Added an opt-in `offline-consumer-v1.1` contract with startup configuration\nrejection, explicit contract identity and deterministic final projection error\nprecedence. Added paired-defect and legacy-compatibility tests in JavaScript and\nPython. The seven frozen files, core wire version and default v1 behavior remain\nunchanged, including the documented historical JS null-option fallback."
+            }
+          ]
+        },
+        {
+          "id": "selection-and-rollback",
+          "status": "met",
+          "evidence_quotes": [
+            "Unknown, empty, missing-value or repeated contract options are fatal startup errors, not fallback or per-document `unsupported_profile` results."
+          ],
+          "assessment": "Correct startup CLI/API selection, nullish option distinctions, rollback and exclusion of caller-controlled request contract fields.",
+          "frozen_criterion": "Contract selection is a caller-controlled startup --contract option, optionally with --basis in either order, never a request or description field. Omitting selection or choosing offline-consumer-v1 retains legacy behavior; unknown, empty, missing-value or repeated contract options are fatal startup errors. API omission differs from an explicit invalid null contract.",
+          "frozen_references": [
+            {
+              "source_id": "consumer-v1-1",
+              "start_line": 17,
+              "end_line": 25,
+              "quote": "Both existing entry points accept `--contract offline-consumer-v1.1`, optionally\nwith `--basis PATH` in either order. Contract selection is a caller-controlled\nstartup option, never a request field or a value inferred from a description.\nOnly `offline-consumer-v1` and `offline-consumer-v1.1` are supported. An unknown,\nempty, missing-value or repeated contract option is a fatal startup error, not\nan `unsupported_profile` response and not a fallback to v1.\n\nOmitting `--contract`, or selecting `--contract offline-consumer-v1`, retains the\nold v1 behavior and output. In particular, default `hello` gains no new field."
+            },
+            {
+              "source_id": "consumer-v1-1",
+              "start_line": 54,
+              "end_line": 58,
+              "quote": "API callers receive a startup exception for an unsupported contract or unusable\nconfiguration, not a per-document result. Omitted API contract options retain\nv1; JavaScript's `undefined` contract option also means omitted. Explicit `null`\nor non-string contract values are invalid. The legacy Python `Consumer.hello()`\nclass-level query continues to report v1 capabilities."
+            }
+          ]
+        },
+        {
+          "id": "configuration-versus-applicability",
+          "status": "met",
+          "evidence_quotes": [
+            "emits no stdout (not even hello)"
+          ],
+          "assessment": "Correct fatal startup structural/canonical validation, sanitized diagnostics, empty required objects and later nested applicability distinction.",
+          "frozen_criterion": "v1.1 validates the selected local snapshot before serving frames. Invalid startup JSON, a wrong manifest or missing/nonobject required basis members terminates with nonzero exit, no stdout frames and a fixed sanitized stderr diagnostic. Explicitly unusable selections do not silently request defaults. Empty required objects may load; inapplicable nested fixture values are document applicability failures after earlier stages.",
+          "frozen_references": [
+            {
+              "source_id": "consumer-v1-1",
+              "start_line": 62,
+              "end_line": 81,
+              "quote": "Before serving any frame, the consumer MUST load and validate its caller-selected\nlocal snapshot. The following are invalid configuration:\n\n- An unreadable selected file, invalid UTF-8/JSON, duplicate decoded keys, invalid\n  Unicode scalars, exceeded input/nesting limits, or numbers outside v1's\n  safe-integer-token-only startup JSON subset.\n- A manifest that does not match the pinned complete canonical content.\n- A basis root that is not an object, or a missing/nonobject `input`,\n  `implementation`, `context`, `mapping` or `declaration` member. Arrays, null,\n  strings, booleans and numbers are not objects for this purpose.\n\nSuch configuration MUST terminate the CLI with a nonzero exit, no stdout frames\n(including no `hello`), and a fixed diagnostic on stderr. Diagnostics MUST NOT\ninclude fixture/input contents, supplied argument values, paths, secrets or a\nstack trace. API exceptions likewise MUST NOT embed supplied configuration\ncontents. Only an omitted basis selection uses the bundled basis in v1.1;\nan explicitly supplied null basis is invalid, not a request for that default.\nFor the JavaScript API this also applies to explicitly supplied `undefined`\nbasis/profile values. This opt-in rule does not change JavaScript v1's legacy\nnullish configuration fallback."
+            },
+            {
+              "source_id": "consumer-v1-1",
+              "start_line": 83,
+              "end_line": 101,
+              "quote": "The five required member objects may be empty at startup. Once their shape and\nthe startup JSON subset are valid, missing nested scalar fields or unsupported\nscalar values are fixture applicability issues, not startup errors. For example,\n`input.currency: \"EUR\"`, `input.order: null`, a wrong implementation version,\nor `input.amount_minor: 7300` load successfully but cannot establish applicable\nrefund semantics. A present amount must be an exact decimal integer string in\n0..999999999999; null, booleans, numbers, signs, leading zeros, whitespace and\nout-of-range strings do not become unknown amounts. Only an absent\n`input.amount_minor` permits the explicit unknown-amount projection from v1.\n\nApplicability is a final-domain check, not a new early rejection stage. Document\nsyntax, numeric support, schema, local references, critical extensions, profile\nbinding, evidence scope and selected-member artifact binding still precede it.\nFor example, a stale invocation digest wins over unsupported fixture currency.\nA malformed evidence source fails structure, and a source unequal to the\nconfigured declaration issuer fails artifact binding, even if that issuer is\nitself inapplicable. No stage is skipped to manufacture an applicability result.\nAfter earlier stages succeed, unsupported fixture values MUST yield\n`untrusted_evidence/applicability`, never an invented unknown or acceptance."
+            }
+          ]
+        },
+        {
+          "id": "ordered-final-projection",
+          "status": "met",
+          "evidence_quotes": [
+            "Earlier reference errors still win."
+          ],
+          "assessment": "Explicit stage-10 applicability/cardinality/missing-representation/projection order preserves earlier stages; represented wrong values differ from missing amount structure.",
+          "frozen_criterion": "v1.1 clarifies final stage 10 without moving it ahead of stages 1-9: fixture applicability first, effect cardinality second, missing required amount representation third, remaining coupled projection fourth. Missing representation is invalid_input/structure; a represented but wrong amount is an effect-projection mismatch. Earlier artifact binding still wins over later applicability defects.",
+          "frozen_references": [
+            {
+              "source_id": "consumer-v1-1",
+              "start_line": 93,
+              "end_line": 99,
+              "quote": "Applicability is a final-domain check, not a new early rejection stage. Document\nsyntax, numeric support, schema, local references, critical extensions, profile\nbinding, evidence scope and selected-member artifact binding still precede it.\nFor example, a stale invocation digest wins over unsupported fixture currency.\nA malformed evidence source fails structure, and a source unequal to the\nconfigured declaration issuer fails artifact binding, even if that issuer is\nitself inapplicable. No stage is skipped to manufacture an applicability result."
+            },
+            {
+              "source_id": "consumer-v1-1",
+              "start_line": 103,
+              "end_line": 127,
+              "quote": "## Final Projection Precedence\n\nReplace the ambiguity within v1 document-processing stage 10 with this ordered\nsequence. This does not move any check ahead of stages 1 through 9:\n\n1. **Fixture applicability.** Apply all finite synthetic fixture constraints in\n   v1. Any failure yields `untrusted_evidence/applicability`, even if the\n   description also has a wrong effect count or projection.\n2. **Effect cardinality.** Require exactly one effect. Zero or multiple effects\n   yield `untrusted_evidence/effect_projection`. Do not pick a first/last tuple\n   or inspect one tuple's missing amount as if cardinality had succeeded.\n3. **Missing required amount representation.** In that single effect, require a\n   quantity named `https://example.org/quantities/amount` OR an\n   `unknown_quantity` targeting that effect and exact name. If neither exists,\n   yield `invalid_input/structure`, even with unrelated quantities or other\n   projection defects. This is a final-domain structure error, not an earlier\n   schema check. Duplicate, dangling, wrong-name and known/unknown-collision\n   targets already fail reference validation at stage 5.\n4. **Remaining coupled projection.** Apply all remaining v1 projection rules:\n   category, operation, exact resource/destination/data-class tuple, no\n   occurrence reference, empty relations, nonempty coverage/effect evidence\n   references, unobserved descendants, and the exact known/unknown amount rule.\n   Any mismatch yields `untrusted_evidence/effect_projection`. A represented\n   but wrong amount/value/unit/scale, unknown amount when the fixture supplies\n   one, or known amount when the fixture omits it belongs here, not at step 3."
+            }
+          ]
+        },
+        {
+          "id": "historical-cohort-and-scope",
+          "status": "met",
+          "evidence_quotes": [
+            "Keep frozen v1 corpus explicitly on v1"
+          ],
+          "assessment": "Correct historical cohort separation, both-language unperformed verification commands, and no new authority/cache/domain/GitHub-migration claim.",
+          "frozen_criterion": "The published v1 corpus still explicitly selects v1 and is not relabeled as v1.1 evidence. Both language-local suites discover the opt-in tests. The change adds no domain, network, authorization, provider execution, acceptance cache or full-core conformance claim; it does not migrate the GitHub consumer.",
+          "frozen_references": [
+            {
+              "source_id": "consumer-v1-1",
+              "start_line": 145,
+              "end_line": 163,
+              "quote": "## Verification and Claim Boundary\n\nRun both suites locally without dependencies or network:\n\n```sh\nnode --test implementations/javascript/*.test.mjs\npython3 -B -W error -m unittest discover -s implementations/python/tests\n```\n\nCI runs both the frozen v1 and opt-in v1.1 test files through discovery. The\npublished v1 corpus continues to select v1 explicitly; its results are not\nsilently relabeled as v1.1 results.\n\nThese are exposed same-project implementation and regression tests, not external\nvalidation, new holdouts, certification or full core conformance. The previously\nseparate JavaScript and Python implementations remain language-local; neither\nimports or invokes the other. This hardening adds no domain, dependency,\nnetwork access, authorization, provider effect, cache or production-readiness\nclaim. Frozen v1 publications and historical results are not relabeled as v1.1."
+            },
+            {
+              "source_id": "spec-changelog",
+              "start_line": 11,
+              "end_line": 14,
+              "quote": "Added the GitHub issue-comment profile: exact native invocation and body binding,\npartial direct scope, explicit provider-descendant unknowns, and a distinct\nauthorization integration in the companion benchmark. This is a narrowly\nimplemented profile, not a claim that legacy refund consumers understand GitHub."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "official-mcp-compatibility",
+      "label": "T4",
+      "title": "Assess the official GitHub MCP integration claim",
+      "lane": "mcp",
+      "overall_report_grade": "complete",
+      "grade_dimension": "substantive_and_markdown_byte_completeness",
+      "grade_explanation": "All required facts are met; the explicit JSON envelope and extracted Markdown body meet the round-two contract. This is not human acceptance or proven business utility.",
+      "loop_status": "completed",
+      "loop_reason": "final_output",
+      "loop_outcome": {
+        "status": "completed",
+        "reason": "final_output",
+        "full_final_output_retained": true,
+        "automatic_retry": false
+      },
+      "mechanical_checks_recorded": {
+        "report_schema_valid": true,
+        "citations_observed": true,
+        "successful_read_tool_results": 5,
+        "distinct_observed_sources": 5,
+        "unavailable_read_tool_results": 0,
+        "body_bytes": 5997,
+        "fits_comment_profile_bytes": true,
+        "quality": "not_reviewed",
+        "utility": "not_reviewed",
+        "timing": {
+          "model_request_ms": 49278.00737700003,
+          "tool_handling_ms": 3110.7780000000494,
+          "other_task_ms": 116.06491399992956,
+          "total_task_ms": 52504.85029100001
+        },
+        "note": "Schema, byte and citation checks do not grade semantic correctness, novelty, usefulness or permission to publish."
+      },
+      "human_acceptance": "unknown",
+      "actual_operator_use": "unknown",
+      "business_utility": "unknown",
+      "report_evidence": {
+        "artifact_id": "original_report",
+        "json_pointer": "/tasks/3/result/finalOutput",
+        "parsed_report_member": "report_markdown",
+        "journal_artifact_id": "original_journal",
+        "journal_line": 159
+      },
+      "lengths": {
+        "encoding": "UTF-8",
+        "report_markdown_bytes": 5997,
+        "final_output_text_bytes": 7198,
+        "frozen_maximum_report_bytes": 6000,
+        "markdown_within_frozen_budget": true,
+        "final_output_within_frozen_budget": null,
+        "final_output_budget_applies": false,
+        "comment_profile_maximum_bytes": 8192,
+        "markdown_within_comment_profile_budget": true,
+        "excludes_journal_framing": true
+      },
+      "format_deviation": {
+        "contract_version": 2,
+        "expected": "JSON with task_id, report_markdown, conclusion and citations; report_markdown at most 6000 UTF-8 bytes",
+        "observed": "JSON with the four required fields and a retained Markdown body",
+        "original_delivery_compliance": "met",
+        "json_instead_of_markdown": false,
+        "markdown_exceeds_frozen_byte_budget": false,
+        "final_output_exceeds_frozen_byte_budget": null,
+        "outer_final_text_has_no_6000_byte_budget": true,
+        "confounder_id": null,
+        "contradictory_format_instruction": false,
+        "parsed_envelope_shape_valid": true
+      },
+      "citations": {
+        "count": 5,
+        "urls": [
+          "https://github.com/OndCo/Action-Effect-Bench/blob/cecde389637be4f5fd3482e4942ce3fd1a623ac6/runtime-pilot/mcp-server.mjs",
+          "https://github.com/OndCo/Action-Effect-Bench/blob/cecde389637be4f5fd3482e4942ce3fd1a623ac6/runtime-pilot/package.json",
+          "https://github.com/OndCo/Action-Effect-Bench/blob/cecde389637be4f5fd3482e4942ce3fd1a623ac6/runtime-pilot/README.md",
+          "https://github.com/OndCo/Action-Effect-Spec/blob/a9b86f4b529a5e330c2a9bf1b8c4c259a7b36e40/profiles/github-issue-comment/README.md",
+          "https://github.com/OndCo/Action-Effect-Bench/blob/cecde389637be4f5fd3482e4942ce3fd1a623ac6/docs/release-v0.2.0.md"
+        ],
+        "all_observed": true,
+        "file_citations_match_frozen_sources": true,
+        "release_metadata_citation_count": 0,
+        "location": "separate JSON citations array as required by round-two contract",
+        "standalone_markdown_has_resolved_citation_urls": false,
+        "publication_note": "The JSON citation array is attributable evidence for review. Publishing only the Markdown body would omit the URL list; publication preparation and byte accounting remain separate."
+      },
+      "material_error_fact_ids": [],
+      "omission_fact_ids": [],
+      "facts": [
+        {
+          "id": "released-server-and-dependencies",
+          "status": "met",
+          "evidence_quotes": [
+            "A custom pilot server, not evidence of the official GitHub MCP implementation."
+          ],
+          "assessment": "Correct official SDK/Octokit pins and Bench-authored action-effect-comment-pilot identity; does not conflate SDK with official server.",
+          "frozen_criterion": "The released package pins @modelcontextprotocol/sdk 1.32.1 and @octokit/rest 22.0.1. mcp-server.mjs imports the official SDK but instantiates a server named action-effect-comment-pilot at version 0.2.0-draft.1. This establishes a Bench-authored server using the SDK, not historical execution of the official GitHub MCP server.",
+          "frozen_references": [
+            {
+              "source_id": "runtime-package",
+              "start_line": 8,
+              "end_line": 12,
+              "quote": "  \"dependencies\": {\n    \"@modelcontextprotocol/sdk\": \"1.32.1\",\n    \"@octokit/rest\": \"22.0.1\",\n    \"ajv\": \"8.20.0\",\n    \"zod\": \"4.6.7\""
+            },
+            {
+              "source_id": "pilot-mcp-server",
+              "start_line": 1,
+              "end_line": 3,
+              "quote": "import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';\nimport { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';\nimport * as z from 'zod/v4';"
+            },
+            {
+              "source_id": "pilot-mcp-server",
+              "start_line": 21,
+              "end_line": 25,
+              "quote": "  const server = new McpServer({ name: 'action-effect-comment-pilot', version: '0.2.0-draft.1' }, { maxToolInputElements: 32 });\n  server.registerTool('add_issue_comment', {\n    description: 'Create one synthetic comment on an explicitly authorized test issue. Requires a current local policy decision.',\n    inputSchema: z.strictObject({ owner: z.string(), repo: z.string(), issue_number: z.number().int(), body: z.string() }),\n    annotations: { readOnlyHint: false, destructiveHint: false, idempotentHint: false, openWorldHint: true }"
+            },
+            {
+              "source_id": "runtime-readme",
+              "start_line": 40,
+              "end_line": 43,
+              "quote": "- `mcp-server.mjs` and `mcp-client.mjs` use the official SDK's real stdio\n  initialize/list/call exchange. Unknown keys are rejected, not stripped.\n- `replay.mjs` verifies retained byte identities and reruns local mapping/OPA.\n  `--github` performs unauthenticated, read-only current-content checks."
+            }
+          ]
+        },
+        {
+          "id": "advertised-tool-and-profile-domain",
+          "status": "met",
+          "evidence_quotes": [
+            "The profile adds narrower acceptance rules than the Zod schema alone"
+          ],
+          "assessment": "Correct strict tool fields, profile path/integer/Unicode/8192-byte bounds, context binding and create-only endpoint restrictions.",
+          "frozen_criterion": "The released tool is add_issue_comment with a strict object containing owner, repo and body strings and integer issue_number; unknown keys are rejected. The selected domain profile imposes additional path-safe identity, positive bounded issue-number and nonempty Unicode-scalar/UTF-8 byte restrictions. An advertised tool name or argument shape alone does not establish the full native semantics.",
+          "frozen_references": [
+            {
+              "source_id": "pilot-mcp-server",
+              "start_line": 22,
+              "end_line": 25,
+              "quote": "  server.registerTool('add_issue_comment', {\n    description: 'Create one synthetic comment on an explicitly authorized test issue. Requires a current local policy decision.',\n    inputSchema: z.strictObject({ owner: z.string(), repo: z.string(), issue_number: z.number().int(), body: z.string() }),\n    annotations: { readOnlyHint: false, destructiveHint: false, idempotentHint: false, openWorldHint: true }"
+            },
+            {
+              "source_id": "github-profile",
+              "start_line": 13,
+              "end_line": 23,
+              "quote": "SDK input: `{\"lane\":\"sdk\",\"call\":{\"owner\":\"OndCo\",\"repo\":\"Action-Effect-Bench\",\"issue_number\":1,\"body\":\"Synthetic test\"}}`.\nMCP input: `{\"lane\":\"mcp\",\"call\":{\"name\":\"add_issue_comment\",\"arguments\":{\"owner\":\"OndCo\",\"repo\":\"Action-Effect-Bench\",\"issue_number\":1,\"body\":\"Synthetic test\"}}}`.\nThese are local capture envelopes. The MCP lane uses actual MCP `tools/call`\ntransport; this envelope is not a replacement protocol.\n\nOnly the shown keys are accepted. Names are ASCII and path-safe: owner matches\n`[A-Za-z0-9][A-Za-z0-9-]{0,38}`; repo matches\n`[A-Za-z0-9_.-]{1,100}` but is neither `.` nor `..`. Issue number is a positive\ninteger at most 2147483647, excluding booleans. Body is a nonempty Unicode-scalar\nstring with at most 8192 UTF-8 bytes. No normalization, path unescaping, URL\nresolution, template expansion or caller-supplied endpoint is supported."
+            }
+          ]
+        },
+        {
+          "id": "actual-result-representation",
+          "status": "met",
+          "evidence_quotes": [
+            "JSON serialized inside an MCP text block"
+          ],
+          "assessment": "Correct local native envelope and JSON-in-text wrapper, explicitly distinct from a proven official result schema.",
+          "frozen_criterion": "The Bench handler captures a local MCP envelope, performs preparation or execution and returns the JSON-serialized result inside an MCP content item with type text. This released wrapper must not be assumed to be the official GitHub server result contract.",
+          "frozen_references": [
+            {
+              "source_id": "pilot-mcp-server",
+              "start_line": 27,
+              "end_line": 33,
+              "quote": "    const native = { lane: 'mcp', call: { name: 'add_issue_comment', arguments: args } };\n    const result = config.mode === 'offline-map' ? prepareAction(native, config.context, config.strategy)\n      : await executeAction({ native, context: config.context, strategy: config.strategy, provider,\n        policyFile: config.policy_file, ledgerDir: config.ledger_dir, occurrence: config.occurrence,\n        preparedDescription: config.prepared_description });\n    if (config.inject_lost_ack === true) result.fault = { successful_post_ack_discarded: discarded };\n    return { content: [{ type: 'text', text: JSON.stringify(result) }] };"
+            },
+            {
+              "source_id": "github-profile",
+              "start_line": 13,
+              "end_line": 16,
+              "quote": "SDK input: `{\"lane\":\"sdk\",\"call\":{\"owner\":\"OndCo\",\"repo\":\"Action-Effect-Bench\",\"issue_number\":1,\"body\":\"Synthetic test\"}}`.\nMCP input: `{\"lane\":\"mcp\",\"call\":{\"name\":\"add_issue_comment\",\"arguments\":{\"owner\":\"OndCo\",\"repo\":\"Action-Effect-Bench\",\"issue_number\":1,\"body\":\"Synthetic test\"}}}`.\nThese are local capture envelopes. The MCP lane uses actual MCP `tools/call`\ntransport; this envelope is not a replacement protocol."
+            }
+          ]
+        },
+        {
+          "id": "identity-and-observation-limits",
+          "status": "met",
+          "evidence_quotes": [
+            "All five source reads succeeded on the MCP lane."
+          ],
+          "assessment": "Correctly reports current configured github-mcp-server 2.0.2, executable hash, startup and protocol metadata and separates those reads from the historical pilot, provenance attestation, mutation and remote-authentication compatibility. The prior categorical no-operation claim is not repeated.",
+          "frozen_criterion": "The configured github-comment-bridge/1 identity is a declaration, not binary/SaaS attestation. The supplied released sources do not establish an official-server remote handshake or successful authentication. New transport metadata, if actually observed, may be reported as current evidence but cannot retroactively change what the published pilot exercised.",
+          "frozen_references": [
+            {
+              "source_id": "github-profile",
+              "start_line": 25,
+              "end_line": 31,
+              "quote": "The caller configures `context` with a nonempty `principal`, nonempty\n`data_class`, and `implementation: \"github-comment-bridge/1\"`. Missing facts\nproduce `untrusted_evidence/missing_context`; a different implementation produces\n`untrusted_evidence/implementation_binding`. This is a declared implementation\nidentity, not attestation of arbitrary SaaS code. Executable/package source\nhashes are recorded separately by the experiment. Classification comes from the\ntrusted test configuration, not text analysis; no DLP classifier is claimed."
+            },
+            {
+              "source_id": "runtime-readme",
+              "start_line": 53,
+              "end_line": 57,
+              "quote": "Local code, profile installation, policy files, configured principal/class,\nledger storage and host filesystem are trusted. The implementation identity is\na **declaration**, not an attested binary or proof of GitHub's internal code.\nThe native capture must come from the path that actually dispatches the request;\na hash cannot make a dishonest capture truthful."
+            },
+            {
+              "source_id": "release-note",
+              "start_line": 21,
+              "end_line": 25,
+              "quote": "These are same-project, bounded development results. External independently\nauthored evaluations remain zero. Direct comment readback does not establish\ncomplete provider provenance or transitive effects. This is not an adopted\nindustry standard, certification or qualified production gateway. Original\nfrozen artifacts and the failed first offline attempt remain preserved."
+            }
+          ],
+          "journal_references": [
+            {
+              "artifact_id": "original_journal",
+              "line": 2,
+              "description": "Read-only official MCP stdio startup and identity inventory."
+            },
+            {
+              "artifact_id": "original_journal",
+              "line": 127,
+              "description": "Successful current official MCP source read."
+            },
+            {
+              "artifact_id": "original_journal",
+              "line": 134,
+              "description": "Successful current official MCP source read."
+            },
+            {
+              "artifact_id": "original_journal",
+              "line": 141,
+              "description": "Successful current official MCP source read."
+            },
+            {
+              "artifact_id": "original_journal",
+              "line": 148,
+              "description": "Successful current official MCP source read."
+            },
+            {
+              "artifact_id": "original_journal",
+              "line": 155,
+              "description": "Successful current official MCP source read."
+            },
+            {
+              "artifact_id": "original_journal",
+              "line": 159,
+              "description": "New T4 response explicitly acknowledges current reads and distinguishes historical pilot scope."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "limits-and-recovery",
+      "label": "T5",
+      "title": "Write the limits and uncertain-delivery operator runbook",
+      "lane": "sdk",
+      "overall_report_grade": "partial",
+      "grade_dimension": "substantive_and_markdown_byte_completeness",
+      "grade_explanation": "The retained body exceeds 6000 bytes and one fact is incompletely covered. The recorded loop remains failed/report_bytes_exceeded; retained content is assessed without converting that failure into completion.",
+      "loop_status": "failed",
+      "loop_reason": "report_bytes_exceeded",
+      "loop_outcome": {
+        "status": "failed",
+        "reason": "report_bytes_exceeded",
+        "full_final_output_retained": true,
+        "automatic_retry": false
+      },
+      "mechanical_checks_recorded": {
+        "report_schema_valid": false,
+        "citations_observed": false,
+        "successful_read_tool_results": 5,
+        "distinct_observed_sources": 5,
+        "unavailable_read_tool_results": 0,
+        "body_bytes": null,
+        "fits_comment_profile_bytes": false,
+        "quality": "no_result",
+        "utility": "not_reviewed",
+        "timing": {
+          "model_request_ms": 47237.27116600002,
+          "tool_handling_ms": 2363.435625000013,
+          "other_task_ms": 114.31287599998177,
+          "total_task_ms": 49715.019667000015
+        },
+        "note": "Schema, byte and citation checks do not grade semantic correctness, novelty, usefulness or permission to publish."
+      },
+      "human_acceptance": "unknown",
+      "actual_operator_use": "unknown",
+      "business_utility": "unknown",
+      "report_evidence": {
+        "artifact_id": "original_report",
+        "json_pointer": "/tasks/4/result/finalOutput",
+        "parsed_report_member": "report_markdown",
+        "journal_artifact_id": "original_journal",
+        "journal_line": 200
+      },
+      "lengths": {
+        "encoding": "UTF-8",
+        "report_markdown_bytes": 6267,
+        "final_output_text_bytes": 7350,
+        "frozen_maximum_report_bytes": 6000,
+        "markdown_within_frozen_budget": false,
+        "final_output_within_frozen_budget": null,
+        "final_output_budget_applies": false,
+        "comment_profile_maximum_bytes": 8192,
+        "markdown_within_comment_profile_budget": true,
+        "excludes_journal_framing": true
+      },
+      "format_deviation": {
+        "contract_version": 2,
+        "expected": "JSON with task_id, report_markdown, conclusion and citations; report_markdown at most 6000 UTF-8 bytes",
+        "observed": "JSON with the four required fields and a retained Markdown body",
+        "original_delivery_compliance": "not_met",
+        "json_instead_of_markdown": false,
+        "markdown_exceeds_frozen_byte_budget": true,
+        "final_output_exceeds_frozen_byte_budget": null,
+        "outer_final_text_has_no_6000_byte_budget": true,
+        "confounder_id": null,
+        "contradictory_format_instruction": false,
+        "parsed_envelope_shape_valid": true
+      },
+      "citations": {
+        "count": 5,
+        "urls": [
+          "https://github.com/OndCo/Action-Effect-Spec/blob/a9b86f4b529a5e330c2a9bf1b8c4c259a7b36e40/profiles/github-issue-comment/README.md",
+          "https://github.com/OndCo/Action-Effect-Bench/blob/cecde389637be4f5fd3482e4942ce3fd1a623ac6/runtime-pilot/provider.mjs",
+          "https://github.com/OndCo/Action-Effect-Bench/blob/cecde389637be4f5fd3482e4942ce3fd1a623ac6/runtime-pilot/gate.mjs",
+          "https://github.com/OndCo/Action-Effect-Bench/blob/cecde389637be4f5fd3482e4942ce3fd1a623ac6/runtime-pilot/README.md",
+          "https://github.com/OndCo/Action-Effect-Bench/blob/cecde389637be4f5fd3482e4942ce3fd1a623ac6/docs/adoption/quickstart.md"
+        ],
+        "all_observed": true,
+        "file_citations_match_frozen_sources": true,
+        "release_metadata_citation_count": 0,
+        "location": "separate JSON citations array as required by round-two contract",
+        "standalone_markdown_has_resolved_citation_urls": false,
+        "publication_note": "The JSON citation array is attributable evidence for review. Publishing only the Markdown body would omit the URL list; publication preparation and byte accounting remain separate."
+      },
+      "material_error_fact_ids": [],
+      "omission_fact_ids": [
+        "native-and-body-limits"
+      ],
+      "facts": [
+        {
+          "id": "native-and-body-limits",
+          "status": "partial",
+          "evidence_quotes": [
+            "SHA-256 and byte count bind the body; do not normalize it."
+          ],
+          "assessment": "Input restrictions, Unicode/UTF-8 counting and body binding are correct. The required critical-extension mechanism for the exact body digest is still omitted; a generic statement that SHA-256 binds the body does not state this frozen requirement.",
+          "frozen_criterion": "The profile requires path-safe ASCII owner/repo names, a positive integer issue number at most 2147483647 excluding booleans, and a nonempty Unicode-scalar body of at most 8192 UTF-8 bytes. Its quantity counts UTF-8 bytes rather than JavaScript UTF-16 units, and its required extension binds the exact body SHA-256.",
+          "frozen_references": [
+            {
+              "source_id": "github-profile",
+              "start_line": 18,
+              "end_line": 23,
+              "quote": "Only the shown keys are accepted. Names are ASCII and path-safe: owner matches\n`[A-Za-z0-9][A-Za-z0-9-]{0,38}`; repo matches\n`[A-Za-z0-9_.-]{1,100}` but is neither `.` nor `..`. Issue number is a positive\ninteger at most 2147483647, excluding booleans. Body is a nonempty Unicode-scalar\nstring with at most 8192 UTF-8 bytes. No normalization, path unescaping, URL\nresolution, template expansion or caller-supplied endpoint is supported."
+            },
+            {
+              "source_id": "github-profile",
+              "start_line": 98,
+              "end_line": 107,
+              "quote": "## Body Bytes\n\nThe single quantity uses the manifest's byte URI, exact decimal string UTF-8\nlength, unit `byte`, scale `0`. It counts bytes, not JavaScript UTF-16 units.\n\n## Body SHA256\n\nThe manifest's extension URI is required in `critical_extensions`. `extensions`\ncontains only that key, with lowercase 64-hex SHA-256 of the exact UTF-8 body.\nIt supplements, not replaces, the native-invocation binding."
+            }
+          ]
+        },
+        {
+          "id": "complete-bounded-listing",
+          "status": "met",
+          "evidence_quotes": [
+            "Five full pages throw `readback_pagination_limit`, even at exactly 500 comments"
+          ],
+          "assessment": "Correct five-page/100-entry bound, short-page completion and refusal to treat truncation as a complete listing.",
+          "frozen_criterion": "The provider requests at most five comment pages of 100 entries. It establishes completion only on a page shorter than 100; a full fifth page throws readback_pagination_limit, even if exactly 500 comments might exist. Do not describe the bound as permitting a silently truncated complete listing.",
+          "frozen_references": [
+            {
+              "source_id": "github-provider",
+              "start_line": 53,
+              "end_line": 62,
+              "quote": "    async listComments(params) {\n      // The dedicated issue is bounded; do not silently inspect only page one.\n      const comments = [];\n      for (let page = 1; page <= 5; page += 1) {\n        const response = await client.issues.listComments({ owner: params.owner, repo: params.repo,\n          issue_number: params.issue_number, per_page: 100, page, headers });\n        comments.push(...response.data);\n        if (response.data.length < 100) return comments;\n      }\n      throw new Error('readback_pagination_limit');"
+            }
+          ]
+        },
+        {
+          "id": "known-response-id",
+          "status": "met",
+          "evidence_quotes": [
+            "known ID must match."
+          ],
+          "assessment": "Correct exact known response/ledger ID binding together with API/issue URLs, exact body and actor.",
+          "frozen_criterion": "When a POST response or ledger supplies a comment ID, readback must match that exact ID as well as the expected API/issue URLs, exact body and actor. A different comment with matching content is not confirmation of the known response ID.",
+          "frozen_references": [
+            {
+              "source_id": "github-provider",
+              "start_line": 15,
+              "end_line": 21,
+              "quote": "export function receiptFrom(comment, expected, principal, expectedId) {\n  const base = `https://api.github.com/repos/${expected.owner}/${expected.repo}/issues`;\n  const matches = Number.isSafeInteger(comment?.id) && comment.id > 0\n    && (expectedId === undefined || comment.id === expectedId)\n    && comment.url === `${base}/comments/${comment.id}`\n    && comment.issue_url === `${base}/${expected.issue_number}`\n    && comment.body === expected.body && comment.user?.login === principal;"
+            },
+            {
+              "source_id": "dispatch-gate",
+              "start_line": 123,
+              "end_line": 134,
+              "quote": "    if (!Number.isSafeInteger(response?.id) || response.id < 1) throw new Error('invalid_provider_response');\n    commentId = response.id;\n    const readbackStarted = performance.now();\n    const observed = await options.provider.readComment(params, commentId);\n    timings.readback_ms = performance.now() - readbackStarted;\n    const receipt = receiptFrom(observed, params, context.principal, commentId);\n    if (!receipt.content_matches) {\n      transition(options.ledgerDir, options.occurrence, 'inflight', 'unknown', { reason: 'readback_mismatch', comment_id: commentId });\n      return finish({ outcome: 'unknown', reason: 'readback_mismatch', mapping: prepared, authorization, receipt });\n    }\n    transition(options.ledgerDir, options.occurrence, 'inflight', 'confirmed',\n      { comment_id: commentId, content_sha256: receipt.body_sha256 });"
+            }
+          ]
+        },
+        {
+          "id": "idless-reconciliation",
+          "status": "met",
+          "evidence_quotes": [
+            "exclude all pre-dispatch IDs."
+          ],
+          "assessment": "Requires complete saved preflight, unique new exact match and single-writer discipline; missing/ambiguous evidence stays unknown with explicit non-attribution scope.",
+          "frozen_criterion": "ID-less recovery requires a persisted pre-dispatch ID set, excludes every preexisting ID and needs exactly one new matching body/actor observation. Missing preflight or non-unique matches remain unknown. The dedicated single-writer assumption and current-content-not-execution-attribution evidence label must remain explicit.",
+          "frozen_references": [
+            {
+              "source_id": "dispatch-gate",
+              "start_line": 151,
+              "end_line": 169,
+              "quote": "    const current = load(options.ledgerDir, options.occurrence);\n    if (current.binding !== jsonHash({ native: options.native, context: options.context })) {\n      return finish({ outcome: 'unknown', reason: 'binding_mismatch' });\n    }\n    if (!['inflight', 'unknown'].includes(current.state)) return finish({ outcome: current.state, reason: 'no_reconciliation_needed' });\n    const { params } = nativeParameters(options.native);\n    if (!current.comment_id && !Array.isArray(current.pre_dispatch_comment_ids)) {\n      return finish({ outcome: 'unknown', reason: 'missing_occurrence_preflight' });\n    }\n    const rows = current.comment_id\n      ? [await options.provider.readComment(params, current.comment_id)] : await options.provider.listComments(params);\n    commentIds(rows);\n    const matches = rows.filter(row => current.comment_id || !current.pre_dispatch_comment_ids.includes(row.id))\n      .map(row => receiptFrom(row, params, options.context.principal, current.comment_id)).filter(row => row.content_matches);\n    if (matches.length !== 1) return finish({ outcome: 'unknown', reason: 'no_unique_readback' });\n    transition(options.ledgerDir, options.occurrence, current.state, 'confirmed',\n      { comment_id: matches[0].comment_id, content_sha256: matches[0].body_sha256 });\n    return finish({ outcome: 'confirmed', receipt: matches[0], recovery_evidence: current.comment_id\n      ? 'known-response-id-and-current-content' : 'new-current-content-since-preflight-not-execution-attribution' });"
+            },
+            {
+              "source_id": "runtime-readme",
+              "start_line": 72,
+              "end_line": 79,
+              "quote": "Readback must match the POST response ID when that ID is known. With a lost\nacknowledgment, recovery excludes every comment ID recorded before dispatch\nand requires one new exact content/actor match. Preexisting matching content\nis withheld before dispatch. This test uses a dedicated issue, unique body\nmarkers and one controlled writer. A new matching comment establishes current\ncontent after preflight, not causal proof that this specific POST created it:\na concurrent same-account writer or provider-side mutation is outside that\nattribution guarantee. This distinction is recorded in `recovery_evidence`."
+            }
+          ]
+        },
+        {
+          "id": "uncertainty-authority-and-descendants",
+          "status": "met",
+          "evidence_quotes": [
+            "After possible delivery the reservation stays consumed"
+          ],
+          "assessment": "Correct no uncertain resend, non-atomic local authorization/POST, no global exactly-once or automatic crash-lock recovery, and unknown descendants.",
+          "frozen_criterion": "If delivery might have occurred, the reservation stays consumed and recovery only queries. Local policy and remote POST are not atomic, and the ledger does not provide distributed exactly-once delivery or automatic crash-lock recovery. Readback covers the direct comment, not notification/webhook or transitive-effect completeness.",
+          "frozen_references": [
+            {
+              "source_id": "runtime-readme",
+              "start_line": 59,
+              "end_line": 70,
+              "quote": "GitHub explicitly documents notification behavior for comment creation. We\nrepresent only the direct comment and retain unknown downstream recipients,\ndelivery, webhooks and internal descendants. Partial scope is admitted only\nwith the experiment's explicit policy choice on synthetic public resources.\nNo notification or transitive-closure completeness is claimed.\n\nCurrent local authorization and the remote POST are not atomic. A revocation\nafter the final local check may race with dispatch. A local occurrence ledger\ndoes not provide global exactly-once delivery, automatic crash-lock recovery,\nmulti-tenant isolation, distributed quota handling, or a provider idempotency key.\nIf delivery might have occurred, the reservation stays consumed and recovery\nonly queries. Missing or ambiguous observations remain unknown."
+            },
+            {
+              "source_id": "dispatch-gate",
+              "start_line": 136,
+              "end_line": 140,
+              "quote": "  } catch {\n    timings.dispatch_ms ??= performance.now() - dispatchStarted;\n    const metadata = { reason: 'provider_or_readback_failure', ...(commentId ? { comment_id: commentId } : {}) };\n    try { transition(options.ledgerDir, options.occurrence, 'inflight', 'unknown', metadata); } catch { /* Never retry a possible POST. */ }\n    return finish({ outcome: 'unknown', reason: metadata.reason, mapping: prepared, authorization });"
+            }
+          ]
+        },
+        {
+          "id": "documented-recovery-entrypoint",
+          "status": "met",
+          "evidence_quotes": [
+            "no separate reconciliation CLI exists"
+          ],
+          "assessment": "Correct original-ledger reconcileAction entry point, retained private evidence and GET-only replay; no invented retry/recovery CLI.",
+          "frozen_criterion": "Lost-ACK recovery is read-only. There is no separate reconciliation CLI: exported reconcileAction uses the original ledger/occurrence. Preserve the private ledger and attempt journal; do not rerun a used issue, delete markers to bypass guards or retry an uncertain POST.",
+          "frozen_references": [
+            {
+              "source_id": "quickstart",
+              "start_line": 93,
+              "end_line": 97,
+              "quote": "Lost-ACK recovery is automatically **read-only** in the runner. There is no\nseparate reconciliation CLI; exported `reconcileAction` operates on the original\nledger/occurrence. Preserve `runtime-pilot/.runtime-private/` privately and retain\nthe attempt journal and reports. Never retry an uncertain POST, delete markers\nto bypass the guard, or rerun a used issue for recovery."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conformance-support",
+      "label": "T6",
+      "title": "Prepare an evidence-backed conformance support statement",
+      "lane": "mcp",
+      "overall_report_grade": "partial",
+      "grade_dimension": "substantive_and_markdown_byte_completeness",
+      "grade_explanation": "The retained body exceeds 6000 bytes and one fact is incompletely covered. The recorded loop remains failed/report_bytes_exceeded; retained content is assessed without converting that failure into completion.",
+      "loop_status": "failed",
+      "loop_reason": "report_bytes_exceeded",
+      "loop_outcome": {
+        "status": "failed",
+        "reason": "report_bytes_exceeded",
+        "full_final_output_retained": true,
+        "automatic_retry": false
+      },
+      "mechanical_checks_recorded": {
+        "report_schema_valid": false,
+        "citations_observed": false,
+        "successful_read_tool_results": 5,
+        "distinct_observed_sources": 5,
+        "unavailable_read_tool_results": 0,
+        "body_bytes": null,
+        "fits_comment_profile_bytes": false,
+        "quality": "no_result",
+        "utility": "not_reviewed",
+        "timing": {
+          "model_request_ms": 48913.16495800001,
+          "tool_handling_ms": 2405.9754579999135,
+          "other_task_ms": 118.06287600006908,
+          "total_task_ms": 51437.20329199999
+        },
+        "note": "Schema, byte and citation checks do not grade semantic correctness, novelty, usefulness or permission to publish."
+      },
+      "human_acceptance": "unknown",
+      "actual_operator_use": "unknown",
+      "business_utility": "unknown",
+      "report_evidence": {
+        "artifact_id": "original_report",
+        "json_pointer": "/tasks/5/result/finalOutput",
+        "parsed_report_member": "report_markdown",
+        "journal_artifact_id": "original_journal",
+        "journal_line": 242
+      },
+      "lengths": {
+        "encoding": "UTF-8",
+        "report_markdown_bytes": 6454,
+        "final_output_text_bytes": 7497,
+        "frozen_maximum_report_bytes": 6000,
+        "markdown_within_frozen_budget": false,
+        "final_output_within_frozen_budget": null,
+        "final_output_budget_applies": false,
+        "comment_profile_maximum_bytes": 8192,
+        "markdown_within_comment_profile_budget": true,
+        "excludes_journal_framing": true
+      },
+      "format_deviation": {
+        "contract_version": 2,
+        "expected": "JSON with task_id, report_markdown, conclusion and citations; report_markdown at most 6000 UTF-8 bytes",
+        "observed": "JSON with the four required fields and a retained Markdown body",
+        "original_delivery_compliance": "not_met",
+        "json_instead_of_markdown": false,
+        "markdown_exceeds_frozen_byte_budget": true,
+        "final_output_exceeds_frozen_byte_budget": null,
+        "outer_final_text_has_no_6000_byte_budget": true,
+        "confounder_id": null,
+        "contradictory_format_instruction": false,
+        "parsed_envelope_shape_valid": true
+      },
+      "citations": {
+        "count": 5,
+        "urls": [
+          "https://github.com/OndCo/Action-Effect-Spec/blob/a9b86f4b529a5e330c2a9bf1b8c4c259a7b36e40/conformance/requirements.md",
+          "https://github.com/OndCo/Action-Effect-Bench/blob/cecde389637be4f5fd3482e4942ce3fd1a623ac6/conformance/README.md",
+          "https://github.com/OndCo/Action-Effect-Spec/blob/a9b86f4b529a5e330c2a9bf1b8c4c259a7b36e40/conformance/consumer-profile-v1.1.md",
+          "https://github.com/OndCo/Action-Effect-Bench/blob/cecde389637be4f5fd3482e4942ce3fd1a623ac6/reports/runtime-pilot-summary.md",
+          "https://github.com/OndCo/Action-Effect-Bench/blob/cecde389637be4f5fd3482e4942ce3fd1a623ac6/README.md"
+        ],
+        "all_observed": true,
+        "file_citations_match_frozen_sources": true,
+        "release_metadata_citation_count": 0,
+        "location": "separate JSON citations array as required by round-two contract",
+        "standalone_markdown_has_resolved_citation_urls": false,
+        "publication_note": "The JSON citation array is attributable evidence for review. Publishing only the Markdown body would omit the URL list; publication preparation and byte accounting remain separate."
+      },
+      "material_error_fact_ids": [],
+      "omission_fact_ids": [
+        "runtime-population"
+      ],
+      "facts": [
+        {
+          "id": "design-coverage-not-execution",
+          "status": "met",
+          "evidence_quotes": [
+            "40 designed scenarios: V01\u2013V28 seed clauses plus V29\u2013V40 adversarial additions."
+          ],
+          "assessment": "Correct design-only 40-scenario/28-clause traceability, not exhaustive executed or full-core conformance.",
+          "frozen_criterion": "The requirements traceability table is design coverage, not executable conformance evidence. Its 40 designed scenarios cover 28 clauses at the design level; a linked case does not exhaust the branches and must not be counted as an executed or passing test.",
+          "frozen_references": [
+            {
+              "source_id": "core-traceability",
+              "start_line": 1,
+              "end_line": 5,
+              "quote": "# Requirements-to-Case Traceability\n\nThis is design coverage, not executable conformance evidence. One linked case\nper requirement does not exhaust all branches of a requirement. Stable release\nrequires executable positive/negative vectors and independent consumers."
+            },
+            {
+              "source_id": "core-traceability",
+              "start_line": 43,
+              "end_line": 47,
+              "quote": "## Adversarial Review Additions\n\nThere are now 40 designed scenarios for the 28 clauses, not 40 executed tests.\nThe rows below extend the one-per-clause seed table; executable payloads,\nconsumer oracles and branch coverage still must be implemented and reviewed."
+            }
+          ]
+        },
+        {
+          "id": "legacy-case-populations",
+          "status": "met",
+          "evidence_quotes": [
+            "80 public development cases plus 22 exposed post-review regressions"
+          ],
+          "assessment": "Correct original/regression denominators and pre-candidate versus post-defect authoring timing; no holdout inflation.",
+          "frozen_criterion": "The original public corpus has 80 source-frozen cases plus 22 explicitly exposed post-review regressions. Keep those denominators and their authorship timing separate; do not describe the regressions as independently authored pre-behavior holdouts.",
+          "frozen_references": [
+            {
+              "source_id": "legacy-runner-guide",
+              "start_line": 38,
+              "end_line": 45,
+              "quote": "The original `cases.json` remains the 80-case source-frozen public corpus.\n`review-cases.mjs` adds 22 explicitly exposed post-review regressions for amount\nrepresentation and RFC 3986 generic URI structure. They were authored after\nreview found defects, not independently before seeing behavior. New reports\nidentify each case's suite and separate the two denominators. The first local\npre-publication report covered only the original 80 cases and remains in the\ninternal archive. This public repository starts with fresh runs of the selected\npublic sources. No old expected result or historical archive is rewritten."
+            }
+          ]
+        },
+        {
+          "id": "implemented-contract-scope",
+          "status": "met",
+          "evidence_quotes": [
+            "The 102-case v1 result must not be relabeled v1.1."
+          ],
+          "assessment": "Correct v1 target, separate v1.1 tests and no authority/signature/live-refund/full-core or external-validation upgrade.",
+          "frozen_criterion": "The legacy runner targets offline-consumer-v1, not full CORE-001..028 conformance. Its results do not establish authorization, signatures, live provider effects, bounds or revocation. The opt-in v1.1 tests do not relabel the published v1 corpus or create an external evaluation.",
+          "frozen_references": [
+            {
+              "source_id": "legacy-runner-guide",
+              "start_line": 75,
+              "end_line": 81,
+              "quote": "## Interpretation\n\nThe implemented target is `offline-consumer-v1`, not full CORE-001..028\nconformance. The original 40 design vectors remain design-only unless a specific\nseparate result says otherwise. This run does not grant authority, issue a\nrefund, test a real provider, inspect tool source code, or evaluate signatures,\nauthorization freshness, revocation, effects bounds or a live registry."
+            },
+            {
+              "source_id": "consumer-v1-1",
+              "start_line": 154,
+              "end_line": 163,
+              "quote": "CI runs both the frozen v1 and opt-in v1.1 test files through discovery. The\npublished v1 corpus continues to select v1 explicitly; its results are not\nsilently relabeled as v1.1 results.\n\nThese are exposed same-project implementation and regression tests, not external\nvalidation, new holdouts, certification or full core conformance. The previously\nseparate JavaScript and Python implementations remain language-local; neither\nimports or invokes the other. This hardening adds no domain, dependency,\nnetwork access, authorization, provider effect, cache or production-readiness\nclaim. Frozen v1 publications and historical results are not relabeled as v1.1."
+            }
+          ]
+        },
+        {
+          "id": "runtime-population",
+          "status": "partial",
+          "evidence_quotes": [
+            "Historical protocol and structured-baseline paths share OPA, ledger and dispatcher."
+          ],
+          "assessment": "The 55/22/108 populations, repeated lane/path scope and shared OPA/ledger/dispatcher are correct. The report still omits shared Python projection and the absence of descriptor transfer in the complete structured baseline.",
+          "frozen_criterion": "The additional runtime corpus has 55 authored cases, 22 base intents and 108 lane instances. These are not 108 independent tasks; the complete structured baseline shares Python projection, OPA and dispatch controls without transferring the description envelope.",
+          "frozen_references": [
+            {
+              "source_id": "bench-readme",
+              "start_line": 28,
+              "end_line": 32,
+              "quote": "The new author-defined corpus has 55 rows, 22 base intents and 108 lane\ninstances. Runtime cases are frozen before candidate execution/results, not\nbefore implementation. The structured baseline uses the same Python projection,\nOPA and dispatch controls without transferring an effect-description envelope.\nProtocol overhead is reported, not assumed to be a performance win."
+            },
+            {
+              "source_id": "runtime-summary",
+              "start_line": 9,
+              "end_line": 20,
+              "quote": "Two paths processed the same supported inputs and used the same current OPA\npolicy, local occurrence ledger and GitHub dispatcher:\n\n1. Protocol: JavaScript effect description, separately written Python binding\n   and tuple checker, then OPA.\n2. Structured baseline: direct Python native-to-structured projection, then OPA,\n   without transferring the effect-description envelope.\n\nThe live MCP lane used the official SDK's real stdio initialize/list/call flow;\nboth lanes used Octokit against GitHub, not a mock receiver. The tested profile\nonly describes the direct issue comment. Notification delivery, recipients,\nwebhooks and other provider descendants remain unknown."
+            },
+            {
+              "source_id": "runtime-summary",
+              "start_line": 33,
+              "end_line": 34,
+              "quote": "The offline corpus contains **55 authored cases, 22 base intents and 108 lane\ninstances (53 SDK, 55 MCP)**, not 108 independent tasks. Accepted mappings"
+            }
+          ]
+        },
+        {
+          "id": "method-counts-not-workloads",
+          "status": "met",
+          "evidence_quotes": [
+            "These are not 573 benchmark workloads or SaaS effects."
+          ],
+          "assessment": "Correct 64+115+11+333+50 = 573 unit-method decomposition, separate from workload and provider-effect counts.",
+          "frozen_criterion": "The published verification lists 64 Spec JavaScript, 115 Spec Python, 11 legacy harness, 333 runtime JavaScript and 50 runtime Python methods, totaling 573 methods. These methods are not 573 additional benchmark workloads or SaaS effects.",
+          "frozen_references": [
+            {
+              "source_id": "runtime-summary",
+              "start_line": 139,
+              "end_line": 143,
+              "quote": "[Linux/macOS CI for the measured implementation](https://github.com/OndCo/Action-Effect-Bench/actions/runs/39199258635)\npassed the pinned setup, original corpus, new offline evaluation and tests.\nThe suite comprises 64 Spec JavaScript, 115 Spec Python, 11 legacy harness,\n333 runtime JavaScript and 50 runtime Python methods: **573 methods**, not 573\nadditional benchmark workloads. Runtime unit fixtures do not create SaaS effects."
+            }
+          ]
+        },
+        {
+          "id": "agreement-and-digest-oracle",
+          "status": "met",
+          "evidence_quotes": [
+            "Accepted-description full digests are cross-compared, not independently supplied by a full-document oracle."
+          ],
+          "assessment": "Correct separation of expected values, implementation agreement and literal canonical vectors; agreement is not independent correctness.",
+          "frozen_criterion": "Cross-consumer agreement is separate from expected-result correctness. The accepted description full digest is cross-compared, not supplied by an independent full-document expected oracle; literal canonical vectors check underlying byte rules. Two agreeing implementations may share a defect.",
+          "frozen_references": [
+            {
+              "source_id": "legacy-runner-guide",
+              "start_line": 57,
+              "end_line": 61,
+              "quote": "An accepted description's full digest is compared between implementations;\nthe public expected-result oracle does not independently give that full digest.\nIts underlying byte rules are separately checked by literal canonical vectors.\nAgreement is shown separately from expected-result matching: two agreeing bugs\nare not evidence of correctness. Every unexpected result remains in the report."
+            },
+            {
+              "source_id": "bench-readme",
+              "start_line": 80,
+              "end_line": 83,
+              "quote": "Expected-result matching and cross-implementation agreement are scored separately.\nTwo agreeing defects can still exist. A conforming report must state which fields\nhave an independent expected value; the current accepted-description digest is\ncross-compared, not supplied by an independent full-document canonical oracle."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "totals": {
+    "tasks": 6,
+    "facts": 30,
+    "fact_statuses": {
+      "met": 28,
+      "partial": 2,
+      "incorrect": 0,
+      "unknown": 0
+    },
+    "overall_report_grades": {
+      "complete": 2,
+      "partial": 4,
+      "incorrect": 0
+    },
+    "completed_task_loops": 2,
+    "failed_task_loops": 4,
+    "failed_loop_reasons": {
+      "report_bytes_exceeded": 4
+    },
+    "retained_final_outputs": 6,
+    "markdown_within_original_6000_byte_budget": 2,
+    "markdown_over_original_6000_byte_budget": 4,
+    "json_envelope_reports": 6,
+    "json_format_deviations": 0,
+    "original_delivery_compliant_reports": 2,
+    "markdown_within_comment_profile_8192_byte_budget": 6,
+    "observed_citation_entries": 29,
+    "actual_human_acceptance_unknown": 6,
+    "actual_operator_use_unknown": 6,
+    "business_utility_unknown": 6,
+    "recorded_model_requests": 35,
+    "recorded_read_tool_calls": 29,
+    "recorded_total_tokens": 173368,
+    "recorded_provider_write_attempts": 0,
+    "automatic_retries": 0
+  },
+  "limitations": [
+    "Same-project AI-assisted source assessment, not independent human labeling, external validation or human ground truth.",
+    "Actual human acceptance, maintainer use, review effort and incremental business usefulness remain unknown for all six tasks. Content quality and loop success remain separate from mapping, authorization and delivery.",
+    "The four report_bytes_exceeded failures remain failures. A correct retained fact or an 8192-byte comment fit does not satisfy the 6000-byte report contract or complete a failed loop.",
+    "No material false claim was identified within the 30 facts or reviewed report scope. The two recorded omissions concern the required critical body-digest extension and the structured baseline Python/no-descriptor distinction.",
+    "First-review artifacts, raw reports, criteria, field-study and runtime sources are untouched. Only analysis/review-second-field-use.json and its Markdown companion are written."
+  ]
+}

@@ -7,20 +7,34 @@ Ond Holdings Inc., Toronto, Ontario, Canada.
 
 - [Extended manuscript](manuscript.md): motivation, related standards,
   semantics, evaluation and bounded measured results.
-- [Standalone LaTeX](manuscript.tex): condensed paper with embedded references
-  and diagram; no external figure, BibTeX or shell-escape dependency.
-- [PDF](manuscript.pdf): rendered condensed edition of the same working draft.
+- [Standalone LaTeX](manuscript.tex): full manuscript with embedded references,
+  algorithms, diagrams, case analyses and appendices; no external figure,
+  BibTeX or shell-escape dependency.
+- [PDF](manuscript.pdf): 39-page full manuscript with eight figures. The earlier nine-page edition
+  remains unchanged in the v0.2.0-draft.1 release.
 - [Source register](sources.json): retrieved official sources, immutable pins
   where available, and measured project artifacts.
 - [Measurement contract](measurement-contract.md): evidence requirements,
   implemented reporting fields and explicitly unmeasured areas.
 - [Results and replay](../reports/runtime-pilot-summary.md): the executable
   evidence, including preserved failures and current-content limitations.
+- [Real maintainer use](../reports/field-study-summary.md): separate deployed-model
+  and official GitHub MCP observations, output-quality review and post-review
+  follow-up. These are not new customer deployments or independent labels.
+- [Release verification](../reports/release-verification-v0.3.0.md): regression,
+  artifact integrity and page-by-page PDF checks.
 
 This is a public methods/pilot working paper accompanying an experimental
 protocol, not a standards-body document or a completed external validation
 study. It has not been submitted to a journal or conference by this release.
 Formal submission and any individual-author byline remain separate decisions.
+
+The full edition does not replace the original runtime results with the field
+study. Scripted mutation checks, autonomous read-only maintenance, packaging
+checks and internal source review have different denominators and guarantees.
+The first real-use run, its output-contract conflict and factual error remain
+inspectable. Passing a request's semantic or byte checks does not establish
+that the report inside that request is factually correct.
 
 The scope is independent of the Studio application and does not publish
 protected joint-research cases. No external collaborator is assigned authorship

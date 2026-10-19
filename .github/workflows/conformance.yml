@@ -32,6 +32,7 @@ jobs:
         with:
           path: action-effect-bench
           persist-credentials: false
+          fetch-depth: 0
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: ${{ matrix.node }}
@@ -71,6 +72,21 @@ jobs:
       - name: Runtime protocol, decision, ledger, transport and replay regressions
         working-directory: action-effect-bench
         run: node --test runtime-pilot/tests/*.test.mjs
+      - name: Field-use isolation, native contracts and journal regressions (no model or provider calls)
+        working-directory: action-effect-bench
+        run: node --test field-study/tests/*.test.mjs analysis/*.test.mjs
+      - name: Reconstruct the first real-model run from retained evidence (no network)
+        working-directory: action-effect-bench
+        run: node field-study/replay.mjs reports/field-study-use-2026-10-19T06-33-57.736Z-0e238334.json
+      - name: Reconstruct the post-review run including recorded task failures (no network)
+        working-directory: action-effect-bench
+        run: node field-study/replay.mjs reports/field-study-use-2026-10-19T07-15-38.744Z-a76953f1.json
+      - name: Check internal review quotations and frozen criterion arithmetic
+        working-directory: action-effect-bench
+        run: node analysis/review-audit.mjs reports/field-study-use-2026-10-19T06-33-57.736Z-0e238334.json analysis/review-first-field-use.json
+      - name: Check follow-up review without reclassifying failed task outputs
+        working-directory: action-effect-bench
+        run: node analysis/review-audit.mjs reports/field-study-use-2026-10-19T07-15-38.744Z-a76953f1.json analysis/review-second-field-use.json
       - name: Separately written Python runtime consumer regressions
         working-directory: action-effect-bench
         run: python3 -B -W error -m unittest discover -s runtime-pilot/tests -p 'test_*.py'

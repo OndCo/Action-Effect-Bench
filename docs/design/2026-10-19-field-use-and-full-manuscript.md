@@ -15,6 +15,26 @@ maintenance, native integration conformance, and deliberately induced faults.
 No population is silently pooled into another. External independent validation
 remains absent. No further collaborator invitations are sent during this work.
 
+### Execution Record
+
+The first six read-only model tasks completed on 19 October with the official
+GitHub MCP executable and the existing Azure deployment. Their immutable report
+is `reports/field-study-use-2026-10-19T06-33-57.736Z-0e238334.json`, preserved at
+`eff7bf6bee237162a7f321bbb131008f880346fb`; its runtime is
+`bc1d389a474c37a9c38b2b5acedbd7bb65650225`. No new comment mutation, revocation,
+process-crash or lost-ACK experiment was executed in that population. Those
+broader parts of this design remain unexecuted, not successful checks.
+
+Post-run review found inconsistent output instructions, over-budget prose,
+one incorrect claim about current provider use, two partially addressed facts,
+and weaknesses in evidence replay and journal failure handling. The original
+task/criteria bytes and complete captured output remain in the recorded Git
+revision. `field-study/amendment-2.json` declares a post-review repeat with a
+consistent JSON envelope and a 6000-byte Markdown limit, explicit current-channel
+metadata, stricter replay and fail-stop journaling. The thirty fact records and
+their source references are unchanged. This repeat is not a new held-out cohort
+or a causal experiment isolating one intervention.
+
 ## Resource and Change Boundary
 
 - Work only in the two public Action-Effect clones, on their normal main branch.

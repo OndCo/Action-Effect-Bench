@@ -1,0 +1,83 @@
+{
+  "format": "field-study-review-audit/1",
+  "input_report": {
+    "file": "field-study-use-2026-10-19T06-33-57.736Z-0e238334.json",
+    "sha256": "cdc07b7a10000a4fe96152a6a460f5633c3403bcc7c0cd8f3f68f8e1a5cbe9fc"
+  },
+  "review": {
+    "file": "review-first-field-use.json",
+    "sha256": "a540dd6dd90ba36fa9fde8b32ad0b1773eb439ba6bba65098a79b610b17f1182"
+  },
+  "replay_valid": true,
+  "task_count": 6,
+  "fact_counts": {
+    "met": 27,
+    "partial": 2,
+    "incorrect": 1,
+    "unknown": 0
+  },
+  "grades": {
+    "complete": 1,
+    "partial": 4,
+    "incorrect": 1
+  },
+  "verified_report_quotes": 36,
+  "rows": [
+    {
+      "id": "release-integrity",
+      "lane": "sdk",
+      "report_bytes": 5872,
+      "final_output_bytes": 7119,
+      "within_report_budget": true,
+      "grade": "complete"
+    },
+    {
+      "id": "clean-clone-quickstart",
+      "lane": "mcp",
+      "report_bytes": 7270,
+      "final_output_bytes": 8319,
+      "within_report_budget": false,
+      "grade": "partial"
+    },
+    {
+      "id": "consumer-v1-1-migration",
+      "lane": "sdk",
+      "report_bytes": 7981,
+      "final_output_bytes": 8823,
+      "within_report_budget": false,
+      "grade": "partial"
+    },
+    {
+      "id": "official-mcp-compatibility",
+      "lane": "mcp",
+      "report_bytes": 7284,
+      "final_output_bytes": 8345,
+      "within_report_budget": false,
+      "grade": "incorrect"
+    },
+    {
+      "id": "limits-and-recovery",
+      "lane": "sdk",
+      "report_bytes": 6836,
+      "final_output_bytes": 7866,
+      "within_report_budget": false,
+      "grade": "partial"
+    },
+    {
+      "id": "conformance-support",
+      "lane": "mcp",
+      "report_bytes": 7159,
+      "final_output_bytes": 8071,
+      "within_report_budget": false,
+      "grade": "partial"
+    }
+  ],
+  "semantic_labels_independently_validated": false,
+  "scope": "Checks exact cited report quotations, frozen fact references, byte counts and grade arithmetic. It does not independently decide whether the internal reviewer interpreted those passages correctly or whether a human used the reports.",
+  "source": {
+    "file": "analysis/review-audit.mjs",
+    "sha256": "675a5c4db7643822746726cc5aae2a7515499635259b4d5b25138b3c55bdfabe"
+  },
+  "provider_requests": 0,
+  "model_requests": 0
+}

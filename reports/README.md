@@ -1,5 +1,19 @@
 # Comparison Reports
 
+## Real Maintainer Use 0.3
+
+The [field-use index](field-study-summary.md) separates first-run observations,
+internal source-based review, post-review follow-up, setup failures and
+preparation-only publication fit. These use actual model requests and native
+public GitHub reads, not scripted model outputs. They are not additional
+provider-write experiments or an independently held-out evaluation.
+
+Each `field-study-*.json` and `field-use-*.jsonl` has an adjacent checksum.
+The strengthened replay reads recorded Git blobs as data and recomputes captured
+events; it never checks out historical code, calls the model, or writes to the
+provider. Full Git history is needed. Missing native evidence remains an explicit
+coverage gap, even when all reconstructable checks pass.
+
 ## Runtime Pilot 0.2
 
 The [runtime results and replay index](runtime-pilot-summary.md) covers the

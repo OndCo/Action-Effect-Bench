@@ -2,7 +2,7 @@
 
 This directory tests actual model-selected work on the two public Action-Effect
 repositories. It does not turn the older scripted comment pilot into customer
-production data. See the [results](../reports/field-use-summary.md) and
+production data. See the [results](../reports/field-study-summary.md) and
 [full manuscript](../paper/manuscript.md).
 
 ## What Runs
@@ -35,6 +35,7 @@ From the Bench root:
 node --test field-study/tests/*.test.mjs
 node --test analysis/*.test.mjs
 node field-study/replay.mjs reports/field-study-use-2026-10-19T06-33-57.736Z-0e238334.json
+node field-study/replay.mjs reports/field-study-use-2026-10-19T07-15-38.744Z-a76953f1.json
 ```
 
 These commands make no model or provider calls. Replay verifies the retained
@@ -74,6 +75,13 @@ allowlists and task lanes remain unchanged. The repeat is post-review exposed
 development, not a held-out or causal evaluation. An oversized candidate stays
 in the evidence as `failed/report_bytes_exceeded`; it is not truncated or
 automatically rewritten into a successful result.
+
+The repeat completed two loops and retained four over-budget failures. Source
+review found 28 required facts met and two partially covered, with no incorrect
+fact among the thirty assessed. This does not convert the four length failures
+into completions. A later runner-level journal fix at `c72369a` adds fail-stop
+handling around setup, completion and sealing; it was verified with 37 injected
+runner tests, not another live model run.
 
 ## Read the Results on Separate Axes
 

@@ -18,15 +18,27 @@ the same bounded owned resources. Historical reports remain source-pinned.
 GitHub MCP executable, existing Azure Responses deployment, Python consumer,
 OPA, LaTeX, Markdown. No new production service or Hook installation.
 
+## Execution Boundary
+
+This round completed real read-only maintainer use, native setup/conformance,
+preparation-only comparison, local fault regressions and a full manuscript.
+The proposed new mutation/process-crash population in section 6 was not
+executed: the separate new-issue resource choice received no answer. It is not
+counted as completed and no old mutation result is renamed to fill that gap.
+See [the complete results](../reports/field-study-summary.md). Actual code paths
+below replace the initial planning names; historical measured sources remain
+in Git and are not replaced by post-run repairs.
+
 ## 1. Freeze Scope, Tasks and Baseline
 
 Files: this plan; `docs/design/2026-10-19-field-use-and-full-manuscript.md`;
-`field-study/tasks.json`; `field-study/source-lock.json`.
+`field-study/tasks.json`; `field-study/criteria.json`; `field-study/tools.json`;
+timestamped pre-request freeze artifacts under `reports/`.
 
-- [ ] Pin the existing Bench/Spec release commits and preserve all old inputs.
-- [ ] Record task IDs, goals, required source observations, model/tool limits,
+- [x] Pin the existing Bench/Spec release commits and preserve all old inputs.
+- [x] Record task IDs, goals, required source observations, model/tool limits,
   write ceiling, score semantics and stop rules before model outcomes exist.
-- [ ] Separate actual self-use from native conformance and induced faults.
+- [x] Separate actual self-use from native conformance and induced faults.
 
 Public source identity commands:
 
@@ -44,12 +56,12 @@ Expected starting identities are Bench
 Files: `field-study/model-client.mjs`, `field-study/agent-loop.mjs`,
 `field-study/tests/model.test.mjs`, `field-study/tests/agent-loop.test.mjs`.
 
-- [ ] Write tests rejecting non-HTTPS/unconfigured endpoints, malformed replies,
+- [x] Write tests rejecting non-HTTPS/unconfigured endpoints, malformed replies,
   unknown tool names, invalid arguments, exhausted rounds and safety stops.
-- [ ] Observe those tests fail before implementing the adapters.
-- [ ] Implement no-store Responses calls with explicit budgets. Keep live
+- [x] Observe those tests fail before implementing the adapters.
+- [x] Implement no-store Responses calls with explicit budgets. Keep live
   credentials and encrypted reasoning only in memory; publish neither.
-- [ ] Capture visible tool calls, public outputs, usage, duration and stop reason.
+- [x] Capture visible tool calls, public outputs, usage, duration and stop reason.
   Never change APIs to evade a safety stop or fabricate missing model output.
 
 The loop's contract is `runAgent({ task, model, tools, journal, limits })`.
@@ -68,16 +80,19 @@ identify actual provider calls and cannot reuse fixture outcomes as observations
 
 ## 3. Official Native Adapter
 
-Files: `field-study/github-native.mjs`, `field-study/install-tools.mjs`,
-`field-study/tools.json`, `field-study/tests/github-native.test.mjs`.
+Files: `field-study/native-mcp.mjs`, `field-study/native-reader.mjs`,
+`field-study/github-reader.mjs`, `field-study/preflight.mjs`,
+`field-study/tools.json`, and their matching tests.
 
-- [ ] Pin a real official release, source and platform artifact identities.
-- [ ] Test target/ref/path restrictions, advertised schema checks, strict result
-  decoding, failed initialization and no automatic mutation resend.
-- [ ] Implement official MCP initialize/list/call and actual SDK operations.
+- [x] Pin a real official release, source and platform artifact identities.
+  Acquisition commands and failures are recorded in setup artifacts; no general
+  cross-platform native-server installer is claimed.
+- [x] Test target/ref/path restrictions, advertised schema checks, strict result
+  decoding and failed initialization; offer no mutation tool in this runner.
+- [x] Implement official MCP initialize/list/call and actual SDK operations.
   Provider writes are unavailable in read-only mode.
-- [ ] Record SDK/MCP native envelopes and responses before semantic projection.
-  Normalize only documented provider result fields; never invent a receipt.
+- [x] Record SDK/MCP file-read native envelopes and responses before normalization.
+  The normalized-only release metadata gap is explicit, not full native coverage.
 
 ```js
 await assert.rejects(() => readPublicFile({
@@ -87,36 +102,39 @@ await assert.rejects(() => readPublicFile({
 
 ## 4. Task Sources and Utility Checks
 
-Files: `field-study/task-tools.mjs`, `field-study/scoring.mjs`,
-`field-study/tests/scoring.test.mjs`, `field-study/tests/task-tools.test.mjs`.
+Files: `field-study/read-tools.mjs`, `field-study/scoring.mjs`,
+`field-study/tests/scoring.test.mjs`, `field-study/tests/read-tools.test.mjs`,
+and separately retained `analysis/review-*-field-use.*` assessments.
 
-- [ ] Capture actual public release/source facts before model results.
-- [ ] Keep references outside the model's offered tool set. Tests distinguish
+- [x] Capture actual public release/source facts before model results.
+- [x] Keep references outside the model's offered tool set. Tests distinguish
   missing observation, wrong task fact, correct mapping, denied authority and
   provider uncertainty. No one result substitutes for another.
-- [ ] Validate source citations and numeric/hash facts independently of the
-  generated prose. Report first-proposal and final task completion separately.
-- [ ] Account for supported mutation calls and out-of-profile read tooling.
+- [x] Validate source citations and numeric/hash facts against retained sources,
+  with same-project AI-assisted review explicitly distinguished from human truth.
+- [x] Account for supported mutation calls and out-of-profile read tooling.
 
 ## 5. Runner, Journal and Read-Only Replay
 
 Files: `field-study/run.mjs`, `field-study/artifacts.mjs`,
 `field-study/replay.mjs`, `field-study/tests/artifacts.test.mjs`.
 
-- [ ] Test immutable artifact creation, source drift, omitted attempts, changed
+- [x] Test immutable artifact creation, source drift, omitted attempts, changed
   hashes, invalid population totals and leaked credential-like fields.
-- [ ] Persist task-start, model-result, tool-attempt/result and task-end records.
+- [x] Persist task-start, model-result, tool-attempt/result and task-end records.
   Interrupted runs remain failed/incomplete rather than disappearing.
-- [ ] Implement read-only replay that recomputes deterministic task/decision
-  checks without calling a model or reposting to GitHub. A model rerun is a new
+- [x] Implement read-only replay that reconstructs captured task checks and
+  reports coverage gaps without calling a model or reposting to GitHub. A rerun is a new
   stochastic observation, not byte-for-byte reproduction of the previous one.
 
 ## 6. Real Use and Separate Recovery Tests
 
-Files: `field-study/recovery-run.mjs`, `field-study/recovery-worker.mjs`,
-`field-study/tests/recovery.test.mjs`, new immutable `reports/field-study-*`.
+The proposed `recovery-run.mjs` and `recovery-worker.mjs` were not created.
+New immutable `reports/field-study-*` contain the read-only population;
+`field-study/tests/runner-journal.test.mjs` covers injected local recorder faults,
+not a replacement cloud/process-crash population.
 
-- [ ] Run read-only setup and real-model tasks first; retain setup failures.
+- [x] Run read-only setup and real-model tasks first; retain setup failures.
 - [ ] Once the owned-write boundary is confirmed, create the new dedicated
   issue and run only the explicitly bounded mutation subset.
 - [ ] Exercise actual independent processes, transport failure and conservative
@@ -130,23 +148,28 @@ Files: `paper/manuscript.md`, `paper/manuscript.tex`, `paper/sources.json`,
 `paper/measurement-contract.md`, `paper/measurement-audit.json`,
 `paper/manuscript.pdf`.
 
-- [ ] Expand the running case, exact identities/preimages, algorithms,
+- [x] Expand the running case, exact identities/preimages, algorithms,
   conditional invariants and counterexamples from actual code and specification.
-- [ ] Add process, tuple-coupling, dispatch/recovery, timer and artifact diagrams.
-- [ ] Add an obligation-to-code table and complete profile/replay appendices.
-- [ ] Integrate only source-stable new observations. Distinguish old scripted
+- [x] Add process, tuple-coupling, dispatch/recovery, timer and artifact diagrams.
+- [x] Add an obligation-to-code table and complete profile/replay appendices.
+- [x] Integrate only source-stable new observations. Distinguish old scripted
   pilot, real self-use, model quality, shadow comparisons and induced faults.
-- [ ] Consolidate repeated scope warnings; do not pad the manuscript with them.
+- [x] Consolidate repeated scope warnings; do not pad the manuscript with them.
 
 ## 8. Integration and Completion
 
-- [ ] Run all old and new tests, preserving old source-inventory compatibility.
-- [ ] Recompute report totals, hashes and readbacks, including unsuccessful runs.
-- [ ] Scan public candidates for credentials, private paths and protected data.
-- [ ] Compile LaTeX, render every page, fix clipping/overlap and verify figures
+- [x] Run all old and new tests, preserving old source-inventory compatibility.
+- [x] Recompute report totals and hashes, including unsuccessful runs; public
+  historical readback remains separately recorded.
+- [x] Scan public candidates for credentials, private paths and protected data.
+- [x] Compile LaTeX, render every page, fix clipping/overlap and verify figures
   and numeric tables against immutable raw results.
-- [ ] Record the actual readiness decision; no external invitation, production
+- [x] Record the actual readiness decision; no external invitation, production
   qualification or formal manuscript submission is inferred from a green test.
+
+The [release verification record](../reports/release-verification-v0.3.0.md)
+records test populations, public-artifact checks, current readback and the
+39-page PDF inspection. The unexecuted section 6 subset remains explicit.
 
 Core regression commands remain:
 

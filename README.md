@@ -3,7 +3,7 @@
 **Test shared effect semantics without treating agreement as correctness,
 refusal as useful completion, or a description as permission.**
 
-Release `v0.2.0-draft.1`. Public development benchmark and evaluation-protocol
+Release series `v0.3.0-draft.1`. Public development benchmark and evaluation-protocol
 proposal. Not a leaderboard, external certification or completed protected study.
 
 This repository is separate from
@@ -13,6 +13,24 @@ bounded GitHub-comment pilot: JavaScript production, a separately written
 Python checker, actual OPA authorization, official MCP transport/Octokit, a
 local occurrence ledger and read-only provider reconciliation. No OSuite
 server or account is required. It is not a general-purpose production gateway.
+
+## Real Maintainer Use and Full Manuscript
+
+The [field-use evidence](reports/field-study-summary.md) records real model-led
+maintenance work through public GitHub REST and the official GitHub MCP server,
+separate from the older scripted mutation experiment. It retains setup failures,
+an incorrect report conclusion, a conflicting first-run output contract and
+post-review repairs. Loop completion is not silently counted as useful output.
+
+- [Full technical manuscript](paper/manuscript.md) and [PDF](paper/manuscript.pdf).
+- [Read-only field-use guide](field-study/README.md): setup, scope and replay.
+- [Field-use results and limits](reports/field-study-summary.md).
+- [Original 0.2 release](https://github.com/OndCo/Action-Effect-Bench/releases/tag/v0.2.0-draft.1): unchanged evidence and short paper.
+
+Offline replay needs neither Azure access nor GitHub credentials. A new model
+run requires explicitly configured credentials and incurs model costs. These
+observations are internal self-use, not external certification, a new autonomous
+write qualification or evidence that a correct adapter needs this wire format.
 
 ## Runtime Pilot
 

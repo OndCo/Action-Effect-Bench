@@ -1,0 +1,87 @@
+{
+  "format": "field-study-replay/1",
+  "input": "field-study-use-2026-10-19T06-33-57.736Z-0e238334.json",
+  "checker_commit": "dff6ba72e36842334fcc61d8d2c5f3545084898e",
+  "checker_sources": [
+    {
+      "path": "field-study/replay.mjs",
+      "sha256": "433a356ce6518e31bc8a9b0984452bdd607517008f98526d50a2def8cc7eddfb"
+    },
+    {
+      "path": "field-study/replay-checks.mjs",
+      "sha256": "e8536f9e9dd7bcb52a3a36dd7b61bc00d31dd2092dd64350932c991864d24a4a"
+    },
+    {
+      "path": "field-study/provenance.mjs",
+      "sha256": "21670a1282d60de329a3c9500a924e20ffc1584120786faba2e6e16407717b25"
+    },
+    {
+      "path": "field-study/artifacts.mjs",
+      "sha256": "4c6e7896d85eb19864a13e14f7fbedc555bb5b0f757512b346d446fdba0a4d34"
+    },
+    {
+      "path": "field-study/model-client.mjs",
+      "sha256": "d765c2be16f17ddb297d22e8d4c326c272caedf90d7c71653f7870c59c5ee6f4"
+    },
+    {
+      "path": "field-study/native-mcp.mjs",
+      "sha256": "5c60e3b516a7c20c2fbd183fc93f314ec42d9c2bcad867f157f78d4138a7d845"
+    }
+  ],
+  "result": {
+    "valid": true,
+    "report_sha256": "cdc07b7a10000a4fe96152a6a460f5633c3403bcc7c0cd8f3f68f8e1a5cbe9fc",
+    "journal_records": 242,
+    "file_observations": 28,
+    "retained_text_observations": 27,
+    "native_file_observations": 28,
+    "release_observations": 1,
+    "native_release_observations": 0,
+    "asset_observations": 0,
+    "retained_asset_observations": 0,
+    "unavailable_read_tool_results": 0,
+    "native_read_calls": 29,
+    "asset_comparisons": [],
+    "coverage_gaps": [
+      "release_native_envelope_not_retained"
+    ],
+    "summary": {
+      "scheduled_tasks": 6,
+      "completed_task_loops": 6,
+      "failed_or_blocked_tasks": 0,
+      "schema_valid_reports": 6,
+      "fully_observed_citation_reports": 6,
+      "semantic_quality_assessed": false,
+      "externally_independent_evaluations": 0,
+      "model_requests": 35,
+      "read_tool_calls": 29,
+      "usage": {
+        "input_tokens": 155343,
+        "output_tokens": 12540,
+        "total_tokens": 167883
+      },
+      "task_wall_ms": 326744.57333199994,
+      "lanes": {
+        "sdk": {
+          "scheduled": 3,
+          "completed": 3
+        },
+        "mcp": {
+          "scheduled": 3,
+          "completed": 3
+        }
+      },
+      "provider_write_attempts": 0
+    },
+    "source_revisions": {
+      "bench": "bc1d389a474c37a9c38b2b5acedbd7bb65650225",
+      "spec": "a9b86f4b529a5e330c2a9bf1b8c4c259a7b36e40"
+    },
+    "study_version": 1,
+    "status": "recorded",
+    "study_recorded": true,
+    "model_requests_replayed": 0,
+    "provider_requests_replayed": 0,
+    "scope": "Recomputes captured integrity and mechanical checks. Does not reproduce stochastic model generation or externally certify task quality."
+  }
+}

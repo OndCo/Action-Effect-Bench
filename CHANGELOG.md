@@ -1,5 +1,32 @@
 # Draft Change Record
 
+## Real Maintainer Use and Full Manuscript 0.3
+
+Adds bounded real-model maintenance tasks over live public GitHub reads, using
+Octokit and a hash-pinned official GitHub MCP executable. Credentials and
+encrypted reasoning stay in memory. The read-only runner does not reuse the
+comment profile as if it authorized arbitrary reads or writes.
+
+The first six-task run and its setup failures are retained. Review exposed an
+inconsistent Markdown/JSON/byte-budget contract and a model conclusion that
+confused historical pilot limits with current official-MCP reads. The amended
+run keeps the same task goals and fact criteria, makes the output contract and
+current channel explicit, and is labelled post-review rather than held out.
+Journal failure now stops subsequent work instead of masquerading as an
+ordinary unavailable tool result.
+
+Replay binds frozen source inventories, configuration, setup, per-task prompts,
+model/tool event order, counters, outputs, captured file bytes and terminal
+results. Normalized-only release metadata remains an explicit evidence gap.
+Internal review labels and mechanical quote/arithmetic checks remain separate.
+
+The manuscript is expanded with coupled-tuple semantics, exact preimages,
+conditional invariants and counterexamples, ordered algorithms, failure cuts,
+matched-baseline obligations, full cost boundaries, field findings and replay
+appendices. The old release, measurements, profile and Spec pin are unchanged.
+No Studio, Hook, customer deployment, new provider mutation or external
+invitation is included in this release.
+
 ## Runtime Pilot 0.2
 
 Adds an opt-in GitHub issue-comment domain profile, a JavaScript producer,
