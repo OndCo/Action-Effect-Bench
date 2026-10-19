@@ -1,0 +1,10 @@
+{
+  "population": "setup-not-task",
+  "component": "official-mcp-initialization-diagnosis",
+  "status": "root_cause_observed",
+  "observed_error": "failed to parse API host: host must have a scheme (http or https): github.com",
+  "failed_configuration": "--gh-host=github.com",
+  "proposed_correction": "--gh-host=https://github.com",
+  "provider_write_attempts": 0,
+  "note": "A real pinned executable rejected the hostname-only configuration that fixture tests had accepted; retained as integration setup failure."
+}

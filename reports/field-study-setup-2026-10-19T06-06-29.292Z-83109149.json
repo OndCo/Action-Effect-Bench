@@ -1,0 +1,13 @@
+{
+  "population": "setup-not-task",
+  "component": "official-mcp-download",
+  "version": "v2.0.2",
+  "platform": "darwin-arm64",
+  "status": "failed",
+  "client": "curl",
+  "observed_error": "HTTP2 framing layer",
+  "exit_code": 16,
+  "observed_duration_seconds": 91,
+  "provider_write_attempts": 0,
+  "next_action": "Retry read-only artifact download using HTTP/1.1; no model or mutation has run."
+}

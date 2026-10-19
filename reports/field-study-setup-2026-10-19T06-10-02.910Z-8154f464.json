@@ -1,0 +1,11 @@
+{
+  "population": "setup-not-task",
+  "component": "official-mcp-installation",
+  "status": "verified",
+  "download_transport": "HTTP/1.1",
+  "version": "v2.0.2",
+  "source_commit": "eb47a99ddb866ca2b8a162920e6bda9521f33ebb",
+  "archive_sha256": "5d9b38511bffc84d2272eb6189129eb721c8900e45784d8ea7eaf25f8d3dd835",
+  "executable_sha256": "2d431e46617f06b1516818fa09917096ff6dfc3664b37b0bdb31e1c1a35be368",
+  "provider_write_attempts": 0
+}

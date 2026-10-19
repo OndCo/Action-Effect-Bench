@@ -1,0 +1,340 @@
+{
+  "format": "field-study-preflight/1",
+  "population": "setup-not-task",
+  "component": "mcp",
+  "status": "failed",
+  "duration_ms": 235.45879200000002,
+  "configuration": {
+    "format": "action-effect-field-tools/1",
+    "github_mcp": {
+      "repository": "github/github-mcp-server",
+      "version": "v2.0.2",
+      "source_commit": "eb47a99ddb866ca2b8a162920e6bda9521f33ebb",
+      "platform": "darwin-arm64",
+      "archive_url": "https://github.com/github/github-mcp-server/releases/download/v2.0.2/github-mcp-server_Darwin_arm64.tar.gz",
+      "archive_size": 8848361,
+      "archive_sha256": "5d9b38511bffc84d2272eb6189129eb721c8900e45784d8ea7eaf25f8d3dd835",
+      "executable_sha256": "2d431e46617f06b1516818fa09917096ff6dfc3664b37b0bdb31e1c1a35be368",
+      "source_review": "Pinned local comment handler makes one application-level CreateComment call. HTTP redirect/transport behavior is not an exactly-one-wire-attempt guarantee. Hosted MCP behavior was not audited."
+    },
+    "azure_model": {
+      "resource": "ond-resource",
+      "resource_group": "Ond_OAI",
+      "deployment": "gpt-6-astra",
+      "model_version": "2026-09-03",
+      "region": "swedencentral",
+      "api": "Responses v1",
+      "endpoint": "https://ond-resource.openai.azure.com/openai/v1/responses",
+      "store": false,
+      "reasoning_effort": "low",
+      "max_output_tokens": 6000,
+      "timeout_ms": 180000,
+      "max_rounds_per_task": 12,
+      "max_tool_calls_per_task": 18
+    },
+    "sdk_dependencies": "../runtime-pilot/package-lock.json",
+    "editorial_timezone": "America/Toronto",
+    "event_timestamps": "UTC",
+    "scope": "Read-only real maintainer tasks first. New provider writes require a separately confirmed owned-resource boundary. No Studio or Hook changes."
+  },
+  "provenance": {
+    "field_sources": [
+      {
+        "path": "bench/field-study/agent-loop.mjs",
+        "sha256": "95af45948abe35f09cf5fe2e3f1c70798effdfbb870974c2915661e67f043d82"
+      },
+      {
+        "path": "bench/field-study/artifacts.mjs",
+        "sha256": "4c6e7896d85eb19864a13e14f7fbedc555bb5b0f757512b346d446fdba0a4d34"
+      },
+      {
+        "path": "bench/field-study/credentials.mjs",
+        "sha256": "5b4cae0fb0d940ad0ba085f88e30bde073f2228e0b0a5de326bf1d7631079630"
+      },
+      {
+        "path": "bench/field-study/criteria.json",
+        "sha256": "a845424d29788315b49c7540d4b134a87df75838608f0b3c0910267ff51df130"
+      },
+      {
+        "path": "bench/field-study/github-reader.mjs",
+        "sha256": "457b174c3842f4a85efdd621fb836ec0ee42293984792a1385174832339d49d4"
+      },
+      {
+        "path": "bench/field-study/model-client.mjs",
+        "sha256": "d765c2be16f17ddb297d22e8d4c326c272caedf90d7c71653f7870c59c5ee6f4"
+      },
+      {
+        "path": "bench/field-study/native-mcp.mjs",
+        "sha256": "1e50456b77f639ada836433e138c79daa6e258535a61e4440de96930a7ceb09c"
+      },
+      {
+        "path": "bench/field-study/preflight.mjs",
+        "sha256": "e8e47712ed9315d0b932449b8bf171d7e968797b02c7c94f6fed902c441c0028"
+      },
+      {
+        "path": "bench/field-study/provenance.mjs",
+        "sha256": "85f2396fb309b82c6172b01ebbb58a12eea8d4a00b7f4349a5d96d11d9fe7afa"
+      },
+      {
+        "path": "bench/field-study/read-tools.mjs",
+        "sha256": "86768115ff668441749285573191124877fa87443680ad1d01a5d78b40dc1f4b"
+      },
+      {
+        "path": "bench/field-study/report-format.json",
+        "sha256": "0ae346d8f724975963ffb2b6bee43507eeae8d397ecaa1659b5ba95ec3c873e2"
+      },
+      {
+        "path": "bench/field-study/tasks.json",
+        "sha256": "990dbd74a66611cd2103cc537807ef7978343962fdcaae3d056559b783d4c0e9"
+      },
+      {
+        "path": "bench/field-study/tools.json",
+        "sha256": "4f139f55cd290b4b5d8305e6a016306e39a4b8f45b419e9931073fbccf5d8dc3"
+      }
+    ],
+    "preserved_runtime_sources": [
+      {
+        "path": "bench/runtime-pilot/artifacts.mjs",
+        "sha256": "d149220d13638a3406614a5ccaeacd26f0347130170be42adcfad9c985f30c3a"
+      },
+      {
+        "path": "bench/runtime-pilot/authorization.mjs",
+        "sha256": "89f660fc86615f23c1bd9fed259b015f8ab73ed196e662f7aad6cb95c903e3c7"
+      },
+      {
+        "path": "bench/runtime-pilot/cases/author-corpus.mjs",
+        "sha256": "bdf8b32d24b60711817a4264ba55af4a1fa2474514e73fe4ccf51eb7a2547484"
+      },
+      {
+        "path": "bench/runtime-pilot/cases/freeze-manifest.json",
+        "sha256": "17afe9ecdb4e4f8894ae410fef5e537c903b5597dd290d20c8e6d1b8447622ce"
+      },
+      {
+        "path": "bench/runtime-pilot/cases/freeze-manifest.sha256",
+        "sha256": "47c05d2c2a3828b1dbde7900c170849b68e3b68bd92f4db2627a32b62647491c"
+      },
+      {
+        "path": "bench/runtime-pilot/cases/freeze-manifest.v2.json",
+        "sha256": "3774e734d8d58c4aa3e9e63159e383a9c90463c0404feb2a24d69a591441bf76"
+      },
+      {
+        "path": "bench/runtime-pilot/cases/freeze-manifest.v2.sha256",
+        "sha256": "ea3e998e52d29dfa53ad7fc74ac722d89be085ea3cf2dee126b5468eee0dc1c1"
+      },
+      {
+        "path": "bench/runtime-pilot/cases/github-issue-comment.v1.json",
+        "sha256": "f452e4fcb30a04bebe179ca6a3393b0a006497ddee2f110440bcd0e3b476ca17"
+      },
+      {
+        "path": "bench/runtime-pilot/cases/historical/initial-freeze/freeze-manifest.json",
+        "sha256": "103b003ee13ddecd8027fce1ca8b5ffdeed3b7c36273438116433b1cc69cffb7"
+      },
+      {
+        "path": "bench/runtime-pilot/cases/historical/initial-freeze/freeze-manifest.sha256",
+        "sha256": "c4dcb0379a3d99e14c9fba53154fbe02b59119526bf053186c7fd5931e5612e7"
+      },
+      {
+        "path": "bench/runtime-pilot/consumer-client.mjs",
+        "sha256": "b73e63b1c23412b7aa90f499a8358c14293ec047d70567301a2718af894c422b"
+      },
+      {
+        "path": "bench/runtime-pilot/external-evaluation.mjs",
+        "sha256": "0996130f02e71a13d9287610e11e99213a02064190cb0a855a843740e50bfa5b"
+      },
+      {
+        "path": "bench/runtime-pilot/gate.mjs",
+        "sha256": "6784925638bfdca47cc1e4639c280a5076e376a749991525dcfe3b1df5237159"
+      },
+      {
+        "path": "bench/runtime-pilot/install-tools.mjs",
+        "sha256": "ee6f75ab037a0b7b2341235ad888402fb07541de9ad7a7fe6dc06431770f2e59"
+      },
+      {
+        "path": "bench/runtime-pilot/ledger.mjs",
+        "sha256": "2ebbb8724035ea776f816f8352a7f5d08b9d0afe509be1b887b27199a4695b17"
+      },
+      {
+        "path": "bench/runtime-pilot/live-plan.json",
+        "sha256": "b463c9495c4c7f3970a4497763e0ebd9ab527264bc7ec13d50e2b798052dad2f"
+      },
+      {
+        "path": "bench/runtime-pilot/live-run.mjs",
+        "sha256": "2cf906d75183473aa9aeb2275846f6eb516373fa0a45c51febdb9f29e4514ccc"
+      },
+      {
+        "path": "bench/runtime-pilot/mapping.mjs",
+        "sha256": "69af246b659cb2d14dd1cd0242892dc1f899b38c194ca6da16fed95b2393b324"
+      },
+      {
+        "path": "bench/runtime-pilot/mcp-client.mjs",
+        "sha256": "f7ee35ad079959c474ad4cb8a405a4a3e2c8eb06033d115df4871eb2152ddbff"
+      },
+      {
+        "path": "bench/runtime-pilot/mcp-server.mjs",
+        "sha256": "855d2179f5e3c1ea7c1d7facae8ded3440d3f27b921a0a595d5e25979e4d63c9"
+      },
+      {
+        "path": "bench/runtime-pilot/offline-run.mjs",
+        "sha256": "cbeee10f9ccfea460cc5e783daf4337e5ec8fd8ab5b397059bbe068723761e87"
+      },
+      {
+        "path": "bench/runtime-pilot/package-lock.json",
+        "sha256": "202553ff46758ff217b205242ad1658e2daa5c0a94e7fe3e5500847981fd5a46"
+      },
+      {
+        "path": "bench/runtime-pilot/package.json",
+        "sha256": "a27ab37caf3a5d2a61afb9bbcdb00c866c7cf3b21c57bfbf0794128bb3ee47ab"
+      },
+      {
+        "path": "bench/runtime-pilot/policy.rego",
+        "sha256": "588b3fae1db09c9f3bdcea037d0fad68847a6cb970004c0d3fdd129d8c144bf8"
+      },
+      {
+        "path": "bench/runtime-pilot/provider.mjs",
+        "sha256": "f2b49108e4960c9c4eb48cd201b35550335f46c72308b5532c77f0cc794410db"
+      },
+      {
+        "path": "bench/runtime-pilot/python/consumer.py",
+        "sha256": "fe84f1493320d00f1bd9bf980a0e8bf4dcd1305a5a14ef91f2f2549bbbd3f3c2"
+      },
+      {
+        "path": "bench/runtime-pilot/python/profile_adapter.py",
+        "sha256": "cb34229952a6f1cfbbd2e43f8c19276b04a27054aa8ca6392e88c02949cbe5f8"
+      },
+      {
+        "path": "bench/runtime-pilot/python/request_json.py",
+        "sha256": "db91dcafc2bba373770aedb088c07f10ea8dc661dd9f81f4e0a6e5d54c96e9e8"
+      },
+      {
+        "path": "bench/runtime-pilot/replay-integrity.mjs",
+        "sha256": "814c6d7d98a3f533f8b040600f26de7db72618b45f48afc797e31387ca05190b"
+      },
+      {
+        "path": "bench/runtime-pilot/replay.mjs",
+        "sha256": "086146419b0159826f93fb3b0ffb8e30075b5f8b399f472222cbcb7a2e178ca1"
+      },
+      {
+        "path": "bench/runtime-pilot/scoring.mjs",
+        "sha256": "4bd228fb68d1cc1d89de7012f231ed13445ca6f2308e8071480aac8b18371d36"
+      },
+      {
+        "path": "bench/runtime-pilot/tools.json",
+        "sha256": "3c4de26c48019c83cbfe61f770d1090d82606cf85cf08e834d8328ee59c04585"
+      },
+      {
+        "path": "bench/runtime-pilot/upstream/check.mjs",
+        "sha256": "2c431f18dd433a0ada410450279181f71ec6ebd56ae620f2c967e637ed7105c0"
+      },
+      {
+        "path": "bench/runtime-pilot/upstream/github-comment-openapi.json",
+        "sha256": "be8b2b8f74734a7aa767dc4048713eb8664a75c476c12ecb4dda55f40d5cc940"
+      },
+      {
+        "path": "bench/runtime-pilot/upstream/import-github.mjs",
+        "sha256": "a31dd0a42d791371aa61b04a9b2e4fdbbe3bc037bef1c3aeba7b179136821faa"
+      },
+      {
+        "path": "spec/implementations/javascript/schema.mjs",
+        "sha256": "622f50ec231ec81b4be14a8c03885b425c70e9625995e59db7bc5dcc09411ec3"
+      },
+      {
+        "path": "spec/implementations/javascript/strict-json.mjs",
+        "sha256": "5cda89a8a43d0d633348fd2729c4ed733eb856f95279e9a649e2be1d3f5e6c9a"
+      },
+      {
+        "path": "spec/implementations/python/offline_consumer/__init__.py",
+        "sha256": "00802fbbe67cfcc816d23b3e8c25e66f2706598ba2c1333bf97df1186cfd143b"
+      },
+      {
+        "path": "spec/implementations/python/offline_consumer/adapter.py",
+        "sha256": "e7880716ce397cc0bc711624523757c6037cfaf8d1d8c957ab34f4cfe34462fa"
+      },
+      {
+        "path": "spec/implementations/python/offline_consumer/configuration.py",
+        "sha256": "cb4d2f084c86a4cdde550d5687f4b269f3aa9de659ef3bff90dec71f562b1252"
+      },
+      {
+        "path": "spec/implementations/python/offline_consumer/consumer.py",
+        "sha256": "51e294388b704ec7ae3d2999deccc300c85ce1e29b364b2a3c1b067991fddd6b"
+      },
+      {
+        "path": "spec/implementations/python/offline_consumer/errors.py",
+        "sha256": "5c82a9f101b148a80d29755fd07ec2a79ca2efe8ac7f7a26f301edbd9208976b"
+      },
+      {
+        "path": "spec/implementations/python/offline_consumer/json_subset.py",
+        "sha256": "954d2f244fe511c56c223dfada64cd5dd7fe65c8c3fae09ca3fa5a7d22150f62"
+      },
+      {
+        "path": "spec/implementations/python/offline_consumer/projection.py",
+        "sha256": "a696b066f5165acb45721dde274c5c8f77d609741d08ef63f7cf1d7b7713f92e"
+      },
+      {
+        "path": "spec/implementations/python/offline_consumer/references.py",
+        "sha256": "1c0e4e2d1bcc9d8f6c7679bf36164fb926b64a76ee47a5ff446bb08671abe5b7"
+      },
+      {
+        "path": "spec/implementations/python/offline_consumer/structure.py",
+        "sha256": "56b7f715f99f27afc1ab4a2bc7dcc8479647fca95f9efbc429799af2a0fbff21"
+      },
+      {
+        "path": "spec/implementations/python/offline_consumer/uri.py",
+        "sha256": "9d5f3f5a1301f906b0ddc93df9d730a64d5dd5962191d7b449325b351149858e"
+      },
+      {
+        "path": "spec/profiles/github-issue-comment/profile.json",
+        "sha256": "b3aa4d5ca35f3c3a2436765d1b7c8df917695b5956a4ff544e4f82e713f7a831"
+      },
+      {
+        "path": "spec/schemas/effect-description.schema.json",
+        "sha256": "0bb7797509174f2f24f534e76ac302fe6ed92e28dcd1e6b92322b2bf1abdbe5e"
+      }
+    ],
+    "environment": {
+      "node": "v22.18.0",
+      "python": "Python 3.9.6",
+      "platform": "darwin",
+      "architecture": "arm64",
+      "os_release": "27.2.0",
+      "hardware": {
+        "cpu_model": "Apple M4 Pro",
+        "logical_cpus": 14,
+        "memory_bytes": 25769803776
+      },
+      "timezone": "America/Toronto",
+      "measured_timestamps": "UTC",
+      "dependencies": {
+        "@octokit/rest": "22.0.1",
+        "@modelcontextprotocol/sdk": "1.32.1",
+        "zod": "4.6.7",
+        "ajv": "8.20.0"
+      },
+      "repositories": {
+        "spec": {
+          "head": "a9b86f4b529a5e330c2a9bf1b8c4c259a7b36e40",
+          "dirty": false,
+          "note": "Exact experiment-source bytes are in provenance.sources; dirty status also includes reports and documentation."
+        },
+        "bench": {
+          "head": "127db6d477bd1995480672790f71e5313e9a4485",
+          "dirty": true,
+          "note": "Exact experiment-source bytes are in provenance.sources; dirty status also includes reports and documentation."
+        }
+      },
+      "opa_binary": {
+        "pinned_version": "1.21.2",
+        "sha256": "e358121f0d96a41103499d878184e493cc5ab10956f98e835089b9de0ac2de62",
+        "matches_release_pin": true
+      }
+    }
+  },
+  "observation": {
+    "reason": "mcp_initialization_failed",
+    "outcome": "not_dispatched"
+  },
+  "journal": {
+    "file": "field-preflight-mcp-2026-10-19T06-14-44.516Z-cc5f79.jsonl",
+    "sha256": "e48a4157d6c8e27c056366e044a473700315043a9763c400f23ef5d3c4240eea"
+  },
+  "provider_write_attempts": 0
+}
