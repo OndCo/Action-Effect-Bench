@@ -20,6 +20,14 @@ const assetUrl = repository => `https://github.com/${repository}/releases/downlo
 class ReadFailure extends Error {}
 const fail = reason => { throw new ReadFailure(reason); };
 
+export class FieldStudyJournalError extends Error {
+  constructor() {
+    super('journal_error');
+    this.name = 'FieldStudyJournalError';
+    this.code = 'FIELD_STUDY_JOURNAL_ERROR';
+  }
+}
+
 function record(value) {
   if (!value || typeof value !== 'object' || Array.isArray(value)) return false;
   if (![Object.prototype, null].includes(Object.getPrototypeOf(value))) return false;
@@ -136,10 +144,21 @@ export function createReadTools({ task, sdk, mcp, journal } = {}) {
   if (typeof journal?.append !== 'function') fail('invalid_journal');
   const append = journal.append.bind(journal);
   let toolSequence = 0, nativeSequence = 0;
+  let journalFailed = false;
+
+  function assertJournalHealthy() {
+    if (journalFailed) throw new FieldStudyJournalError();
+  }
 
   async function write(event) {
+    assertJournalHealthy();
     try { await append(structuredClone(event)); }
-    catch { fail('journal_unavailable'); }
+    catch {
+      // An append may already have persisted; never retry it or log a replacement.
+      journalFailed = true;
+      throw new FieldStudyJournalError();
+    }
+    assertJournalHealthy();
   }
 
   function repositoryFor(repository) {
@@ -188,6 +207,7 @@ export function createReadTools({ task, sdk, mcp, journal } = {}) {
     return { schema: freeze({ type: 'function', name, description, parameters: {
       type: 'object', properties, required: names, additionalProperties: false }, strict: true }),
     async execute(input) {
+      assertJournalHealthy();
       const started = performance.now(), tool_call_index = ++toolSequence;
       const counts = { readFile: 0, readRelease: 0, readAsset: 0 };
       const common = { tool: name, tool_call_index, lane: config.lane };
@@ -201,6 +221,7 @@ export function createReadTools({ task, sdk, mcp, journal } = {}) {
       async function invoke(method, arguments_, source_url) {
         const call = { ...common, native_call_index: ++nativeSequence, method, arguments: arguments_, source_url };
         await write({ type: 'read_call_start', ...call, status: 'started' });
+        assertJournalHealthy();
         const nativeStarted = performance.now();
         counts[method] += 1;
         let response, metadata, reason = null;
@@ -229,11 +250,10 @@ export function createReadTools({ task, sdk, mcp, journal } = {}) {
           source_url: result.source_url, result: metadata, ...(content_base64 === undefined ? {} : { content_base64 }) });
         return output;
       } catch (error) {
-        let reason = error instanceof ReadFailure ? error.message : 'reader_unavailable';
-        try {
-          await write({ type: 'read_tool_result', ...common, ...(Object.values(counts).some(count => count > 0) ? { arguments: args } : {}),
-            status: 'unavailable', reason, ...accounting(), ...diagnostics() });
-        } catch { reason = 'journal_unavailable'; }
+        assertJournalHealthy();
+        const reason = error instanceof ReadFailure ? error.message : 'reader_unavailable';
+        await write({ type: 'read_tool_result', ...common, ...(Object.values(counts).some(count => count > 0) ? { arguments: args } : {}),
+          status: 'unavailable', reason, ...accounting(), ...diagnostics() });
         return { status: 'unavailable', reason };
       }
     } };

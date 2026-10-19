@@ -1,12 +1,12 @@
 {
-  "version": 1,
+  "version": 2,
   "source_refs": {
     "OndCo/Action-Effect-Bench": "cecde389637be4f5fd3482e4942ce3fd1a623ac6",
     "OndCo/Action-Effect-Spec": "a9b86f4b529a5e330c2a9bf1b8c4c259a7b36e40"
   },
   "evaluation_policy": {
     "population": "exposed_internal_maintenance",
-    "review_scope": "Same-project internal human source review. Published prior documentation is exposed ordinary maintenance material, not a holdout, novelty test, external review or independent institutional validation.",
+    "review_scope": "Same-project AI-assisted source review against the fixed facts, with human maintainer acceptance not yet measured. Published prior documentation is exposed ordinary maintenance material, not a holdout, novelty test, external review or independent institutional validation. Version 2 changes review provenance and the response envelope, not required facts or their sources.",
     "oracle_visible_to_task_model": false,
     "facts_frozen_before_model_results": true,
     "publication_required": false,
@@ -14,9 +14,9 @@
     "grants_write_authority": false,
     "input_contract": "Only tasks.json supplies task goals, requested deliverables and source allowlists. Neither criteria.json nor grader feedback or earlier task outputs may enter a task context. Both JSON files may be published after the scored runs finish.",
     "run_context": "Each task starts independently in a fresh model context. Keep its assigned lane and pinned repository files fixed; record tool/setup failures and all scheduled tasks.",
-    "response_contract": "The model returns useful Markdown final text, not a required JSON report schema, at most 6000 UTF-8 bytes. The limit is a report-byte budget, not a model-token limit.",
+    "response_contract": "The model returns a JSON envelope with task_id, report_markdown, conclusion and citations. report_markdown contains useful Markdown at most 6000 UTF-8 bytes; the limit is neither a token budget nor the later comment-profile limit. This post-review amendment resolves the first run's contradictory Markdown/JSON and 6000/7000 instructions; the original run is retained, not rescored as compliant.",
     "source_evidence": "Every source digest and quoted line is from git show at the listed immutable commit, never from a mutable or uncommitted working file. Treat normative requirements, implementation source and published historical observations as different evidence types.",
-    "scoring_method": "Use human fact-and-source review, not exact prose matching, keyword counting or a model self-grade. Complete all mandatory deliverables and address each required fact. An available required inspection left unattempted is an omission, not setup failure. A tool-evidenced unavailable result must not be called a successful verification.",
+    "scoring_method": "Use source-based internal review against the unchanged facts, not exact prose matching, keyword counting or the task model's self-grade. Disclose AI assistance and do not call it independent human ground truth. Complete all mandatory deliverables and address each required fact. An available required inspection left unattempted is an omission, not setup failure. A tool-evidenced unavailable result must not be called a successful verification.",
     "extra_findings": "Supported additional findings are permitted. No task requires discovering a defect or proposing a file edit. Preserve the original rubric if a source conflict or oracle defect is discovered; record adjudication rather than silently changing labels after seeing model results.",
     "operational_separation": "Record setup, report quality, decision readiness and actual maintainer use separately from effect mapping, current authorization, publication and provider observation. A correctly mapped or posted report can be wrong; an unpublished report can be useful.",
     "denominators": "Retain all six scheduled intents and report setup-blocked, attempted, completed, decision-ready and actually-used counts. Do not turn setup failures into task wins, wrong answers or correct policy denials. Shadow arms and native calls are not additional independent maintainer tasks.",

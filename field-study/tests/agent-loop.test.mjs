@@ -6,9 +6,10 @@ import { runAgent } from '../agent-loop.mjs';
 import { createAzureModel } from '../model-client.mjs';
 
 const task = { id: 'fixture-maintenance', prompt: 'Inspect the synthetic public fixture and return a JSON report.' };
+const fixtureReport = (overrides = {}) => ({ task_id: task.id, report_markdown: '# Synthetic fixture\n\nNo real provider was called.', conclusion: 'Fixture observations only.', citations: [], ...overrides });
 const schema = { type: 'function', name: 'read_fixture', description: 'Read only synthetic files.', strict: true, parameters: { type: 'object', properties: { path: { enum: ['README.md', 'PROTOCOL.md'], type: 'string' }, offset: { type: 'number' } }, required: ['path', 'offset'], additionalProperties: false } };
 const call = (id = 'call_one', argumentsText = '{"path":"README.md","offset":0}', name = 'read_fixture') => ({ type: 'function_call', name, call_id: id, arguments: argumentsText, status: 'completed' });
-const message = (text = '{"summary":"fixture only"}') => ({ type: 'message', role: 'assistant', status: 'completed', content: [{ type: 'output_text', text }] });
+const message = (text = JSON.stringify(fixtureReport())) => ({ type: 'message', role: 'assistant', status: 'completed', content: [{ type: 'output_text', text }] });
 const result = (output, overrides = {}) => ({ response_id: 'resp_fixture', model: 'fixture-model', status: 'completed', duration_ms: 1, usage: { input_tokens: 2, output_tokens: 3, total_tokens: 5 }, output, ...overrides });
 function setup(responses, overrides = {}) {
   const requests = [], events = [], executions = [];
@@ -17,7 +18,7 @@ function setup(responses, overrides = {}) {
     model: { respond: async (input, tools) => { requests.push({ input: structuredClone(input), tools: structuredClone(tools) }); const item = responses[requests.length - 1]; if (item instanceof Error) throw item; return structuredClone(item); } }, ...overrides };
   return { options, requests, events, executions };
 }
-const failure = (run, reason) => { assert.equal(run.status, 'failed'); assert.equal(run.reason, reason); assert.equal(run.finalOutput, null); assert.equal(run.trace.at(-1).type, 'task_end'); assert.equal(run.trace.at(-1).status, 'failed'); };
+const failure = (run, reason, finalOutput = null) => { assert.equal(run.status, 'failed'); assert.equal(run.reason, reason); assert.equal(run.finalOutput, finalOutput); assert.equal(run.trace.at(-1).type, 'task_end'); assert.equal(run.trace.at(-1).status, 'failed'); };
 
 test('bounded loop replays raw reasoning only in memory and journals a visible complete trace', async () => {
   const reasoning = { type: 'reasoning', id: 'rs_fixture', encrypted_content: 'fixture-encrypted-memory-only', summary: [{ type: 'summary_text', text: 'fixture-hidden-summary' }] };
@@ -29,7 +30,7 @@ test('bounded loop replays raw reasoning only in memory and journals a visible c
   assert.equal(run.trace[0].prompt, task.prompt);
   assert.equal(run.status, 'completed');
   assert.equal(run.reason, 'final_output');
-  assert.equal(run.finalOutput, '{"summary":"fixture only"}');
+  assert.equal(run.finalOutput, JSON.stringify(fixtureReport()));
   assert.equal(run.rounds, 2);
   assert.equal(run.tool_calls, 1);
   assert.deepEqual(run.usage, { input_tokens: 4, output_tokens: 6, total_tokens: 10, reported_requests: 2, missing_requests: 0 });
@@ -156,6 +157,91 @@ test('journal failure halts before the next effect and returns its partial in-me
   }
 });
 
+test('a handler journal fault is journal_error and halts remaining tools and journal writes', async () => {
+  let executions = 0;
+  const w = setup([result([call(), call('call_two')]), result([message()])], {
+    tools: { read_fixture: { schema, execute: async () => { executions++; throw Object.assign(new Error('fixture-private-journal-detail'), { code: 'FIELD_STUDY_JOURNAL_ERROR' }); } } },
+  });
+  const run = await runAgent(w.options);
+  failure(run, 'journal_error');
+  assert.equal(executions, 1);
+  assert.equal(run.tool_calls, 1);
+  assert.equal(w.requests.length, 1);
+  const failed = run.trace.find((event) => event.type === 'tool_result');
+  assert.equal(failed.reason, 'journal_error');
+  assert.equal(failed.journal_status, 'not_attempted');
+  assert.deepEqual(w.events.map((event) => event.type), ['task_start', 'model_request', 'model_result', 'tool_attempt']);
+  assert(!JSON.stringify(run).includes('fixture-private-journal-detail'));
+});
+
+test('journal-like messages and returned tool data are not promoted to journal control signals', async () => {
+  const ordinary = setup([result([call()])], { tools: { read_fixture: { schema, execute: async () => { throw new Error('FIELD_STUDY_JOURNAL_ERROR'); } } } });
+  failure(await runAgent(ordinary.options), 'tool_error');
+  const data = setup([result([call()]), result([message()])], { tools: { read_fixture: { schema, execute: async () => ({ code: 'FIELD_STUDY_JOURNAL_ERROR' }) } } });
+  assert.equal((await runAgent(data.options)).status, 'completed');
+});
+
+test('final reports require the actual task ID, exact fields and typed nonempty content', async () => {
+  const valid = fixtureReport();
+  const invalid = [null, [], 1, 'report', {},
+    ...Object.keys(valid).map((missing) => Object.fromEntries(Object.entries(valid).filter(([key]) => key !== missing))),
+    fixtureReport({ task_id: 'another-task' }), fixtureReport({ task_id: `${task.id}\n` }), fixtureReport({ task_id: 1 }),
+    fixtureReport({ extra: true }), fixtureReport({ report_markdown: '' }), fixtureReport({ report_markdown: ' \n\t' }), fixtureReport({ report_markdown: 1 }),
+    fixtureReport({ conclusion: '' }), fixtureReport({ conclusion: ' \n\t' }), fixtureReport({ conclusion: false }),
+    fixtureReport({ citations: null }), fixtureReport({ citations: 'not-an-array' }), fixtureReport({ citations: [1] }), fixtureReport({ citations: [{}] }),
+  ];
+  for (const report of invalid) {
+    const finalText = JSON.stringify(report);
+    const w = setup([result([message(finalText)]), result([message()])]);
+    const run = await runAgent(w.options);
+    failure(run, 'invalid_final_output');
+    assert.equal(w.requests.length, 1);
+    assert.equal(run.trace.find((event) => event.type === 'model_result').output[0].content[0].text, finalText);
+  }
+  const otherTask = { ...task, id: 'second-fixture-task' };
+  const w = setup([result([message(JSON.stringify(fixtureReport({ task_id: otherTask.id })))])], { task: otherTask });
+  assert.equal((await runAgent(w.options)).status, 'completed');
+});
+
+test('reportBytes bounds decoded Markdown UTF-8 bytes, not JSON framing or string length', async () => {
+  for (const report_markdown of ['x'.repeat(6000), '\u00e9'.repeat(3000), '"\n'.repeat(3000)]) {
+    assert.equal(Buffer.byteLength(report_markdown, 'utf8'), 6000);
+    const finalText = JSON.stringify(fixtureReport({ report_markdown }));
+    assert(Buffer.byteLength(finalText, 'utf8') > 6000);
+    const w = setup([result([message(finalText)])], { limits: { rounds: 12, toolCalls: 18, reportBytes: 6000 } });
+    const run = await runAgent(w.options);
+    assert.equal(run.status, 'completed');
+    assert.equal(run.finalOutput, finalText);
+    assert.equal(run.trace[0].limits.reportBytes, 6000);
+    assert.equal(w.requests.length, 1);
+  }
+});
+
+test('an oversized final report is preserved as failure without rewriting or retrying', async () => {
+  const report_markdown = '\u00e9'.repeat(3000) + 'x';
+  assert.equal(Buffer.byteLength(report_markdown, 'utf8'), 6001);
+  assert(report_markdown.length < 6000);
+  const finalText = JSON.stringify(fixtureReport({ report_markdown }));
+  const w = setup([result([message(finalText)]), result([message()])], { limits: { rounds: 12, toolCalls: 18, reportBytes: 6000 } });
+  const run = await runAgent(w.options);
+  failure(run, 'report_bytes_exceeded', finalText);
+  assert.equal(w.requests.length, 1);
+  assert.equal(run.tool_calls, 0);
+  assert.equal(run.trace.find((event) => event.type === 'model_result').output[0].content[0].text, finalText);
+  assert.deepEqual(w.events, run.trace);
+});
+
+test('invalid optional report byte limits fail configuration before any effects', async () => {
+  for (const reportBytes of [0, -1, 1.5, '6000', null, Number.MAX_SAFE_INTEGER + 1]) {
+    const w = setup([], { limits: { rounds: 12, toolCalls: 18, reportBytes } });
+    await assert.rejects(runAgent(w.options), /invalid_agent_configuration/);
+    assert.equal(w.events.length, 0);
+    assert.equal(w.requests.length, 0);
+  }
+  const unknown = setup([], { limits: { rounds: 12, toolCalls: 18, extra: true } });
+  await assert.rejects(runAgent(unknown.options), /invalid_agent_configuration/);
+});
+
 test('only a final JSON text without pending function calls completes the loop', async () => {
   for (const text of ['not JSON', '```json\n{}\n```', '{"ok":true,"\\u006fk":false}']) {
     const w = setup([result([message(text)])]);
@@ -189,7 +275,7 @@ test('configuration failures reject before any model request or journal side eff
 });
 
 test('visible model IDs, annotations and full reports survive journaling while reasoning does not', async () => {
-  const finalText = JSON.stringify({ report: 'synthetic public report '.repeat(500) });
+  const finalText = JSON.stringify(fixtureReport({ report_markdown: 'synthetic public report '.repeat(500) }));
   const visible = { ...message(finalText), id: 'msg_fixture' };
   visible.content[0].annotations = [{ type: 'url_citation', title: 'Synthetic public fixture', url: 'https://example.com/public-fixture', start_index: 0, end_index: 2 }];
   const nativeCall = { ...call(), id: 'fc_fixture' };

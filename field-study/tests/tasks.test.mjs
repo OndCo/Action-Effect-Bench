@@ -61,7 +61,7 @@ function sourceShape(source) {
 
 function validateInputs(input) {
   fields(input, ['version', 'source_refs', 'tasks']);
-  assert.equal(input.version, 1);
+  assert.equal(input.version, 2);
   assert.deepEqual(input.source_refs, pins);
   assert.ok(Array.isArray(input.tasks));
   assert.deepEqual(input.tasks.map(task => task.id), taskIds);
@@ -87,7 +87,7 @@ function validateInputs(input) {
 
 function validateCriteria(criteria, input) {
   fields(criteria, ['version', 'source_refs', 'evaluation_policy', 'human_score_categories', 'sources', 'assets', 'tasks']);
-  assert.equal(criteria.version, 1);
+  assert.equal(criteria.version, 2);
   assert.deepEqual(criteria.source_refs, pins);
   assert.deepEqual(criteria.tasks.map(task => task.id), taskIds);
   assert.equal(criteria.evaluation_policy.population, 'exposed_internal_maintenance');
@@ -248,7 +248,7 @@ test('release, quickstart and conformance sources include the necessary tagged e
   assert.match(input.tasks.at(-1).prompt, /no change/i);
 });
 
-test('separate rubric covers each task, allowable citations, material errors and human score axes', () => {
+test('separate rubric covers each task, allowable citations, material errors and review axes', () => {
   validateCriteria(document('criteria.json'), document('tasks.json'));
 });
 
@@ -279,12 +279,13 @@ test('T1 obtains the large report digest through source inspection rather than f
   assert.ok(task.sources.some(source => source.path === `${offlineReport}.sha256`));
 });
 
-test('all independent tasks request bounded useful Markdown final text through the actual read tool', () => {
+test('each isolated task requests bounded Markdown inside the amended JSON envelope', () => {
   for (const task of document('tasks.json').tasks) {
     assert.match(task.prompt, /read_repository_file\(\{repository,path\}\)/);
     assert.match(task.prompt, /6000 UTF-8 bytes/);
     assert.match(task.prompt, /Markdown/);
-    assert.match(task.prompt, /final text/);
+    assert.match(task.prompt, /JSON report/);
+    assert.match(task.prompt, /report_markdown/);
     assert.match(task.prompt, /fresh context/);
   }
 });

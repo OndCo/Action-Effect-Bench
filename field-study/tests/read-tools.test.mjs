@@ -4,8 +4,8 @@ import { createHash } from 'node:crypto';
 import { assertPublicValue } from '../artifacts.mjs';
 import { readPublicAsset } from '../github-reader.mjs';
 
-let createReadTools;
-try { ({ createReadTools } = await import('../read-tools.mjs')); }
+let createReadTools, FieldStudyJournalError;
+try { ({ createReadTools, FieldStudyJournalError } = await import('../read-tools.mjs')); }
 catch (error) { if (error.code !== 'ERR_MODULE_NOT_FOUND' || !error.message.includes('/read-tools.mjs')) throw error; }
 
 const BENCH = 'OndCo/Action-Effect-Bench';
@@ -610,16 +610,112 @@ test('actual public-asset facade follows a bounded official CDN redirect without
   assert.ok(requests.every(row => row.options.redirect === 'manual' && !Object.hasOwn(row.options.headers, 'Authorization')));
 });
 
-test('journal failure before dispatch prevents any reader call', async () => {
-  const f = fixture({ journal: { append() { throw new Error('private journal path'); } } });
-  unavailable(await read(f), 'journal_unavailable');
-  assert.equal(f.calls.length, 0);
+const JOURNAL_SECRET = 'private-journal-path-and-credential';
+
+function isJournalError(error) {
+  assert.equal(error?.code, 'FIELD_STUDY_JOURNAL_ERROR');
+  assert.equal(error.message, 'journal_error');
+  assert.equal(error.name, 'FieldStudyJournalError');
+  assert.ok(error instanceof FieldStudyJournalError);
+  assert.equal(Object.hasOwn(error, 'cause'), false);
+  assert.equal(JSON.stringify(error).includes(JOURNAL_SECRET), false);
+  assert.equal(String(error.stack).includes(JOURNAL_SECRET), false);
+  return true;
+}
+
+test('exports a sanitized journal error with the agent-loop failure code', () => {
+  assert.equal(typeof FieldStudyJournalError, 'function');
+  isJournalError(new FieldStudyJournalError(JOURNAL_SECRET, { cause: new Error(JOURNAL_SECRET) }));
 });
 
-test('journal failure after a read does not expose an unrecorded success or retry', async () => {
-  const f = fixture({ journal: { append(event) { if (event.type === 'read_call_result') throw new Error('private journal path'); } } });
-  unavailable(await read(f), 'journal_unavailable');
-  assert.equal(f.calls.length, 1);
+for (const cut of [
+  { label: 'pre-call', type: 'read_call_start', status: 'started', appends: 1, calls: 0 },
+  { label: 'post-native-result', type: 'read_call_result', status: 'ok', appends: 2, calls: 1 },
+  { label: 'success-result', type: 'read_tool_result', status: 'ok', appends: 3, calls: 1 },
+  { label: 'native-failure-result', type: 'read_tool_result', status: 'unavailable', appends: 3, calls: 1, nativeFails: true },
+  { label: 'argument-failure-result', type: 'read_tool_result', status: 'unavailable', appends: 1, calls: 0, invalid: true },
+]) {
+  for (const asynchronous of [false, true]) {
+    for (const persistedBeforeThrow of [false, true]) {
+      test(`${cut.label} intermittent ${asynchronous ? 'async' : 'sync'} journal failure stops all tools (${persistedBeforeThrow ? 'possibly persisted' : 'not persisted'})`, async () => {
+        const attempts = [], persisted = [];
+        let failed = false;
+        const f = fixture({ readFile: () => {
+          if (cut.nativeFails) throw new Error('provider_read_failure_503');
+          return { text: TEXT };
+        }, journal: { append(event) {
+          attempts.push(structuredClone(event));
+          if (!failed && event.type === cut.type && event.status === cut.status) {
+            failed = true;
+            if (persistedBeforeThrow) persisted.push(structuredClone(event));
+            const error = new Error(JOURNAL_SECRET, { cause: new Error(JOURNAL_SECRET) });
+            error.code = 'EIO';
+            if (asynchronous) return Promise.reject(error);
+            throw error;
+          }
+          persisted.push(structuredClone(event));
+          if (asynchronous) return Promise.resolve();
+        } } });
+        const args = cut.invalid ? { repository: BENCH, path: 'not-allowed.md' } : undefined;
+        await assert.rejects(read(f, args), isJournalError);
+        assert.equal(failed, true);
+        assert.equal(attempts.length, cut.appends, 'must not try to journal another outcome after a failed append');
+        assert.equal(persisted.length, cut.appends - (persistedBeforeThrow ? 0 : 1));
+        assert.equal(f.calls.length, cut.calls);
+        for (const next of [read, inspect, inspectRelease, inspectAsset]) await assert.rejects(next(f), isJournalError);
+        assert.equal(attempts.length, cut.appends, 'intermittent recovery must not reopen this journal session');
+        assert.equal(f.calls.length, cut.calls, 'all native methods must stop after the first journal failure');
+        assert.equal(JSON.stringify({ attempts, persisted }).includes(JOURNAL_SECRET), false);
+      });
+    }
+  }
+}
+
+test('journal failure after release lookup prevents the next native asset call', async () => {
+  const attempts = [];
+  let failed = false;
+  const f = fixture({ journal: { append(event) {
+    attempts.push(event);
+    if (!failed && event.type === 'read_call_result') {
+      failed = true;
+      throw new Error(JOURNAL_SECRET);
+    }
+  } } });
+  await assert.rejects(inspectAsset(f), isJournalError);
+  assert.deepEqual(f.calls.map(call => call.method), ['readRelease']);
+  assert.equal(attempts.length, 2);
+});
+
+test('a pending pre-call append cannot dispatch after another tool poisons the journal', async () => {
+  const attempts = [];
+  let resume;
+  const f = fixture({ journal: { append(event) {
+    attempts.push(event);
+    if (attempts.length === 1) return new Promise(resolve => { resume = resolve; });
+    if (attempts.length === 2) throw new Error(JOURNAL_SECRET);
+  } } });
+  const settled = promise => promise.then(value => ({ value }), error => ({ error }));
+  const pending = settled(read(f));
+  const other = await settled(inspectRelease(f));
+  resume();
+  const first = await pending;
+  isJournalError(other.error);
+  isJournalError(first.error);
+  assert.equal(f.calls.length, 0);
+  assert.equal(attempts.length, 2);
+});
+
+test('an intermittent native network failure stays unavailable without poisoning a healthy journal', async () => {
+  let nativeCalls = 0;
+  const f = fixture({ readFile: () => {
+    if (++nativeCalls === 1) throw new Error('provider_read_failure_503');
+    return { text: TEXT };
+  } });
+  unavailable(await read(f), 'reader_unavailable');
+  assert.equal(f.events.at(-1).native_reason, 'provider_read_failure_503');
+  assert.equal((await read(f)).status, 'ok');
+  assert.equal(f.calls.length, 2);
+  assert.equal(f.events.length, 6);
 });
 
 for (const invalid of [undefined, null, task({ lane: 'native-or-shell' }), task({ lane: undefined }),

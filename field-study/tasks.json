@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "source_refs": {
     "OndCo/Action-Effect-Bench": "cecde389637be4f5fd3482e4942ce3fd1a623ac6",
     "OndCo/Action-Effect-Spec": "a9b86f4b529a5e330c2a9bf1b8c4c259a7b36e40"
@@ -8,7 +8,7 @@
     {
       "id": "release-integrity",
       "title": "Verify release integrity and reproduction identity",
-      "prompt": "A maintainer needs to tell adopters exactly which published release artifacts and source snapshots to reproduce. Verify the supplied offline report against its adjacent checksum and reconcile the release, benchmark implementation and companion Spec identities. Use inspect_repository_file({repository,path}) to obtain the large report's independently fetched raw SHA-256 and byte size without requesting its full text; read the adjacent checksum with read_repository_file({repository,path}). Source inspection is bounded to 2 MiB and the exact supplied file sources. Optional: inspect_release({repository}) and inspect_release_asset({repository,asset_name}) may inspect the published v0.2.0-draft.1 manuscript.pdf only, also within 2 MiB; PDF inspection is not a substitute for the required report digest check. Clearly separate completed byte checks, claims reported by the release documents and anything you cannot verify. Use read_repository_file({repository,path}) for the supplied text sources; the tool returns the fixed ref. Return a useful Markdown report as final text, no more than 6000 UTF-8 bytes. This task starts in a fresh context; do not rely on prior task answers or results.",
+      "prompt": "A maintainer needs to tell adopters exactly which published release artifacts and source snapshots to reproduce. Verify the supplied offline report against its adjacent checksum and reconcile the release, benchmark implementation and companion Spec identities. Use inspect_repository_file({repository,path}) to obtain the large report's independently fetched raw SHA-256 and byte size without requesting its full text; read the adjacent checksum with read_repository_file({repository,path}). Source inspection is bounded to 2 MiB and the exact supplied file sources. Optional: inspect_release({repository}) and inspect_release_asset({repository,asset_name}) may inspect the published v0.2.0-draft.1 manuscript.pdf only, also within 2 MiB; PDF inspection is not a substitute for the required report digest check. Clearly separate completed byte checks, claims reported by the release documents and anything you cannot verify. Use read_repository_file({repository,path}) for the supplied text sources; the tool returns the fixed ref. Return a JSON report with the useful Markdown in report_markdown (no more than 6000 UTF-8 bytes), plus task_id, conclusion and source citations. This task starts in a fresh context; do not rely on prior task answers or results.",
       "lane": "sdk",
       "sources": [
         {
@@ -48,7 +48,7 @@
     {
       "id": "clean-clone-quickstart",
       "title": "Audit the clean-clone maintainer quickstart",
-      "prompt": "A new maintainer needs an offline-first installation and reproduction runbook for the pinned public release. Review the quickstart, prerequisites, dependency pins and published clean-clone verification history. Produce ordered instructions with working directories, readiness checks and failure handling, and identify any warranted clarification. Do not claim that you performed a fresh clone, download, test run or replay merely because a published report describes one. Use read_repository_file({repository,path}) for the supplied file sources; the tool returns the fixed ref. Return a useful Markdown report as final text, no more than 6000 UTF-8 bytes. This task starts in a fresh context; do not rely on prior task answers or results.",
+      "prompt": "A new maintainer needs an offline-first installation and reproduction runbook for the pinned public release. Review the quickstart, prerequisites, dependency pins and published clean-clone verification history. Produce ordered instructions with working directories, readiness checks and failure handling, and identify any warranted clarification. Do not claim that you performed a fresh clone, download, test run or replay merely because a published report describes one. Use read_repository_file({repository,path}) for the supplied file sources; the tool returns the fixed ref. Return a JSON report with the useful Markdown in report_markdown (no more than 6000 UTF-8 bytes), plus task_id, conclusion and source citations. This task starts in a fresh context; do not rely on prior task answers or results.",
       "lane": "mcp",
       "sources": [
         {
@@ -88,7 +88,7 @@
     {
       "id": "consumer-v1-1-migration",
       "title": "Prepare the v1 to v1.1 consumer migration note",
-      "prompt": "A maintainer is considering offline-consumer-v1.1 while preserving existing offline-consumer-v1 clients. Read the pinned consumer contracts and change record. Prepare an adoption and rollback note covering selection, configuration, externally visible behavior and verification. Keep release, core wire, domain profile and processing-contract identities distinct, and base every claimed behavior change on the supplied sources rather than assuming a version number implies a change. Use read_repository_file({repository,path}) for the supplied file sources; the tool returns the fixed ref. Return a useful Markdown report as final text, no more than 6000 UTF-8 bytes. This task starts in a fresh context; do not rely on prior task answers or results.",
+      "prompt": "A maintainer is considering offline-consumer-v1.1 while preserving existing offline-consumer-v1 clients. Read the pinned consumer contracts and change record. Prepare an adoption and rollback note covering selection, configuration, externally visible behavior and verification. Keep release, core wire, domain profile and processing-contract identities distinct, and base every claimed behavior change on the supplied sources rather than assuming a version number implies a change. Use read_repository_file({repository,path}) for the supplied file sources; the tool returns the fixed ref. Return a JSON report with the useful Markdown in report_markdown (no more than 6000 UTF-8 bytes), plus task_id, conclusion and source citations. This task starts in a fresh context; do not rely on prior task answers or results.",
       "lane": "sdk",
       "sources": [
         {
@@ -117,7 +117,7 @@
     {
       "id": "official-mcp-compatibility",
       "title": "Assess the official GitHub MCP integration claim",
-      "prompt": "A maintainer preparing an integration with the official GitHub MCP implementation needs a precise account of what this released pilot already establishes. Inspect the supplied implementation, dependency declaration, profile and release documentation. Report the identities and interfaces actually supported by those sources, the compatibility conclusions justified by them, and any additional evidence needed before making a stronger claim. Do not assume an official server, remote authentication or provider operation was exercised during this task. Use read_repository_file({repository,path}) for the supplied file sources; the tool returns the fixed ref. Return a useful Markdown report as final text, no more than 6000 UTF-8 bytes. This task starts in a fresh context; do not rely on prior task answers or results.",
+      "prompt": "A maintainer preparing an integration with the official GitHub MCP implementation needs a precise account of what this released pilot already establishes. Inspect the supplied implementation, dependency declaration, profile and release documentation. Report the identities and interfaces actually supported by those sources, the compatibility conclusions justified by them, and any additional evidence needed before making a stronger claim. Do not assume an official server, remote authentication or provider operation was exercised during this task. Use read_repository_file({repository,path}) for the supplied file sources; the tool returns the fixed ref. Return a JSON report with the useful Markdown in report_markdown (no more than 6000 UTF-8 bytes), plus task_id, conclusion and source citations. This task starts in a fresh context; do not rely on prior task answers or results.",
       "lane": "mcp",
       "sources": [
         {
@@ -156,7 +156,7 @@
     {
       "id": "limits-and-recovery",
       "title": "Write the limits and uncertain-delivery operator runbook",
-      "prompt": "A maintainer needs an operator reference before using the public comment bridge and when delivery has an uncertain outcome. Read the pinned profile, dispatch/readback implementation and operator documentation. Produce a compact limits table and a condition-to-action recovery decision table. Distinguish what the available evidence establishes from what remains unresolved, and identify the documented way to preserve and inspect evidence without inventing commands or claiming a new fault experiment. Use read_repository_file({repository,path}) for the supplied file sources; the tool returns the fixed ref. Return a useful Markdown report as final text, no more than 6000 UTF-8 bytes. This task starts in a fresh context; do not rely on prior task answers or results.",
+      "prompt": "A maintainer needs an operator reference before using the public comment bridge and when delivery has an uncertain outcome. Read the pinned profile, dispatch/readback implementation and operator documentation. Produce a compact limits table and a condition-to-action recovery decision table. Distinguish what the available evidence establishes from what remains unresolved, and identify the documented way to preserve and inspect evidence without inventing commands or claiming a new fault experiment. Use read_repository_file({repository,path}) for the supplied file sources; the tool returns the fixed ref. Return a JSON report with the useful Markdown in report_markdown (no more than 6000 UTF-8 bytes), plus task_id, conclusion and source citations. This task starts in a fresh context; do not rely on prior task answers or results.",
       "lane": "sdk",
       "sources": [
         {
@@ -195,7 +195,7 @@
     {
       "id": "conformance-support",
       "title": "Prepare an evidence-backed conformance support statement",
-      "prompt": "A maintainer needs an accurate adopter-facing support and conformance statement for the public release. Cross-check the requirement traceability, consumer contracts, runner guide and measured release summary. Distinguish designed obligations, executed evidence and unsupported or untested claims. Provide publishable wording plus any specifically justified documentation change. No change needed is a valid conclusion when supported; do not force file corrections or invent defects merely to produce work. Use read_repository_file({repository,path}) for the supplied file sources; the tool returns the fixed ref. Return a useful Markdown report as final text, no more than 6000 UTF-8 bytes. This task starts in a fresh context; do not rely on prior task answers or results.",
+      "prompt": "A maintainer needs an accurate adopter-facing support and conformance statement for the public release. Cross-check the requirement traceability, consumer contracts, runner guide and measured release summary. Distinguish designed obligations, executed evidence and unsupported or untested claims. Provide publishable wording plus any specifically justified documentation change. No change needed is a valid conclusion when supported; do not force file corrections or invent defects merely to produce work. Use read_repository_file({repository,path}) for the supplied file sources; the tool returns the fixed ref. Return a JSON report with the useful Markdown in report_markdown (no more than 6000 UTF-8 bytes), plus task_id, conclusion and source citations. This task starts in a fresh context; do not rely on prior task answers or results.",
       "lane": "mcp",
       "sources": [
         {

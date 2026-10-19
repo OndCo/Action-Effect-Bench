@@ -1,0 +1,24 @@
+{
+  "format": "field-study-amendment/1",
+  "study_version": 2,
+  "population": "post-review-repeat-of-six-exposed-maintenance-intents",
+  "holdout": false,
+  "prior_report": {
+    "file": "field-study-use-2026-10-19T06-33-57.736Z-0e238334.json",
+    "sha256": "cdc07b7a10000a4fe96152a6a460f5633c3403bcc7c0cd8f3f68f8e1a5cbe9fc",
+    "evidence_commit": "eff7bf6bee237162a7f321bbb131008f880346fb",
+    "runtime_commit": "bc1d389a474c37a9c38b2b5acedbd7bb65650225"
+  },
+  "reason": "Resolve inconsistent first-run response instructions, expose bounded execution-channel metadata, and strengthen evidence replay and journal failure handling. Five of six first-run Markdown bodies exceeded the original 6000-byte task budget. One report denied current server/provider use although read calls occurred; the normalized model-visible results did not expose server identity. Preserve those results; do not change facts or relabel the first run as compliant.",
+  "response_contract": {
+    "format": "JSON envelope containing task_id, report_markdown, conclusion, citations",
+    "report_max_utf8_bytes": 6000,
+    "recommended_target_utf8_bytes": 5000,
+    "oversize_behavior": "retain the candidate in its model observation and record a failed task; never silently truncate or automatically rewrite"
+  },
+  "automatic_model_retries": false,
+  "execution_metadata": "Each task receives its selected configured channel. MCP identity and negotiated protocol come from successful startup, SDK identity from the pinned dependency; only successful tool observations establish reads. No answer keys or previous task outputs are supplied.",
+  "frozen_fact_records_sha256": "bbf1996cc43ff3d9429326623dac61f4399a77d6bcb34372f6abee4d420b5872",
+  "review": "Same-project AI-assisted source review. Not independent human labels. Actual end-user acceptance is unmeasured.",
+  "scope": "Same six intents, immutable source files, lanes and model deployment, fresh context per task. No new provider writes, no customer or Shuwen data. The before/after observations are not a randomized causal comparison or a new independent task population."
+}
