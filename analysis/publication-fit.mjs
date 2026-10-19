@@ -1,4 +1,4 @@
-import { readFileSync } from 'node:fs';
+import { readFileSync, realpathSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { basename, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -22,7 +22,7 @@ export function assertCommittedReport({ revision, file, raw, readBlob = (ref, pa
   if (!Buffer.from(readBlob(revision, `reports/${file}`)).equals(raw)) throw new Error('committed_report_mismatch');
 }
 
-if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+if (process.argv[1] && realpathSync(process.argv[1]) === fileURLToPath(import.meta.url)) {
   if (process.argv.length !== 4 || !/^[a-f0-9]{40}$/.test(process.argv[3])) throw new Error('Expected local report and the already committed evidence revision; no network calls are made.');
   const reportPath = resolve(process.argv[2]);
   const root = fileURLToPath(new URL('../reports/', import.meta.url));
