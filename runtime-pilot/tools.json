@@ -1,0 +1,12 @@
+{
+  "opa": {
+    "version": "1.21.2",
+    "release": "https://github.com/open-policy-agent/opa/releases/tag/v1.21.2",
+    "assets": {
+      "darwin-arm64": {"name":"opa_darwin_arm64", "sha256":"e358121f0d96a41103499d878184e493cc5ab10956f98e835089b9de0ac2de62"},
+      "darwin-x64": {"name":"opa_darwin_amd64", "sha256":"4bd9627845899723add7d2dae1bdf97407b2c56fc8d4d15895c6de9c3aa64fec"},
+      "linux-x64": {"name":"opa_linux_amd64_static", "sha256":"830ab11f61ffec760b5e19db0d7ad02bf037e13f5ef4d665faeaf17632177527"},
+      "linux-arm64": {"name":"opa_linux_arm64_static", "sha256":"ed13bb8647b8a81e1f11741dd18babe02aced7a304314bd6bf8007793b6d4ff1"}
+    }
+  }
+}

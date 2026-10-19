@@ -1,0 +1,3227 @@
+{
+  "schema_version": "github-issue-comment-corpus/1",
+  "corpus_id": "github-issue-comment-public-development-v1",
+  "provenance": {
+    "use": "public-development",
+    "authorship": "same-project-ai-assisted",
+    "source": "supplied-interface-only",
+    "external": false,
+    "held_out": false,
+    "independent_lab": false,
+    "candidate_runtime_read": false,
+    "provider_execution": false
+  },
+  "scope": {
+    "kind": "partial_direct",
+    "provider_descendants": "unobserved",
+    "principal_source": "context"
+  },
+  "format": {
+    "native_lanes": "nonempty-subset-of-sdk-mcp",
+    "expected_applies_to": "every-present-native-lane",
+    "omitted_lane": "not-applicable",
+    "absent_context": "null",
+    "schema_or_config_error": "evaluation-failure-not-a-decision"
+  },
+  "counts": {
+    "cases": 55,
+    "base_intents": 22,
+    "sdk": 53,
+    "mcp": 55,
+    "lane_instances": 108
+  },
+  "cases": [
+    {
+      "id": "ascii-comment",
+      "base_intent": "ascii-content",
+      "scenario": "Post a nonempty ASCII comment to the exact granted issue.",
+      "native": {
+        "sdk": {
+          "lane": "sdk",
+          "call": {
+            "owner": "OndCo",
+            "repo": "Action-Effect-Bench",
+            "issue_number": 1,
+            "body": "Synthetic public development comment.\n"
+          }
+        },
+        "mcp": {
+          "lane": "mcp",
+          "call": {
+            "name": "add_issue_comment",
+            "arguments": {
+              "owner": "OndCo",
+              "repo": "Action-Effect-Bench",
+              "issue_number": 1,
+              "body": "Synthetic public development comment.\n"
+            }
+          }
+        }
+      },
+      "context": {
+        "principal": "fixture-user",
+        "data_class": "synthetic-public",
+        "implementation": "github-comment-bridge/1"
+      },
+      "policy": {
+        "revision": "p1",
+        "principal": "fixture-user",
+        "revoked": false,
+        "allow_partial_direct": true,
+        "max_body_bytes": 8192,
+        "grants": [
+          {
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "data_class": "synthetic-public"
+          }
+        ]
+      },
+      "expected": {
+        "mapping": {
+          "status": "accepted_partial",
+          "reason": "declared_partial",
+          "projection": {
+            "operation": "create_issue_comment",
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "endpoint": "https://api.github.com/repos/OndCo/Action-Effect-Bench/issues/1/comments",
+            "body_sha256": "5381f9ade6129d50a25280c5fdd3ac9ffb13bacb9d9d01f6547a0b6f2d3f8a82",
+            "body_bytes": 38,
+            "data_class": "synthetic-public"
+          }
+        },
+        "decision": "allow"
+      }
+    },
+    {
+      "id": "unicode-comment",
+      "base_intent": "unicode-content",
+      "scenario": "Preserve BMP text and a supplementary scalar in UTF-8.",
+      "native": {
+        "sdk": {
+          "lane": "sdk",
+          "call": {
+            "owner": "OndCo",
+            "repo": "Action-Effect-Bench",
+            "issue_number": 1,
+            "body": "Synthetic: caf\u00e9 \u516c\u5f00 \ud83e\uddea"
+          }
+        },
+        "mcp": {
+          "lane": "mcp",
+          "call": {
+            "name": "add_issue_comment",
+            "arguments": {
+              "owner": "OndCo",
+              "repo": "Action-Effect-Bench",
+              "issue_number": 1,
+              "body": "Synthetic: caf\u00e9 \u516c\u5f00 \ud83e\uddea"
+            }
+          }
+        }
+      },
+      "context": {
+        "principal": "fixture-user",
+        "data_class": "synthetic-public",
+        "implementation": "github-comment-bridge/1"
+      },
+      "policy": {
+        "revision": "p1",
+        "principal": "fixture-user",
+        "revoked": false,
+        "allow_partial_direct": true,
+        "max_body_bytes": 8192,
+        "grants": [
+          {
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "data_class": "synthetic-public"
+          }
+        ]
+      },
+      "expected": {
+        "mapping": {
+          "status": "accepted_partial",
+          "reason": "declared_partial",
+          "projection": {
+            "operation": "create_issue_comment",
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "endpoint": "https://api.github.com/repos/OndCo/Action-Effect-Bench/issues/1/comments",
+            "body_sha256": "cf4c703af14b25554b2acfba5fc7da7ac06c6cad483d13f58669f1e7995f4139",
+            "body_bytes": 28,
+            "data_class": "synthetic-public"
+          }
+        },
+        "decision": "allow"
+      }
+    },
+    {
+      "id": "unicode-nfc",
+      "base_intent": "unicode-content",
+      "scenario": "Hash precomposed text without normalization.",
+      "native": {
+        "sdk": {
+          "lane": "sdk",
+          "call": {
+            "owner": "OndCo",
+            "repo": "Action-Effect-Bench",
+            "issue_number": 1,
+            "body": "caf\u00e9"
+          }
+        },
+        "mcp": {
+          "lane": "mcp",
+          "call": {
+            "name": "add_issue_comment",
+            "arguments": {
+              "owner": "OndCo",
+              "repo": "Action-Effect-Bench",
+              "issue_number": 1,
+              "body": "caf\u00e9"
+            }
+          }
+        }
+      },
+      "context": {
+        "principal": "fixture-user",
+        "data_class": "synthetic-public",
+        "implementation": "github-comment-bridge/1"
+      },
+      "policy": {
+        "revision": "p1",
+        "principal": "fixture-user",
+        "revoked": false,
+        "allow_partial_direct": true,
+        "max_body_bytes": 8192,
+        "grants": [
+          {
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "data_class": "synthetic-public"
+          }
+        ]
+      },
+      "expected": {
+        "mapping": {
+          "status": "accepted_partial",
+          "reason": "declared_partial",
+          "projection": {
+            "operation": "create_issue_comment",
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "endpoint": "https://api.github.com/repos/OndCo/Action-Effect-Bench/issues/1/comments",
+            "body_sha256": "850f7dc43910ff890f8879c0ed26fe697c93a067ad93a7d50f466a7028a9bf4e",
+            "body_bytes": 5,
+            "data_class": "synthetic-public"
+          }
+        },
+        "decision": "allow"
+      }
+    },
+    {
+      "id": "unicode-nfd",
+      "base_intent": "unicode-content",
+      "scenario": "Canonically equivalent decomposed text has different bytes and hash.",
+      "native": {
+        "sdk": {
+          "lane": "sdk",
+          "call": {
+            "owner": "OndCo",
+            "repo": "Action-Effect-Bench",
+            "issue_number": 1,
+            "body": "cafe\u0301"
+          }
+        },
+        "mcp": {
+          "lane": "mcp",
+          "call": {
+            "name": "add_issue_comment",
+            "arguments": {
+              "owner": "OndCo",
+              "repo": "Action-Effect-Bench",
+              "issue_number": 1,
+              "body": "cafe\u0301"
+            }
+          }
+        }
+      },
+      "context": {
+        "principal": "fixture-user",
+        "data_class": "synthetic-public",
+        "implementation": "github-comment-bridge/1"
+      },
+      "policy": {
+        "revision": "p1",
+        "principal": "fixture-user",
+        "revoked": false,
+        "allow_partial_direct": true,
+        "max_body_bytes": 8192,
+        "grants": [
+          {
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "data_class": "synthetic-public"
+          }
+        ]
+      },
+      "expected": {
+        "mapping": {
+          "status": "accepted_partial",
+          "reason": "declared_partial",
+          "projection": {
+            "operation": "create_issue_comment",
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "endpoint": "https://api.github.com/repos/OndCo/Action-Effect-Bench/issues/1/comments",
+            "body_sha256": "81ef060bcd98adc7824eb5c1ada83c32491b16018e11e79f00ab9d09e04b015a",
+            "body_bytes": 6,
+            "data_class": "synthetic-public"
+          }
+        },
+        "decision": "allow"
+      }
+    },
+    {
+      "id": "verbatim-whitespace",
+      "base_intent": "verbatim-content",
+      "scenario": "A nonempty whitespace-only body is preserved, including CRLF and tab.",
+      "native": {
+        "sdk": {
+          "lane": "sdk",
+          "call": {
+            "owner": "OndCo",
+            "repo": "Action-Effect-Bench",
+            "issue_number": 1,
+            "body": " \r\n\t\n"
+          }
+        },
+        "mcp": {
+          "lane": "mcp",
+          "call": {
+            "name": "add_issue_comment",
+            "arguments": {
+              "owner": "OndCo",
+              "repo": "Action-Effect-Bench",
+              "issue_number": 1,
+              "body": " \r\n\t\n"
+            }
+          }
+        }
+      },
+      "context": {
+        "principal": "fixture-user",
+        "data_class": "synthetic-public",
+        "implementation": "github-comment-bridge/1"
+      },
+      "policy": {
+        "revision": "p1",
+        "principal": "fixture-user",
+        "revoked": false,
+        "allow_partial_direct": true,
+        "max_body_bytes": 8192,
+        "grants": [
+          {
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "data_class": "synthetic-public"
+          }
+        ]
+      },
+      "expected": {
+        "mapping": {
+          "status": "accepted_partial",
+          "reason": "declared_partial",
+          "projection": {
+            "operation": "create_issue_comment",
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "endpoint": "https://api.github.com/repos/OndCo/Action-Effect-Bench/issues/1/comments",
+            "body_sha256": "f209e36a594a34ac6603bf6b30fe81d9a535dcacad3f88657c69af1306ca3bbc",
+            "body_bytes": 5,
+            "data_class": "synthetic-public"
+          }
+        },
+        "decision": "allow"
+      }
+    },
+    {
+      "id": "verbatim-nul",
+      "base_intent": "verbatim-content",
+      "scenario": "An escaped NUL is a valid scalar and remains part of the body digest.",
+      "native": {
+        "sdk": {
+          "lane": "sdk",
+          "call": {
+            "owner": "OndCo",
+            "repo": "Action-Effect-Bench",
+            "issue_number": 1,
+            "body": "synthetic\u0000public"
+          }
+        },
+        "mcp": {
+          "lane": "mcp",
+          "call": {
+            "name": "add_issue_comment",
+            "arguments": {
+              "owner": "OndCo",
+              "repo": "Action-Effect-Bench",
+              "issue_number": 1,
+              "body": "synthetic\u0000public"
+            }
+          }
+        }
+      },
+      "context": {
+        "principal": "fixture-user",
+        "data_class": "synthetic-public",
+        "implementation": "github-comment-bridge/1"
+      },
+      "policy": {
+        "revision": "p1",
+        "principal": "fixture-user",
+        "revoked": false,
+        "allow_partial_direct": true,
+        "max_body_bytes": 8192,
+        "grants": [
+          {
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "data_class": "synthetic-public"
+          }
+        ]
+      },
+      "expected": {
+        "mapping": {
+          "status": "accepted_partial",
+          "reason": "declared_partial",
+          "projection": {
+            "operation": "create_issue_comment",
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "endpoint": "https://api.github.com/repos/OndCo/Action-Effect-Bench/issues/1/comments",
+            "body_sha256": "680c167a5111ba3f782d467394c8801a7ec2f5bda81806e53bf3cc6343ef2f2b",
+            "body_bytes": 16,
+            "data_class": "synthetic-public"
+          }
+        },
+        "decision": "allow"
+      }
+    },
+    {
+      "id": "different-repository",
+      "base_intent": "repository-target",
+      "scenario": "A path-safe but ungranted repository is mapped literally and denied.",
+      "native": {
+        "sdk": {
+          "lane": "sdk",
+          "call": {
+            "owner": "OndCo",
+            "repo": "Other-Repo",
+            "issue_number": 1,
+            "body": "Synthetic public development comment.\n"
+          }
+        },
+        "mcp": {
+          "lane": "mcp",
+          "call": {
+            "name": "add_issue_comment",
+            "arguments": {
+              "owner": "OndCo",
+              "repo": "Other-Repo",
+              "issue_number": 1,
+              "body": "Synthetic public development comment.\n"
+            }
+          }
+        }
+      },
+      "context": {
+        "principal": "fixture-user",
+        "data_class": "synthetic-public",
+        "implementation": "github-comment-bridge/1"
+      },
+      "policy": {
+        "revision": "p1",
+        "principal": "fixture-user",
+        "revoked": false,
+        "allow_partial_direct": true,
+        "max_body_bytes": 8192,
+        "grants": [
+          {
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "data_class": "synthetic-public"
+          }
+        ]
+      },
+      "expected": {
+        "mapping": {
+          "status": "accepted_partial",
+          "reason": "declared_partial",
+          "projection": {
+            "operation": "create_issue_comment",
+            "repository": "OndCo/Other-Repo",
+            "issue_number": 1,
+            "endpoint": "https://api.github.com/repos/OndCo/Other-Repo/issues/1/comments",
+            "body_sha256": "5381f9ade6129d50a25280c5fdd3ac9ffb13bacb9d9d01f6547a0b6f2d3f8a82",
+            "body_bytes": 38,
+            "data_class": "synthetic-public"
+          }
+        },
+        "decision": "deny"
+      }
+    },
+    {
+      "id": "different-owner",
+      "base_intent": "repository-target",
+      "scenario": "Changing the owner does not inherit the original repository grant.",
+      "native": {
+        "sdk": {
+          "lane": "sdk",
+          "call": {
+            "owner": "ExampleOrg",
+            "repo": "Action-Effect-Bench",
+            "issue_number": 1,
+            "body": "Synthetic public development comment.\n"
+          }
+        },
+        "mcp": {
+          "lane": "mcp",
+          "call": {
+            "name": "add_issue_comment",
+            "arguments": {
+              "owner": "ExampleOrg",
+              "repo": "Action-Effect-Bench",
+              "issue_number": 1,
+              "body": "Synthetic public development comment.\n"
+            }
+          }
+        }
+      },
+      "context": {
+        "principal": "fixture-user",
+        "data_class": "synthetic-public",
+        "implementation": "github-comment-bridge/1"
+      },
+      "policy": {
+        "revision": "p1",
+        "principal": "fixture-user",
+        "revoked": false,
+        "allow_partial_direct": true,
+        "max_body_bytes": 8192,
+        "grants": [
+          {
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "data_class": "synthetic-public"
+          }
+        ]
+      },
+      "expected": {
+        "mapping": {
+          "status": "accepted_partial",
+          "reason": "declared_partial",
+          "projection": {
+            "operation": "create_issue_comment",
+            "repository": "ExampleOrg/Action-Effect-Bench",
+            "issue_number": 1,
+            "endpoint": "https://api.github.com/repos/ExampleOrg/Action-Effect-Bench/issues/1/comments",
+            "body_sha256": "5381f9ade6129d50a25280c5fdd3ac9ffb13bacb9d9d01f6547a0b6f2d3f8a82",
+            "body_bytes": 38,
+            "data_class": "synthetic-public"
+          }
+        },
+        "decision": "deny"
+      }
+    },
+    {
+      "id": "different-issue",
+      "base_intent": "issue-target",
+      "scenario": "A valid issue number outside the exact grant is denied.",
+      "native": {
+        "sdk": {
+          "lane": "sdk",
+          "call": {
+            "owner": "OndCo",
+            "repo": "Action-Effect-Bench",
+            "issue_number": 2,
+            "body": "Synthetic public development comment.\n"
+          }
+        },
+        "mcp": {
+          "lane": "mcp",
+          "call": {
+            "name": "add_issue_comment",
+            "arguments": {
+              "owner": "OndCo",
+              "repo": "Action-Effect-Bench",
+              "issue_number": 2,
+              "body": "Synthetic public development comment.\n"
+            }
+          }
+        }
+      },
+      "context": {
+        "principal": "fixture-user",
+        "data_class": "synthetic-public",
+        "implementation": "github-comment-bridge/1"
+      },
+      "policy": {
+        "revision": "p1",
+        "principal": "fixture-user",
+        "revoked": false,
+        "allow_partial_direct": true,
+        "max_body_bytes": 8192,
+        "grants": [
+          {
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "data_class": "synthetic-public"
+          }
+        ]
+      },
+      "expected": {
+        "mapping": {
+          "status": "accepted_partial",
+          "reason": "declared_partial",
+          "projection": {
+            "operation": "create_issue_comment",
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 2,
+            "endpoint": "https://api.github.com/repos/OndCo/Action-Effect-Bench/issues/2/comments",
+            "body_sha256": "5381f9ade6129d50a25280c5fdd3ac9ffb13bacb9d9d01f6547a0b6f2d3f8a82",
+            "body_bytes": 38,
+            "data_class": "synthetic-public"
+          }
+        },
+        "decision": "deny"
+      }
+    },
+    {
+      "id": "different-issue-granted",
+      "base_intent": "issue-target",
+      "scenario": "An exact replacement grant permits the changed issue.",
+      "native": {
+        "sdk": {
+          "lane": "sdk",
+          "call": {
+            "owner": "OndCo",
+            "repo": "Action-Effect-Bench",
+            "issue_number": 2,
+            "body": "Synthetic public development comment.\n"
+          }
+        },
+        "mcp": {
+          "lane": "mcp",
+          "call": {
+            "name": "add_issue_comment",
+            "arguments": {
+              "owner": "OndCo",
+              "repo": "Action-Effect-Bench",
+              "issue_number": 2,
+              "body": "Synthetic public development comment.\n"
+            }
+          }
+        }
+      },
+      "context": {
+        "principal": "fixture-user",
+        "data_class": "synthetic-public",
+        "implementation": "github-comment-bridge/1"
+      },
+      "policy": {
+        "revision": "p1",
+        "principal": "fixture-user",
+        "revoked": false,
+        "allow_partial_direct": true,
+        "max_body_bytes": 8192,
+        "grants": [
+          {
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 2,
+            "data_class": "synthetic-public"
+          }
+        ]
+      },
+      "expected": {
+        "mapping": {
+          "status": "accepted_partial",
+          "reason": "declared_partial",
+          "projection": {
+            "operation": "create_issue_comment",
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 2,
+            "endpoint": "https://api.github.com/repos/OndCo/Action-Effect-Bench/issues/2/comments",
+            "body_sha256": "5381f9ade6129d50a25280c5fdd3ac9ffb13bacb9d9d01f6547a0b6f2d3f8a82",
+            "body_bytes": 38,
+            "data_class": "synthetic-public"
+          }
+        },
+        "decision": "allow"
+      }
+    },
+    {
+      "id": "grant-cross-repository-issue",
+      "base_intent": "coupled-grants",
+      "scenario": "Repository and issue values from different grants cannot be recombined.",
+      "native": {
+        "sdk": {
+          "lane": "sdk",
+          "call": {
+            "owner": "OndCo",
+            "repo": "Action-Effect-Bench",
+            "issue_number": 2,
+            "body": "Synthetic public development comment.\n"
+          }
+        },
+        "mcp": {
+          "lane": "mcp",
+          "call": {
+            "name": "add_issue_comment",
+            "arguments": {
+              "owner": "OndCo",
+              "repo": "Action-Effect-Bench",
+              "issue_number": 2,
+              "body": "Synthetic public development comment.\n"
+            }
+          }
+        }
+      },
+      "context": {
+        "principal": "fixture-user",
+        "data_class": "synthetic-public",
+        "implementation": "github-comment-bridge/1"
+      },
+      "policy": {
+        "revision": "p1",
+        "principal": "fixture-user",
+        "revoked": false,
+        "allow_partial_direct": true,
+        "max_body_bytes": 8192,
+        "grants": [
+          {
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "data_class": "synthetic-public"
+          },
+          {
+            "repository": "ExampleOrg/Other-Repo",
+            "issue_number": 2,
+            "data_class": "synthetic-public"
+          }
+        ]
+      },
+      "expected": {
+        "mapping": {
+          "status": "accepted_partial",
+          "reason": "declared_partial",
+          "projection": {
+            "operation": "create_issue_comment",
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 2,
+            "endpoint": "https://api.github.com/repos/OndCo/Action-Effect-Bench/issues/2/comments",
+            "body_sha256": "5381f9ade6129d50a25280c5fdd3ac9ffb13bacb9d9d01f6547a0b6f2d3f8a82",
+            "body_bytes": 38,
+            "data_class": "synthetic-public"
+          }
+        },
+        "decision": "deny"
+      }
+    },
+    {
+      "id": "grant-cross-data-class",
+      "base_intent": "coupled-grants",
+      "scenario": "Pairwise matches do not replace one exact repository/issue/data-class tuple.",
+      "native": {
+        "sdk": {
+          "lane": "sdk",
+          "call": {
+            "owner": "OndCo",
+            "repo": "Action-Effect-Bench",
+            "issue_number": 1,
+            "body": "Synthetic public development comment.\n"
+          }
+        },
+        "mcp": {
+          "lane": "mcp",
+          "call": {
+            "name": "add_issue_comment",
+            "arguments": {
+              "owner": "OndCo",
+              "repo": "Action-Effect-Bench",
+              "issue_number": 1,
+              "body": "Synthetic public development comment.\n"
+            }
+          }
+        }
+      },
+      "context": {
+        "principal": "fixture-user",
+        "data_class": "synthetic-public",
+        "implementation": "github-comment-bridge/1"
+      },
+      "policy": {
+        "revision": "p1",
+        "principal": "fixture-user",
+        "revoked": false,
+        "allow_partial_direct": true,
+        "max_body_bytes": 8192,
+        "grants": [
+          {
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "data_class": "synthetic-other"
+          },
+          {
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 2,
+            "data_class": "synthetic-public"
+          },
+          {
+            "repository": "ExampleOrg/Other-Repo",
+            "issue_number": 1,
+            "data_class": "synthetic-public"
+          }
+        ]
+      },
+      "expected": {
+        "mapping": {
+          "status": "accepted_partial",
+          "reason": "declared_partial",
+          "projection": {
+            "operation": "create_issue_comment",
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "endpoint": "https://api.github.com/repos/OndCo/Action-Effect-Bench/issues/1/comments",
+            "body_sha256": "5381f9ade6129d50a25280c5fdd3ac9ffb13bacb9d9d01f6547a0b6f2d3f8a82",
+            "body_bytes": 38,
+            "data_class": "synthetic-public"
+          }
+        },
+        "decision": "deny"
+      }
+    },
+    {
+      "id": "grant-exact-among-decoys",
+      "base_intent": "coupled-grants",
+      "scenario": "One fully coupled grant is sufficient even when decoy grants are present.",
+      "native": {
+        "sdk": {
+          "lane": "sdk",
+          "call": {
+            "owner": "OndCo",
+            "repo": "Action-Effect-Bench",
+            "issue_number": 1,
+            "body": "Synthetic public development comment.\n"
+          }
+        },
+        "mcp": {
+          "lane": "mcp",
+          "call": {
+            "name": "add_issue_comment",
+            "arguments": {
+              "owner": "OndCo",
+              "repo": "Action-Effect-Bench",
+              "issue_number": 1,
+              "body": "Synthetic public development comment.\n"
+            }
+          }
+        }
+      },
+      "context": {
+        "principal": "fixture-user",
+        "data_class": "synthetic-public",
+        "implementation": "github-comment-bridge/1"
+      },
+      "policy": {
+        "revision": "p1",
+        "principal": "fixture-user",
+        "revoked": false,
+        "allow_partial_direct": true,
+        "max_body_bytes": 8192,
+        "grants": [
+          {
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "data_class": "synthetic-other"
+          },
+          {
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 2,
+            "data_class": "synthetic-public"
+          },
+          {
+            "repository": "ExampleOrg/Other-Repo",
+            "issue_number": 1,
+            "data_class": "synthetic-public"
+          },
+          {
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "data_class": "synthetic-public"
+          }
+        ]
+      },
+      "expected": {
+        "mapping": {
+          "status": "accepted_partial",
+          "reason": "declared_partial",
+          "projection": {
+            "operation": "create_issue_comment",
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "endpoint": "https://api.github.com/repos/OndCo/Action-Effect-Bench/issues/1/comments",
+            "body_sha256": "5381f9ade6129d50a25280c5fdd3ac9ffb13bacb9d9d01f6547a0b6f2d3f8a82",
+            "body_bytes": 38,
+            "data_class": "synthetic-public"
+          }
+        },
+        "decision": "allow"
+      }
+    },
+    {
+      "id": "grant-empty",
+      "base_intent": "coupled-grants",
+      "scenario": "An empty, well-formed grant list provides no authorization.",
+      "native": {
+        "sdk": {
+          "lane": "sdk",
+          "call": {
+            "owner": "OndCo",
+            "repo": "Action-Effect-Bench",
+            "issue_number": 1,
+            "body": "Synthetic public development comment.\n"
+          }
+        },
+        "mcp": {
+          "lane": "mcp",
+          "call": {
+            "name": "add_issue_comment",
+            "arguments": {
+              "owner": "OndCo",
+              "repo": "Action-Effect-Bench",
+              "issue_number": 1,
+              "body": "Synthetic public development comment.\n"
+            }
+          }
+        }
+      },
+      "context": {
+        "principal": "fixture-user",
+        "data_class": "synthetic-public",
+        "implementation": "github-comment-bridge/1"
+      },
+      "policy": {
+        "revision": "p1",
+        "principal": "fixture-user",
+        "revoked": false,
+        "allow_partial_direct": true,
+        "max_body_bytes": 8192,
+        "grants": []
+      },
+      "expected": {
+        "mapping": {
+          "status": "accepted_partial",
+          "reason": "declared_partial",
+          "projection": {
+            "operation": "create_issue_comment",
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "endpoint": "https://api.github.com/repos/OndCo/Action-Effect-Bench/issues/1/comments",
+            "body_sha256": "5381f9ade6129d50a25280c5fdd3ac9ffb13bacb9d9d01f6547a0b6f2d3f8a82",
+            "body_bytes": 38,
+            "data_class": "synthetic-public"
+          }
+        },
+        "decision": "deny"
+      }
+    },
+    {
+      "id": "revoked-policy",
+      "base_intent": "revocation",
+      "scenario": "Revocation denies a call that otherwise matches every grant condition.",
+      "native": {
+        "sdk": {
+          "lane": "sdk",
+          "call": {
+            "owner": "OndCo",
+            "repo": "Action-Effect-Bench",
+            "issue_number": 1,
+            "body": "Synthetic public development comment.\n"
+          }
+        },
+        "mcp": {
+          "lane": "mcp",
+          "call": {
+            "name": "add_issue_comment",
+            "arguments": {
+              "owner": "OndCo",
+              "repo": "Action-Effect-Bench",
+              "issue_number": 1,
+              "body": "Synthetic public development comment.\n"
+            }
+          }
+        }
+      },
+      "context": {
+        "principal": "fixture-user",
+        "data_class": "synthetic-public",
+        "implementation": "github-comment-bridge/1"
+      },
+      "policy": {
+        "revision": "p1",
+        "principal": "fixture-user",
+        "revoked": true,
+        "allow_partial_direct": true,
+        "max_body_bytes": 8192,
+        "grants": [
+          {
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "data_class": "synthetic-public"
+          }
+        ]
+      },
+      "expected": {
+        "mapping": {
+          "status": "accepted_partial",
+          "reason": "declared_partial",
+          "projection": {
+            "operation": "create_issue_comment",
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "endpoint": "https://api.github.com/repos/OndCo/Action-Effect-Bench/issues/1/comments",
+            "body_sha256": "5381f9ade6129d50a25280c5fdd3ac9ffb13bacb9d9d01f6547a0b6f2d3f8a82",
+            "body_bytes": 38,
+            "data_class": "synthetic-public"
+          }
+        },
+        "decision": "deny"
+      }
+    },
+    {
+      "id": "revoked-before-partial-review",
+      "base_intent": "revocation",
+      "scenario": "Known revocation takes precedence over unaccepted partial scope.",
+      "native": {
+        "sdk": {
+          "lane": "sdk",
+          "call": {
+            "owner": "OndCo",
+            "repo": "Action-Effect-Bench",
+            "issue_number": 1,
+            "body": "Synthetic public development comment.\n"
+          }
+        },
+        "mcp": {
+          "lane": "mcp",
+          "call": {
+            "name": "add_issue_comment",
+            "arguments": {
+              "owner": "OndCo",
+              "repo": "Action-Effect-Bench",
+              "issue_number": 1,
+              "body": "Synthetic public development comment.\n"
+            }
+          }
+        }
+      },
+      "context": {
+        "principal": "fixture-user",
+        "data_class": "synthetic-public",
+        "implementation": "github-comment-bridge/1"
+      },
+      "policy": {
+        "revision": "p1",
+        "principal": "fixture-user",
+        "revoked": true,
+        "allow_partial_direct": false,
+        "max_body_bytes": 8192,
+        "grants": [
+          {
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "data_class": "synthetic-public"
+          }
+        ]
+      },
+      "expected": {
+        "mapping": {
+          "status": "accepted_partial",
+          "reason": "declared_partial",
+          "projection": {
+            "operation": "create_issue_comment",
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "endpoint": "https://api.github.com/repos/OndCo/Action-Effect-Bench/issues/1/comments",
+            "body_sha256": "5381f9ade6129d50a25280c5fdd3ac9ffb13bacb9d9d01f6547a0b6f2d3f8a82",
+            "body_bytes": 38,
+            "data_class": "synthetic-public"
+          }
+        },
+        "decision": "deny"
+      }
+    },
+    {
+      "id": "policy-utf8-bound-equal",
+      "base_intent": "policy-body-bound",
+      "scenario": "The narrowed byte bound is inclusive: cafe with an accent occupies five bytes.",
+      "native": {
+        "sdk": {
+          "lane": "sdk",
+          "call": {
+            "owner": "OndCo",
+            "repo": "Action-Effect-Bench",
+            "issue_number": 1,
+            "body": "caf\u00e9"
+          }
+        },
+        "mcp": {
+          "lane": "mcp",
+          "call": {
+            "name": "add_issue_comment",
+            "arguments": {
+              "owner": "OndCo",
+              "repo": "Action-Effect-Bench",
+              "issue_number": 1,
+              "body": "caf\u00e9"
+            }
+          }
+        }
+      },
+      "context": {
+        "principal": "fixture-user",
+        "data_class": "synthetic-public",
+        "implementation": "github-comment-bridge/1"
+      },
+      "policy": {
+        "revision": "p1",
+        "principal": "fixture-user",
+        "revoked": false,
+        "allow_partial_direct": true,
+        "max_body_bytes": 5,
+        "grants": [
+          {
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "data_class": "synthetic-public"
+          }
+        ]
+      },
+      "expected": {
+        "mapping": {
+          "status": "accepted_partial",
+          "reason": "declared_partial",
+          "projection": {
+            "operation": "create_issue_comment",
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "endpoint": "https://api.github.com/repos/OndCo/Action-Effect-Bench/issues/1/comments",
+            "body_sha256": "850f7dc43910ff890f8879c0ed26fe697c93a067ad93a7d50f466a7028a9bf4e",
+            "body_bytes": 5,
+            "data_class": "synthetic-public"
+          }
+        },
+        "decision": "allow"
+      }
+    },
+    {
+      "id": "policy-utf8-bound-exceeded",
+      "base_intent": "policy-body-bound",
+      "scenario": "Four UTF-16 code units are five UTF-8 bytes and exceed a four-byte policy bound.",
+      "native": {
+        "sdk": {
+          "lane": "sdk",
+          "call": {
+            "owner": "OndCo",
+            "repo": "Action-Effect-Bench",
+            "issue_number": 1,
+            "body": "caf\u00e9"
+          }
+        },
+        "mcp": {
+          "lane": "mcp",
+          "call": {
+            "name": "add_issue_comment",
+            "arguments": {
+              "owner": "OndCo",
+              "repo": "Action-Effect-Bench",
+              "issue_number": 1,
+              "body": "caf\u00e9"
+            }
+          }
+        }
+      },
+      "context": {
+        "principal": "fixture-user",
+        "data_class": "synthetic-public",
+        "implementation": "github-comment-bridge/1"
+      },
+      "policy": {
+        "revision": "p1",
+        "principal": "fixture-user",
+        "revoked": false,
+        "allow_partial_direct": true,
+        "max_body_bytes": 4,
+        "grants": [
+          {
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "data_class": "synthetic-public"
+          }
+        ]
+      },
+      "expected": {
+        "mapping": {
+          "status": "accepted_partial",
+          "reason": "declared_partial",
+          "projection": {
+            "operation": "create_issue_comment",
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "endpoint": "https://api.github.com/repos/OndCo/Action-Effect-Bench/issues/1/comments",
+            "body_sha256": "850f7dc43910ff890f8879c0ed26fe697c93a067ad93a7d50f466a7028a9bf4e",
+            "body_bytes": 5,
+            "data_class": "synthetic-public"
+          }
+        },
+        "decision": "deny"
+      }
+    },
+    {
+      "id": "principal-mismatch",
+      "base_intent": "principal-binding",
+      "scenario": "The separate context principal must match the trusted policy principal.",
+      "native": {
+        "sdk": {
+          "lane": "sdk",
+          "call": {
+            "owner": "OndCo",
+            "repo": "Action-Effect-Bench",
+            "issue_number": 1,
+            "body": "Synthetic public development comment.\n"
+          }
+        },
+        "mcp": {
+          "lane": "mcp",
+          "call": {
+            "name": "add_issue_comment",
+            "arguments": {
+              "owner": "OndCo",
+              "repo": "Action-Effect-Bench",
+              "issue_number": 1,
+              "body": "Synthetic public development comment.\n"
+            }
+          }
+        }
+      },
+      "context": {
+        "principal": "fixture-other",
+        "data_class": "synthetic-public",
+        "implementation": "github-comment-bridge/1"
+      },
+      "policy": {
+        "revision": "p1",
+        "principal": "fixture-user",
+        "revoked": false,
+        "allow_partial_direct": true,
+        "max_body_bytes": 8192,
+        "grants": [
+          {
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "data_class": "synthetic-public"
+          }
+        ]
+      },
+      "expected": {
+        "mapping": {
+          "status": "accepted_partial",
+          "reason": "declared_partial",
+          "projection": {
+            "operation": "create_issue_comment",
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "endpoint": "https://api.github.com/repos/OndCo/Action-Effect-Bench/issues/1/comments",
+            "body_sha256": "5381f9ade6129d50a25280c5fdd3ac9ffb13bacb9d9d01f6547a0b6f2d3f8a82",
+            "body_bytes": 38,
+            "data_class": "synthetic-public"
+          }
+        },
+        "decision": "deny"
+      }
+    },
+    {
+      "id": "partial-not-accepted",
+      "base_intent": "partial-scope",
+      "scenario": "Otherwise authorized partial direct scope requires review when explicitly not accepted.",
+      "native": {
+        "sdk": {
+          "lane": "sdk",
+          "call": {
+            "owner": "OndCo",
+            "repo": "Action-Effect-Bench",
+            "issue_number": 1,
+            "body": "Synthetic public development comment.\n"
+          }
+        },
+        "mcp": {
+          "lane": "mcp",
+          "call": {
+            "name": "add_issue_comment",
+            "arguments": {
+              "owner": "OndCo",
+              "repo": "Action-Effect-Bench",
+              "issue_number": 1,
+              "body": "Synthetic public development comment.\n"
+            }
+          }
+        }
+      },
+      "context": {
+        "principal": "fixture-user",
+        "data_class": "synthetic-public",
+        "implementation": "github-comment-bridge/1"
+      },
+      "policy": {
+        "revision": "p1",
+        "principal": "fixture-user",
+        "revoked": false,
+        "allow_partial_direct": false,
+        "max_body_bytes": 8192,
+        "grants": [
+          {
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "data_class": "synthetic-public"
+          }
+        ]
+      },
+      "expected": {
+        "mapping": {
+          "status": "accepted_partial",
+          "reason": "declared_partial",
+          "projection": {
+            "operation": "create_issue_comment",
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "endpoint": "https://api.github.com/repos/OndCo/Action-Effect-Bench/issues/1/comments",
+            "body_sha256": "5381f9ade6129d50a25280c5fdd3ac9ffb13bacb9d9d01f6547a0b6f2d3f8a82",
+            "body_bytes": 38,
+            "data_class": "synthetic-public"
+          }
+        },
+        "decision": "review"
+      }
+    },
+    {
+      "id": "no-grant-before-partial-review",
+      "base_intent": "partial-scope",
+      "scenario": "A known absent grant denies rather than being softened to partial-scope review.",
+      "native": {
+        "sdk": {
+          "lane": "sdk",
+          "call": {
+            "owner": "OndCo",
+            "repo": "Action-Effect-Bench",
+            "issue_number": 1,
+            "body": "Synthetic public development comment.\n"
+          }
+        },
+        "mcp": {
+          "lane": "mcp",
+          "call": {
+            "name": "add_issue_comment",
+            "arguments": {
+              "owner": "OndCo",
+              "repo": "Action-Effect-Bench",
+              "issue_number": 1,
+              "body": "Synthetic public development comment.\n"
+            }
+          }
+        }
+      },
+      "context": {
+        "principal": "fixture-user",
+        "data_class": "synthetic-public",
+        "implementation": "github-comment-bridge/1"
+      },
+      "policy": {
+        "revision": "p1",
+        "principal": "fixture-user",
+        "revoked": false,
+        "allow_partial_direct": false,
+        "max_body_bytes": 8192,
+        "grants": []
+      },
+      "expected": {
+        "mapping": {
+          "status": "accepted_partial",
+          "reason": "declared_partial",
+          "projection": {
+            "operation": "create_issue_comment",
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "endpoint": "https://api.github.com/repos/OndCo/Action-Effect-Bench/issues/1/comments",
+            "body_sha256": "5381f9ade6129d50a25280c5fdd3ac9ffb13bacb9d9d01f6547a0b6f2d3f8a82",
+            "body_bytes": 38,
+            "data_class": "synthetic-public"
+          }
+        },
+        "decision": "deny"
+      }
+    },
+    {
+      "id": "byte-denial-before-partial-review",
+      "base_intent": "partial-scope",
+      "scenario": "A known body-byte violation denies before partial-scope review.",
+      "native": {
+        "sdk": {
+          "lane": "sdk",
+          "call": {
+            "owner": "OndCo",
+            "repo": "Action-Effect-Bench",
+            "issue_number": 1,
+            "body": "caf\u00e9"
+          }
+        },
+        "mcp": {
+          "lane": "mcp",
+          "call": {
+            "name": "add_issue_comment",
+            "arguments": {
+              "owner": "OndCo",
+              "repo": "Action-Effect-Bench",
+              "issue_number": 1,
+              "body": "caf\u00e9"
+            }
+          }
+        }
+      },
+      "context": {
+        "principal": "fixture-user",
+        "data_class": "synthetic-public",
+        "implementation": "github-comment-bridge/1"
+      },
+      "policy": {
+        "revision": "p1",
+        "principal": "fixture-user",
+        "revoked": false,
+        "allow_partial_direct": false,
+        "max_body_bytes": 4,
+        "grants": [
+          {
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "data_class": "synthetic-public"
+          }
+        ]
+      },
+      "expected": {
+        "mapping": {
+          "status": "accepted_partial",
+          "reason": "declared_partial",
+          "projection": {
+            "operation": "create_issue_comment",
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "endpoint": "https://api.github.com/repos/OndCo/Action-Effect-Bench/issues/1/comments",
+            "body_sha256": "850f7dc43910ff890f8879c0ed26fe697c93a067ad93a7d50f466a7028a9bf4e",
+            "body_bytes": 5,
+            "data_class": "synthetic-public"
+          }
+        },
+        "decision": "deny"
+      }
+    },
+    {
+      "id": "unsupported-mcp-operation",
+      "base_intent": "operation-profile",
+      "scenario": "A different MCP tool name is unsupported, not silently translated into a comment.",
+      "native": {
+        "mcp": {
+          "lane": "mcp",
+          "call": {
+            "name": "delete_issue_comment",
+            "arguments": {
+              "owner": "OndCo",
+              "repo": "Action-Effect-Bench",
+              "issue_number": 1,
+              "body": "Synthetic public development comment.\n"
+            }
+          }
+        }
+      },
+      "context": {
+        "principal": "fixture-user",
+        "data_class": "synthetic-public",
+        "implementation": "github-comment-bridge/1"
+      },
+      "policy": {
+        "revision": "p1",
+        "principal": "fixture-user",
+        "revoked": false,
+        "allow_partial_direct": true,
+        "max_body_bytes": 8192,
+        "grants": [
+          {
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "data_class": "synthetic-public"
+          }
+        ]
+      },
+      "expected": {
+        "mapping": {
+          "status": "unsupported_profile",
+          "reason": "operation"
+        },
+        "decision": "not_evaluated"
+      }
+    },
+    {
+      "id": "extra-executable-argument",
+      "base_intent": "exact-keys",
+      "scenario": "An extra executable argument is invalid and must not be ignored.",
+      "native": {
+        "sdk": {
+          "lane": "sdk",
+          "call": {
+            "owner": "OndCo",
+            "repo": "Action-Effect-Bench",
+            "issue_number": 1,
+            "body": "Synthetic public development comment.\n",
+            "method": "DELETE"
+          }
+        },
+        "mcp": {
+          "lane": "mcp",
+          "call": {
+            "name": "add_issue_comment",
+            "arguments": {
+              "owner": "OndCo",
+              "repo": "Action-Effect-Bench",
+              "issue_number": 1,
+              "body": "Synthetic public development comment.\n",
+              "method": "DELETE"
+            }
+          }
+        }
+      },
+      "context": {
+        "principal": "fixture-user",
+        "data_class": "synthetic-public",
+        "implementation": "github-comment-bridge/1"
+      },
+      "policy": {
+        "revision": "p1",
+        "principal": "fixture-user",
+        "revoked": false,
+        "allow_partial_direct": true,
+        "max_body_bytes": 8192,
+        "grants": [
+          {
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "data_class": "synthetic-public"
+          }
+        ]
+      },
+      "expected": {
+        "mapping": {
+          "status": "invalid_input",
+          "reason": "native_input"
+        },
+        "decision": "not_evaluated"
+      }
+    },
+    {
+      "id": "extra-outer-parameter",
+      "base_intent": "exact-keys",
+      "scenario": "The outer envelope also rejects extra keys.",
+      "native": {
+        "sdk": {
+          "lane": "sdk",
+          "call": {
+            "owner": "OndCo",
+            "repo": "Action-Effect-Bench",
+            "issue_number": 1,
+            "body": "Synthetic public development comment.\n"
+          },
+          "execute": true
+        },
+        "mcp": {
+          "lane": "mcp",
+          "call": {
+            "name": "add_issue_comment",
+            "arguments": {
+              "owner": "OndCo",
+              "repo": "Action-Effect-Bench",
+              "issue_number": 1,
+              "body": "Synthetic public development comment.\n"
+            }
+          },
+          "execute": true
+        }
+      },
+      "context": {
+        "principal": "fixture-user",
+        "data_class": "synthetic-public",
+        "implementation": "github-comment-bridge/1"
+      },
+      "policy": {
+        "revision": "p1",
+        "principal": "fixture-user",
+        "revoked": false,
+        "allow_partial_direct": true,
+        "max_body_bytes": 8192,
+        "grants": [
+          {
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "data_class": "synthetic-public"
+          }
+        ]
+      },
+      "expected": {
+        "mapping": {
+          "status": "invalid_input",
+          "reason": "native_input"
+        },
+        "decision": "not_evaluated"
+      }
+    },
+    {
+      "id": "extra-mcp-call-parameter",
+      "base_intent": "exact-keys",
+      "scenario": "MCP call keys are exactly name and arguments; extra confirmation parameters are invalid.",
+      "native": {
+        "mcp": {
+          "lane": "mcp",
+          "call": {
+            "name": "add_issue_comment",
+            "arguments": {
+              "owner": "OndCo",
+              "repo": "Action-Effect-Bench",
+              "issue_number": 1,
+              "body": "Synthetic public development comment.\n"
+            },
+            "confirm": true
+          }
+        }
+      },
+      "context": {
+        "principal": "fixture-user",
+        "data_class": "synthetic-public",
+        "implementation": "github-comment-bridge/1"
+      },
+      "policy": {
+        "revision": "p1",
+        "principal": "fixture-user",
+        "revoked": false,
+        "allow_partial_direct": true,
+        "max_body_bytes": 8192,
+        "grants": [
+          {
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "data_class": "synthetic-public"
+          }
+        ]
+      },
+      "expected": {
+        "mapping": {
+          "status": "invalid_input",
+          "reason": "native_input"
+        },
+        "decision": "not_evaluated"
+      }
+    },
+    {
+      "id": "context-absent",
+      "base_intent": "missing-context",
+      "scenario": "Null encodes absent context evidence; authorization is not evaluated.",
+      "native": {
+        "sdk": {
+          "lane": "sdk",
+          "call": {
+            "owner": "OndCo",
+            "repo": "Action-Effect-Bench",
+            "issue_number": 1,
+            "body": "Synthetic public development comment.\n"
+          }
+        },
+        "mcp": {
+          "lane": "mcp",
+          "call": {
+            "name": "add_issue_comment",
+            "arguments": {
+              "owner": "OndCo",
+              "repo": "Action-Effect-Bench",
+              "issue_number": 1,
+              "body": "Synthetic public development comment.\n"
+            }
+          }
+        }
+      },
+      "context": null,
+      "policy": {
+        "revision": "p1",
+        "principal": "fixture-user",
+        "revoked": false,
+        "allow_partial_direct": true,
+        "max_body_bytes": 8192,
+        "grants": [
+          {
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "data_class": "synthetic-public"
+          }
+        ]
+      },
+      "expected": {
+        "mapping": {
+          "status": "untrusted_evidence",
+          "reason": "missing_context"
+        },
+        "decision": "not_evaluated"
+      }
+    },
+    {
+      "id": "implementation-mismatch",
+      "base_intent": "implementation-binding",
+      "scenario": "Evidence bound to a different implementation identifier is not trusted.",
+      "native": {
+        "sdk": {
+          "lane": "sdk",
+          "call": {
+            "owner": "OndCo",
+            "repo": "Action-Effect-Bench",
+            "issue_number": 1,
+            "body": "Synthetic public development comment.\n"
+          }
+        },
+        "mcp": {
+          "lane": "mcp",
+          "call": {
+            "name": "add_issue_comment",
+            "arguments": {
+              "owner": "OndCo",
+              "repo": "Action-Effect-Bench",
+              "issue_number": 1,
+              "body": "Synthetic public development comment.\n"
+            }
+          }
+        }
+      },
+      "context": {
+        "principal": "fixture-user",
+        "data_class": "synthetic-public",
+        "implementation": "github-comment-bridge/2"
+      },
+      "policy": {
+        "revision": "p1",
+        "principal": "fixture-user",
+        "revoked": false,
+        "allow_partial_direct": true,
+        "max_body_bytes": 8192,
+        "grants": [
+          {
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "data_class": "synthetic-public"
+          }
+        ]
+      },
+      "expected": {
+        "mapping": {
+          "status": "untrusted_evidence",
+          "reason": "implementation_binding"
+        },
+        "decision": "not_evaluated"
+      }
+    },
+    {
+      "id": "empty-body",
+      "base_intent": "body-shape",
+      "scenario": "An empty string is outside the native body domain.",
+      "native": {
+        "sdk": {
+          "lane": "sdk",
+          "call": {
+            "owner": "OndCo",
+            "repo": "Action-Effect-Bench",
+            "issue_number": 1,
+            "body": ""
+          }
+        },
+        "mcp": {
+          "lane": "mcp",
+          "call": {
+            "name": "add_issue_comment",
+            "arguments": {
+              "owner": "OndCo",
+              "repo": "Action-Effect-Bench",
+              "issue_number": 1,
+              "body": ""
+            }
+          }
+        }
+      },
+      "context": {
+        "principal": "fixture-user",
+        "data_class": "synthetic-public",
+        "implementation": "github-comment-bridge/1"
+      },
+      "policy": {
+        "revision": "p1",
+        "principal": "fixture-user",
+        "revoked": false,
+        "allow_partial_direct": true,
+        "max_body_bytes": 8192,
+        "grants": [
+          {
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "data_class": "synthetic-public"
+          }
+        ]
+      },
+      "expected": {
+        "mapping": {
+          "status": "invalid_input",
+          "reason": "native_input"
+        },
+        "decision": "not_evaluated"
+      }
+    },
+    {
+      "id": "nonstring-body",
+      "base_intent": "body-shape",
+      "scenario": "A structured body is not coerced into a comment string.",
+      "native": {
+        "sdk": {
+          "lane": "sdk",
+          "call": {
+            "owner": "OndCo",
+            "repo": "Action-Effect-Bench",
+            "issue_number": 1,
+            "body": {
+              "text": "synthetic"
+            }
+          }
+        },
+        "mcp": {
+          "lane": "mcp",
+          "call": {
+            "name": "add_issue_comment",
+            "arguments": {
+              "owner": "OndCo",
+              "repo": "Action-Effect-Bench",
+              "issue_number": 1,
+              "body": {
+                "text": "synthetic"
+              }
+            }
+          }
+        }
+      },
+      "context": {
+        "principal": "fixture-user",
+        "data_class": "synthetic-public",
+        "implementation": "github-comment-bridge/1"
+      },
+      "policy": {
+        "revision": "p1",
+        "principal": "fixture-user",
+        "revoked": false,
+        "allow_partial_direct": true,
+        "max_body_bytes": 8192,
+        "grants": [
+          {
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "data_class": "synthetic-public"
+          }
+        ]
+      },
+      "expected": {
+        "mapping": {
+          "status": "invalid_input",
+          "reason": "native_input"
+        },
+        "decision": "not_evaluated"
+      }
+    },
+    {
+      "id": "unknown-issue-missing",
+      "base_intent": "unknown-issue",
+      "scenario": "A missing issue is invalid native input, not a wildcard or reviewable authorization target.",
+      "native": {
+        "sdk": {
+          "lane": "sdk",
+          "call": {
+            "owner": "OndCo",
+            "repo": "Action-Effect-Bench",
+            "body": "Synthetic public development comment.\n"
+          }
+        },
+        "mcp": {
+          "lane": "mcp",
+          "call": {
+            "name": "add_issue_comment",
+            "arguments": {
+              "owner": "OndCo",
+              "repo": "Action-Effect-Bench",
+              "body": "Synthetic public development comment.\n"
+            }
+          }
+        }
+      },
+      "context": {
+        "principal": "fixture-user",
+        "data_class": "synthetic-public",
+        "implementation": "github-comment-bridge/1"
+      },
+      "policy": {
+        "revision": "p1",
+        "principal": "fixture-user",
+        "revoked": false,
+        "allow_partial_direct": true,
+        "max_body_bytes": 8192,
+        "grants": [
+          {
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "data_class": "synthetic-public"
+          }
+        ]
+      },
+      "expected": {
+        "mapping": {
+          "status": "invalid_input",
+          "reason": "native_input"
+        },
+        "decision": "not_evaluated"
+      }
+    },
+    {
+      "id": "unknown-issue-null",
+      "base_intent": "unknown-issue",
+      "scenario": "Null cannot identify an issue.",
+      "native": {
+        "sdk": {
+          "lane": "sdk",
+          "call": {
+            "owner": "OndCo",
+            "repo": "Action-Effect-Bench",
+            "issue_number": null,
+            "body": "Synthetic public development comment.\n"
+          }
+        },
+        "mcp": {
+          "lane": "mcp",
+          "call": {
+            "name": "add_issue_comment",
+            "arguments": {
+              "owner": "OndCo",
+              "repo": "Action-Effect-Bench",
+              "issue_number": null,
+              "body": "Synthetic public development comment.\n"
+            }
+          }
+        }
+      },
+      "context": {
+        "principal": "fixture-user",
+        "data_class": "synthetic-public",
+        "implementation": "github-comment-bridge/1"
+      },
+      "policy": {
+        "revision": "p1",
+        "principal": "fixture-user",
+        "revoked": false,
+        "allow_partial_direct": true,
+        "max_body_bytes": 8192,
+        "grants": [
+          {
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "data_class": "synthetic-public"
+          }
+        ]
+      },
+      "expected": {
+        "mapping": {
+          "status": "invalid_input",
+          "reason": "native_input"
+        },
+        "decision": "not_evaluated"
+      }
+    },
+    {
+      "id": "unknown-issue-string",
+      "base_intent": "unknown-issue",
+      "scenario": "Numeric strings are not coerced to issue numbers.",
+      "native": {
+        "sdk": {
+          "lane": "sdk",
+          "call": {
+            "owner": "OndCo",
+            "repo": "Action-Effect-Bench",
+            "issue_number": "1",
+            "body": "Synthetic public development comment.\n"
+          }
+        },
+        "mcp": {
+          "lane": "mcp",
+          "call": {
+            "name": "add_issue_comment",
+            "arguments": {
+              "owner": "OndCo",
+              "repo": "Action-Effect-Bench",
+              "issue_number": "1",
+              "body": "Synthetic public development comment.\n"
+            }
+          }
+        }
+      },
+      "context": {
+        "principal": "fixture-user",
+        "data_class": "synthetic-public",
+        "implementation": "github-comment-bridge/1"
+      },
+      "policy": {
+        "revision": "p1",
+        "principal": "fixture-user",
+        "revoked": false,
+        "allow_partial_direct": true,
+        "max_body_bytes": 8192,
+        "grants": [
+          {
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "data_class": "synthetic-public"
+          }
+        ]
+      },
+      "expected": {
+        "mapping": {
+          "status": "invalid_input",
+          "reason": "native_input"
+        },
+        "decision": "not_evaluated"
+      }
+    },
+    {
+      "id": "repository-owner-case",
+      "base_intent": "repository-case",
+      "scenario": "Owner case is preserved and compared exactly even if the provider might resolve it equivalently.",
+      "native": {
+        "sdk": {
+          "lane": "sdk",
+          "call": {
+            "owner": "ondco",
+            "repo": "Action-Effect-Bench",
+            "issue_number": 1,
+            "body": "Synthetic public development comment.\n"
+          }
+        },
+        "mcp": {
+          "lane": "mcp",
+          "call": {
+            "name": "add_issue_comment",
+            "arguments": {
+              "owner": "ondco",
+              "repo": "Action-Effect-Bench",
+              "issue_number": 1,
+              "body": "Synthetic public development comment.\n"
+            }
+          }
+        }
+      },
+      "context": {
+        "principal": "fixture-user",
+        "data_class": "synthetic-public",
+        "implementation": "github-comment-bridge/1"
+      },
+      "policy": {
+        "revision": "p1",
+        "principal": "fixture-user",
+        "revoked": false,
+        "allow_partial_direct": true,
+        "max_body_bytes": 8192,
+        "grants": [
+          {
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "data_class": "synthetic-public"
+          }
+        ]
+      },
+      "expected": {
+        "mapping": {
+          "status": "accepted_partial",
+          "reason": "declared_partial",
+          "projection": {
+            "operation": "create_issue_comment",
+            "repository": "ondco/Action-Effect-Bench",
+            "issue_number": 1,
+            "endpoint": "https://api.github.com/repos/ondco/Action-Effect-Bench/issues/1/comments",
+            "body_sha256": "5381f9ade6129d50a25280c5fdd3ac9ffb13bacb9d9d01f6547a0b6f2d3f8a82",
+            "body_bytes": 38,
+            "data_class": "synthetic-public"
+          }
+        },
+        "decision": "deny"
+      }
+    },
+    {
+      "id": "repository-name-case",
+      "base_intent": "repository-case",
+      "scenario": "Repository case is preserved and does not match the differently cased grant.",
+      "native": {
+        "sdk": {
+          "lane": "sdk",
+          "call": {
+            "owner": "OndCo",
+            "repo": "action-effect-bench",
+            "issue_number": 1,
+            "body": "Synthetic public development comment.\n"
+          }
+        },
+        "mcp": {
+          "lane": "mcp",
+          "call": {
+            "name": "add_issue_comment",
+            "arguments": {
+              "owner": "OndCo",
+              "repo": "action-effect-bench",
+              "issue_number": 1,
+              "body": "Synthetic public development comment.\n"
+            }
+          }
+        }
+      },
+      "context": {
+        "principal": "fixture-user",
+        "data_class": "synthetic-public",
+        "implementation": "github-comment-bridge/1"
+      },
+      "policy": {
+        "revision": "p1",
+        "principal": "fixture-user",
+        "revoked": false,
+        "allow_partial_direct": true,
+        "max_body_bytes": 8192,
+        "grants": [
+          {
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "data_class": "synthetic-public"
+          }
+        ]
+      },
+      "expected": {
+        "mapping": {
+          "status": "accepted_partial",
+          "reason": "declared_partial",
+          "projection": {
+            "operation": "create_issue_comment",
+            "repository": "OndCo/action-effect-bench",
+            "issue_number": 1,
+            "endpoint": "https://api.github.com/repos/OndCo/action-effect-bench/issues/1/comments",
+            "body_sha256": "5381f9ade6129d50a25280c5fdd3ac9ffb13bacb9d9d01f6547a0b6f2d3f8a82",
+            "body_bytes": 38,
+            "data_class": "synthetic-public"
+          }
+        },
+        "decision": "deny"
+      }
+    },
+    {
+      "id": "owner-empty",
+      "base_intent": "identifier-safety",
+      "scenario": "An empty owner is not a GitHub path identifier.",
+      "native": {
+        "sdk": {
+          "lane": "sdk",
+          "call": {
+            "owner": "",
+            "repo": "Action-Effect-Bench",
+            "issue_number": 1,
+            "body": "Synthetic public development comment.\n"
+          }
+        },
+        "mcp": {
+          "lane": "mcp",
+          "call": {
+            "name": "add_issue_comment",
+            "arguments": {
+              "owner": "",
+              "repo": "Action-Effect-Bench",
+              "issue_number": 1,
+              "body": "Synthetic public development comment.\n"
+            }
+          }
+        }
+      },
+      "context": {
+        "principal": "fixture-user",
+        "data_class": "synthetic-public",
+        "implementation": "github-comment-bridge/1"
+      },
+      "policy": {
+        "revision": "p1",
+        "principal": "fixture-user",
+        "revoked": false,
+        "allow_partial_direct": true,
+        "max_body_bytes": 8192,
+        "grants": [
+          {
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "data_class": "synthetic-public"
+          }
+        ]
+      },
+      "expected": {
+        "mapping": {
+          "status": "invalid_input",
+          "reason": "native_input"
+        },
+        "decision": "not_evaluated"
+      }
+    },
+    {
+      "id": "repository-empty",
+      "base_intent": "identifier-safety",
+      "scenario": "An empty repository is not a GitHub path identifier.",
+      "native": {
+        "sdk": {
+          "lane": "sdk",
+          "call": {
+            "owner": "OndCo",
+            "repo": "",
+            "issue_number": 1,
+            "body": "Synthetic public development comment.\n"
+          }
+        },
+        "mcp": {
+          "lane": "mcp",
+          "call": {
+            "name": "add_issue_comment",
+            "arguments": {
+              "owner": "OndCo",
+              "repo": "",
+              "issue_number": 1,
+              "body": "Synthetic public development comment.\n"
+            }
+          }
+        }
+      },
+      "context": {
+        "principal": "fixture-user",
+        "data_class": "synthetic-public",
+        "implementation": "github-comment-bridge/1"
+      },
+      "policy": {
+        "revision": "p1",
+        "principal": "fixture-user",
+        "revoked": false,
+        "allow_partial_direct": true,
+        "max_body_bytes": 8192,
+        "grants": [
+          {
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "data_class": "synthetic-public"
+          }
+        ]
+      },
+      "expected": {
+        "mapping": {
+          "status": "invalid_input",
+          "reason": "native_input"
+        },
+        "decision": "not_evaluated"
+      }
+    },
+    {
+      "id": "owner-path-separator",
+      "base_intent": "identifier-safety",
+      "scenario": "A path separator cannot change the fixed endpoint structure.",
+      "native": {
+        "sdk": {
+          "lane": "sdk",
+          "call": {
+            "owner": "OndCo/extra",
+            "repo": "Action-Effect-Bench",
+            "issue_number": 1,
+            "body": "Synthetic public development comment.\n"
+          }
+        },
+        "mcp": {
+          "lane": "mcp",
+          "call": {
+            "name": "add_issue_comment",
+            "arguments": {
+              "owner": "OndCo/extra",
+              "repo": "Action-Effect-Bench",
+              "issue_number": 1,
+              "body": "Synthetic public development comment.\n"
+            }
+          }
+        }
+      },
+      "context": {
+        "principal": "fixture-user",
+        "data_class": "synthetic-public",
+        "implementation": "github-comment-bridge/1"
+      },
+      "policy": {
+        "revision": "p1",
+        "principal": "fixture-user",
+        "revoked": false,
+        "allow_partial_direct": true,
+        "max_body_bytes": 8192,
+        "grants": [
+          {
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "data_class": "synthetic-public"
+          }
+        ]
+      },
+      "expected": {
+        "mapping": {
+          "status": "invalid_input",
+          "reason": "native_input"
+        },
+        "decision": "not_evaluated"
+      }
+    },
+    {
+      "id": "repository-dot-segment",
+      "base_intent": "identifier-safety",
+      "scenario": "A traversal dot segment is not a path-safe repository identifier.",
+      "native": {
+        "sdk": {
+          "lane": "sdk",
+          "call": {
+            "owner": "OndCo",
+            "repo": "..",
+            "issue_number": 1,
+            "body": "Synthetic public development comment.\n"
+          }
+        },
+        "mcp": {
+          "lane": "mcp",
+          "call": {
+            "name": "add_issue_comment",
+            "arguments": {
+              "owner": "OndCo",
+              "repo": "..",
+              "issue_number": 1,
+              "body": "Synthetic public development comment.\n"
+            }
+          }
+        }
+      },
+      "context": {
+        "principal": "fixture-user",
+        "data_class": "synthetic-public",
+        "implementation": "github-comment-bridge/1"
+      },
+      "policy": {
+        "revision": "p1",
+        "principal": "fixture-user",
+        "revoked": false,
+        "allow_partial_direct": true,
+        "max_body_bytes": 8192,
+        "grants": [
+          {
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "data_class": "synthetic-public"
+          }
+        ]
+      },
+      "expected": {
+        "mapping": {
+          "status": "invalid_input",
+          "reason": "native_input"
+        },
+        "decision": "not_evaluated"
+      }
+    },
+    {
+      "id": "repository-percent-escape",
+      "base_intent": "identifier-safety",
+      "scenario": "Encoded separators are not decoded or accepted as identifiers.",
+      "native": {
+        "sdk": {
+          "lane": "sdk",
+          "call": {
+            "owner": "OndCo",
+            "repo": "Action%2FEffect",
+            "issue_number": 1,
+            "body": "Synthetic public development comment.\n"
+          }
+        },
+        "mcp": {
+          "lane": "mcp",
+          "call": {
+            "name": "add_issue_comment",
+            "arguments": {
+              "owner": "OndCo",
+              "repo": "Action%2FEffect",
+              "issue_number": 1,
+              "body": "Synthetic public development comment.\n"
+            }
+          }
+        }
+      },
+      "context": {
+        "principal": "fixture-user",
+        "data_class": "synthetic-public",
+        "implementation": "github-comment-bridge/1"
+      },
+      "policy": {
+        "revision": "p1",
+        "principal": "fixture-user",
+        "revoked": false,
+        "allow_partial_direct": true,
+        "max_body_bytes": 8192,
+        "grants": [
+          {
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "data_class": "synthetic-public"
+          }
+        ]
+      },
+      "expected": {
+        "mapping": {
+          "status": "invalid_input",
+          "reason": "native_input"
+        },
+        "decision": "not_evaluated"
+      }
+    },
+    {
+      "id": "owner-nonascii",
+      "base_intent": "identifier-safety",
+      "scenario": "Unicode body text is allowed but Unicode owner identifiers are not.",
+      "native": {
+        "sdk": {
+          "lane": "sdk",
+          "call": {
+            "owner": "OndC\u00f6",
+            "repo": "Action-Effect-Bench",
+            "issue_number": 1,
+            "body": "Synthetic public development comment.\n"
+          }
+        },
+        "mcp": {
+          "lane": "mcp",
+          "call": {
+            "name": "add_issue_comment",
+            "arguments": {
+              "owner": "OndC\u00f6",
+              "repo": "Action-Effect-Bench",
+              "issue_number": 1,
+              "body": "Synthetic public development comment.\n"
+            }
+          }
+        }
+      },
+      "context": {
+        "principal": "fixture-user",
+        "data_class": "synthetic-public",
+        "implementation": "github-comment-bridge/1"
+      },
+      "policy": {
+        "revision": "p1",
+        "principal": "fixture-user",
+        "revoked": false,
+        "allow_partial_direct": true,
+        "max_body_bytes": 8192,
+        "grants": [
+          {
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "data_class": "synthetic-public"
+          }
+        ]
+      },
+      "expected": {
+        "mapping": {
+          "status": "invalid_input",
+          "reason": "native_input"
+        },
+        "decision": "not_evaluated"
+      }
+    },
+    {
+      "id": "repository-whitespace",
+      "base_intent": "identifier-safety",
+      "scenario": "Repository identifiers are not trimmed into a valid value.",
+      "native": {
+        "sdk": {
+          "lane": "sdk",
+          "call": {
+            "owner": "OndCo",
+            "repo": " Action-Effect-Bench",
+            "issue_number": 1,
+            "body": "Synthetic public development comment.\n"
+          }
+        },
+        "mcp": {
+          "lane": "mcp",
+          "call": {
+            "name": "add_issue_comment",
+            "arguments": {
+              "owner": "OndCo",
+              "repo": " Action-Effect-Bench",
+              "issue_number": 1,
+              "body": "Synthetic public development comment.\n"
+            }
+          }
+        }
+      },
+      "context": {
+        "principal": "fixture-user",
+        "data_class": "synthetic-public",
+        "implementation": "github-comment-bridge/1"
+      },
+      "policy": {
+        "revision": "p1",
+        "principal": "fixture-user",
+        "revoked": false,
+        "allow_partial_direct": true,
+        "max_body_bytes": 8192,
+        "grants": [
+          {
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "data_class": "synthetic-public"
+          }
+        ]
+      },
+      "expected": {
+        "mapping": {
+          "status": "invalid_input",
+          "reason": "native_input"
+        },
+        "decision": "not_evaluated"
+      }
+    },
+    {
+      "id": "issue-maximum",
+      "base_intent": "issue-numeric-bounds",
+      "scenario": "The inclusive 2147483647 issue limit maps exactly and can receive an exact grant.",
+      "native": {
+        "sdk": {
+          "lane": "sdk",
+          "call": {
+            "owner": "OndCo",
+            "repo": "Action-Effect-Bench",
+            "issue_number": 2147483647,
+            "body": "Synthetic public development comment.\n"
+          }
+        },
+        "mcp": {
+          "lane": "mcp",
+          "call": {
+            "name": "add_issue_comment",
+            "arguments": {
+              "owner": "OndCo",
+              "repo": "Action-Effect-Bench",
+              "issue_number": 2147483647,
+              "body": "Synthetic public development comment.\n"
+            }
+          }
+        }
+      },
+      "context": {
+        "principal": "fixture-user",
+        "data_class": "synthetic-public",
+        "implementation": "github-comment-bridge/1"
+      },
+      "policy": {
+        "revision": "p1",
+        "principal": "fixture-user",
+        "revoked": false,
+        "allow_partial_direct": true,
+        "max_body_bytes": 8192,
+        "grants": [
+          {
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 2147483647,
+            "data_class": "synthetic-public"
+          }
+        ]
+      },
+      "expected": {
+        "mapping": {
+          "status": "accepted_partial",
+          "reason": "declared_partial",
+          "projection": {
+            "operation": "create_issue_comment",
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 2147483647,
+            "endpoint": "https://api.github.com/repos/OndCo/Action-Effect-Bench/issues/2147483647/comments",
+            "body_sha256": "5381f9ade6129d50a25280c5fdd3ac9ffb13bacb9d9d01f6547a0b6f2d3f8a82",
+            "body_bytes": 38,
+            "data_class": "synthetic-public"
+          }
+        },
+        "decision": "allow"
+      }
+    },
+    {
+      "id": "issue-zero",
+      "base_intent": "issue-numeric-bounds",
+      "scenario": "Issue numbers must be positive.",
+      "native": {
+        "sdk": {
+          "lane": "sdk",
+          "call": {
+            "owner": "OndCo",
+            "repo": "Action-Effect-Bench",
+            "issue_number": 0,
+            "body": "Synthetic public development comment.\n"
+          }
+        },
+        "mcp": {
+          "lane": "mcp",
+          "call": {
+            "name": "add_issue_comment",
+            "arguments": {
+              "owner": "OndCo",
+              "repo": "Action-Effect-Bench",
+              "issue_number": 0,
+              "body": "Synthetic public development comment.\n"
+            }
+          }
+        }
+      },
+      "context": {
+        "principal": "fixture-user",
+        "data_class": "synthetic-public",
+        "implementation": "github-comment-bridge/1"
+      },
+      "policy": {
+        "revision": "p1",
+        "principal": "fixture-user",
+        "revoked": false,
+        "allow_partial_direct": true,
+        "max_body_bytes": 8192,
+        "grants": [
+          {
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "data_class": "synthetic-public"
+          }
+        ]
+      },
+      "expected": {
+        "mapping": {
+          "status": "invalid_input",
+          "reason": "native_input"
+        },
+        "decision": "not_evaluated"
+      }
+    },
+    {
+      "id": "issue-negative",
+      "base_intent": "issue-numeric-bounds",
+      "scenario": "Negative issue numbers are invalid.",
+      "native": {
+        "sdk": {
+          "lane": "sdk",
+          "call": {
+            "owner": "OndCo",
+            "repo": "Action-Effect-Bench",
+            "issue_number": -1,
+            "body": "Synthetic public development comment.\n"
+          }
+        },
+        "mcp": {
+          "lane": "mcp",
+          "call": {
+            "name": "add_issue_comment",
+            "arguments": {
+              "owner": "OndCo",
+              "repo": "Action-Effect-Bench",
+              "issue_number": -1,
+              "body": "Synthetic public development comment.\n"
+            }
+          }
+        }
+      },
+      "context": {
+        "principal": "fixture-user",
+        "data_class": "synthetic-public",
+        "implementation": "github-comment-bridge/1"
+      },
+      "policy": {
+        "revision": "p1",
+        "principal": "fixture-user",
+        "revoked": false,
+        "allow_partial_direct": true,
+        "max_body_bytes": 8192,
+        "grants": [
+          {
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "data_class": "synthetic-public"
+          }
+        ]
+      },
+      "expected": {
+        "mapping": {
+          "status": "invalid_input",
+          "reason": "native_input"
+        },
+        "decision": "not_evaluated"
+      }
+    },
+    {
+      "id": "issue-fractional",
+      "base_intent": "issue-numeric-bounds",
+      "scenario": "Fractional issue numbers are not rounded.",
+      "native": {
+        "sdk": {
+          "lane": "sdk",
+          "call": {
+            "owner": "OndCo",
+            "repo": "Action-Effect-Bench",
+            "issue_number": 1.5,
+            "body": "Synthetic public development comment.\n"
+          }
+        },
+        "mcp": {
+          "lane": "mcp",
+          "call": {
+            "name": "add_issue_comment",
+            "arguments": {
+              "owner": "OndCo",
+              "repo": "Action-Effect-Bench",
+              "issue_number": 1.5,
+              "body": "Synthetic public development comment.\n"
+            }
+          }
+        }
+      },
+      "context": {
+        "principal": "fixture-user",
+        "data_class": "synthetic-public",
+        "implementation": "github-comment-bridge/1"
+      },
+      "policy": {
+        "revision": "p1",
+        "principal": "fixture-user",
+        "revoked": false,
+        "allow_partial_direct": true,
+        "max_body_bytes": 8192,
+        "grants": [
+          {
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "data_class": "synthetic-public"
+          }
+        ]
+      },
+      "expected": {
+        "mapping": {
+          "status": "invalid_input",
+          "reason": "native_input"
+        },
+        "decision": "not_evaluated"
+      }
+    },
+    {
+      "id": "issue-above-maximum",
+      "base_intent": "issue-numeric-bounds",
+      "scenario": "A safe integer above the explicit issue cap is still invalid.",
+      "native": {
+        "sdk": {
+          "lane": "sdk",
+          "call": {
+            "owner": "OndCo",
+            "repo": "Action-Effect-Bench",
+            "issue_number": 2147483648,
+            "body": "Synthetic public development comment.\n"
+          }
+        },
+        "mcp": {
+          "lane": "mcp",
+          "call": {
+            "name": "add_issue_comment",
+            "arguments": {
+              "owner": "OndCo",
+              "repo": "Action-Effect-Bench",
+              "issue_number": 2147483648,
+              "body": "Synthetic public development comment.\n"
+            }
+          }
+        }
+      },
+      "context": {
+        "principal": "fixture-user",
+        "data_class": "synthetic-public",
+        "implementation": "github-comment-bridge/1"
+      },
+      "policy": {
+        "revision": "p1",
+        "principal": "fixture-user",
+        "revoked": false,
+        "allow_partial_direct": true,
+        "max_body_bytes": 8192,
+        "grants": [
+          {
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "data_class": "synthetic-public"
+          }
+        ]
+      },
+      "expected": {
+        "mapping": {
+          "status": "invalid_input",
+          "reason": "native_input"
+        },
+        "decision": "not_evaluated"
+      }
+    },
+    {
+      "id": "issue-unsafe-integer",
+      "base_intent": "issue-numeric-bounds",
+      "scenario": "An unsafe JavaScript integer is not an issue identifier.",
+      "native": {
+        "sdk": {
+          "lane": "sdk",
+          "call": {
+            "owner": "OndCo",
+            "repo": "Action-Effect-Bench",
+            "issue_number": 9007199254740992,
+            "body": "Synthetic public development comment.\n"
+          }
+        },
+        "mcp": {
+          "lane": "mcp",
+          "call": {
+            "name": "add_issue_comment",
+            "arguments": {
+              "owner": "OndCo",
+              "repo": "Action-Effect-Bench",
+              "issue_number": 9007199254740992,
+              "body": "Synthetic public development comment.\n"
+            }
+          }
+        }
+      },
+      "context": {
+        "principal": "fixture-user",
+        "data_class": "synthetic-public",
+        "implementation": "github-comment-bridge/1"
+      },
+      "policy": {
+        "revision": "p1",
+        "principal": "fixture-user",
+        "revoked": false,
+        "allow_partial_direct": true,
+        "max_body_bytes": 8192,
+        "grants": [
+          {
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "data_class": "synthetic-public"
+          }
+        ]
+      },
+      "expected": {
+        "mapping": {
+          "status": "invalid_input",
+          "reason": "native_input"
+        },
+        "decision": "not_evaluated"
+      }
+    },
+    {
+      "id": "native-body-8192-bytes",
+      "base_intent": "native-body-cap",
+      "scenario": "A scalar-valid mixed body at exactly 8192 UTF-8 bytes is accepted.",
+      "native": {
+        "sdk": {
+          "lane": "sdk",
+          "call": {
+            "owner": "OndCo",
+            "repo": "Action-Effect-Bench",
+            "issue_number": 1,
+            "body": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\ud83e\uddea"
+          }
+        },
+        "mcp": {
+          "lane": "mcp",
+          "call": {
+            "name": "add_issue_comment",
+            "arguments": {
+              "owner": "OndCo",
+              "repo": "Action-Effect-Bench",
+              "issue_number": 1,
+              "body": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\ud83e\uddea"
+            }
+          }
+        }
+      },
+      "context": {
+        "principal": "fixture-user",
+        "data_class": "synthetic-public",
+        "implementation": "github-comment-bridge/1"
+      },
+      "policy": {
+        "revision": "p1",
+        "principal": "fixture-user",
+        "revoked": false,
+        "allow_partial_direct": true,
+        "max_body_bytes": 8192,
+        "grants": [
+          {
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "data_class": "synthetic-public"
+          }
+        ]
+      },
+      "expected": {
+        "mapping": {
+          "status": "accepted_partial",
+          "reason": "declared_partial",
+          "projection": {
+            "operation": "create_issue_comment",
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "endpoint": "https://api.github.com/repos/OndCo/Action-Effect-Bench/issues/1/comments",
+            "body_sha256": "48b9170505a60a5bd591d75185cc2f6a9032c21267ad67a100d5bb201c9d6224",
+            "body_bytes": 8192,
+            "data_class": "synthetic-public"
+          }
+        },
+        "decision": "allow"
+      }
+    },
+    {
+      "id": "native-body-8193-bytes",
+      "base_intent": "native-body-cap",
+      "scenario": "A body below 8192 UTF-16 code units but above 8192 UTF-8 bytes is invalid before policy.",
+      "native": {
+        "sdk": {
+          "lane": "sdk",
+          "call": {
+            "owner": "OndCo",
+            "repo": "Action-Effect-Bench",
+            "issue_number": 1,
+            "body": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\ud83e\uddea"
+          }
+        },
+        "mcp": {
+          "lane": "mcp",
+          "call": {
+            "name": "add_issue_comment",
+            "arguments": {
+              "owner": "OndCo",
+              "repo": "Action-Effect-Bench",
+              "issue_number": 1,
+              "body": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\ud83e\uddea"
+            }
+          }
+        }
+      },
+      "context": {
+        "principal": "fixture-user",
+        "data_class": "synthetic-public",
+        "implementation": "github-comment-bridge/1"
+      },
+      "policy": {
+        "revision": "p1",
+        "principal": "fixture-user",
+        "revoked": false,
+        "allow_partial_direct": true,
+        "max_body_bytes": 8192,
+        "grants": [
+          {
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "data_class": "synthetic-public"
+          }
+        ]
+      },
+      "expected": {
+        "mapping": {
+          "status": "invalid_input",
+          "reason": "native_input"
+        },
+        "decision": "not_evaluated"
+      }
+    },
+    {
+      "id": "body-lone-high-surrogate",
+      "base_intent": "scalar-validity",
+      "scenario": "An unpaired high surrogate must not be replaced before hashing.",
+      "native": {
+        "sdk": {
+          "lane": "sdk",
+          "call": {
+            "owner": "OndCo",
+            "repo": "Action-Effect-Bench",
+            "issue_number": 1,
+            "body": "synthetic\ud800"
+          }
+        },
+        "mcp": {
+          "lane": "mcp",
+          "call": {
+            "name": "add_issue_comment",
+            "arguments": {
+              "owner": "OndCo",
+              "repo": "Action-Effect-Bench",
+              "issue_number": 1,
+              "body": "synthetic\ud800"
+            }
+          }
+        }
+      },
+      "context": {
+        "principal": "fixture-user",
+        "data_class": "synthetic-public",
+        "implementation": "github-comment-bridge/1"
+      },
+      "policy": {
+        "revision": "p1",
+        "principal": "fixture-user",
+        "revoked": false,
+        "allow_partial_direct": true,
+        "max_body_bytes": 8192,
+        "grants": [
+          {
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "data_class": "synthetic-public"
+          }
+        ]
+      },
+      "expected": {
+        "mapping": {
+          "status": "invalid_input",
+          "reason": "native_input"
+        },
+        "decision": "not_evaluated"
+      }
+    },
+    {
+      "id": "body-lone-low-surrogate",
+      "base_intent": "scalar-validity",
+      "scenario": "An unpaired low surrogate is not a Unicode scalar string.",
+      "native": {
+        "sdk": {
+          "lane": "sdk",
+          "call": {
+            "owner": "OndCo",
+            "repo": "Action-Effect-Bench",
+            "issue_number": 1,
+            "body": "synthetic\udc00"
+          }
+        },
+        "mcp": {
+          "lane": "mcp",
+          "call": {
+            "name": "add_issue_comment",
+            "arguments": {
+              "owner": "OndCo",
+              "repo": "Action-Effect-Bench",
+              "issue_number": 1,
+              "body": "synthetic\udc00"
+            }
+          }
+        }
+      },
+      "context": {
+        "principal": "fixture-user",
+        "data_class": "synthetic-public",
+        "implementation": "github-comment-bridge/1"
+      },
+      "policy": {
+        "revision": "p1",
+        "principal": "fixture-user",
+        "revoked": false,
+        "allow_partial_direct": true,
+        "max_body_bytes": 8192,
+        "grants": [
+          {
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "data_class": "synthetic-public"
+          }
+        ]
+      },
+      "expected": {
+        "mapping": {
+          "status": "invalid_input",
+          "reason": "native_input"
+        },
+        "decision": "not_evaluated"
+      }
+    },
+    {
+      "id": "envelope-missing-lane",
+      "base_intent": "envelope-shape",
+      "scenario": "A missing native lane cannot be inferred from a fixture's lane label.",
+      "native": {
+        "sdk": {
+          "call": {
+            "owner": "OndCo",
+            "repo": "Action-Effect-Bench",
+            "issue_number": 1,
+            "body": "Synthetic public development comment.\n"
+          }
+        },
+        "mcp": {
+          "call": {
+            "name": "add_issue_comment",
+            "arguments": {
+              "owner": "OndCo",
+              "repo": "Action-Effect-Bench",
+              "issue_number": 1,
+              "body": "Synthetic public development comment.\n"
+            }
+          }
+        }
+      },
+      "context": {
+        "principal": "fixture-user",
+        "data_class": "synthetic-public",
+        "implementation": "github-comment-bridge/1"
+      },
+      "policy": {
+        "revision": "p1",
+        "principal": "fixture-user",
+        "revoked": false,
+        "allow_partial_direct": true,
+        "max_body_bytes": 8192,
+        "grants": [
+          {
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "data_class": "synthetic-public"
+          }
+        ]
+      },
+      "expected": {
+        "mapping": {
+          "status": "invalid_input",
+          "reason": "native_input"
+        },
+        "decision": "not_evaluated"
+      }
+    },
+    {
+      "id": "envelope-null-call",
+      "base_intent": "envelope-shape",
+      "scenario": "The native call must be an object.",
+      "native": {
+        "sdk": {
+          "lane": "sdk",
+          "call": null
+        },
+        "mcp": {
+          "lane": "mcp",
+          "call": null
+        }
+      },
+      "context": {
+        "principal": "fixture-user",
+        "data_class": "synthetic-public",
+        "implementation": "github-comment-bridge/1"
+      },
+      "policy": {
+        "revision": "p1",
+        "principal": "fixture-user",
+        "revoked": false,
+        "allow_partial_direct": true,
+        "max_body_bytes": 8192,
+        "grants": [
+          {
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "data_class": "synthetic-public"
+          }
+        ]
+      },
+      "expected": {
+        "mapping": {
+          "status": "invalid_input",
+          "reason": "native_input"
+        },
+        "decision": "not_evaluated"
+      }
+    },
+    {
+      "id": "envelope-unknown-lane",
+      "base_intent": "envelope-shape",
+      "scenario": "An unknown outer lane is invalid rather than routed to a supported lane.",
+      "native": {
+        "sdk": {
+          "lane": "other",
+          "call": {
+            "owner": "OndCo",
+            "repo": "Action-Effect-Bench",
+            "issue_number": 1,
+            "body": "Synthetic public development comment.\n"
+          }
+        },
+        "mcp": {
+          "lane": "other",
+          "call": {
+            "name": "add_issue_comment",
+            "arguments": {
+              "owner": "OndCo",
+              "repo": "Action-Effect-Bench",
+              "issue_number": 1,
+              "body": "Synthetic public development comment.\n"
+            }
+          }
+        }
+      },
+      "context": {
+        "principal": "fixture-user",
+        "data_class": "synthetic-public",
+        "implementation": "github-comment-bridge/1"
+      },
+      "policy": {
+        "revision": "p1",
+        "principal": "fixture-user",
+        "revoked": false,
+        "allow_partial_direct": true,
+        "max_body_bytes": 8192,
+        "grants": [
+          {
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 1,
+            "data_class": "synthetic-public"
+          }
+        ]
+      },
+      "expected": {
+        "mapping": {
+          "status": "invalid_input",
+          "reason": "native_input"
+        },
+        "decision": "not_evaluated"
+      }
+    }
+  ]
+}

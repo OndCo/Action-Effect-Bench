@@ -1,0 +1,95 @@
+{
+  "schema_version": "github-issue-comment-freeze/3",
+  "freeze_revision": 3,
+  "corpus_id": "github-issue-comment-public-development-v1",
+  "frozen_at": "2026-10-19T03:39:23Z",
+  "status": "frozen",
+  "authorship": "same-project-ai-assisted",
+  "source": "supplied-interface-only",
+  "ordering": "case-author-did-not-read-candidate; parent-did-not-read-corpus-until-freeze; implementation-parallel-from-agreed-interface",
+  "custody": {
+    "implementation_timing": "parent-began-implementing-during-case-authoring",
+    "pre_implementation_freeze": false,
+    "case_author_inspected_candidate": false,
+    "parent_inspected_case_json_or_expected_before_revised_freeze": false,
+    "parent_read_custody_document_before_revised_freeze": true,
+    "candidate_run_on_corpus_before_revised_freeze": false,
+    "result_comparison_before_revised_freeze": false,
+    "provenance_basis": "direct-user-correction",
+    "parent_read_freeze_metadata_before_revised_freeze": true
+  },
+  "supersedes": {
+    "manifest_path": "runtime-pilot/cases/freeze-manifest.v2.json",
+    "manifest_sha256": "3774e734d8d58c4aa3e9e63159e383a9c90463c0404feb2a24d69a591441bf76",
+    "frozen_at": "2026-10-19T03:37:18Z",
+    "reason": "correct-current-path-and-explicit-parallel-implementation-ordering",
+    "initial_manifest": {
+      "manifest_path": "runtime-pilot/cases/historical/initial-freeze/freeze-manifest.json",
+      "manifest_sha256": "103b003ee13ddecd8027fce1ca8b5ffdeed3b7c36273438116433b1cc69cffb7",
+      "frozen_at": "2026-10-19T03:28:08Z",
+      "reason": "provenance-correction-no-case-or-label-changes",
+      "historical_claim_status": "pre-implementation-ordering-claim-retracted"
+    }
+  },
+  "normative_sources": [
+    {
+      "path": "../action-effect-spec/profiles/github-issue-comment/README.md",
+      "bytes": 6171,
+      "sha256": "cd65fb8c74ca42ecc3c65ea758ff5c17aba2ea155e053f45c48cbe742bafd3c2"
+    },
+    {
+      "path": "../action-effect-spec/profiles/github-issue-comment/profile.json",
+      "bytes": 1775,
+      "sha256": "b3aa4d5ca35f3c3a2436765d1b7c8df917695b5956a4ff544e4f82e713f7a831"
+    }
+  ],
+  "counts": {
+    "cases": 55,
+    "base_intents": 22,
+    "sdk": 53,
+    "mcp": 55,
+    "lane_instances": 108
+  },
+  "artifacts": [
+    {
+      "path": "runtime-pilot/cases/author-corpus.mjs",
+      "bytes": 22265,
+      "sha256": "bdf8b32d24b60711817a4264ba55af4a1fa2474514e73fe4ccf51eb7a2547484"
+    },
+    {
+      "path": "runtime-pilot/cases/github-issue-comment.v1.json",
+      "bytes": 126089,
+      "sha256": "f452e4fcb30a04bebe179ca6a3393b0a006497ddee2f110440bcd0e3b476ca17"
+    },
+    {
+      "path": "docs/runtime-case-custody.md",
+      "bytes": 14576,
+      "sha256": "45fe2a7dfb1ee576dd8313c20d12a9ba773c54f0985bef38b4c2b3115714ea92"
+    },
+    {
+      "path": "runtime-pilot/cases/case-shape.md",
+      "bytes": 4221,
+      "sha256": "68ef9f692a00c11fe8118c69704a2bc156377eb5c3d869ada5fcd49a5b7c63b7"
+    },
+    {
+      "path": "runtime-pilot/cases/historical/initial-freeze/freeze-manifest.json",
+      "bytes": 1008,
+      "sha256": "103b003ee13ddecd8027fce1ca8b5ffdeed3b7c36273438116433b1cc69cffb7"
+    },
+    {
+      "path": "runtime-pilot/cases/historical/initial-freeze/freeze-manifest.sha256",
+      "bytes": 87,
+      "sha256": "c4dcb0379a3d99e14c9fba53154fbe02b59119526bf053186c7fd5931e5612e7"
+    },
+    {
+      "path": "runtime-pilot/cases/freeze-manifest.v2.json",
+      "bytes": 2817,
+      "sha256": "3774e734d8d58c4aa3e9e63159e383a9c90463c0404feb2a24d69a591441bf76"
+    },
+    {
+      "path": "runtime-pilot/cases/freeze-manifest.v2.sha256",
+      "bytes": 90,
+      "sha256": "ea3e998e52d29dfa53ad7fc74ac722d89be085ea3cf2dee126b5468eee0dc1c1"
+    }
+  ]
+}

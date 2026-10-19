@@ -1,0 +1,33 @@
+{
+  "schema_version": "github-issue-comment-freeze/1",
+  "corpus_id": "github-issue-comment-public-development-v1",
+  "frozen_at": "2026-10-19T03:28:08Z",
+  "status": "frozen",
+  "authorship": "same-project-ai-assisted",
+  "source": "supplied-interface-only",
+  "ordering": "corpus-frozen-before-parent-candidate-implementation-per-task-protocol",
+  "counts": {
+    "cases": 55,
+    "base_intents": 22,
+    "sdk": 53,
+    "mcp": 55,
+    "lane_instances": 108
+  },
+  "artifacts": [
+    {
+      "path": "runtime-pilot/cases/author-corpus.mjs",
+      "bytes": 20680,
+      "sha256": "5ac140416c31f838151e47e420f63dd680b23c235056a17dde551c8a73538e3e"
+    },
+    {
+      "path": "runtime-pilot/cases/github-issue-comment.v1.json",
+      "bytes": 126089,
+      "sha256": "f452e4fcb30a04bebe179ca6a3393b0a006497ddee2f110440bcd0e3b476ca17"
+    },
+    {
+      "path": "docs/runtime-case-custody.md",
+      "bytes": 11016,
+      "sha256": "1da76bddf478937ceb69593e3a845ad2d0db469d3ee867beb0525ddfb478df4e"
+    }
+  ]
+}

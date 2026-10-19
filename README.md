@@ -3,17 +3,35 @@
 **Test shared effect semantics without treating agreement as correctness,
 refusal as useful completion, or a description as permission.**
 
-Version `0.1.0-draft.1`. Public development benchmark and evaluation-protocol
+Release `v0.2.0-draft.1`. Public development benchmark and evaluation-protocol
 proposal. Not a leaderboard, external certification or completed protected study.
 
 This repository is separate from
 [Action Effect Spec](https://github.com/OndCo/Action-Effect-Spec). The runnable
-part compares two separately written offline consumers of one finite synthetic
-refund-declaration profile. The broader protocol defines how mapping accuracy,
-authorization decisions, useful completion and full costs should be evaluated
-separately; those tracks are not all implemented here.
+part retains the original two offline refund-profile consumers and adds a
+bounded GitHub-comment pilot: JavaScript production, a separately written
+Python checker, actual OPA authorization, official MCP transport/Octokit, a
+local occurrence ledger and read-only provider reconciliation. No OSuite
+server or account is required. It is not a general-purpose production gateway.
 
-## Reproduce
+## Runtime Pilot
+
+- [Quickstart](docs/adoption/quickstart.md): install pinned tools, run locally,
+  and distinguish safe replay from an explicitly authorized live write.
+- [Runtime guide](runtime-pilot/README.md): two strategies, scope and trust boundaries.
+- [Results](reports/runtime-pilot-summary.md): measured denominators, failures,
+  cost and public provider readback links.
+- [Working paper](paper/manuscript.md): research question, protocol and evidence limits.
+- [Independent evaluation pathway](docs/adoption/external-evaluation.md): custody
+  and separate input/label handling, not a claim that an external study occurred.
+
+The new author-defined corpus has 55 rows, 22 base intents and 108 lane
+instances. Runtime cases are frozen before candidate execution/results, not
+before implementation. The structured baseline uses the same Python projection,
+OPA and dispatch controls without transferring an effect-description envelope.
+Protocol overhead is reported, not assumed to be a performance win.
+
+## Reproduce the Original Corpus
 
 Use Node.js 22+ and Python 3.9+ on `PATH`; supported current releases are
 recommended. No dependency installation, OSuite account, credentials or cloud
@@ -26,7 +44,7 @@ git clone https://github.com/OndCo/Action-Effect-Spec.git action-effect-spec
 SPEC_COMMIT=$(node -p "require('./action-effect-bench/spec-lock.json').commit")
 git -C action-effect-spec checkout --detach "$SPEC_COMMIT"
 node action-effect-bench/conformance/case-source.mjs --check
-node --test action-effect-spec/implementations/javascript/consumer.test.mjs action-effect-spec/implementations/javascript/cli.test.mjs action-effect-bench/conformance/runner.test.mjs action-effect-bench/conformance/entrypoints.test.mjs
+node --test action-effect-spec/implementations/javascript/*.test.mjs action-effect-bench/conformance/runner.test.mjs action-effect-bench/conformance/entrypoints.test.mjs
 python3 -B -W error -m unittest discover -s action-effect-spec/implementations/python/tests
 node action-effect-bench/conformance/run.mjs
 ```
@@ -54,7 +72,7 @@ See [the runner guide](conformance/README.md) and [reports](reports/README.md).
 | [12-case development design index](development-case-index.json) | Proposed broader scenarios, not 12 additional executed cases. |
 
 Every consumer response has `authority: not_evaluated`. A successful
-`accepted_partial` result is not a safe-action verdict. These cases do not
+`accepted_partial` result is not a safe-action verdict. These original cases do not
 establish live authorization, signature verification, real provider outcomes,
 arbitrary program analysis or full CORE-001..028 conformance. Per-process timing
 is diagnostic, not an end-to-end latency advantage.

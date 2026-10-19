@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "Please cite the exact release or commit and distinguish development evidence from external validation."
+title: "Action Effect Bench: Factorized Evaluation of Effect Interchange and Runtime Decisions"
+type: software
+authors:
+  - name: "Ond Holdings Inc."
+version: "0.2.0-draft.1"
+date-released: "2026-10-19"
+url: "https://github.com/OndCo/Action-Effect-Bench"
+repository-code: "https://github.com/OndCo/Action-Effect-Bench"
+license: MIT
+keywords:
+  - AI agents
+  - effect descriptions
+  - runtime authorization
+  - interoperability
+  - reproducibility

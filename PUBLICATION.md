@@ -2,10 +2,10 @@
 
 Editorial date: 18 October 2026, America/Toronto. Run identities use UTC.
 
-This release selects the evaluation proposal, case-index schema and design
+The initial release selected the evaluation proposal, case-index schema and design
 inventory, collaboration boundaries, the 80-case source-frozen corpus and its
 generator, 22 post-review regression cases, process runner and scorer tests.
-It also includes fresh run reports for the selected public source revision,
+It also included fresh run reports for the selected public source revision,
 reproduction metadata and contribution/security instructions.
 
 The original local drafting archive, earlier internal reports and review logs
@@ -13,6 +13,19 @@ remain preserved outside this release. No old result is relabeled as a run of
 the public source snapshot. No third-party source archive, Studio application,
 private customer information, secret or active protected research case is
 published. There is no paid service, cloud deployment or model invocation.
+
+The `v0.2.0-draft.1` release additionally selects the bounded GitHub-comment
+profile implementation, same-project frozen development cases, pinned OPA and
+MCP/Octokit integration, local ledger, live owned-resource measurements,
+read-only replay and external-custody tooling. The private live configuration
+directory, credentials and installed dependencies are excluded. Public synthetic
+comments are intentionally retained on the dedicated issue as readback evidence.
+The selected upstream OpenAPI excerpt retains GitHub's MIT notice and pinned
+source provenance; it is not an independently labeled governance dataset.
+
+The new working manuscript is a same-project methods and pilot report, not a
+peer-reviewed standard or a claim of independent external validation. No
+manuscript has been submitted by these publication commands.
 
 The exact selected files are the Git tree of the chosen Bench commit.
 `spec-lock.json` pins the companion Spec commit; individual source hashes and

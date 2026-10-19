@@ -1,0 +1,21 @@
+{
+  "version": "live-github-pilot/1",
+  "repository": "OndCo/Action-Effect-Bench",
+  "required_issue_title": "Action-Effect controlled runtime pilot",
+  "maximum_new_comments": 12,
+  "strategies": ["protocol", "structured"],
+  "lanes": ["sdk", "mcp"],
+  "scenarios": [
+    {"id":"ascii", "expected_decision":"allow", "expected_authorization_reason":"authorized", "expected_outcome":"confirmed"},
+    {"id":"unicode", "expected_decision":"allow", "expected_authorization_reason":"authorized", "expected_outcome":"confirmed"},
+    {"id":"revoked", "expected_decision":"deny", "expected_authorization_reason":"revoked", "expected_outcome":"withheld"},
+    {"id":"narrowed", "expected_decision":"deny", "expected_authorization_reason":"body_too_large", "expected_outcome":"withheld"},
+    {"id":"partial-review", "expected_decision":"review", "expected_authorization_reason":"partial_scope", "expected_outcome":"withheld"},
+    {"id":"invalid-policy", "expected_decision":"evaluation_failure", "expected_authorization_reason":"invalid_policy", "expected_outcome":"withheld"},
+    {"id":"lost-ack", "expected_decision":"allow", "expected_authorization_reason":"authorized", "expected_outcome":"unknown", "expected_reconciled_outcome":"confirmed", "expected_fault":"successful_post_ack_discarded"},
+    {"id":"duplicate", "expected_decision":"not_evaluated", "expected_outcome":"duplicate_suppressed", "expected_reason":"already_reserved", "reuses":"ascii"}
+  ],
+  "fault_injection": "lost-ack discards one actual successful POST acknowledgment in the trusted adapter, not a naturally occurring outage",
+  "retry_policy": "No automatic POST retry. Unknown observations reconcile by read-only exact content and actor matching.",
+  "claim_scope": "Author-controlled local policy on real GitHub resources; no autonomous model, full provider effect coverage or external case labeling."
+}

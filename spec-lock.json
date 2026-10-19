@@ -1,7 +1,7 @@
 {
   "format": "action-effect-spec-lock-v1",
   "repository": "https://github.com/OndCo/Action-Effect-Spec.git",
-  "commit": "ff5de37da6402c5a0e42d1a9cc7d4880579e374d",
+  "commit": "a9b86f4b529a5e330c2a9bf1b8c4c259a7b36e40",
   "spec_version": "0.1.0-draft.1",
   "consumer_profile": "offline-consumer-v1",
   "local_directory": "action-effect-spec"
