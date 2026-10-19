@@ -1,11 +1,11 @@
 import { execFileSync } from 'node:child_process';
-import { constants, copyFileSync, mkdirSync, readFileSync, realpathSync, existsSync } from 'node:fs';
+import { constants, copyFileSync, mkdirSync, readFileSync, readdirSync, realpathSync, existsSync } from 'node:fs';
 import { dirname, join, basename } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { performance } from 'node:perf_hooks';
 import { createJournal, digestBytes, saveArtifact, verifyJournal, assertPublicValue } from './artifacts.mjs';
 import { readState, writeState, replaceState, scenarioPolicy, readWritePermits } from './write-artifacts.mjs';
-import { captureProvenance, verifyProvenance } from './provenance.mjs';
+import { captureProvenance, verifyProvenance, loadRecordedSources } from './provenance.mjs';
 import { frozenWriteInputs, validateWriteManifest } from './write-config.mjs';
 import { buildWritePlan } from './write-plan.mjs';
 import { openNativeMcp } from './native-mcp.mjs';
@@ -17,6 +17,59 @@ import { load } from '../runtime-pilot/ledger.mjs';
 const here = fileURLToPath(new URL('./', import.meta.url));
 const reportsRoot = fileURLToPath(new URL('../reports/', import.meta.url));
 const baseTarget = { owner: 'OndCo', repo: 'Action-Effect-Bench' };
+
+export function assertUnstartedAttempt(previous, journalBytes) {
+  const verified = verifyJournal(journalBytes);
+  const rows = verified.valid ? journalBytes.toString('utf8').trimEnd().split('\n').map(JSON.parse) : [];
+  if (previous?.format !== 'action-effect-owned-write-study/1' || previous.status !== 'stopped'
+    || previous.failure !== 'worker_missing_output' || previous.phases.length || previous.cases.length
+    || previous.write_permits.length || !verified.valid || verified.complete || rows.length !== 3
+    || rows.map(row => row.event.type).join(',') !== 'begin,ledger_before,worker_failure'
+    || rows[1].event.state !== null || rows[0].event.metadata.manifest_sha256 !== previous.manifest_sha256
+    || rows[0].event.metadata.scenario_id !== previous.manifest.plan.scenarios[0].id
+    || rows[0].event.metadata.mode !== 'execute') throw new Error('cannot_adopt_started_attempt');
+  return true;
+}
+
+export async function adoptUnstartedStudy(previousManifestPath, runId) {
+  if (typeof runId !== 'string' || !/^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$/.test(runId)) throw new Error('write_run_id');
+  const oldRoot = realpathSync(dirname(previousManifestPath)), old = readState(previousManifestPath);
+  const index = readState(join(oldRoot, 'public-output.json')).value;
+  if (!/^[A-Za-z0-9][A-Za-z0-9._-]{0,199}$/.test(index.file)) throw new Error('cannot_adopt_started_attempt');
+  const previousRecord = readState(join(reportsRoot, index.file), index.sha256, 30_000_000), previous = previousRecord.value;
+  if (old.sha256 !== previous.manifest_sha256) throw new Error('cannot_adopt_started_attempt');
+  const firstJournalPath = join(oldRoot, 'journals', `${old.value.plan.scenarios[0].id}.execute.jsonl`);
+  const firstJournal = readFileSync(firstJournalPath);
+  assertUnstartedAttempt(previous, firstJournal);
+  for (const dir of ['ledger', 'permits']) if (existsSync(join(oldRoot, dir)) && readdirSync(join(oldRoot, dir)).length) {
+    throw new Error('cannot_adopt_started_attempt');
+  }
+  if (readdirSync(join(oldRoot, 'journals')).length !== 1) throw new Error('cannot_adopt_started_attempt');
+  validateWriteManifest(old.value);
+  loadRecordedSources(old.value.provenance);
+  const root = join(here, '.runtime-private', 'owned-write', runId);
+  if (existsSync(root)) throw new Error('write_setup_exists_do_not_repeat');
+  const provenance = captureProvenance();
+  if (!verifyProvenance(provenance) || Object.values(provenance.environment.repositories).some(repo => repo.dirty)
+    || !provenance.environment.opa_binary.matches_release_pin) throw new Error('commit_sources_before_owned_write');
+  const sdk = githubProvider(), principal = await sdk.principal(), target = old.value.target;
+  if (principal !== old.value.principal) throw new Error('adoption_principal');
+  const current = await sdk.listComments(target), issue = await sdk.readIssue(target);
+  if (current.length !== 0 || issue.body !== old.value.setup.issue.body || issue.user?.login !== principal
+    || issue.html_url !== old.value.setup.issue.html_url) throw new Error('cannot_adopt_nonempty_or_changed_issue');
+  const inputs = frozenWriteInputs();
+  const manifest = { ...old.value, run_id: runId, created_at: new Date().toISOString(), provenance,
+    plan: buildWritePlan({ report: inputs.report, review: inputs.review, target, principal, runId }),
+    reuse_of_unstarted_setup: { previous_run_id: old.value.run_id, previous_study_file: index.file,
+      previous_study_sha256: previousRecord.sha256, previous_manifest_sha256: old.sha256,
+      failed_worker_journal: `${old.value.run_id}.${basename(firstJournalPath)}`,
+      failed_worker_journal_sha256: digestBytes(firstJournal), previous_native_comment_calls: 0,
+      fresh_comments_before_adoption: current, observation_time: new Date().toISOString(),
+      reason: 'Pre-reservation wire-value comparison failed on JavaScript object prototypes. No occurrence or write permit existed.' } };
+  validateWriteManifest(manifest);
+  for (const scenario of manifest.plan.scenarios) writeState(join(root, 'policies'), `${scenario.id}.json`, scenarioPolicy(scenario, 'initial'));
+  return writeState(root, 'manifest.json', manifest);
+}
 
 export function assessPhase(phase, scenario, mode) {
   if (phase?.journal?.valid !== true || !Number.isSafeInteger(phase.process?.pid) || phase.process.pid < 1) return false;
@@ -203,8 +256,11 @@ export async function executeOwnedStudy(manifestPath) {
 if (process.argv[1] && realpathSync(process.argv[1]) === fileURLToPath(import.meta.url)) {
   try {
     const [command, argument, ...extra] = process.argv.slice(2);
-    if (extra.length || !argument || !['--setup', '--execute'].includes(command)) throw new Error('usage_setup_runid_or_execute_manifest');
-    const output = command === '--setup' ? { manifest: await setupOwnedStudy(argument) } : await executeOwnedStudy(realpathSync(argument));
+    if (!argument || !['--setup', '--execute', '--adopt-unstarted'].includes(command)
+      || (command === '--adopt-unstarted' ? extra.length !== 1 : extra.length !== 0)) throw new Error('usage_setup_runid_or_execute_manifest');
+    const output = command === '--setup' ? { manifest: await setupOwnedStudy(argument) }
+      : command === '--adopt-unstarted' ? { manifest: await adoptUnstartedStudy(realpathSync(argument), extra[0]) }
+        : await executeOwnedStudy(realpathSync(argument));
     process.stdout.write(`${JSON.stringify(output)}\n`);
     if (output.status === 'stopped') process.exitCode = 1;
   } catch (error) {

@@ -192,7 +192,10 @@ export async function openNativeMcp(options) {
     if (!closing) {
       closed = true;
       env.GITHUB_PERSONAL_ACCESS_TOKEN = undefined;
-      closing = client.close().catch(() => { throw failure('mcp_close_failed'); });
+      closing = Promise.resolve().then(async () => {
+        try { await client.close(); }
+        finally { await transport?.close(); }
+      }).catch(() => { throw failure('mcp_close_failed'); });
     }
     return closing;
   }
@@ -203,6 +206,13 @@ export async function openNativeMcp(options) {
       env, stderr: 'ignore', maxBufferSize: MAX_MESSAGE_BYTES });
     check(transport && typeof transport.start === 'function' && typeof transport.send === 'function'
       && typeof transport.close === 'function' && transport.sessionId === undefined, 'mcp_initialization_failed');
+    // SDK onclose drops its transport reference; retain one awaitable cleanup.
+    const closeTransport = transport.close.bind(transport);
+    let transportClosing;
+    transport.close = () => {
+      transportClosing ??= Promise.resolve().then(closeTransport);
+      return transportClosing;
+    };
     const setProtocolVersion = transport.setProtocolVersion?.bind(transport);
     // The SDK has no public protocol getter. Its optional transport hook receives
     // the actual negotiated version, including a server-selected older version.

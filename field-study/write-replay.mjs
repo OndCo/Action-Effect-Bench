@@ -6,7 +6,7 @@ import { assertPublicValue, digestBytes, verifyJournal, saveArtifact } from './a
 import { validateWriteManifest } from './write-config.mjs';
 import { loadRecordedSources } from './provenance.mjs';
 import { readState } from './write-artifacts.mjs';
-import { assessPhase } from './write-run.mjs';
+import { assessPhase, assertUnstartedAttempt } from './write-run.mjs';
 import { authorize } from '../runtime-pilot/authorization.mjs';
 import { jsonHash } from '../runtime-pilot/mapping.mjs';
 import { receiptFrom } from '../runtime-pilot/provider.mjs';
@@ -40,6 +40,19 @@ export function replayOwnedStudy(study, { readJournal } = {}) {
   check(typeof study.manifest_bytes === 'string' && digestBytes(study.manifest_bytes) === study.manifest_sha256, 'manifest_bytes');
   same(JSON.parse(study.manifest_bytes), manifest, 'manifest_binding');
   validateWriteManifest(manifest);
+  if (manifest.reuse_of_unstarted_setup) {
+    const prior = manifest.reuse_of_unstarted_setup;
+    const bytes = readJournal(prior.previous_study_file), journal = readJournal(prior.failed_worker_journal);
+    same(digestBytes(bytes), prior.previous_study_sha256, 'previous_study_hash');
+    same(digestBytes(journal), prior.failed_worker_journal_sha256, 'previous_journal_hash');
+    const previous = JSON.parse(bytes);
+    assertUnstartedAttempt(previous, journal);
+    same(previous.manifest_sha256, prior.previous_manifest_sha256, 'previous_manifest');
+    same(previous.manifest.target, manifest.target, 'reused_issue');
+    same(prior.previous_native_comment_calls, 0, 'previous_calls');
+    same(prior.fresh_comments_before_adoption, [], 'previous_current_comments');
+    loadRecordedSources(previous.manifest.provenance);
+  }
   const source = loadRecordedSources(manifest.provenance);
   for (const item of [...manifest.provenance.field_sources, ...manifest.provenance.preserved_runtime_sources]) {
     same(digestBytes(source.read(item.path)), item.sha256, 'source_hash');

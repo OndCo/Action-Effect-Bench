@@ -9,13 +9,20 @@ export async function superviseWorker({ workerPath, args, record, checkpoint, ti
     || !Number.isSafeInteger(timeoutMs) || timeoutMs < 1 || timeoutMs > 600000
     || process.platform === 'win32') throw new Error('supervisor_configuration');
   const env = { PATH: process.env.PATH, HOME: process.env.HOME, LANG: 'C.UTF-8', TZ: 'America/Toronto' };
+  function write(event) {
+    const result = record(event);
+    if (result && typeof result.then === 'function') {
+      Promise.resolve(result).catch(() => {});
+      throw new Error('supervisor_async_journal');
+    }
+  }
   const started = performance.now();
   return new Promise((resolve, reject) => {
     const child = fork(workerPath, args, { env, detached: true, execArgv: [], stdio: ['ignore', 'ignore', 'ignore', 'ipc'] });
-    let finished = null, plannedKill = false, failure, processing = false, closed = false;
+    let finished = null, plannedKill = false, failure, processing = false;
     const seen = new Set();
     function kill() {
-      if (!closed && Number.isSafeInteger(child.pid) && child.pid > 1 && child.pid !== process.pid) {
+      if (Number.isSafeInteger(child.pid) && child.pid > 1 && child.pid !== process.pid) {
         try { process.kill(-child.pid, 'SIGKILL'); } catch (error) { if (error.code !== 'ESRCH') failure ??= error; }
       }
     }
@@ -30,11 +37,11 @@ export async function superviseWorker({ workerPath, args, record, checkpoint, ti
         if (message?.type === 'checkpoint' && Object.keys(message).sort().join(',') === 'stage,type'
           && typeof message.stage === 'string' && /^[a-z][a-z-]{0,47}$/.test(message.stage) && !seen.has(message.stage)) {
           seen.add(message.stage);
-          record({ type: 'worker_checkpoint', pid: child.pid, stage: message.stage });
+          write({ type: 'worker_checkpoint', pid: child.pid, stage: message.stage });
           const action = await checkpoint(message.stage);
           if (action === 'kill') {
             plannedKill = true;
-            record({ type: 'worker_kill_requested', pid: child.pid, stage: message.stage, signal: 'SIGKILL' });
+            write({ type: 'worker_kill_requested', pid: child.pid, stage: message.stage, signal: 'SIGKILL' });
             kill();
           } else if (action === 'continue') {
             child.send({ type: 'continue', stage: message.stage }, error => { if (error) fail(error); });
@@ -46,16 +53,17 @@ export async function superviseWorker({ workerPath, args, record, checkpoint, ti
       })().catch(fail).finally(() => { processing = false; });
     });
     child.on('close', (code, signal) => {
-      closed = true;
+      // The leader may have exited while its owned MCP/other child still runs.
+      kill();
       clearTimeout(timer);
       const result = { pid: child.pid, exit_code: code, signal, planned_kill: plannedKill,
         finished, elapsed_ms: performance.now() - started };
-      try { record({ type: 'worker_exit', ...result }); } catch (error) { failure ??= error; }
+      try { write({ type: 'worker_exit', ...result }); } catch (error) { failure ??= error; }
       if (failure) reject(failure);
       else if ((!finished && !plannedKill) || (plannedKill ? signal !== 'SIGKILL' : code !== 0 || signal !== null)) {
         reject(new Error('worker_missing_output'));
       } else resolve(result);
     });
-    try { record({ type: 'worker_spawn', pid: child.pid }); } catch (error) { fail(error); }
+    try { write({ type: 'worker_spawn', pid: child.pid }); } catch (error) { fail(error); }
   });
 }

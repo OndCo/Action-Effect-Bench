@@ -39,6 +39,18 @@ Inspect the saved response and the owned GitHub repository first. Execution
 likewise refuses to restart a previously started whole study. Individual
 recovery is read-only and tied to the original occurrence.
 
+An exceptionally narrow continuation command can adopt an empty issue after
+the retained pre-reservation comparison failure:
+
+```sh
+node field-study/write-run.mjs --adopt-unstarted /absolute/old/manifest.json new-run-id
+```
+
+It checks the exact stopped record, null original ledger, absent permits, and
+the fresh unchanged/empty GitHub issue before creating a new source-bound
+manifest. It makes no issue-creation call and cannot adopt an inflight or
+unknown occurrence. The original attempt remains part of the evidence chain.
+
 Tests and offline replay never call either live entry point. The user approved
 the specific study conducted by this repository's maintainer; this is not
 blanket authorization for third parties to publish to this repository.

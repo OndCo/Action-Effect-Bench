@@ -1,0 +1,1150 @@
+{
+  "format": "action-effect-owned-write-study/1",
+  "status": "stopped",
+  "failure": "worker_missing_output",
+  "run_id": "owned-write-20261019",
+  "manifest": {
+    "format": "action-effect-owned-write-manifest/1",
+    "run_id": "owned-write-20261019",
+    "created_at": "2026-10-19T13:32:02.148Z",
+    "principal": "jw-ond",
+    "target": {
+      "owner": "OndCo",
+      "repo": "Action-Effect-Bench",
+      "issue_number": 2
+    },
+    "inputs": {
+      "report": {
+        "revision": "7306d8b45402bb2ee7f9a1fbaf7203835e599110",
+        "path": "reports/field-study-use-2026-10-19T07-15-38.744Z-a76953f1.json",
+        "sha256": "e6d9fe0e27ca93932fb9102cc5d5b7f16e4c7c138cd72c79eeeaaf1cb2961999"
+      },
+      "review": {
+        "revision": "86abb1e0c25238a0bbc22c59d45d06e983527bbf",
+        "path": "analysis/review-second-field-use.json",
+        "sha256": "0f5b7954f549c1e184f5ece621126234f2c1c8034175391b1f1354ef2eca2682"
+      }
+    },
+    "tools": {
+      "format": "action-effect-field-tools/1",
+      "github_mcp": {
+        "repository": "github/github-mcp-server",
+        "version": "v2.0.2",
+        "source_commit": "eb47a99ddb866ca2b8a162920e6bda9521f33ebb",
+        "platform": "darwin-arm64",
+        "archive_url": "https://github.com/github/github-mcp-server/releases/download/v2.0.2/github-mcp-server_Darwin_arm64.tar.gz",
+        "archive_size": 8848361,
+        "archive_sha256": "5d9b38511bffc84d2272eb6189129eb721c8900e45784d8ea7eaf25f8d3dd835",
+        "executable_sha256": "2d431e46617f06b1516818fa09917096ff6dfc3664b37b0bdb31e1c1a35be368",
+        "source_review": "Pinned local comment handler makes one application-level CreateComment call. HTTP redirect/transport behavior is not an exactly-one-wire-attempt guarantee. Hosted MCP behavior was not audited."
+      },
+      "azure_model": {
+        "resource": "ond-resource",
+        "resource_group": "Ond_OAI",
+        "deployment": "gpt-6-astra",
+        "model_version": "2026-09-03",
+        "region": "swedencentral",
+        "api": "Responses v1",
+        "endpoint": "https://ond-resource.openai.azure.com/openai/v1/responses",
+        "store": false,
+        "reasoning_effort": "low",
+        "max_output_tokens": 6000,
+        "timeout_ms": 180000,
+        "max_rounds_per_task": 12,
+        "max_tool_calls_per_task": 18
+      },
+      "sdk_dependencies": "../runtime-pilot/package-lock.json",
+      "editorial_timezone": "America/Toronto",
+      "event_timestamps": "UTC",
+      "scope": "Read-only real maintainer tasks first. New provider writes require a separately confirmed owned-resource boundary. No Studio or Hook changes."
+    },
+    "provenance": {
+      "field_sources": [
+        {
+          "path": "bench/field-study/agent-loop.mjs",
+          "sha256": "972b42d9d502681e0e54da775aad3b1c05aaf9d5c9e81321b39014403bd86e42"
+        },
+        {
+          "path": "bench/field-study/amendment-2.json",
+          "sha256": "b49f58cc47faaf486341e1ec834ebd3f336504abf4d88d810f1de020f0804df2"
+        },
+        {
+          "path": "bench/field-study/artifacts.mjs",
+          "sha256": "4c6e7896d85eb19864a13e14f7fbedc555bb5b0f757512b346d446fdba0a4d34"
+        },
+        {
+          "path": "bench/field-study/credentials.mjs",
+          "sha256": "5b4cae0fb0d940ad0ba085f88e30bde073f2228e0b0a5de326bf1d7631079630"
+        },
+        {
+          "path": "bench/field-study/criteria.json",
+          "sha256": "ff7a7e6472414a916e39e377f3ed5e3181d9fa554d69ff0de848bc39c7a641ac"
+        },
+        {
+          "path": "bench/field-study/fault-transport.mjs",
+          "sha256": "963de79dc514f993d03de20f78fda70029faf5e9f06867900db04bbfbbdc2011"
+        },
+        {
+          "path": "bench/field-study/github-reader.mjs",
+          "sha256": "4e2a1b1cfb86d8541d0cf9e81dab37558285ea390d708f14d209a03c1e0f5fc2"
+        },
+        {
+          "path": "bench/field-study/model-client.mjs",
+          "sha256": "d765c2be16f17ddb297d22e8d4c326c272caedf90d7c71653f7870c59c5ee6f4"
+        },
+        {
+          "path": "bench/field-study/native-mcp.mjs",
+          "sha256": "5c60e3b516a7c20c2fbd183fc93f314ec42d9c2bcad867f157f78d4138a7d845"
+        },
+        {
+          "path": "bench/field-study/native-reader.mjs",
+          "sha256": "c7f07defdab377563a52b9f8042a377d2372a48805569d5dab02ad0f6dc3cb3d"
+        },
+        {
+          "path": "bench/field-study/native-writer.mjs",
+          "sha256": "e5b120ee80dc66fe063562fd5ced76bae59ee902d5c612ba1de2bcd200fefb95"
+        },
+        {
+          "path": "bench/field-study/preflight.mjs",
+          "sha256": "e8e47712ed9315d0b932449b8bf171d7e968797b02c7c94f6fed902c441c0028"
+        },
+        {
+          "path": "bench/field-study/provenance.mjs",
+          "sha256": "21670a1282d60de329a3c9500a924e20ffc1584120786faba2e6e16407717b25"
+        },
+        {
+          "path": "bench/field-study/read-tools.mjs",
+          "sha256": "e54391c207fa5594dbf080943097b927c61ee88e0010131b14be3fcd92d3662f"
+        },
+        {
+          "path": "bench/field-study/replay-checks.mjs",
+          "sha256": "e8536f9e9dd7bcb52a3a36dd7b61bc00d31dd2092dd64350932c991864d24a4a"
+        },
+        {
+          "path": "bench/field-study/replay.mjs",
+          "sha256": "433a356ce6518e31bc8a9b0984452bdd607517008f98526d50a2def8cc7eddfb"
+        },
+        {
+          "path": "bench/field-study/report-format.json",
+          "sha256": "0ae346d8f724975963ffb2b6bee43507eeae8d397ecaa1659b5ba95ec3c873e2"
+        },
+        {
+          "path": "bench/field-study/run.mjs",
+          "sha256": "a2d778377458d6d4d3f24385a9e9acd37c49d387251d74e978462e6e3216cc00"
+        },
+        {
+          "path": "bench/field-study/scoring.mjs",
+          "sha256": "403ae830915eaed61a79e665f38f9ec7106c850419f0c10f4453602962887e2d"
+        },
+        {
+          "path": "bench/field-study/study.mjs",
+          "sha256": "ee4eab3d1510bce57374923aed79b8df1e95f257ac24c8dd120faff6f8e3e007"
+        },
+        {
+          "path": "bench/field-study/tasks.json",
+          "sha256": "2c7fdb9d451c5c6474f7a0688d92e22d3bc3b8b32d444ec03f96d768a777a0d5"
+        },
+        {
+          "path": "bench/field-study/tools.json",
+          "sha256": "4f139f55cd290b4b5d8305e6a016306e39a4b8f45b419e9931073fbccf5d8dc3"
+        },
+        {
+          "path": "bench/field-study/write-artifacts.mjs",
+          "sha256": "6d3edb8daa77714711c0ddabbf2ab86e93ae98c6c4afe45a2dc34e5624961dad"
+        },
+        {
+          "path": "bench/field-study/write-config.mjs",
+          "sha256": "0c8e646d78c18ba6e73be6a855f5794c66a2f6c30df335bcdeb53b0506b17a1a"
+        },
+        {
+          "path": "bench/field-study/write-plan.mjs",
+          "sha256": "3857888edaff1b9d6b905ed0b2960d42e44d439695c0f074c504f37905d87eb4"
+        },
+        {
+          "path": "bench/field-study/write-replay.mjs",
+          "sha256": "da248f654d785bdb9df80b67563d5942340bd091769df1990d32440a7a339ba5"
+        },
+        {
+          "path": "bench/field-study/write-run.mjs",
+          "sha256": "e21e1547c5dafc42660a3c9545c92c4e2ebabed4297305b13bd1ab993c3d4752"
+        },
+        {
+          "path": "bench/field-study/write-supervisor.mjs",
+          "sha256": "2904c3cdf5246d7a08a40276f9fb8c0f24800116310890b328f555ed169399b2"
+        },
+        {
+          "path": "bench/field-study/write-worker.mjs",
+          "sha256": "facc617a1304820b66969fc8fb68e1ba91fcbc1d0f610c210046c1d37038d721"
+        }
+      ],
+      "preserved_runtime_sources": [
+        {
+          "path": "bench/runtime-pilot/artifacts.mjs",
+          "sha256": "d149220d13638a3406614a5ccaeacd26f0347130170be42adcfad9c985f30c3a"
+        },
+        {
+          "path": "bench/runtime-pilot/authorization.mjs",
+          "sha256": "89f660fc86615f23c1bd9fed259b015f8ab73ed196e662f7aad6cb95c903e3c7"
+        },
+        {
+          "path": "bench/runtime-pilot/cases/author-corpus.mjs",
+          "sha256": "bdf8b32d24b60711817a4264ba55af4a1fa2474514e73fe4ccf51eb7a2547484"
+        },
+        {
+          "path": "bench/runtime-pilot/cases/freeze-manifest.json",
+          "sha256": "17afe9ecdb4e4f8894ae410fef5e537c903b5597dd290d20c8e6d1b8447622ce"
+        },
+        {
+          "path": "bench/runtime-pilot/cases/freeze-manifest.sha256",
+          "sha256": "47c05d2c2a3828b1dbde7900c170849b68e3b68bd92f4db2627a32b62647491c"
+        },
+        {
+          "path": "bench/runtime-pilot/cases/freeze-manifest.v2.json",
+          "sha256": "3774e734d8d58c4aa3e9e63159e383a9c90463c0404feb2a24d69a591441bf76"
+        },
+        {
+          "path": "bench/runtime-pilot/cases/freeze-manifest.v2.sha256",
+          "sha256": "ea3e998e52d29dfa53ad7fc74ac722d89be085ea3cf2dee126b5468eee0dc1c1"
+        },
+        {
+          "path": "bench/runtime-pilot/cases/github-issue-comment.v1.json",
+          "sha256": "f452e4fcb30a04bebe179ca6a3393b0a006497ddee2f110440bcd0e3b476ca17"
+        },
+        {
+          "path": "bench/runtime-pilot/cases/historical/initial-freeze/freeze-manifest.json",
+          "sha256": "103b003ee13ddecd8027fce1ca8b5ffdeed3b7c36273438116433b1cc69cffb7"
+        },
+        {
+          "path": "bench/runtime-pilot/cases/historical/initial-freeze/freeze-manifest.sha256",
+          "sha256": "c4dcb0379a3d99e14c9fba53154fbe02b59119526bf053186c7fd5931e5612e7"
+        },
+        {
+          "path": "bench/runtime-pilot/consumer-client.mjs",
+          "sha256": "b73e63b1c23412b7aa90f499a8358c14293ec047d70567301a2718af894c422b"
+        },
+        {
+          "path": "bench/runtime-pilot/external-evaluation.mjs",
+          "sha256": "0996130f02e71a13d9287610e11e99213a02064190cb0a855a843740e50bfa5b"
+        },
+        {
+          "path": "bench/runtime-pilot/gate.mjs",
+          "sha256": "6784925638bfdca47cc1e4639c280a5076e376a749991525dcfe3b1df5237159"
+        },
+        {
+          "path": "bench/runtime-pilot/install-tools.mjs",
+          "sha256": "ee6f75ab037a0b7b2341235ad888402fb07541de9ad7a7fe6dc06431770f2e59"
+        },
+        {
+          "path": "bench/runtime-pilot/ledger.mjs",
+          "sha256": "2ebbb8724035ea776f816f8352a7f5d08b9d0afe509be1b887b27199a4695b17"
+        },
+        {
+          "path": "bench/runtime-pilot/live-plan.json",
+          "sha256": "b463c9495c4c7f3970a4497763e0ebd9ab527264bc7ec13d50e2b798052dad2f"
+        },
+        {
+          "path": "bench/runtime-pilot/live-run.mjs",
+          "sha256": "2cf906d75183473aa9aeb2275846f6eb516373fa0a45c51febdb9f29e4514ccc"
+        },
+        {
+          "path": "bench/runtime-pilot/mapping.mjs",
+          "sha256": "69af246b659cb2d14dd1cd0242892dc1f899b38c194ca6da16fed95b2393b324"
+        },
+        {
+          "path": "bench/runtime-pilot/mcp-client.mjs",
+          "sha256": "f7ee35ad079959c474ad4cb8a405a4a3e2c8eb06033d115df4871eb2152ddbff"
+        },
+        {
+          "path": "bench/runtime-pilot/mcp-server.mjs",
+          "sha256": "855d2179f5e3c1ea7c1d7facae8ded3440d3f27b921a0a595d5e25979e4d63c9"
+        },
+        {
+          "path": "bench/runtime-pilot/offline-run.mjs",
+          "sha256": "cbeee10f9ccfea460cc5e783daf4337e5ec8fd8ab5b397059bbe068723761e87"
+        },
+        {
+          "path": "bench/runtime-pilot/package-lock.json",
+          "sha256": "202553ff46758ff217b205242ad1658e2daa5c0a94e7fe3e5500847981fd5a46"
+        },
+        {
+          "path": "bench/runtime-pilot/package.json",
+          "sha256": "a27ab37caf3a5d2a61afb9bbcdb00c866c7cf3b21c57bfbf0794128bb3ee47ab"
+        },
+        {
+          "path": "bench/runtime-pilot/policy.rego",
+          "sha256": "588b3fae1db09c9f3bdcea037d0fad68847a6cb970004c0d3fdd129d8c144bf8"
+        },
+        {
+          "path": "bench/runtime-pilot/provider.mjs",
+          "sha256": "f2b49108e4960c9c4eb48cd201b35550335f46c72308b5532c77f0cc794410db"
+        },
+        {
+          "path": "bench/runtime-pilot/python/consumer.py",
+          "sha256": "fe84f1493320d00f1bd9bf980a0e8bf4dcd1305a5a14ef91f2f2549bbbd3f3c2"
+        },
+        {
+          "path": "bench/runtime-pilot/python/profile_adapter.py",
+          "sha256": "cb34229952a6f1cfbbd2e43f8c19276b04a27054aa8ca6392e88c02949cbe5f8"
+        },
+        {
+          "path": "bench/runtime-pilot/python/request_json.py",
+          "sha256": "db91dcafc2bba373770aedb088c07f10ea8dc661dd9f81f4e0a6e5d54c96e9e8"
+        },
+        {
+          "path": "bench/runtime-pilot/replay-integrity.mjs",
+          "sha256": "814c6d7d98a3f533f8b040600f26de7db72618b45f48afc797e31387ca05190b"
+        },
+        {
+          "path": "bench/runtime-pilot/replay.mjs",
+          "sha256": "086146419b0159826f93fb3b0ffb8e30075b5f8b399f472222cbcb7a2e178ca1"
+        },
+        {
+          "path": "bench/runtime-pilot/scoring.mjs",
+          "sha256": "4bd228fb68d1cc1d89de7012f231ed13445ca6f2308e8071480aac8b18371d36"
+        },
+        {
+          "path": "bench/runtime-pilot/tools.json",
+          "sha256": "3c4de26c48019c83cbfe61f770d1090d82606cf85cf08e834d8328ee59c04585"
+        },
+        {
+          "path": "bench/runtime-pilot/upstream/check.mjs",
+          "sha256": "2c431f18dd433a0ada410450279181f71ec6ebd56ae620f2c967e637ed7105c0"
+        },
+        {
+          "path": "bench/runtime-pilot/upstream/github-comment-openapi.json",
+          "sha256": "be8b2b8f74734a7aa767dc4048713eb8664a75c476c12ecb4dda55f40d5cc940"
+        },
+        {
+          "path": "bench/runtime-pilot/upstream/import-github.mjs",
+          "sha256": "a31dd0a42d791371aa61b04a9b2e4fdbbe3bc037bef1c3aeba7b179136821faa"
+        },
+        {
+          "path": "spec/implementations/javascript/schema.mjs",
+          "sha256": "622f50ec231ec81b4be14a8c03885b425c70e9625995e59db7bc5dcc09411ec3"
+        },
+        {
+          "path": "spec/implementations/javascript/strict-json.mjs",
+          "sha256": "5cda89a8a43d0d633348fd2729c4ed733eb856f95279e9a649e2be1d3f5e6c9a"
+        },
+        {
+          "path": "spec/implementations/python/offline_consumer/__init__.py",
+          "sha256": "00802fbbe67cfcc816d23b3e8c25e66f2706598ba2c1333bf97df1186cfd143b"
+        },
+        {
+          "path": "spec/implementations/python/offline_consumer/adapter.py",
+          "sha256": "e7880716ce397cc0bc711624523757c6037cfaf8d1d8c957ab34f4cfe34462fa"
+        },
+        {
+          "path": "spec/implementations/python/offline_consumer/configuration.py",
+          "sha256": "cb4d2f084c86a4cdde550d5687f4b269f3aa9de659ef3bff90dec71f562b1252"
+        },
+        {
+          "path": "spec/implementations/python/offline_consumer/consumer.py",
+          "sha256": "51e294388b704ec7ae3d2999deccc300c85ce1e29b364b2a3c1b067991fddd6b"
+        },
+        {
+          "path": "spec/implementations/python/offline_consumer/errors.py",
+          "sha256": "5c82a9f101b148a80d29755fd07ec2a79ca2efe8ac7f7a26f301edbd9208976b"
+        },
+        {
+          "path": "spec/implementations/python/offline_consumer/json_subset.py",
+          "sha256": "954d2f244fe511c56c223dfada64cd5dd7fe65c8c3fae09ca3fa5a7d22150f62"
+        },
+        {
+          "path": "spec/implementations/python/offline_consumer/projection.py",
+          "sha256": "a696b066f5165acb45721dde274c5c8f77d609741d08ef63f7cf1d7b7713f92e"
+        },
+        {
+          "path": "spec/implementations/python/offline_consumer/references.py",
+          "sha256": "1c0e4e2d1bcc9d8f6c7679bf36164fb926b64a76ee47a5ff446bb08671abe5b7"
+        },
+        {
+          "path": "spec/implementations/python/offline_consumer/structure.py",
+          "sha256": "56b7f715f99f27afc1ab4a2bc7dcc8479647fca95f9efbc429799af2a0fbff21"
+        },
+        {
+          "path": "spec/implementations/python/offline_consumer/uri.py",
+          "sha256": "9d5f3f5a1301f906b0ddc93df9d730a64d5dd5962191d7b449325b351149858e"
+        },
+        {
+          "path": "spec/profiles/github-issue-comment/profile.json",
+          "sha256": "b3aa4d5ca35f3c3a2436765d1b7c8df917695b5956a4ff544e4f82e713f7a831"
+        },
+        {
+          "path": "spec/schemas/effect-description.schema.json",
+          "sha256": "0bb7797509174f2f24f534e76ac302fe6ed92e28dcd1e6b92322b2bf1abdbe5e"
+        }
+      ],
+      "environment": {
+        "node": "v22.18.0",
+        "python": "Python 3.9.6",
+        "platform": "darwin",
+        "architecture": "arm64",
+        "os_release": "27.2.0",
+        "hardware": {
+          "cpu_model": "Apple M4 Pro",
+          "logical_cpus": 14,
+          "memory_bytes": 25769803776
+        },
+        "timezone": "America/Toronto",
+        "measured_timestamps": "UTC",
+        "dependencies": {
+          "@octokit/rest": "22.0.1",
+          "@modelcontextprotocol/sdk": "1.32.1",
+          "zod": "4.6.7",
+          "ajv": "8.20.0"
+        },
+        "repositories": {
+          "spec": {
+            "head": "a9b86f4b529a5e330c2a9bf1b8c4c259a7b36e40",
+            "dirty": false,
+            "note": "Exact experiment-source bytes are in provenance.sources; dirty status also includes reports and documentation."
+          },
+          "bench": {
+            "head": "349138520169588752305ee02c145fadddd0ea24",
+            "dirty": false,
+            "note": "Exact experiment-source bytes are in provenance.sources; dirty status also includes reports and documentation."
+          }
+        },
+        "opa_binary": {
+          "pinned_version": "1.21.2",
+          "sha256": "e358121f0d96a41103499d878184e493cc5ab10956f98e835089b9de0ac2de62",
+          "matches_release_pin": true
+        }
+      }
+    },
+    "plan": {
+      "format": "action-effect-owned-write-plan/1",
+      "target": {
+        "owner": "OndCo",
+        "repo": "Action-Effect-Bench",
+        "issue_number": 2
+      },
+      "principal": "jw-ond",
+      "run_id": "owned-write-20261019",
+      "candidates": [
+        {
+          "id": "release-integrity",
+          "label": "T1",
+          "lane": "sdk",
+          "original_outcome": {
+            "status": "completed",
+            "reason": "final_output"
+          },
+          "eligible": true,
+          "withheld_reason": null,
+          "report_object_sha256": "f62a0c07f661a06fa46feec6251b0ac44aecfe7693d02f6bef420ba5ff0b2dd6",
+          "report_markdown_bytes": 5168,
+          "internal_review_grade": "complete",
+          "original_mechanical_checks": {
+            "report_schema_valid": true,
+            "citations_observed": true,
+            "successful_read_tool_results": 6,
+            "distinct_observed_sources": 6,
+            "unavailable_read_tool_results": 0,
+            "body_bytes": 5168,
+            "fits_comment_profile_bytes": true,
+            "quality": "not_reviewed",
+            "utility": "not_reviewed",
+            "timing": {
+              "model_request_ms": 53243.25412599999,
+              "tool_handling_ms": 29433.795042000012,
+              "other_task_ms": 141.16216499999427,
+              "total_task_ms": 82818.211333
+            },
+            "note": "Schema, byte and citation checks do not grade semantic correctness, novelty, usefulness or permission to publish."
+          }
+        },
+        {
+          "id": "clean-clone-quickstart",
+          "label": "T2",
+          "lane": "mcp",
+          "original_outcome": {
+            "status": "failed",
+            "reason": "report_bytes_exceeded"
+          },
+          "eligible": false,
+          "withheld_reason": "report_bytes_exceeded",
+          "report_object_sha256": "b42f209f60ea2deca5fd9bd9ae3e49264e1dfe2845d6306a8376b4d76e969284",
+          "report_markdown_bytes": 6272,
+          "internal_review_grade": "partial",
+          "original_mechanical_checks": {
+            "report_schema_valid": false,
+            "citations_observed": false,
+            "successful_read_tool_results": 5,
+            "distinct_observed_sources": 5,
+            "unavailable_read_tool_results": 0,
+            "body_bytes": null,
+            "fits_comment_profile_bytes": false,
+            "quality": "no_result",
+            "utility": "not_reviewed",
+            "timing": {
+              "model_request_ms": 48341.928625,
+              "tool_handling_ms": 3429.311124999993,
+              "other_task_ms": 122.15191600001708,
+              "total_task_ms": 51893.39166600001
+            },
+            "note": "Schema, byte and citation checks do not grade semantic correctness, novelty, usefulness or permission to publish."
+          }
+        },
+        {
+          "id": "consumer-v1-1-migration",
+          "label": "T3",
+          "lane": "sdk",
+          "original_outcome": {
+            "status": "failed",
+            "reason": "report_bytes_exceeded"
+          },
+          "eligible": false,
+          "withheld_reason": "report_bytes_exceeded",
+          "report_object_sha256": "5a52114c17bf1919aee20a5677cf3bf6091ba55c8ce9fdc99f314b4b93c0a38f",
+          "report_markdown_bytes": 7051,
+          "internal_review_grade": "partial",
+          "original_mechanical_checks": {
+            "report_schema_valid": false,
+            "citations_observed": false,
+            "successful_read_tool_results": 3,
+            "distinct_observed_sources": 3,
+            "unavailable_read_tool_results": 0,
+            "body_bytes": null,
+            "fits_comment_profile_bytes": false,
+            "quality": "no_result",
+            "utility": "not_reviewed",
+            "timing": {
+              "model_request_ms": 41412.745043,
+              "tool_handling_ms": 1929.720375999983,
+              "other_task_ms": 83.12178899999708,
+              "total_task_ms": 43425.58720799998
+            },
+            "note": "Schema, byte and citation checks do not grade semantic correctness, novelty, usefulness or permission to publish."
+          }
+        },
+        {
+          "id": "official-mcp-compatibility",
+          "label": "T4",
+          "lane": "mcp",
+          "original_outcome": {
+            "status": "completed",
+            "reason": "final_output"
+          },
+          "eligible": true,
+          "withheld_reason": null,
+          "report_object_sha256": "f3039d6dd071432dcfd04920a5bdde8e81f532659ca520f8527649c04debf0ca",
+          "report_markdown_bytes": 5997,
+          "internal_review_grade": "complete",
+          "original_mechanical_checks": {
+            "report_schema_valid": true,
+            "citations_observed": true,
+            "successful_read_tool_results": 5,
+            "distinct_observed_sources": 5,
+            "unavailable_read_tool_results": 0,
+            "body_bytes": 5997,
+            "fits_comment_profile_bytes": true,
+            "quality": "not_reviewed",
+            "utility": "not_reviewed",
+            "timing": {
+              "model_request_ms": 49278.00737700003,
+              "tool_handling_ms": 3110.7780000000494,
+              "other_task_ms": 116.06491399992956,
+              "total_task_ms": 52504.85029100001
+            },
+            "note": "Schema, byte and citation checks do not grade semantic correctness, novelty, usefulness or permission to publish."
+          }
+        },
+        {
+          "id": "limits-and-recovery",
+          "label": "T5",
+          "lane": "sdk",
+          "original_outcome": {
+            "status": "failed",
+            "reason": "report_bytes_exceeded"
+          },
+          "eligible": false,
+          "withheld_reason": "report_bytes_exceeded",
+          "report_object_sha256": "ae6b0e67049ec0ee7ce7192fa0a7795225c9471edf8c727fc928102a8a23bb7e",
+          "report_markdown_bytes": 6267,
+          "internal_review_grade": "partial",
+          "original_mechanical_checks": {
+            "report_schema_valid": false,
+            "citations_observed": false,
+            "successful_read_tool_results": 5,
+            "distinct_observed_sources": 5,
+            "unavailable_read_tool_results": 0,
+            "body_bytes": null,
+            "fits_comment_profile_bytes": false,
+            "quality": "no_result",
+            "utility": "not_reviewed",
+            "timing": {
+              "model_request_ms": 47237.27116600002,
+              "tool_handling_ms": 2363.435625000013,
+              "other_task_ms": 114.31287599998177,
+              "total_task_ms": 49715.019667000015
+            },
+            "note": "Schema, byte and citation checks do not grade semantic correctness, novelty, usefulness or permission to publish."
+          }
+        },
+        {
+          "id": "conformance-support",
+          "label": "T6",
+          "lane": "mcp",
+          "original_outcome": {
+            "status": "failed",
+            "reason": "report_bytes_exceeded"
+          },
+          "eligible": false,
+          "withheld_reason": "report_bytes_exceeded",
+          "report_object_sha256": "1f6a07b6898c9797d341e5a2f5229ce13280227a26914215ae4b8ccd3ec2dcb5",
+          "report_markdown_bytes": 6454,
+          "internal_review_grade": "partial",
+          "original_mechanical_checks": {
+            "report_schema_valid": false,
+            "citations_observed": false,
+            "successful_read_tool_results": 5,
+            "distinct_observed_sources": 5,
+            "unavailable_read_tool_results": 0,
+            "body_bytes": null,
+            "fits_comment_profile_bytes": false,
+            "quality": "no_result",
+            "utility": "not_reviewed",
+            "timing": {
+              "model_request_ms": 48913.16495800001,
+              "tool_handling_ms": 2405.9754579999135,
+              "other_task_ms": 118.06287600006908,
+              "total_task_ms": 51437.20329199999
+            },
+            "note": "Schema, byte and citation checks do not grade semantic correctness, novelty, usefulness or permission to publish."
+          }
+        }
+      ],
+      "scenarios": [
+        {
+          "id": "normal-release-integrity",
+          "lane": "sdk",
+          "strategy": "protocol",
+          "fault": "none",
+          "occurrence": "owned-write-20261019.normal-release-integrity",
+          "native": {
+            "lane": "sdk",
+            "call": {
+              "owner": "OndCo",
+              "repo": "Action-Effect-Bench",
+              "issue_number": 2,
+              "body": "# Internal maintainer working result: T1 (release-integrity)\n\nSame-project AI-assisted source review: complete. Not independent endorsement or a whole-system pass.\n\n# Release integrity and reproduction identity\n\n## Completed byte check\n\n**PASS — the selected offline report matches its adjacent published checksum.**\n\n- File: `reports/runtime-pilot-offline-2026-10-19T04-23-54.715Z-6bb423.json`.\n- Independently fetched raw-byte SHA-256: `d2244f7a2704d6fb3624969b146e37581a181ced0cc2c88daab8675d72ef8662`.\n- Independently fetched size: **900,348 bytes**, below the 2 MiB inspection limit.\n- Adjacent `.json.sha256` publishes `d2244f7a2704d6fb3624969b146e37581a181ced0cc2c88daab8675d72ef8662` for exactly that basename.\n- Outcome: exact digest and filename agreement. The large JSON was inspected for metadata only, not requested as text. Both sources were fetched at `cecde389637be4f5fd3482e4942ce3fd1a623ac6`. [S1, S2]\n\nThis establishes consistency of the fetched bytes with the co-published checksum, not independent authenticity, correctness of report contents, or faithful execution of the historical experiment.\n\n## Release/source identity table\n\nCitation keys refer to the exact source URLs in the citations array, in order.\n\n| Repository | Immutable ref | Artifact or dependency role | Evidence |\n| --- | --- | --- | --- |\n| `OndCo/Action-Effect-Bench` | `cecde389637be4f5fd3482e4942ce3fd1a623ac6` | Observed publication/source snapshot containing the selected report, checksum, summary, release notes and Spec lock | S1–S5; tool-returned fixed ref |\n| `OndCo/Action-Effect-Bench` | `9f638df994504ba6f5d82c0b5409922a0be7a72e` | Measured runtime implementation, as declared by the summary; source tree not inspected here | S4 |\n| `OndCo/Action-Effect-Spec` | `a9b86f4b529a5e330c2a9bf1b8c4c259a7b36e40` | Companion dependency; summary and lock agree on this commit | S3, S4 |\n| `OndCo/Action-Effect-Bench` | Not resolved by available metadata | Public `v0.2.0-draft.1` release, ID `416913460`; release tag is not an immutable commit pin | S6 |\n| `OndCo/Action-Effect-Spec` | Release tag target not verified | Companion `v0.2.0-draft.1` release referenced by Bench release notes; distinguish from locked measurement dependency above | S5 |\n\n## How the identities reconcile\n\nThe release API reports Bench `v0.2.0-draft.1` as **published (`draft: false`) and prerelease (`prerelease: true`)**. “Draft” in its name describes maturity, not an unpublished GitHub draft. The returned metadata does not resolve the tag to a commit; it does not establish that the tag points to the inspected publication snapshot. [S6]\n\nThe summary identifies the measured Bench implementation separately from the publication snapshot and says release-only documentation/report commits do not change the runtime source inventory. Different commit IDs are therefore not inherently contradictory. That inventory-equivalence statement is a document claim, not a source comparison completed here. [S4]\n\nThe lock declares Spec commit `a9b86f4b529a5e330c2a9bf1b8c4c259a7b36e40`, `spec_version: 0.1.0-draft.1`, profile `offline-consumer-v1`, and local directory `action-effect-spec`. Its commit agrees with the summary. The release notes separately reference the companion `v0.2.0-draft.1` release. A release label, declared protocol/profile version and measured commit identify different things: their strings need not be equal. Do not silently replace the locked dependency with a similarly named release tag. The companion tag's target and compatibility were not inspected. [S3–S5]\n\nFor reproduction, the report basename must match the checksum entry and its raw digest must match; these checks passed. The runtime source inventory, measured implementation commit, Spec lock and report-recorded dependencies must also agree. Only the summary/lock Spec-commit agreement was checked here; the JSON contents and source inventories were not examined.\n\n## Recommendation and limits\n\nRetain the selected JSON and checksum from the immutable publication snapshot. Use the declared measured Bench commit and exact Spec commit as reproduction pins; retain release labels as publication context, not substitutes for commits. Before publication, a maintainer should verify both release-tag targets and reconcile the report's embedded source/tool inventories with those pins.\n\nThe summary documents a read-only offline replay using `node runtime-pilot/replay.mjs` with the selected report path. Run that separately with pinned dependencies; no replay or shell tests ran here. Reported benchmark results, historical live comments, CI success and replay success remain document claims. The preserved failed first attempt is explicitly not replayable with the current implementation. [S4]\n\n**Separate PDF observation:** release metadata lists `manuscript.pdf`, size 274,903 bytes, with advertised digest `sha256:41ff68caddf3d7a5e393a27cb939a8d504b5d24c2d14ce56f18abad04d2ccba8`. Its bytes were not downloaded or independently hashed. This is not the required report check. [S6]\n\nCurrent observations are public GitHub reads over REST/HTTPS in the SDK lane; startup was not observed. They do not reproduce the historical MCP pilot, establish authorization, mutate GitHub, or certify conformance or deployments. **Maintainer review is required before publication.**\n\n## Original conclusion\nThe selected 900,348-byte offline report passes the independent raw SHA-256 comparison against its adjacent checksum. The summary and lock agree on the measured Spec commit, and the Bench release is publicly published as a prerelease. Release-tag targets, source-inventory equivalence, report semantics, replay results and PDF bytes remain unverified; reproduce with explicit immutable pins and obtain maintainer review.\n\n## Original citations\n1. https://github.com/OndCo/Action-Effect-Bench/blob/cecde389637be4f5fd3482e4942ce3fd1a623ac6/reports/runtime-pilot-offline-2026-10-19T04-23-54.715Z-6bb423.json\n2. https://github.com/OndCo/Action-Effect-Bench/blob/cecde389637be4f5fd3482e4942ce3fd1a623ac6/reports/runtime-pilot-offline-2026-10-19T04-23-54.715Z-6bb423.json.sha256\n3. https://github.com/OndCo/Action-Effect-Bench/blob/cecde389637be4f5fd3482e4942ce3fd1a623ac6/spec-lock.json\n4. https://github.com/OndCo/Action-Effect-Bench/blob/cecde389637be4f5fd3482e4942ce3fd1a623ac6/reports/runtime-pilot-summary.md\n5. https://github.com/OndCo/Action-Effect-Bench/blob/cecde389637be4f5fd3482e4942ce3fd1a623ac6/docs/release-v0.2.0.md\n6. https://github.com/OndCo/Action-Effect-Bench/releases/tag/v0.2.0-draft.1\n\nSource evidence: https://github.com/OndCo/Action-Effect-Bench/blob/7306d8b45402bb2ee7f9a1fbaf7203835e599110/reports/field-study-use-2026-10-19T07-15-38.744Z-a76953f1.json\nOriginal task: release-integrity\nReport object SHA-256: `f62a0c07f661a06fa46feec6251b0ac44aecfe7693d02f6bef420ba5ff0b2dd6`\nOccurrence: `owned-write-20261019.normal-release-integrity`\n"
+            }
+          },
+          "context": {
+            "principal": "jw-ond",
+            "data_class": "public-maintainer-draft",
+            "implementation": "github-comment-bridge/1"
+          },
+          "reference_projection": {
+            "operation": "create_issue_comment",
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 2,
+            "endpoint": "https://api.github.com/repos/OndCo/Action-Effect-Bench/issues/2/comments",
+            "body_sha256": "4cc12aec6cf9debe270db489a5e5d7515a9ea7532298c806f3cf8f00dc69305c",
+            "body_bytes": 6915,
+            "data_class": "public-maintainer-draft"
+          },
+          "expected": {
+            "initial_outcome": "confirmed",
+            "reason": null,
+            "decision": "allow",
+            "recovery_outcome": null,
+            "new_comments": 1
+          }
+        },
+        {
+          "id": "normal-official-mcp-compatibility",
+          "lane": "mcp",
+          "strategy": "structured",
+          "fault": "none",
+          "occurrence": "owned-write-20261019.normal-official-mcp-compatibility",
+          "native": {
+            "lane": "mcp",
+            "call": {
+              "name": "add_issue_comment",
+              "arguments": {
+                "owner": "OndCo",
+                "repo": "Action-Effect-Bench",
+                "issue_number": 2,
+                "body": "# Internal maintainer working result: T4 (official-mcp-compatibility)\n\nSame-project AI-assisted source review: complete. Not independent endorsement or a whole-system pass.\n\n# Official GitHub MCP compatibility assessment\n\n## Identity and provenance\n\nSource keys [1]–[5] refer to the exact pinned URLs in `citations`, in order.\n\n| Layer | Identity supported by sources | Boundary |\n|---|---|---|\n| Dependency | Private ESM package `action-effect-runtime-pilot@0.2.0-draft.1`, Node `>=22`; declares `@modelcontextprotocol/sdk@1.32.1`, `@octokit/rest@22.0.1`, `ajv@8.20.0`, `zod@4.6.7` [2] | Official MCP SDK use is not official GitHub server use. Declaration alone does not verify installed bytes. |\n| Server implementation | Source constructs `McpServer` named `action-effect-comment-pilot`, version `0.2.0-draft.1` [1] | A custom pilot server, not evidence of the official GitHub MCP implementation. |\n| Transport | Imports `StdioServerTransport` and connects it; README describes real SDK stdio initialize/list/call exchanges [1,3] | No hosted/HTTP transport or remote authentication flow is established. |\n| Declared profile binding | GitHub Issue Comment Profile 1 requires `context.implementation = \"github-comment-bridge/1\"`; identity preimage has `kind: \"declaration\"` [4] | Neither server name nor SDK version; not binary attestation or proof of GitHub internals. Profile release is `v0.2.0-draft.1`, core wire version remains `0.1.0-draft.1`. |\n\nThe current runner separately reports a local stdio process named `github-mcp-server@2.0.2`, executable SHA-256 `2d431e46617f06b1516818fa09917096ff6dfc3664b37b0bdb31e1c1a35be368`, startup observed, negotiated protocol `2025-11-25`. All five source reads succeeded on the MCP lane. This establishes current public-read activity under that reported execution identity, not official provenance of that executable or execution of the historical pilot.\n\n## Released interface\n\nThe pilot registers one tool, **`add_issue_comment`**. Its advertised input is a strict object with required `owner: string`, `repo: string`, `issue_number: integer`, `body: string`; extra keys are rejected. Server input-element limit is 32. Annotations are `readOnlyHint:false`, `destructiveHint:false`, `idempotentHint:false`, `openWorldHint:true` [1]. These hints do not grant permission.\n\nThe profile adds narrower acceptance rules than the Zod schema alone [4]:\n- Owner: `[A-Za-z0-9][A-Za-z0-9-]{0,38}`; repo: `[A-Za-z0-9_.-]{1,100}`, excluding `.` and `..`.\n- Issue: positive integer through 2147483647, not a boolean. Body: nonempty Unicode-scalar string, at most 8192 exact UTF-8 bytes.\n- Only specified keys; no normalization, path unescaping, URL resolution, templates or caller endpoints. Only creation via `https://api.github.com/repos/owner/repo/issues/issue_number/comments`; updates, deletes and arbitrary tools are outside scope.\n- Nonempty configured principal and data class plus the exact implementation binding are required. Missing/wrong binding is untrusted evidence. Live demonstrations are restricted to authorized synthetic-public resources; profile acceptance is not authorization.\n\nThe handler captures `{lane:\"mcp\",call:{name:\"add_issue_comment\",arguments:args}}`; this is a local capture envelope, not a replacement for MCP `tools/call` [1,4]. Configuration accepts `offline-map` or `live` and `protocol` or `structured`. Offline calls prepare; live calls delegate execution to the gate/provider. Optional lost-ack injection discards a successful create acknowledgment and adds fault information [1].\n\nResponse representation is **`{content:[{type:\"text\",text:JSON.stringify(result)}]}`**: JSON serialized inside an MCP text block, not a declared structured-output schema or a proven official-server response format [1]. Profile acceptance is `accepted_partial/declared_partial`, with `authority:not_evaluated`, description digest and checked projection. Processing status, policy decision and provider outcome are distinct [3,4]. The imported gate/provider implementations were not supplied, so their complete result contract was not inspected.\n\n## Supported versus unverified\n\n**Supported:** a bounded custom MCP/SDK bridge, stdio wiring, explicit comment-input mapping and declared profile identity. The release documentation reports 32 matching planned live checks, 12 public comments, four read-only lost-ack recoveries and four suppressed duplicates [5]. These are historical same-project claims, not runs observed here; the README bounds them to eight scripted scenarios across two lanes and two strategies [3].\n\n**Unverified:** compatibility with an identified official GitHub MCP server revision, its actual tool schema, response/error semantics, transport configurations or authentication. No official implementation source, tool-list capture, interoperability trace or installed dependency evidence was supplied. Matching a tool name or using the official SDK cannot close those gaps. No mutation, pilot test, remote authentication experiment, certification or customer deployment check occurred in this task.\n\n## Maintainer disposition / next checks\n\n1. Document now: “Custom stdio MCP pilot using the official MCP SDK; official GitHub MCP interoperability not yet validated.” Require maintainer review before publication.\n2. Pin the intended official repository/release and executable provenance; retain its initialize and `tools/list` evidence. Compare exact required fields, validation, annotations, capabilities and protocol/transport versions.\n3. Define an adapter for result/error representation and capture at the actual dispatch boundary. Test profile restrictions and negative cases; do not relabel the declaration as attestation.\n4. Separately plan authorized sandbox checks of provider identity, credential scope, policy enforcement, one comment/readback and uncertain-delivery handling. Retain traces and distinguish offline mapping from real dispatch. Do not infer setup or permission from this report.\n5. If hosted transport is intended, validate its authentication separately. Keep non-claims for downstream effects, global exactly-once delivery and production qualification [3–5].\n\n## Original conclusion\nThe sources establish a custom stdio MCP pilot built with the official MCP SDK, not validated integration with the official GitHub MCP implementation. Current successful public reads and historical release-reported live results are distinct evidence. Stronger interoperability claims need pinned official-server provenance, schema/response comparison and separately authorized integration observations; maintainer review is required before publication.\n\n## Original citations\n1. https://github.com/OndCo/Action-Effect-Bench/blob/cecde389637be4f5fd3482e4942ce3fd1a623ac6/runtime-pilot/mcp-server.mjs\n2. https://github.com/OndCo/Action-Effect-Bench/blob/cecde389637be4f5fd3482e4942ce3fd1a623ac6/runtime-pilot/package.json\n3. https://github.com/OndCo/Action-Effect-Bench/blob/cecde389637be4f5fd3482e4942ce3fd1a623ac6/runtime-pilot/README.md\n4. https://github.com/OndCo/Action-Effect-Spec/blob/a9b86f4b529a5e330c2a9bf1b8c4c259a7b36e40/profiles/github-issue-comment/README.md\n5. https://github.com/OndCo/Action-Effect-Bench/blob/cecde389637be4f5fd3482e4942ce3fd1a623ac6/docs/release-v0.2.0.md\n\nSource evidence: https://github.com/OndCo/Action-Effect-Bench/blob/7306d8b45402bb2ee7f9a1fbaf7203835e599110/reports/field-study-use-2026-10-19T07-15-38.744Z-a76953f1.json\nOriginal task: official-mcp-compatibility\nReport object SHA-256: `f3039d6dd071432dcfd04920a5bdde8e81f532659ca520f8527649c04debf0ca`\nOccurrence: `owned-write-20261019.normal-official-mcp-compatibility`\n"
+              }
+            }
+          },
+          "context": {
+            "principal": "jw-ond",
+            "data_class": "public-maintainer-draft",
+            "implementation": "github-comment-bridge/1"
+          },
+          "reference_projection": {
+            "operation": "create_issue_comment",
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 2,
+            "endpoint": "https://api.github.com/repos/OndCo/Action-Effect-Bench/issues/2/comments",
+            "body_sha256": "3948920aee503a4263f46ce9b090039fa50de2665bd43c2d266d6bf3f67040bc",
+            "body_bytes": 7657,
+            "data_class": "public-maintainer-draft"
+          },
+          "expected": {
+            "initial_outcome": "confirmed",
+            "reason": null,
+            "decision": "allow",
+            "recovery_outcome": null,
+            "new_comments": 1
+          }
+        },
+        {
+          "id": "fault-revoked",
+          "lane": "mcp",
+          "strategy": "protocol",
+          "fault": "revoke-after-preflight",
+          "occurrence": "owned-write-20261019.fault-revoked",
+          "native": {
+            "lane": "mcp",
+            "call": {
+              "name": "add_issue_comment",
+              "arguments": {
+                "owner": "OndCo",
+                "repo": "Action-Effect-Bench",
+                "issue_number": 2,
+                "body": "# Synthetic control note: fault-revoked\n\nControlled owned-write/recovery study: revoke-after-preflight.\nThis is a synthetic control, not a useful model task or another completed maintainer output.\nOccurrence: `owned-write-20261019.fault-revoked`\n"
+              }
+            }
+          },
+          "context": {
+            "principal": "jw-ond",
+            "data_class": "synthetic-public",
+            "implementation": "github-comment-bridge/1"
+          },
+          "reference_projection": {
+            "operation": "create_issue_comment",
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 2,
+            "endpoint": "https://api.github.com/repos/OndCo/Action-Effect-Bench/issues/2/comments",
+            "body_sha256": "dfe0f89b8838f12a84b1da751b298860dfd2f94fbee4788a47a67bb9a1b8277c",
+            "body_bytes": 246,
+            "data_class": "synthetic-public"
+          },
+          "expected": {
+            "initial_outcome": "withheld",
+            "reason": "revoked",
+            "decision": "deny",
+            "recovery_outcome": null,
+            "new_comments": 0
+          }
+        },
+        {
+          "id": "fault-narrowed",
+          "lane": "sdk",
+          "strategy": "structured",
+          "fault": "narrow-after-preflight",
+          "occurrence": "owned-write-20261019.fault-narrowed",
+          "native": {
+            "lane": "sdk",
+            "call": {
+              "owner": "OndCo",
+              "repo": "Action-Effect-Bench",
+              "issue_number": 2,
+              "body": "# Synthetic control note: fault-narrowed\n\nControlled owned-write/recovery study: narrow-after-preflight.\nThis is a synthetic control, not a useful model task or another completed maintainer output.\nOccurrence: `owned-write-20261019.fault-narrowed`\n"
+            }
+          },
+          "context": {
+            "principal": "jw-ond",
+            "data_class": "synthetic-public",
+            "implementation": "github-comment-bridge/1"
+          },
+          "reference_projection": {
+            "operation": "create_issue_comment",
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 2,
+            "endpoint": "https://api.github.com/repos/OndCo/Action-Effect-Bench/issues/2/comments",
+            "body_sha256": "8c9df106e3e8f22341e2458da9bee05cfa2749536e0525b8edcd25394f0ac0f7",
+            "body_bytes": 248,
+            "data_class": "synthetic-public"
+          },
+          "expected": {
+            "initial_outcome": "withheld",
+            "reason": "body_too_large",
+            "decision": "deny",
+            "recovery_outcome": null,
+            "new_comments": 0
+          }
+        },
+        {
+          "id": "fault-pre-send-crash",
+          "lane": "sdk",
+          "strategy": "protocol",
+          "fault": "crash-before-send",
+          "occurrence": "owned-write-20261019.fault-pre-send-crash",
+          "native": {
+            "lane": "sdk",
+            "call": {
+              "owner": "OndCo",
+              "repo": "Action-Effect-Bench",
+              "issue_number": 2,
+              "body": "# Synthetic control note: fault-pre-send-crash\n\nControlled owned-write/recovery study: crash-before-send.\nThis is a synthetic control, not a useful model task or another completed maintainer output.\nOccurrence: `owned-write-20261019.fault-pre-send-crash`\n"
+            }
+          },
+          "context": {
+            "principal": "jw-ond",
+            "data_class": "synthetic-public",
+            "implementation": "github-comment-bridge/1"
+          },
+          "reference_projection": {
+            "operation": "create_issue_comment",
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 2,
+            "endpoint": "https://api.github.com/repos/OndCo/Action-Effect-Bench/issues/2/comments",
+            "body_sha256": "7336a629fe0aacbb82329308fe53030fa5eee27858c9afd5f0fa47d85ea6a74f",
+            "body_bytes": 255,
+            "data_class": "synthetic-public"
+          },
+          "expected": {
+            "initial_outcome": "process-killed",
+            "reason": null,
+            "decision": "allow",
+            "recovery_outcome": "unknown",
+            "new_comments": 0
+          }
+        },
+        {
+          "id": "fault-post-reply-crash",
+          "lane": "mcp",
+          "strategy": "protocol",
+          "fault": "crash-after-reply",
+          "occurrence": "owned-write-20261019.fault-post-reply-crash",
+          "native": {
+            "lane": "mcp",
+            "call": {
+              "name": "add_issue_comment",
+              "arguments": {
+                "owner": "OndCo",
+                "repo": "Action-Effect-Bench",
+                "issue_number": 2,
+                "body": "# Synthetic control note: fault-post-reply-crash\n\nControlled owned-write/recovery study: crash-after-reply.\nThis is a synthetic control, not a useful model task or another completed maintainer output.\nOccurrence: `owned-write-20261019.fault-post-reply-crash`\n"
+              }
+            }
+          },
+          "context": {
+            "principal": "jw-ond",
+            "data_class": "synthetic-public",
+            "implementation": "github-comment-bridge/1"
+          },
+          "reference_projection": {
+            "operation": "create_issue_comment",
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 2,
+            "endpoint": "https://api.github.com/repos/OndCo/Action-Effect-Bench/issues/2/comments",
+            "body_sha256": "62841a51483dbf328e7771340b60d4ad9fee136844ecf12a597a99dd67d232e8",
+            "body_bytes": 259,
+            "data_class": "synthetic-public"
+          },
+          "expected": {
+            "initial_outcome": "process-killed",
+            "reason": null,
+            "decision": "allow",
+            "recovery_outcome": "confirmed",
+            "new_comments": 1
+          }
+        },
+        {
+          "id": "fault-sdk-timeout",
+          "lane": "sdk",
+          "strategy": "structured",
+          "fault": "timeout-after-reply",
+          "occurrence": "owned-write-20261019.fault-sdk-timeout",
+          "native": {
+            "lane": "sdk",
+            "call": {
+              "owner": "OndCo",
+              "repo": "Action-Effect-Bench",
+              "issue_number": 2,
+              "body": "# Synthetic control note: fault-sdk-timeout\n\nControlled owned-write/recovery study: timeout-after-reply.\nThis is a synthetic control, not a useful model task or another completed maintainer output.\nOccurrence: `owned-write-20261019.fault-sdk-timeout`\n"
+            }
+          },
+          "context": {
+            "principal": "jw-ond",
+            "data_class": "synthetic-public",
+            "implementation": "github-comment-bridge/1"
+          },
+          "reference_projection": {
+            "operation": "create_issue_comment",
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 2,
+            "endpoint": "https://api.github.com/repos/OndCo/Action-Effect-Bench/issues/2/comments",
+            "body_sha256": "11ebd86d70b2a1d02e77122dccabf4e0f9ac90f22c93c23a759ceb826ffed572",
+            "body_bytes": 251,
+            "data_class": "synthetic-public"
+          },
+          "expected": {
+            "initial_outcome": "unknown",
+            "reason": "provider_or_readback_failure",
+            "decision": "allow",
+            "recovery_outcome": "confirmed",
+            "new_comments": 1
+          }
+        },
+        {
+          "id": "fault-mcp-disconnect",
+          "lane": "mcp",
+          "strategy": "protocol",
+          "fault": "disconnect-after-reply",
+          "occurrence": "owned-write-20261019.fault-mcp-disconnect",
+          "native": {
+            "lane": "mcp",
+            "call": {
+              "name": "add_issue_comment",
+              "arguments": {
+                "owner": "OndCo",
+                "repo": "Action-Effect-Bench",
+                "issue_number": 2,
+                "body": "# Synthetic control note: fault-mcp-disconnect\n\nControlled owned-write/recovery study: disconnect-after-reply.\nThis is a synthetic control, not a useful model task or another completed maintainer output.\nOccurrence: `owned-write-20261019.fault-mcp-disconnect`\n"
+              }
+            }
+          },
+          "context": {
+            "principal": "jw-ond",
+            "data_class": "synthetic-public",
+            "implementation": "github-comment-bridge/1"
+          },
+          "reference_projection": {
+            "operation": "create_issue_comment",
+            "repository": "OndCo/Action-Effect-Bench",
+            "issue_number": 2,
+            "endpoint": "https://api.github.com/repos/OndCo/Action-Effect-Bench/issues/2/comments",
+            "body_sha256": "88aa33d4cf89b876bae051b043ef37842f3cd25303b4c3e6e69ca874d0b35b65",
+            "body_bytes": 260,
+            "data_class": "synthetic-public"
+          },
+          "expected": {
+            "initial_outcome": "unknown",
+            "reason": "provider_or_readback_failure",
+            "decision": "allow",
+            "recovery_outcome": "confirmed",
+            "new_comments": 1
+          }
+        }
+      ],
+      "max_comment_calls": 12,
+      "expected_comment_objects": 5
+    },
+    "setup": {
+      "issue": {
+        "url": "https://api.github.com/repos/OndCo/Action-Effect-Bench/issues/2",
+        "repository_url": "https://api.github.com/repos/OndCo/Action-Effect-Bench",
+        "labels_url": "https://api.github.com/repos/OndCo/Action-Effect-Bench/issues/2/labels{/name}",
+        "comments_url": "https://api.github.com/repos/OndCo/Action-Effect-Bench/issues/2/comments",
+        "events_url": "https://api.github.com/repos/OndCo/Action-Effect-Bench/issues/2/events",
+        "html_url": "https://github.com/OndCo/Action-Effect-Bench/issues/2",
+        "id": 5924829067,
+        "node_id": "I_kwDOVO_Vvc8AAAABYSW3iw",
+        "number": 2,
+        "title": "Owned real-use acceptance and recovery: owned-write-20261019",
+        "user": {
+          "login": "jw-ond",
+          "id": 67523717,
+          "node_id": "MDQ6VXNlcjY3NTIzNzE3",
+          "avatar_url": "https://avatars.githubusercontent.com/u/67523717?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/jw-ond",
+          "html_url": "https://github.com/jw-ond",
+          "followers_url": "https://api.github.com/users/jw-ond/followers",
+          "following_url": "https://api.github.com/users/jw-ond/following{/other_user}",
+          "gists_url": "https://api.github.com/users/jw-ond/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/jw-ond/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/jw-ond/subscriptions",
+          "organizations_url": "https://api.github.com/users/jw-ond/orgs",
+          "repos_url": "https://api.github.com/users/jw-ond/repos",
+          "events_url": "https://api.github.com/users/jw-ond/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/jw-ond/received_events",
+          "type": "User",
+          "user_view_type": "public",
+          "site_admin": false
+        },
+        "labels": [],
+        "state": "open",
+        "locked": false,
+        "assignees": [],
+        "milestone": null,
+        "comments": 0,
+        "created_at": "2026-10-19T13:32:00Z",
+        "updated_at": "2026-10-19T13:32:00Z",
+        "closed_at": null,
+        "assignee": null,
+        "author_association": "MEMBER",
+        "issue_field_values": [],
+        "type": null,
+        "active_lock_reason": null,
+        "sub_issues_summary": {
+          "total": 0,
+          "completed": 0,
+          "percent_completed": 0
+        },
+        "issue_dependencies_summary": {
+          "blocked_by": 0,
+          "total_blocked_by": 0,
+          "blocking": 0,
+          "total_blocking": 0
+        },
+        "body": "# Owned real-use and recovery study\n\nRun: owned-write-20261019\n\nThis dedicated public issue holds two eligible, unmodified outputs from the already recorded real-model maintainer run, plus explicitly synthetic recovery controls. Four over-budget model outputs stay withheld.\n\nAuthorized ceiling: 12 new comment calls; five comment objects are expected, not pre-asserted. SDK and the pinned official GitHub MCP server are used. Controlled process kills, acknowledgment loss, revocation and narrowed authority are evaluated separately from task quality. No automatic resend after an unknown outcome.\n\nThis is same-project, owned-resource testing, not external validation or customer-production evidence. No customer data, Studio/Hook changes, or collaboration invitations are involved.\n\nFrozen implementation: https://github.com/OndCo/Action-Effect-Bench/tree/349138520169588752305ee02c145fadddd0ea24\nProtocol and report: https://github.com/OndCo/Action-Effect-Bench/blob/main/docs/implementation-plan-2026-10-19-owned-write-recovery.md\n",
+        "closed_by": null,
+        "reactions": {
+          "url": "https://api.github.com/repos/OndCo/Action-Effect-Bench/issues/2/reactions",
+          "total_count": 0,
+          "+1": 0,
+          "-1": 0,
+          "laugh": 0,
+          "hooray": 0,
+          "confused": 0,
+          "heart": 0,
+          "rocket": 0,
+          "eyes": 0
+        },
+        "timeline_url": "https://api.github.com/repos/OndCo/Action-Effect-Bench/issues/2/timeline",
+        "performed_via_github_app": null,
+        "state_reason": null,
+        "pinned_comment": null
+      },
+      "initial_comments": [],
+      "native_readonly_preflight": {
+        "inventory": {
+          "executable_sha256": "2d431e46617f06b1516818fa09917096ff6dfc3664b37b0bdb31e1c1a35be368",
+          "pins": {
+            "source_commit": "eb47a99ddb866ca2b8a162920e6bda9521f33ebb",
+            "archive_sha256": "5d9b38511bffc84d2272eb6189129eb721c8900e45784d8ea7eaf25f8d3dd835",
+            "executable_sha256": "2d431e46617f06b1516818fa09917096ff6dfc3664b37b0bdb31e1c1a35be368"
+          },
+          "transport": "stdio",
+          "read_only": true,
+          "selected_tools": [
+            "issue_read"
+          ],
+          "protocol_version": "2025-11-25",
+          "server": {
+            "name": "github-mcp-server",
+            "title": "GitHub MCP Server",
+            "icons": [
+              {
+                "src": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAADK0lEQVRIibWVQWhcVRSGv3Pfy0zGdBIMRWk7iziMTpORptpqiNSNG1dNizaFFlxIoYuCC7NwJdiVlhYprtwpighCF9GtuhCRtuCoaWdqGF7HkE4aWm1CpklmJpl3j4vMS99M2k4G9N+8d8659/8u9553H/zPkscVM5lMf03do6iOKbJXIAGgUBJ0GpHvolKfzOfzCx0BEonRWDRemRD0PaC3zSKXED1fLfdcLJUuV9oC0ukXdluxkyq81Ma4VX9Y4x4p5rOzjwSkUvsSdMkVYE+H5oHmjM9IoTA1FyRM8JJIjMbokm83zUW/Vvi5raXwC8rnjWiPdXRyYGCgOyi7wUs0XpkAXmyEa/XV8qmZmZnqc0P7XrXKW2BuKDovgorqLoWMFb4p3rj2I4w7qcHCMSAOctDt7n0X+GiDT6NbrPsXDw50xftzKg7odvcmtXf4DsJTjXBpzbXPzF6/vmgAauoepblbnGTyQLvu2VQmk4kgxEKpvui6cwSCM1Ada5qheq5YzC5tF5DP59dQzjYlZcOzccgyGK65mC+2ax7IWPfLcGxhKARgV7i4vBy70ymgUMj+A9SDWGB3GOCEB/f0VJ/sFJBKjfQS6srAOwD8HR7su/7BTgE2Umn98u9uAgR+ayqpnOkUIK1zZMPTACjyQzOA11ND+z+E8aate4TMs4PD7wu80ezP940nJJMH+ky0XgKeAHkH1TcRXgNywFeoueJN//5T2CCZGT7kWBlV9CSwvwV6n/XuhOddLRuAYjG7hMjHgEH1tEb0BEgWeB44J8aebF2243Nc0fMPMUfgguddLUOoe/r7dlwWJzqGMCxq6q5Wz/jSVQZ+Nb795N69u4thk/6dT7uInNiyYcoU9ZW3FxYWfAjdpp7n1XzjHAbmUJ3wTXQ8gvOZb+oXV1d3zLf6WEcWW3MoJXX9w57n1YKUCdeL+eysOv4oyrQqn65Tv+1adz4WrxzaskXWNs0V5Jq6/is3c7lb4byhRTdzuVvUV0ZQPgDuA6jqlj+fqhvkllE9q+vLL7eab4Afo1RqpJdI9Rhr3ZeCQwuUTqfjvoket7WuS51cjP+5/gWC8y5uIkrtDQAAAABJRU5ErkJggg==",
+                "mimeType": "image/png",
+                "theme": "light"
+              },
+              {
+                "src": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAB8ElEQVRIibWVu09UQRSHv9k1IgW7AY0RBWKsTGx9ND4qS5F/wEYLDb0xAY0UxkdrZ2NHYWfsaYyVT4iJwZpNjJooLBQEYz6LvZsdxmH3LtFfN3PO+X5zzzwu/GeFbkF1BJgCJoHjwFgRagDLwAvgeQjhR1+u6qA6q67ZW6vqjDpYFn5YfV0CnOqDOtELPqY2dgFvq6Ee6daWd1HyvPqyBPSV+jQav1H3tbkhMpgF7hXDLaAeQthUzwFXgE/AF0BgFDgBPAshLKhV4CcwVNTPhBAexKsfcfuGbqhdT1imA1+j+lV1GKBSxKeAWpRfTca94HuB+BTVgcuxwWRS8zCEsFbWIISwBcwl0x2m+jnZuKNl4RHjQMJYjoPNJFju0vxt8itiNKHTomqSO7wLeA3YE01VYoPvSf7Jfg2AU8n4W2zwPglO78Igrekw1enMDb1fXKCuUivq7Uz99Tiprq6rvwuzhSLpo3pLvZABn1Vv2nrkUjWLPdlWMFcEF9WD6tuo4EnG4HEG3Nad3KcOqEtRe/bb+ic8Uo9l8i/tAF9UB3bq54StJ3dTvaGOqofM3IuiRalW1PH8bnUKx4tVxLqYyTuf5Czl4JV0IoSwApwB7gLr7enMWtpzG7TeodNFbXmpNfWq6YloxYbUa2q9L+i/1h8/EAGdUrF9ZQAAAABJRU5ErkJggg==",
+                "mimeType": "image/png",
+                "theme": "dark"
+              }
+            ],
+            "version": "2.0.2"
+          },
+          "tools": [
+            {
+              "name": "issue_read",
+              "icons": [
+                {
+                  "src": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAC2UlEQVRIicWVMUyTaRjHf/+vVUpOJOdilOYoUvVreq2CDmLOwdlAS5xMbrrhBifjYG7QjYuJw108nZx1huLgYlw0QshxChUK2koxHHcuCmgsFfieG0or3kGPSoz/8X3f5/97nvfN8z7wmaVqm9FodFfR/EnMugy5giCAwYwgI9Ff9Hl9L9Lp1zUBgsGO+rqGwnlhF4CdwBSyAUwvS1G220zHBSFgHtmVxYWvfp2ZGSj8LyAcjgfZphTQZtAr7OdsZvSP9RIJR+LtQhcNusF+d1aUfPp05M8NAavmg8AOk3cmN56+s1Hpa7U/cviUYbcw3jgex9ZCKoBgsKM+0PDuAdBq2He5zOiTzZiXtc+NxRw598GeLRcWTuTz+UUAp3ygrqFwHmgzeWdqNQd4PpFOy/gedNQfaDz3UQXRaHRX0fNPGdzNZUZO12q+VuHIoV7g5Hu/1/IinX7tABTNnwR2SvRsxRzAzOsBGuuWfAkoX5FZFzCVHR95tFVAbiI9DEwj6wLwl5YVMTRYLTDsxjuRrgGYYz/kxkbvbXRWMOBB24cKYI9ks1X8hXQDaAaa5XG9WjImZgV71wI+m8qAv8y0t1pSmP0ITANTmHO2qqvRZDALlTdgHKyjWkx2YvQ2cHtTacMxYBhWK5DoF4TCkXj7Jg02VKsbOwI0Y+qvALZrOQXMC13cKkDSJWBuJUCqAhgbG3uF7IpBcn/k8KlPNQ+78U5QQuhy/vHjuQoAYPndwi9gw4bd2ufGYrWatxz8No50ExhaKsz9Vl6vAPL5/KKzoiTGG0fOg1oqCbvxTp/juw/M+zynu/yTwjoD58CBQ02ez/pAR4E+M69ntf3/o1Y3dqR050oAQz7P6Z6cfPRRw647MkOhUMAfaDyH+AloBKYNPRT292rQHoMOSp09J3TZlt5ezWazxX97VR3638RiX9ct+RImSyBcrDT0ETMyMp4ptRIgVX7QL6J/ALSUEwJ5rdg2AAAAAElFTkSuQmCC",
+                  "mimeType": "image/png",
+                  "theme": "light"
+                },
+                {
+                  "src": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAABxElEQVRIibWVvW4TURCFv0vlNEDcIHAkKAERJOIKSjoUArwBPwUFFaKIIngAJARCPIgdh4cgRBYt6ZIAEYEqdhpEw0fhCbkKa68dxyNtsfNzzpnZu3NhwpYGBdUqcA+4A1wEZiK0DawD74FWSml3JAJ1CngGLAIngU1gFfgZKWeAG8AFoAu8At6mlH6VtqTOqJ/UP2pDnRuQO6c27VlbrQ0Dvq121Fulag7q5qPmW18SdSqUd9Qrw4Jn9bNR21YrRQkvYixDKy/AuB3jWjocqKpdtXFU8AxrOTqZzp2PgvnaMRDUA+tB7mypG+OCZ3hbahPgRPguAR9LihaicEu9WcKxClzOi/fU1wPAk7rjgX0uEfNG3cs7mJjtE+wA5/olpZQEHgNf6K2NJyW4NeD7v7c4WptjSc0svlMjdzyM2fbdOyOA7x/T+7mzGj9H8xgIWuquevpw4HmsivkxwBdC/WJRsBKLqqPOHgH8aqybtcJlF0m1WLndUToJ5V31q9r3NOYk7Wh1Wa0PyK3HzA3l/4H3uzIrwFNgCThF7/x/AH5EylngOnAe6AAvgXcppd9DEWRE08DdeIou/RVgJaXUGYQzUfsL+zmwV7BtIq0AAAAASUVORK5CYII=",
+                  "mimeType": "image/png",
+                  "theme": "dark"
+                }
+              ],
+              "description": "Get information about a specific issue in a GitHub repository.",
+              "inputSchema": {
+                "type": "object",
+                "properties": {
+                  "issue_number": {
+                    "type": "number",
+                    "description": "The number of the issue"
+                  },
+                  "method": {
+                    "type": "string",
+                    "description": "The read operation to perform on a single issue.\nOptions are:\n1. get - Get issue details. Also returns best-effort hierarchy flags (`has_parent`, `has_children`); `parent` and `sub_issues_summary` are optional relationship summaries, and `closed_by_pull_requests` summarizes the pull requests configured to close the issue as `total_count` plus up to 5 `references`.\n2. get_comments - Get issue comments.\n3. get_sub_issues - Get sub-issues (children) of the issue.\n4. get_parent - Get the parent issue, if this issue is a sub-issue of another.\n5. get_labels - Get labels assigned to the issue.\n",
+                    "enum": [
+                      "get",
+                      "get_comments",
+                      "get_sub_issues",
+                      "get_parent",
+                      "get_labels"
+                    ]
+                  },
+                  "owner": {
+                    "type": "string",
+                    "description": "The owner of the repository",
+                    "x-mcp-header": "owner"
+                  },
+                  "page": {
+                    "type": "number",
+                    "description": "Page number for pagination (min 1)",
+                    "minimum": 1
+                  },
+                  "perPage": {
+                    "type": "number",
+                    "description": "Results per page for pagination (min 1, max 100)",
+                    "minimum": 1,
+                    "maximum": 100
+                  },
+                  "repo": {
+                    "type": "string",
+                    "description": "The name of the repository",
+                    "x-mcp-header": "repo"
+                  }
+                },
+                "required": [
+                  "method",
+                  "owner",
+                  "repo",
+                  "issue_number"
+                ]
+              },
+              "annotations": {
+                "title": "Get issue details",
+                "readOnlyHint": true,
+                "idempotentHint": false
+              }
+            }
+          ],
+          "tools_sha256": "9128ca15615f692da8409129bbf3a7078e3b45e0d43b2755e8f9ba6c7482bd78"
+        },
+        "existing_public_issue_read": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"number\":1,\"title\":\"Action-Effect controlled runtime pilot\",\"body\":\"This issue is a dedicated, public test receiver for the Action-Effect runtime\\ninteroperability pilot. Comments contain synthetic text only. The pilot compares\\nMCP and SDK entry points with a conditional effect description and a complete\\nstructured-adapter baseline, both using actual OPA authorization.\\n\\nThe scheduled run permits at most 12 new comments. Other cases must withhold\\nexecution, or reconcile an already sent comment without posting it again. This\\nis not a vulnerability report or a claim of independent external validation.\\n\\nRun results, source identities, limitations and read-only verification instructions\\nwill be linked from this repository. We keep the comments as observable evidence;\\ntheir current contents do not prove all internal GitHub consequences or execution\\nprovenance. GitHub notifications and webhooks are explicitly outside our complete\\nobservation coverage.\\n\",\"state\":\"open\",\"html_url\":\"https://github.com/OndCo/Action-Effect-Bench/issues/1\",\"user\":{\"login\":\"jw-ond\",\"id\":67523717,\"profile_url\":\"https://github.com/jw-ond\",\"avatar_url\":\"https://avatars.githubusercontent.com/u/67523717?v=4\"},\"author_association\":\"MEMBER\",\"assignees\":[],\"comments\":12,\"reactions\":{\"total_count\":0,\"+1\":0,\"-1\":0,\"laugh\":0,\"confused\":0,\"heart\":0,\"hooray\":0,\"rocket\":0,\"eyes\":0},\"created_at\":\"2026-10-19T03:55:58Z\",\"updated_at\":\"2026-10-19T04:26:03Z\",\"has_parent\":false,\"has_children\":false,\"closed_by_pull_requests\":{\"total_count\":0,\"references\":[]}}"
+            }
+          ]
+        }
+      },
+      "separate_from_comment_profile": true
+    }
+  },
+  "manifest_sha256": "3fb91570ea705997a638720e590f28accb37d483ba5aa7467ae03e399416f577",
+  "manifest_bytes": "{\n  \"format\": \"action-effect-owned-write-manifest/1\",\n  \"run_id\": \"owned-write-20261019\",\n  \"created_at\": \"2026-10-19T13:32:02.148Z\",\n  \"principal\": \"jw-ond\",\n  \"target\": {\n    \"owner\": \"OndCo\",\n    \"repo\": \"Action-Effect-Bench\",\n    \"issue_number\": 2\n  },\n  \"inputs\": {\n    \"report\": {\n      \"revision\": \"7306d8b45402bb2ee7f9a1fbaf7203835e599110\",\n      \"path\": \"reports/field-study-use-2026-10-19T07-15-38.744Z-a76953f1.json\",\n      \"sha256\": \"e6d9fe0e27ca93932fb9102cc5d5b7f16e4c7c138cd72c79eeeaaf1cb2961999\"\n    },\n    \"review\": {\n      \"revision\": \"86abb1e0c25238a0bbc22c59d45d06e983527bbf\",\n      \"path\": \"analysis/review-second-field-use.json\",\n      \"sha256\": \"0f5b7954f549c1e184f5ece621126234f2c1c8034175391b1f1354ef2eca2682\"\n    }\n  },\n  \"tools\": {\n    \"format\": \"action-effect-field-tools/1\",\n    \"github_mcp\": {\n      \"repository\": \"github/github-mcp-server\",\n      \"version\": \"v2.0.2\",\n      \"source_commit\": \"eb47a99ddb866ca2b8a162920e6bda9521f33ebb\",\n      \"platform\": \"darwin-arm64\",\n      \"archive_url\": \"https://github.com/github/github-mcp-server/releases/download/v2.0.2/github-mcp-server_Darwin_arm64.tar.gz\",\n      \"archive_size\": 8848361,\n      \"archive_sha256\": \"5d9b38511bffc84d2272eb6189129eb721c8900e45784d8ea7eaf25f8d3dd835\",\n      \"executable_sha256\": \"2d431e46617f06b1516818fa09917096ff6dfc3664b37b0bdb31e1c1a35be368\",\n      \"source_review\": \"Pinned local comment handler makes one application-level CreateComment call. HTTP redirect/transport behavior is not an exactly-one-wire-attempt guarantee. Hosted MCP behavior was not audited.\"\n    },\n    \"azure_model\": {\n      \"resource\": \"ond-resource\",\n      \"resource_group\": \"Ond_OAI\",\n      \"deployment\": \"gpt-6-astra\",\n      \"model_version\": \"2026-09-03\",\n      \"region\": \"swedencentral\",\n      \"api\": \"Responses v1\",\n      \"endpoint\": \"https://ond-resource.openai.azure.com/openai/v1/responses\",\n      \"store\": false,\n      \"reasoning_effort\": \"low\",\n      \"max_output_tokens\": 6000,\n      \"timeout_ms\": 180000,\n      \"max_rounds_per_task\": 12,\n      \"max_tool_calls_per_task\": 18\n    },\n    \"sdk_dependencies\": \"../runtime-pilot/package-lock.json\",\n    \"editorial_timezone\": \"America/Toronto\",\n    \"event_timestamps\": \"UTC\",\n    \"scope\": \"Read-only real maintainer tasks first. New provider writes require a separately confirmed owned-resource boundary. No Studio or Hook changes.\"\n  },\n  \"provenance\": {\n    \"field_sources\": [\n      {\n        \"path\": \"bench/field-study/agent-loop.mjs\",\n        \"sha256\": \"972b42d9d502681e0e54da775aad3b1c05aaf9d5c9e81321b39014403bd86e42\"\n      },\n      {\n        \"path\": \"bench/field-study/amendment-2.json\",\n        \"sha256\": \"b49f58cc47faaf486341e1ec834ebd3f336504abf4d88d810f1de020f0804df2\"\n      },\n      {\n        \"path\": \"bench/field-study/artifacts.mjs\",\n        \"sha256\": \"4c6e7896d85eb19864a13e14f7fbedc555bb5b0f757512b346d446fdba0a4d34\"\n      },\n      {\n        \"path\": \"bench/field-study/credentials.mjs\",\n        \"sha256\": \"5b4cae0fb0d940ad0ba085f88e30bde073f2228e0b0a5de326bf1d7631079630\"\n      },\n      {\n        \"path\": \"bench/field-study/criteria.json\",\n        \"sha256\": \"ff7a7e6472414a916e39e377f3ed5e3181d9fa554d69ff0de848bc39c7a641ac\"\n      },\n      {\n        \"path\": \"bench/field-study/fault-transport.mjs\",\n        \"sha256\": \"963de79dc514f993d03de20f78fda70029faf5e9f06867900db04bbfbbdc2011\"\n      },\n      {\n        \"path\": \"bench/field-study/github-reader.mjs\",\n        \"sha256\": \"4e2a1b1cfb86d8541d0cf9e81dab37558285ea390d708f14d209a03c1e0f5fc2\"\n      },\n      {\n        \"path\": \"bench/field-study/model-client.mjs\",\n        \"sha256\": \"d765c2be16f17ddb297d22e8d4c326c272caedf90d7c71653f7870c59c5ee6f4\"\n      },\n      {\n        \"path\": \"bench/field-study/native-mcp.mjs\",\n        \"sha256\": \"5c60e3b516a7c20c2fbd183fc93f314ec42d9c2bcad867f157f78d4138a7d845\"\n      },\n      {\n        \"path\": \"bench/field-study/native-reader.mjs\",\n        \"sha256\": \"c7f07defdab377563a52b9f8042a377d2372a48805569d5dab02ad0f6dc3cb3d\"\n      },\n      {\n        \"path\": \"bench/field-study/native-writer.mjs\",\n        \"sha256\": \"e5b120ee80dc66fe063562fd5ced76bae59ee902d5c612ba1de2bcd200fefb95\"\n      },\n      {\n        \"path\": \"bench/field-study/preflight.mjs\",\n        \"sha256\": \"e8e47712ed9315d0b932449b8bf171d7e968797b02c7c94f6fed902c441c0028\"\n      },\n      {\n        \"path\": \"bench/field-study/provenance.mjs\",\n        \"sha256\": \"21670a1282d60de329a3c9500a924e20ffc1584120786faba2e6e16407717b25\"\n      },\n      {\n        \"path\": \"bench/field-study/read-tools.mjs\",\n        \"sha256\": \"e54391c207fa5594dbf080943097b927c61ee88e0010131b14be3fcd92d3662f\"\n      },\n      {\n        \"path\": \"bench/field-study/replay-checks.mjs\",\n        \"sha256\": \"e8536f9e9dd7bcb52a3a36dd7b61bc00d31dd2092dd64350932c991864d24a4a\"\n      },\n      {\n        \"path\": \"bench/field-study/replay.mjs\",\n        \"sha256\": \"433a356ce6518e31bc8a9b0984452bdd607517008f98526d50a2def8cc7eddfb\"\n      },\n      {\n        \"path\": \"bench/field-study/report-format.json\",\n        \"sha256\": \"0ae346d8f724975963ffb2b6bee43507eeae8d397ecaa1659b5ba95ec3c873e2\"\n      },\n      {\n        \"path\": \"bench/field-study/run.mjs\",\n        \"sha256\": \"a2d778377458d6d4d3f24385a9e9acd37c49d387251d74e978462e6e3216cc00\"\n      },\n      {\n        \"path\": \"bench/field-study/scoring.mjs\",\n        \"sha256\": \"403ae830915eaed61a79e665f38f9ec7106c850419f0c10f4453602962887e2d\"\n      },\n      {\n        \"path\": \"bench/field-study/study.mjs\",\n        \"sha256\": \"ee4eab3d1510bce57374923aed79b8df1e95f257ac24c8dd120faff6f8e3e007\"\n      },\n      {\n        \"path\": \"bench/field-study/tasks.json\",\n        \"sha256\": \"2c7fdb9d451c5c6474f7a0688d92e22d3bc3b8b32d444ec03f96d768a777a0d5\"\n      },\n      {\n        \"path\": \"bench/field-study/tools.json\",\n        \"sha256\": \"4f139f55cd290b4b5d8305e6a016306e39a4b8f45b419e9931073fbccf5d8dc3\"\n      },\n      {\n        \"path\": \"bench/field-study/write-artifacts.mjs\",\n        \"sha256\": \"6d3edb8daa77714711c0ddabbf2ab86e93ae98c6c4afe45a2dc34e5624961dad\"\n      },\n      {\n        \"path\": \"bench/field-study/write-config.mjs\",\n        \"sha256\": \"0c8e646d78c18ba6e73be6a855f5794c66a2f6c30df335bcdeb53b0506b17a1a\"\n      },\n      {\n        \"path\": \"bench/field-study/write-plan.mjs\",\n        \"sha256\": \"3857888edaff1b9d6b905ed0b2960d42e44d439695c0f074c504f37905d87eb4\"\n      },\n      {\n        \"path\": \"bench/field-study/write-replay.mjs\",\n        \"sha256\": \"da248f654d785bdb9df80b67563d5942340bd091769df1990d32440a7a339ba5\"\n      },\n      {\n        \"path\": \"bench/field-study/write-run.mjs\",\n        \"sha256\": \"e21e1547c5dafc42660a3c9545c92c4e2ebabed4297305b13bd1ab993c3d4752\"\n      },\n      {\n        \"path\": \"bench/field-study/write-supervisor.mjs\",\n        \"sha256\": \"2904c3cdf5246d7a08a40276f9fb8c0f24800116310890b328f555ed169399b2\"\n      },\n      {\n        \"path\": \"bench/field-study/write-worker.mjs\",\n        \"sha256\": \"facc617a1304820b66969fc8fb68e1ba91fcbc1d0f610c210046c1d37038d721\"\n      }\n    ],\n    \"preserved_runtime_sources\": [\n      {\n        \"path\": \"bench/runtime-pilot/artifacts.mjs\",\n        \"sha256\": \"d149220d13638a3406614a5ccaeacd26f0347130170be42adcfad9c985f30c3a\"\n      },\n      {\n        \"path\": \"bench/runtime-pilot/authorization.mjs\",\n        \"sha256\": \"89f660fc86615f23c1bd9fed259b015f8ab73ed196e662f7aad6cb95c903e3c7\"\n      },\n      {\n        \"path\": \"bench/runtime-pilot/cases/author-corpus.mjs\",\n        \"sha256\": \"bdf8b32d24b60711817a4264ba55af4a1fa2474514e73fe4ccf51eb7a2547484\"\n      },\n      {\n        \"path\": \"bench/runtime-pilot/cases/freeze-manifest.json\",\n        \"sha256\": \"17afe9ecdb4e4f8894ae410fef5e537c903b5597dd290d20c8e6d1b8447622ce\"\n      },\n      {\n        \"path\": \"bench/runtime-pilot/cases/freeze-manifest.sha256\",\n        \"sha256\": \"47c05d2c2a3828b1dbde7900c170849b68e3b68bd92f4db2627a32b62647491c\"\n      },\n      {\n        \"path\": \"bench/runtime-pilot/cases/freeze-manifest.v2.json\",\n        \"sha256\": \"3774e734d8d58c4aa3e9e63159e383a9c90463c0404feb2a24d69a591441bf76\"\n      },\n      {\n        \"path\": \"bench/runtime-pilot/cases/freeze-manifest.v2.sha256\",\n        \"sha256\": \"ea3e998e52d29dfa53ad7fc74ac722d89be085ea3cf2dee126b5468eee0dc1c1\"\n      },\n      {\n        \"path\": \"bench/runtime-pilot/cases/github-issue-comment.v1.json\",\n        \"sha256\": \"f452e4fcb30a04bebe179ca6a3393b0a006497ddee2f110440bcd0e3b476ca17\"\n      },\n      {\n        \"path\": \"bench/runtime-pilot/cases/historical/initial-freeze/freeze-manifest.json\",\n        \"sha256\": \"103b003ee13ddecd8027fce1ca8b5ffdeed3b7c36273438116433b1cc69cffb7\"\n      },\n      {\n        \"path\": \"bench/runtime-pilot/cases/historical/initial-freeze/freeze-manifest.sha256\",\n        \"sha256\": \"c4dcb0379a3d99e14c9fba53154fbe02b59119526bf053186c7fd5931e5612e7\"\n      },\n      {\n        \"path\": \"bench/runtime-pilot/consumer-client.mjs\",\n        \"sha256\": \"b73e63b1c23412b7aa90f499a8358c14293ec047d70567301a2718af894c422b\"\n      },\n      {\n        \"path\": \"bench/runtime-pilot/external-evaluation.mjs\",\n        \"sha256\": \"0996130f02e71a13d9287610e11e99213a02064190cb0a855a843740e50bfa5b\"\n      },\n      {\n        \"path\": \"bench/runtime-pilot/gate.mjs\",\n        \"sha256\": \"6784925638bfdca47cc1e4639c280a5076e376a749991525dcfe3b1df5237159\"\n      },\n      {\n        \"path\": \"bench/runtime-pilot/install-tools.mjs\",\n        \"sha256\": \"ee6f75ab037a0b7b2341235ad888402fb07541de9ad7a7fe6dc06431770f2e59\"\n      },\n      {\n        \"path\": \"bench/runtime-pilot/ledger.mjs\",\n        \"sha256\": \"2ebbb8724035ea776f816f8352a7f5d08b9d0afe509be1b887b27199a4695b17\"\n      },\n      {\n        \"path\": \"bench/runtime-pilot/live-plan.json\",\n        \"sha256\": \"b463c9495c4c7f3970a4497763e0ebd9ab527264bc7ec13d50e2b798052dad2f\"\n      },\n      {\n        \"path\": \"bench/runtime-pilot/live-run.mjs\",\n        \"sha256\": \"2cf906d75183473aa9aeb2275846f6eb516373fa0a45c51febdb9f29e4514ccc\"\n      },\n      {\n        \"path\": \"bench/runtime-pilot/mapping.mjs\",\n        \"sha256\": \"69af246b659cb2d14dd1cd0242892dc1f899b38c194ca6da16fed95b2393b324\"\n      },\n      {\n        \"path\": \"bench/runtime-pilot/mcp-client.mjs\",\n        \"sha256\": \"f7ee35ad079959c474ad4cb8a405a4a3e2c8eb06033d115df4871eb2152ddbff\"\n      },\n      {\n        \"path\": \"bench/runtime-pilot/mcp-server.mjs\",\n        \"sha256\": \"855d2179f5e3c1ea7c1d7facae8ded3440d3f27b921a0a595d5e25979e4d63c9\"\n      },\n      {\n        \"path\": \"bench/runtime-pilot/offline-run.mjs\",\n        \"sha256\": \"cbeee10f9ccfea460cc5e783daf4337e5ec8fd8ab5b397059bbe068723761e87\"\n      },\n      {\n        \"path\": \"bench/runtime-pilot/package-lock.json\",\n        \"sha256\": \"202553ff46758ff217b205242ad1658e2daa5c0a94e7fe3e5500847981fd5a46\"\n      },\n      {\n        \"path\": \"bench/runtime-pilot/package.json\",\n        \"sha256\": \"a27ab37caf3a5d2a61afb9bbcdb00c866c7cf3b21c57bfbf0794128bb3ee47ab\"\n      },\n      {\n        \"path\": \"bench/runtime-pilot/policy.rego\",\n        \"sha256\": \"588b3fae1db09c9f3bdcea037d0fad68847a6cb970004c0d3fdd129d8c144bf8\"\n      },\n      {\n        \"path\": \"bench/runtime-pilot/provider.mjs\",\n        \"sha256\": \"f2b49108e4960c9c4eb48cd201b35550335f46c72308b5532c77f0cc794410db\"\n      },\n      {\n        \"path\": \"bench/runtime-pilot/python/consumer.py\",\n        \"sha256\": \"fe84f1493320d00f1bd9bf980a0e8bf4dcd1305a5a14ef91f2f2549bbbd3f3c2\"\n      },\n      {\n        \"path\": \"bench/runtime-pilot/python/profile_adapter.py\",\n        \"sha256\": \"cb34229952a6f1cfbbd2e43f8c19276b04a27054aa8ca6392e88c02949cbe5f8\"\n      },\n      {\n        \"path\": \"bench/runtime-pilot/python/request_json.py\",\n        \"sha256\": \"db91dcafc2bba373770aedb088c07f10ea8dc661dd9f81f4e0a6e5d54c96e9e8\"\n      },\n      {\n        \"path\": \"bench/runtime-pilot/replay-integrity.mjs\",\n        \"sha256\": \"814c6d7d98a3f533f8b040600f26de7db72618b45f48afc797e31387ca05190b\"\n      },\n      {\n        \"path\": \"bench/runtime-pilot/replay.mjs\",\n        \"sha256\": \"086146419b0159826f93fb3b0ffb8e30075b5f8b399f472222cbcb7a2e178ca1\"\n      },\n      {\n        \"path\": \"bench/runtime-pilot/scoring.mjs\",\n        \"sha256\": \"4bd228fb68d1cc1d89de7012f231ed13445ca6f2308e8071480aac8b18371d36\"\n      },\n      {\n        \"path\": \"bench/runtime-pilot/tools.json\",\n        \"sha256\": \"3c4de26c48019c83cbfe61f770d1090d82606cf85cf08e834d8328ee59c04585\"\n      },\n      {\n        \"path\": \"bench/runtime-pilot/upstream/check.mjs\",\n        \"sha256\": \"2c431f18dd433a0ada410450279181f71ec6ebd56ae620f2c967e637ed7105c0\"\n      },\n      {\n        \"path\": \"bench/runtime-pilot/upstream/github-comment-openapi.json\",\n        \"sha256\": \"be8b2b8f74734a7aa767dc4048713eb8664a75c476c12ecb4dda55f40d5cc940\"\n      },\n      {\n        \"path\": \"bench/runtime-pilot/upstream/import-github.mjs\",\n        \"sha256\": \"a31dd0a42d791371aa61b04a9b2e4fdbbe3bc037bef1c3aeba7b179136821faa\"\n      },\n      {\n        \"path\": \"spec/implementations/javascript/schema.mjs\",\n        \"sha256\": \"622f50ec231ec81b4be14a8c03885b425c70e9625995e59db7bc5dcc09411ec3\"\n      },\n      {\n        \"path\": \"spec/implementations/javascript/strict-json.mjs\",\n        \"sha256\": \"5cda89a8a43d0d633348fd2729c4ed733eb856f95279e9a649e2be1d3f5e6c9a\"\n      },\n      {\n        \"path\": \"spec/implementations/python/offline_consumer/__init__.py\",\n        \"sha256\": \"00802fbbe67cfcc816d23b3e8c25e66f2706598ba2c1333bf97df1186cfd143b\"\n      },\n      {\n        \"path\": \"spec/implementations/python/offline_consumer/adapter.py\",\n        \"sha256\": \"e7880716ce397cc0bc711624523757c6037cfaf8d1d8c957ab34f4cfe34462fa\"\n      },\n      {\n        \"path\": \"spec/implementations/python/offline_consumer/configuration.py\",\n        \"sha256\": \"cb4d2f084c86a4cdde550d5687f4b269f3aa9de659ef3bff90dec71f562b1252\"\n      },\n      {\n        \"path\": \"spec/implementations/python/offline_consumer/consumer.py\",\n        \"sha256\": \"51e294388b704ec7ae3d2999deccc300c85ce1e29b364b2a3c1b067991fddd6b\"\n      },\n      {\n        \"path\": \"spec/implementations/python/offline_consumer/errors.py\",\n        \"sha256\": \"5c82a9f101b148a80d29755fd07ec2a79ca2efe8ac7f7a26f301edbd9208976b\"\n      },\n      {\n        \"path\": \"spec/implementations/python/offline_consumer/json_subset.py\",\n        \"sha256\": \"954d2f244fe511c56c223dfada64cd5dd7fe65c8c3fae09ca3fa5a7d22150f62\"\n      },\n      {\n        \"path\": \"spec/implementations/python/offline_consumer/projection.py\",\n        \"sha256\": \"a696b066f5165acb45721dde274c5c8f77d609741d08ef63f7cf1d7b7713f92e\"\n      },\n      {\n        \"path\": \"spec/implementations/python/offline_consumer/references.py\",\n        \"sha256\": \"1c0e4e2d1bcc9d8f6c7679bf36164fb926b64a76ee47a5ff446bb08671abe5b7\"\n      },\n      {\n        \"path\": \"spec/implementations/python/offline_consumer/structure.py\",\n        \"sha256\": \"56b7f715f99f27afc1ab4a2bc7dcc8479647fca95f9efbc429799af2a0fbff21\"\n      },\n      {\n        \"path\": \"spec/implementations/python/offline_consumer/uri.py\",\n        \"sha256\": \"9d5f3f5a1301f906b0ddc93df9d730a64d5dd5962191d7b449325b351149858e\"\n      },\n      {\n        \"path\": \"spec/profiles/github-issue-comment/profile.json\",\n        \"sha256\": \"b3aa4d5ca35f3c3a2436765d1b7c8df917695b5956a4ff544e4f82e713f7a831\"\n      },\n      {\n        \"path\": \"spec/schemas/effect-description.schema.json\",\n        \"sha256\": \"0bb7797509174f2f24f534e76ac302fe6ed92e28dcd1e6b92322b2bf1abdbe5e\"\n      }\n    ],\n    \"environment\": {\n      \"node\": \"v22.18.0\",\n      \"python\": \"Python 3.9.6\",\n      \"platform\": \"darwin\",\n      \"architecture\": \"arm64\",\n      \"os_release\": \"27.2.0\",\n      \"hardware\": {\n        \"cpu_model\": \"Apple M4 Pro\",\n        \"logical_cpus\": 14,\n        \"memory_bytes\": 25769803776\n      },\n      \"timezone\": \"America/Toronto\",\n      \"measured_timestamps\": \"UTC\",\n      \"dependencies\": {\n        \"@octokit/rest\": \"22.0.1\",\n        \"@modelcontextprotocol/sdk\": \"1.32.1\",\n        \"zod\": \"4.6.7\",\n        \"ajv\": \"8.20.0\"\n      },\n      \"repositories\": {\n        \"spec\": {\n          \"head\": \"a9b86f4b529a5e330c2a9bf1b8c4c259a7b36e40\",\n          \"dirty\": false,\n          \"note\": \"Exact experiment-source bytes are in provenance.sources; dirty status also includes reports and documentation.\"\n        },\n        \"bench\": {\n          \"head\": \"349138520169588752305ee02c145fadddd0ea24\",\n          \"dirty\": false,\n          \"note\": \"Exact experiment-source bytes are in provenance.sources; dirty status also includes reports and documentation.\"\n        }\n      },\n      \"opa_binary\": {\n        \"pinned_version\": \"1.21.2\",\n        \"sha256\": \"e358121f0d96a41103499d878184e493cc5ab10956f98e835089b9de0ac2de62\",\n        \"matches_release_pin\": true\n      }\n    }\n  },\n  \"plan\": {\n    \"format\": \"action-effect-owned-write-plan/1\",\n    \"target\": {\n      \"owner\": \"OndCo\",\n      \"repo\": \"Action-Effect-Bench\",\n      \"issue_number\": 2\n    },\n    \"principal\": \"jw-ond\",\n    \"run_id\": \"owned-write-20261019\",\n    \"candidates\": [\n      {\n        \"id\": \"release-integrity\",\n        \"label\": \"T1\",\n        \"lane\": \"sdk\",\n        \"original_outcome\": {\n          \"status\": \"completed\",\n          \"reason\": \"final_output\"\n        },\n        \"eligible\": true,\n        \"withheld_reason\": null,\n        \"report_object_sha256\": \"f62a0c07f661a06fa46feec6251b0ac44aecfe7693d02f6bef420ba5ff0b2dd6\",\n        \"report_markdown_bytes\": 5168,\n        \"internal_review_grade\": \"complete\",\n        \"original_mechanical_checks\": {\n          \"report_schema_valid\": true,\n          \"citations_observed\": true,\n          \"successful_read_tool_results\": 6,\n          \"distinct_observed_sources\": 6,\n          \"unavailable_read_tool_results\": 0,\n          \"body_bytes\": 5168,\n          \"fits_comment_profile_bytes\": true,\n          \"quality\": \"not_reviewed\",\n          \"utility\": \"not_reviewed\",\n          \"timing\": {\n            \"model_request_ms\": 53243.25412599999,\n            \"tool_handling_ms\": 29433.795042000012,\n            \"other_task_ms\": 141.16216499999427,\n            \"total_task_ms\": 82818.211333\n          },\n          \"note\": \"Schema, byte and citation checks do not grade semantic correctness, novelty, usefulness or permission to publish.\"\n        }\n      },\n      {\n        \"id\": \"clean-clone-quickstart\",\n        \"label\": \"T2\",\n        \"lane\": \"mcp\",\n        \"original_outcome\": {\n          \"status\": \"failed\",\n          \"reason\": \"report_bytes_exceeded\"\n        },\n        \"eligible\": false,\n        \"withheld_reason\": \"report_bytes_exceeded\",\n        \"report_object_sha256\": \"b42f209f60ea2deca5fd9bd9ae3e49264e1dfe2845d6306a8376b4d76e969284\",\n        \"report_markdown_bytes\": 6272,\n        \"internal_review_grade\": \"partial\",\n        \"original_mechanical_checks\": {\n          \"report_schema_valid\": false,\n          \"citations_observed\": false,\n          \"successful_read_tool_results\": 5,\n          \"distinct_observed_sources\": 5,\n          \"unavailable_read_tool_results\": 0,\n          \"body_bytes\": null,\n          \"fits_comment_profile_bytes\": false,\n          \"quality\": \"no_result\",\n          \"utility\": \"not_reviewed\",\n          \"timing\": {\n            \"model_request_ms\": 48341.928625,\n            \"tool_handling_ms\": 3429.311124999993,\n            \"other_task_ms\": 122.15191600001708,\n            \"total_task_ms\": 51893.39166600001\n          },\n          \"note\": \"Schema, byte and citation checks do not grade semantic correctness, novelty, usefulness or permission to publish.\"\n        }\n      },\n      {\n        \"id\": \"consumer-v1-1-migration\",\n        \"label\": \"T3\",\n        \"lane\": \"sdk\",\n        \"original_outcome\": {\n          \"status\": \"failed\",\n          \"reason\": \"report_bytes_exceeded\"\n        },\n        \"eligible\": false,\n        \"withheld_reason\": \"report_bytes_exceeded\",\n        \"report_object_sha256\": \"5a52114c17bf1919aee20a5677cf3bf6091ba55c8ce9fdc99f314b4b93c0a38f\",\n        \"report_markdown_bytes\": 7051,\n        \"internal_review_grade\": \"partial\",\n        \"original_mechanical_checks\": {\n          \"report_schema_valid\": false,\n          \"citations_observed\": false,\n          \"successful_read_tool_results\": 3,\n          \"distinct_observed_sources\": 3,\n          \"unavailable_read_tool_results\": 0,\n          \"body_bytes\": null,\n          \"fits_comment_profile_bytes\": false,\n          \"quality\": \"no_result\",\n          \"utility\": \"not_reviewed\",\n          \"timing\": {\n            \"model_request_ms\": 41412.745043,\n            \"tool_handling_ms\": 1929.720375999983,\n            \"other_task_ms\": 83.12178899999708,\n            \"total_task_ms\": 43425.58720799998\n          },\n          \"note\": \"Schema, byte and citation checks do not grade semantic correctness, novelty, usefulness or permission to publish.\"\n        }\n      },\n      {\n        \"id\": \"official-mcp-compatibility\",\n        \"label\": \"T4\",\n        \"lane\": \"mcp\",\n        \"original_outcome\": {\n          \"status\": \"completed\",\n          \"reason\": \"final_output\"\n        },\n        \"eligible\": true,\n        \"withheld_reason\": null,\n        \"report_object_sha256\": \"f3039d6dd071432dcfd04920a5bdde8e81f532659ca520f8527649c04debf0ca\",\n        \"report_markdown_bytes\": 5997,\n        \"internal_review_grade\": \"complete\",\n        \"original_mechanical_checks\": {\n          \"report_schema_valid\": true,\n          \"citations_observed\": true,\n          \"successful_read_tool_results\": 5,\n          \"distinct_observed_sources\": 5,\n          \"unavailable_read_tool_results\": 0,\n          \"body_bytes\": 5997,\n          \"fits_comment_profile_bytes\": true,\n          \"quality\": \"not_reviewed\",\n          \"utility\": \"not_reviewed\",\n          \"timing\": {\n            \"model_request_ms\": 49278.00737700003,\n            \"tool_handling_ms\": 3110.7780000000494,\n            \"other_task_ms\": 116.06491399992956,\n            \"total_task_ms\": 52504.85029100001\n          },\n          \"note\": \"Schema, byte and citation checks do not grade semantic correctness, novelty, usefulness or permission to publish.\"\n        }\n      },\n      {\n        \"id\": \"limits-and-recovery\",\n        \"label\": \"T5\",\n        \"lane\": \"sdk\",\n        \"original_outcome\": {\n          \"status\": \"failed\",\n          \"reason\": \"report_bytes_exceeded\"\n        },\n        \"eligible\": false,\n        \"withheld_reason\": \"report_bytes_exceeded\",\n        \"report_object_sha256\": \"ae6b0e67049ec0ee7ce7192fa0a7795225c9471edf8c727fc928102a8a23bb7e\",\n        \"report_markdown_bytes\": 6267,\n        \"internal_review_grade\": \"partial\",\n        \"original_mechanical_checks\": {\n          \"report_schema_valid\": false,\n          \"citations_observed\": false,\n          \"successful_read_tool_results\": 5,\n          \"distinct_observed_sources\": 5,\n          \"unavailable_read_tool_results\": 0,\n          \"body_bytes\": null,\n          \"fits_comment_profile_bytes\": false,\n          \"quality\": \"no_result\",\n          \"utility\": \"not_reviewed\",\n          \"timing\": {\n            \"model_request_ms\": 47237.27116600002,\n            \"tool_handling_ms\": 2363.435625000013,\n            \"other_task_ms\": 114.31287599998177,\n            \"total_task_ms\": 49715.019667000015\n          },\n          \"note\": \"Schema, byte and citation checks do not grade semantic correctness, novelty, usefulness or permission to publish.\"\n        }\n      },\n      {\n        \"id\": \"conformance-support\",\n        \"label\": \"T6\",\n        \"lane\": \"mcp\",\n        \"original_outcome\": {\n          \"status\": \"failed\",\n          \"reason\": \"report_bytes_exceeded\"\n        },\n        \"eligible\": false,\n        \"withheld_reason\": \"report_bytes_exceeded\",\n        \"report_object_sha256\": \"1f6a07b6898c9797d341e5a2f5229ce13280227a26914215ae4b8ccd3ec2dcb5\",\n        \"report_markdown_bytes\": 6454,\n        \"internal_review_grade\": \"partial\",\n        \"original_mechanical_checks\": {\n          \"report_schema_valid\": false,\n          \"citations_observed\": false,\n          \"successful_read_tool_results\": 5,\n          \"distinct_observed_sources\": 5,\n          \"unavailable_read_tool_results\": 0,\n          \"body_bytes\": null,\n          \"fits_comment_profile_bytes\": false,\n          \"quality\": \"no_result\",\n          \"utility\": \"not_reviewed\",\n          \"timing\": {\n            \"model_request_ms\": 48913.16495800001,\n            \"tool_handling_ms\": 2405.9754579999135,\n            \"other_task_ms\": 118.06287600006908,\n            \"total_task_ms\": 51437.20329199999\n          },\n          \"note\": \"Schema, byte and citation checks do not grade semantic correctness, novelty, usefulness or permission to publish.\"\n        }\n      }\n    ],\n    \"scenarios\": [\n      {\n        \"id\": \"normal-release-integrity\",\n        \"lane\": \"sdk\",\n        \"strategy\": \"protocol\",\n        \"fault\": \"none\",\n        \"occurrence\": \"owned-write-20261019.normal-release-integrity\",\n        \"native\": {\n          \"lane\": \"sdk\",\n          \"call\": {\n            \"owner\": \"OndCo\",\n            \"repo\": \"Action-Effect-Bench\",\n            \"issue_number\": 2,\n            \"body\": \"# Internal maintainer working result: T1 (release-integrity)\\n\\nSame-project AI-assisted source review: complete. Not independent endorsement or a whole-system pass.\\n\\n# Release integrity and reproduction identity\\n\\n## Completed byte check\\n\\n**PASS — the selected offline report matches its adjacent published checksum.**\\n\\n- File: `reports/runtime-pilot-offline-2026-10-19T04-23-54.715Z-6bb423.json`.\\n- Independently fetched raw-byte SHA-256: `d2244f7a2704d6fb3624969b146e37581a181ced0cc2c88daab8675d72ef8662`.\\n- Independently fetched size: **900,348 bytes**, below the 2 MiB inspection limit.\\n- Adjacent `.json.sha256` publishes `d2244f7a2704d6fb3624969b146e37581a181ced0cc2c88daab8675d72ef8662` for exactly that basename.\\n- Outcome: exact digest and filename agreement. The large JSON was inspected for metadata only, not requested as text. Both sources were fetched at `cecde389637be4f5fd3482e4942ce3fd1a623ac6`. [S1, S2]\\n\\nThis establishes consistency of the fetched bytes with the co-published checksum, not independent authenticity, correctness of report contents, or faithful execution of the historical experiment.\\n\\n## Release/source identity table\\n\\nCitation keys refer to the exact source URLs in the citations array, in order.\\n\\n| Repository | Immutable ref | Artifact or dependency role | Evidence |\\n| --- | --- | --- | --- |\\n| `OndCo/Action-Effect-Bench` | `cecde389637be4f5fd3482e4942ce3fd1a623ac6` | Observed publication/source snapshot containing the selected report, checksum, summary, release notes and Spec lock | S1–S5; tool-returned fixed ref |\\n| `OndCo/Action-Effect-Bench` | `9f638df994504ba6f5d82c0b5409922a0be7a72e` | Measured runtime implementation, as declared by the summary; source tree not inspected here | S4 |\\n| `OndCo/Action-Effect-Spec` | `a9b86f4b529a5e330c2a9bf1b8c4c259a7b36e40` | Companion dependency; summary and lock agree on this commit | S3, S4 |\\n| `OndCo/Action-Effect-Bench` | Not resolved by available metadata | Public `v0.2.0-draft.1` release, ID `416913460`; release tag is not an immutable commit pin | S6 |\\n| `OndCo/Action-Effect-Spec` | Release tag target not verified | Companion `v0.2.0-draft.1` release referenced by Bench release notes; distinguish from locked measurement dependency above | S5 |\\n\\n## How the identities reconcile\\n\\nThe release API reports Bench `v0.2.0-draft.1` as **published (`draft: false`) and prerelease (`prerelease: true`)**. “Draft” in its name describes maturity, not an unpublished GitHub draft. The returned metadata does not resolve the tag to a commit; it does not establish that the tag points to the inspected publication snapshot. [S6]\\n\\nThe summary identifies the measured Bench implementation separately from the publication snapshot and says release-only documentation/report commits do not change the runtime source inventory. Different commit IDs are therefore not inherently contradictory. That inventory-equivalence statement is a document claim, not a source comparison completed here. [S4]\\n\\nThe lock declares Spec commit `a9b86f4b529a5e330c2a9bf1b8c4c259a7b36e40`, `spec_version: 0.1.0-draft.1`, profile `offline-consumer-v1`, and local directory `action-effect-spec`. Its commit agrees with the summary. The release notes separately reference the companion `v0.2.0-draft.1` release. A release label, declared protocol/profile version and measured commit identify different things: their strings need not be equal. Do not silently replace the locked dependency with a similarly named release tag. The companion tag's target and compatibility were not inspected. [S3–S5]\\n\\nFor reproduction, the report basename must match the checksum entry and its raw digest must match; these checks passed. The runtime source inventory, measured implementation commit, Spec lock and report-recorded dependencies must also agree. Only the summary/lock Spec-commit agreement was checked here; the JSON contents and source inventories were not examined.\\n\\n## Recommendation and limits\\n\\nRetain the selected JSON and checksum from the immutable publication snapshot. Use the declared measured Bench commit and exact Spec commit as reproduction pins; retain release labels as publication context, not substitutes for commits. Before publication, a maintainer should verify both release-tag targets and reconcile the report's embedded source/tool inventories with those pins.\\n\\nThe summary documents a read-only offline replay using `node runtime-pilot/replay.mjs` with the selected report path. Run that separately with pinned dependencies; no replay or shell tests ran here. Reported benchmark results, historical live comments, CI success and replay success remain document claims. The preserved failed first attempt is explicitly not replayable with the current implementation. [S4]\\n\\n**Separate PDF observation:** release metadata lists `manuscript.pdf`, size 274,903 bytes, with advertised digest `sha256:41ff68caddf3d7a5e393a27cb939a8d504b5d24c2d14ce56f18abad04d2ccba8`. Its bytes were not downloaded or independently hashed. This is not the required report check. [S6]\\n\\nCurrent observations are public GitHub reads over REST/HTTPS in the SDK lane; startup was not observed. They do not reproduce the historical MCP pilot, establish authorization, mutate GitHub, or certify conformance or deployments. **Maintainer review is required before publication.**\\n\\n## Original conclusion\\nThe selected 900,348-byte offline report passes the independent raw SHA-256 comparison against its adjacent checksum. The summary and lock agree on the measured Spec commit, and the Bench release is publicly published as a prerelease. Release-tag targets, source-inventory equivalence, report semantics, replay results and PDF bytes remain unverified; reproduce with explicit immutable pins and obtain maintainer review.\\n\\n## Original citations\\n1. https://github.com/OndCo/Action-Effect-Bench/blob/cecde389637be4f5fd3482e4942ce3fd1a623ac6/reports/runtime-pilot-offline-2026-10-19T04-23-54.715Z-6bb423.json\\n2. https://github.com/OndCo/Action-Effect-Bench/blob/cecde389637be4f5fd3482e4942ce3fd1a623ac6/reports/runtime-pilot-offline-2026-10-19T04-23-54.715Z-6bb423.json.sha256\\n3. https://github.com/OndCo/Action-Effect-Bench/blob/cecde389637be4f5fd3482e4942ce3fd1a623ac6/spec-lock.json\\n4. https://github.com/OndCo/Action-Effect-Bench/blob/cecde389637be4f5fd3482e4942ce3fd1a623ac6/reports/runtime-pilot-summary.md\\n5. https://github.com/OndCo/Action-Effect-Bench/blob/cecde389637be4f5fd3482e4942ce3fd1a623ac6/docs/release-v0.2.0.md\\n6. https://github.com/OndCo/Action-Effect-Bench/releases/tag/v0.2.0-draft.1\\n\\nSource evidence: https://github.com/OndCo/Action-Effect-Bench/blob/7306d8b45402bb2ee7f9a1fbaf7203835e599110/reports/field-study-use-2026-10-19T07-15-38.744Z-a76953f1.json\\nOriginal task: release-integrity\\nReport object SHA-256: `f62a0c07f661a06fa46feec6251b0ac44aecfe7693d02f6bef420ba5ff0b2dd6`\\nOccurrence: `owned-write-20261019.normal-release-integrity`\\n\"\n          }\n        },\n        \"context\": {\n          \"principal\": \"jw-ond\",\n          \"data_class\": \"public-maintainer-draft\",\n          \"implementation\": \"github-comment-bridge/1\"\n        },\n        \"reference_projection\": {\n          \"operation\": \"create_issue_comment\",\n          \"repository\": \"OndCo/Action-Effect-Bench\",\n          \"issue_number\": 2,\n          \"endpoint\": \"https://api.github.com/repos/OndCo/Action-Effect-Bench/issues/2/comments\",\n          \"body_sha256\": \"4cc12aec6cf9debe270db489a5e5d7515a9ea7532298c806f3cf8f00dc69305c\",\n          \"body_bytes\": 6915,\n          \"data_class\": \"public-maintainer-draft\"\n        },\n        \"expected\": {\n          \"initial_outcome\": \"confirmed\",\n          \"reason\": null,\n          \"decision\": \"allow\",\n          \"recovery_outcome\": null,\n          \"new_comments\": 1\n        }\n      },\n      {\n        \"id\": \"normal-official-mcp-compatibility\",\n        \"lane\": \"mcp\",\n        \"strategy\": \"structured\",\n        \"fault\": \"none\",\n        \"occurrence\": \"owned-write-20261019.normal-official-mcp-compatibility\",\n        \"native\": {\n          \"lane\": \"mcp\",\n          \"call\": {\n            \"name\": \"add_issue_comment\",\n            \"arguments\": {\n              \"owner\": \"OndCo\",\n              \"repo\": \"Action-Effect-Bench\",\n              \"issue_number\": 2,\n              \"body\": \"# Internal maintainer working result: T4 (official-mcp-compatibility)\\n\\nSame-project AI-assisted source review: complete. Not independent endorsement or a whole-system pass.\\n\\n# Official GitHub MCP compatibility assessment\\n\\n## Identity and provenance\\n\\nSource keys [1]–[5] refer to the exact pinned URLs in `citations`, in order.\\n\\n| Layer | Identity supported by sources | Boundary |\\n|---|---|---|\\n| Dependency | Private ESM package `action-effect-runtime-pilot@0.2.0-draft.1`, Node `>=22`; declares `@modelcontextprotocol/sdk@1.32.1`, `@octokit/rest@22.0.1`, `ajv@8.20.0`, `zod@4.6.7` [2] | Official MCP SDK use is not official GitHub server use. Declaration alone does not verify installed bytes. |\\n| Server implementation | Source constructs `McpServer` named `action-effect-comment-pilot`, version `0.2.0-draft.1` [1] | A custom pilot server, not evidence of the official GitHub MCP implementation. |\\n| Transport | Imports `StdioServerTransport` and connects it; README describes real SDK stdio initialize/list/call exchanges [1,3] | No hosted/HTTP transport or remote authentication flow is established. |\\n| Declared profile binding | GitHub Issue Comment Profile 1 requires `context.implementation = \\\"github-comment-bridge/1\\\"`; identity preimage has `kind: \\\"declaration\\\"` [4] | Neither server name nor SDK version; not binary attestation or proof of GitHub internals. Profile release is `v0.2.0-draft.1`, core wire version remains `0.1.0-draft.1`. |\\n\\nThe current runner separately reports a local stdio process named `github-mcp-server@2.0.2`, executable SHA-256 `2d431e46617f06b1516818fa09917096ff6dfc3664b37b0bdb31e1c1a35be368`, startup observed, negotiated protocol `2025-11-25`. All five source reads succeeded on the MCP lane. This establishes current public-read activity under that reported execution identity, not official provenance of that executable or execution of the historical pilot.\\n\\n## Released interface\\n\\nThe pilot registers one tool, **`add_issue_comment`**. Its advertised input is a strict object with required `owner: string`, `repo: string`, `issue_number: integer`, `body: string`; extra keys are rejected. Server input-element limit is 32. Annotations are `readOnlyHint:false`, `destructiveHint:false`, `idempotentHint:false`, `openWorldHint:true` [1]. These hints do not grant permission.\\n\\nThe profile adds narrower acceptance rules than the Zod schema alone [4]:\\n- Owner: `[A-Za-z0-9][A-Za-z0-9-]{0,38}`; repo: `[A-Za-z0-9_.-]{1,100}`, excluding `.` and `..`.\\n- Issue: positive integer through 2147483647, not a boolean. Body: nonempty Unicode-scalar string, at most 8192 exact UTF-8 bytes.\\n- Only specified keys; no normalization, path unescaping, URL resolution, templates or caller endpoints. Only creation via `https://api.github.com/repos/owner/repo/issues/issue_number/comments`; updates, deletes and arbitrary tools are outside scope.\\n- Nonempty configured principal and data class plus the exact implementation binding are required. Missing/wrong binding is untrusted evidence. Live demonstrations are restricted to authorized synthetic-public resources; profile acceptance is not authorization.\\n\\nThe handler captures `{lane:\\\"mcp\\\",call:{name:\\\"add_issue_comment\\\",arguments:args}}`; this is a local capture envelope, not a replacement for MCP `tools/call` [1,4]. Configuration accepts `offline-map` or `live` and `protocol` or `structured`. Offline calls prepare; live calls delegate execution to the gate/provider. Optional lost-ack injection discards a successful create acknowledgment and adds fault information [1].\\n\\nResponse representation is **`{content:[{type:\\\"text\\\",text:JSON.stringify(result)}]}`**: JSON serialized inside an MCP text block, not a declared structured-output schema or a proven official-server response format [1]. Profile acceptance is `accepted_partial/declared_partial`, with `authority:not_evaluated`, description digest and checked projection. Processing status, policy decision and provider outcome are distinct [3,4]. The imported gate/provider implementations were not supplied, so their complete result contract was not inspected.\\n\\n## Supported versus unverified\\n\\n**Supported:** a bounded custom MCP/SDK bridge, stdio wiring, explicit comment-input mapping and declared profile identity. The release documentation reports 32 matching planned live checks, 12 public comments, four read-only lost-ack recoveries and four suppressed duplicates [5]. These are historical same-project claims, not runs observed here; the README bounds them to eight scripted scenarios across two lanes and two strategies [3].\\n\\n**Unverified:** compatibility with an identified official GitHub MCP server revision, its actual tool schema, response/error semantics, transport configurations or authentication. No official implementation source, tool-list capture, interoperability trace or installed dependency evidence was supplied. Matching a tool name or using the official SDK cannot close those gaps. No mutation, pilot test, remote authentication experiment, certification or customer deployment check occurred in this task.\\n\\n## Maintainer disposition / next checks\\n\\n1. Document now: “Custom stdio MCP pilot using the official MCP SDK; official GitHub MCP interoperability not yet validated.” Require maintainer review before publication.\\n2. Pin the intended official repository/release and executable provenance; retain its initialize and `tools/list` evidence. Compare exact required fields, validation, annotations, capabilities and protocol/transport versions.\\n3. Define an adapter for result/error representation and capture at the actual dispatch boundary. Test profile restrictions and negative cases; do not relabel the declaration as attestation.\\n4. Separately plan authorized sandbox checks of provider identity, credential scope, policy enforcement, one comment/readback and uncertain-delivery handling. Retain traces and distinguish offline mapping from real dispatch. Do not infer setup or permission from this report.\\n5. If hosted transport is intended, validate its authentication separately. Keep non-claims for downstream effects, global exactly-once delivery and production qualification [3–5].\\n\\n## Original conclusion\\nThe sources establish a custom stdio MCP pilot built with the official MCP SDK, not validated integration with the official GitHub MCP implementation. Current successful public reads and historical release-reported live results are distinct evidence. Stronger interoperability claims need pinned official-server provenance, schema/response comparison and separately authorized integration observations; maintainer review is required before publication.\\n\\n## Original citations\\n1. https://github.com/OndCo/Action-Effect-Bench/blob/cecde389637be4f5fd3482e4942ce3fd1a623ac6/runtime-pilot/mcp-server.mjs\\n2. https://github.com/OndCo/Action-Effect-Bench/blob/cecde389637be4f5fd3482e4942ce3fd1a623ac6/runtime-pilot/package.json\\n3. https://github.com/OndCo/Action-Effect-Bench/blob/cecde389637be4f5fd3482e4942ce3fd1a623ac6/runtime-pilot/README.md\\n4. https://github.com/OndCo/Action-Effect-Spec/blob/a9b86f4b529a5e330c2a9bf1b8c4c259a7b36e40/profiles/github-issue-comment/README.md\\n5. https://github.com/OndCo/Action-Effect-Bench/blob/cecde389637be4f5fd3482e4942ce3fd1a623ac6/docs/release-v0.2.0.md\\n\\nSource evidence: https://github.com/OndCo/Action-Effect-Bench/blob/7306d8b45402bb2ee7f9a1fbaf7203835e599110/reports/field-study-use-2026-10-19T07-15-38.744Z-a76953f1.json\\nOriginal task: official-mcp-compatibility\\nReport object SHA-256: `f3039d6dd071432dcfd04920a5bdde8e81f532659ca520f8527649c04debf0ca`\\nOccurrence: `owned-write-20261019.normal-official-mcp-compatibility`\\n\"\n            }\n          }\n        },\n        \"context\": {\n          \"principal\": \"jw-ond\",\n          \"data_class\": \"public-maintainer-draft\",\n          \"implementation\": \"github-comment-bridge/1\"\n        },\n        \"reference_projection\": {\n          \"operation\": \"create_issue_comment\",\n          \"repository\": \"OndCo/Action-Effect-Bench\",\n          \"issue_number\": 2,\n          \"endpoint\": \"https://api.github.com/repos/OndCo/Action-Effect-Bench/issues/2/comments\",\n          \"body_sha256\": \"3948920aee503a4263f46ce9b090039fa50de2665bd43c2d266d6bf3f67040bc\",\n          \"body_bytes\": 7657,\n          \"data_class\": \"public-maintainer-draft\"\n        },\n        \"expected\": {\n          \"initial_outcome\": \"confirmed\",\n          \"reason\": null,\n          \"decision\": \"allow\",\n          \"recovery_outcome\": null,\n          \"new_comments\": 1\n        }\n      },\n      {\n        \"id\": \"fault-revoked\",\n        \"lane\": \"mcp\",\n        \"strategy\": \"protocol\",\n        \"fault\": \"revoke-after-preflight\",\n        \"occurrence\": \"owned-write-20261019.fault-revoked\",\n        \"native\": {\n          \"lane\": \"mcp\",\n          \"call\": {\n            \"name\": \"add_issue_comment\",\n            \"arguments\": {\n              \"owner\": \"OndCo\",\n              \"repo\": \"Action-Effect-Bench\",\n              \"issue_number\": 2,\n              \"body\": \"# Synthetic control note: fault-revoked\\n\\nControlled owned-write/recovery study: revoke-after-preflight.\\nThis is a synthetic control, not a useful model task or another completed maintainer output.\\nOccurrence: `owned-write-20261019.fault-revoked`\\n\"\n            }\n          }\n        },\n        \"context\": {\n          \"principal\": \"jw-ond\",\n          \"data_class\": \"synthetic-public\",\n          \"implementation\": \"github-comment-bridge/1\"\n        },\n        \"reference_projection\": {\n          \"operation\": \"create_issue_comment\",\n          \"repository\": \"OndCo/Action-Effect-Bench\",\n          \"issue_number\": 2,\n          \"endpoint\": \"https://api.github.com/repos/OndCo/Action-Effect-Bench/issues/2/comments\",\n          \"body_sha256\": \"dfe0f89b8838f12a84b1da751b298860dfd2f94fbee4788a47a67bb9a1b8277c\",\n          \"body_bytes\": 246,\n          \"data_class\": \"synthetic-public\"\n        },\n        \"expected\": {\n          \"initial_outcome\": \"withheld\",\n          \"reason\": \"revoked\",\n          \"decision\": \"deny\",\n          \"recovery_outcome\": null,\n          \"new_comments\": 0\n        }\n      },\n      {\n        \"id\": \"fault-narrowed\",\n        \"lane\": \"sdk\",\n        \"strategy\": \"structured\",\n        \"fault\": \"narrow-after-preflight\",\n        \"occurrence\": \"owned-write-20261019.fault-narrowed\",\n        \"native\": {\n          \"lane\": \"sdk\",\n          \"call\": {\n            \"owner\": \"OndCo\",\n            \"repo\": \"Action-Effect-Bench\",\n            \"issue_number\": 2,\n            \"body\": \"# Synthetic control note: fault-narrowed\\n\\nControlled owned-write/recovery study: narrow-after-preflight.\\nThis is a synthetic control, not a useful model task or another completed maintainer output.\\nOccurrence: `owned-write-20261019.fault-narrowed`\\n\"\n          }\n        },\n        \"context\": {\n          \"principal\": \"jw-ond\",\n          \"data_class\": \"synthetic-public\",\n          \"implementation\": \"github-comment-bridge/1\"\n        },\n        \"reference_projection\": {\n          \"operation\": \"create_issue_comment\",\n          \"repository\": \"OndCo/Action-Effect-Bench\",\n          \"issue_number\": 2,\n          \"endpoint\": \"https://api.github.com/repos/OndCo/Action-Effect-Bench/issues/2/comments\",\n          \"body_sha256\": \"8c9df106e3e8f22341e2458da9bee05cfa2749536e0525b8edcd25394f0ac0f7\",\n          \"body_bytes\": 248,\n          \"data_class\": \"synthetic-public\"\n        },\n        \"expected\": {\n          \"initial_outcome\": \"withheld\",\n          \"reason\": \"body_too_large\",\n          \"decision\": \"deny\",\n          \"recovery_outcome\": null,\n          \"new_comments\": 0\n        }\n      },\n      {\n        \"id\": \"fault-pre-send-crash\",\n        \"lane\": \"sdk\",\n        \"strategy\": \"protocol\",\n        \"fault\": \"crash-before-send\",\n        \"occurrence\": \"owned-write-20261019.fault-pre-send-crash\",\n        \"native\": {\n          \"lane\": \"sdk\",\n          \"call\": {\n            \"owner\": \"OndCo\",\n            \"repo\": \"Action-Effect-Bench\",\n            \"issue_number\": 2,\n            \"body\": \"# Synthetic control note: fault-pre-send-crash\\n\\nControlled owned-write/recovery study: crash-before-send.\\nThis is a synthetic control, not a useful model task or another completed maintainer output.\\nOccurrence: `owned-write-20261019.fault-pre-send-crash`\\n\"\n          }\n        },\n        \"context\": {\n          \"principal\": \"jw-ond\",\n          \"data_class\": \"synthetic-public\",\n          \"implementation\": \"github-comment-bridge/1\"\n        },\n        \"reference_projection\": {\n          \"operation\": \"create_issue_comment\",\n          \"repository\": \"OndCo/Action-Effect-Bench\",\n          \"issue_number\": 2,\n          \"endpoint\": \"https://api.github.com/repos/OndCo/Action-Effect-Bench/issues/2/comments\",\n          \"body_sha256\": \"7336a629fe0aacbb82329308fe53030fa5eee27858c9afd5f0fa47d85ea6a74f\",\n          \"body_bytes\": 255,\n          \"data_class\": \"synthetic-public\"\n        },\n        \"expected\": {\n          \"initial_outcome\": \"process-killed\",\n          \"reason\": null,\n          \"decision\": \"allow\",\n          \"recovery_outcome\": \"unknown\",\n          \"new_comments\": 0\n        }\n      },\n      {\n        \"id\": \"fault-post-reply-crash\",\n        \"lane\": \"mcp\",\n        \"strategy\": \"protocol\",\n        \"fault\": \"crash-after-reply\",\n        \"occurrence\": \"owned-write-20261019.fault-post-reply-crash\",\n        \"native\": {\n          \"lane\": \"mcp\",\n          \"call\": {\n            \"name\": \"add_issue_comment\",\n            \"arguments\": {\n              \"owner\": \"OndCo\",\n              \"repo\": \"Action-Effect-Bench\",\n              \"issue_number\": 2,\n              \"body\": \"# Synthetic control note: fault-post-reply-crash\\n\\nControlled owned-write/recovery study: crash-after-reply.\\nThis is a synthetic control, not a useful model task or another completed maintainer output.\\nOccurrence: `owned-write-20261019.fault-post-reply-crash`\\n\"\n            }\n          }\n        },\n        \"context\": {\n          \"principal\": \"jw-ond\",\n          \"data_class\": \"synthetic-public\",\n          \"implementation\": \"github-comment-bridge/1\"\n        },\n        \"reference_projection\": {\n          \"operation\": \"create_issue_comment\",\n          \"repository\": \"OndCo/Action-Effect-Bench\",\n          \"issue_number\": 2,\n          \"endpoint\": \"https://api.github.com/repos/OndCo/Action-Effect-Bench/issues/2/comments\",\n          \"body_sha256\": \"62841a51483dbf328e7771340b60d4ad9fee136844ecf12a597a99dd67d232e8\",\n          \"body_bytes\": 259,\n          \"data_class\": \"synthetic-public\"\n        },\n        \"expected\": {\n          \"initial_outcome\": \"process-killed\",\n          \"reason\": null,\n          \"decision\": \"allow\",\n          \"recovery_outcome\": \"confirmed\",\n          \"new_comments\": 1\n        }\n      },\n      {\n        \"id\": \"fault-sdk-timeout\",\n        \"lane\": \"sdk\",\n        \"strategy\": \"structured\",\n        \"fault\": \"timeout-after-reply\",\n        \"occurrence\": \"owned-write-20261019.fault-sdk-timeout\",\n        \"native\": {\n          \"lane\": \"sdk\",\n          \"call\": {\n            \"owner\": \"OndCo\",\n            \"repo\": \"Action-Effect-Bench\",\n            \"issue_number\": 2,\n            \"body\": \"# Synthetic control note: fault-sdk-timeout\\n\\nControlled owned-write/recovery study: timeout-after-reply.\\nThis is a synthetic control, not a useful model task or another completed maintainer output.\\nOccurrence: `owned-write-20261019.fault-sdk-timeout`\\n\"\n          }\n        },\n        \"context\": {\n          \"principal\": \"jw-ond\",\n          \"data_class\": \"synthetic-public\",\n          \"implementation\": \"github-comment-bridge/1\"\n        },\n        \"reference_projection\": {\n          \"operation\": \"create_issue_comment\",\n          \"repository\": \"OndCo/Action-Effect-Bench\",\n          \"issue_number\": 2,\n          \"endpoint\": \"https://api.github.com/repos/OndCo/Action-Effect-Bench/issues/2/comments\",\n          \"body_sha256\": \"11ebd86d70b2a1d02e77122dccabf4e0f9ac90f22c93c23a759ceb826ffed572\",\n          \"body_bytes\": 251,\n          \"data_class\": \"synthetic-public\"\n        },\n        \"expected\": {\n          \"initial_outcome\": \"unknown\",\n          \"reason\": \"provider_or_readback_failure\",\n          \"decision\": \"allow\",\n          \"recovery_outcome\": \"confirmed\",\n          \"new_comments\": 1\n        }\n      },\n      {\n        \"id\": \"fault-mcp-disconnect\",\n        \"lane\": \"mcp\",\n        \"strategy\": \"protocol\",\n        \"fault\": \"disconnect-after-reply\",\n        \"occurrence\": \"owned-write-20261019.fault-mcp-disconnect\",\n        \"native\": {\n          \"lane\": \"mcp\",\n          \"call\": {\n            \"name\": \"add_issue_comment\",\n            \"arguments\": {\n              \"owner\": \"OndCo\",\n              \"repo\": \"Action-Effect-Bench\",\n              \"issue_number\": 2,\n              \"body\": \"# Synthetic control note: fault-mcp-disconnect\\n\\nControlled owned-write/recovery study: disconnect-after-reply.\\nThis is a synthetic control, not a useful model task or another completed maintainer output.\\nOccurrence: `owned-write-20261019.fault-mcp-disconnect`\\n\"\n            }\n          }\n        },\n        \"context\": {\n          \"principal\": \"jw-ond\",\n          \"data_class\": \"synthetic-public\",\n          \"implementation\": \"github-comment-bridge/1\"\n        },\n        \"reference_projection\": {\n          \"operation\": \"create_issue_comment\",\n          \"repository\": \"OndCo/Action-Effect-Bench\",\n          \"issue_number\": 2,\n          \"endpoint\": \"https://api.github.com/repos/OndCo/Action-Effect-Bench/issues/2/comments\",\n          \"body_sha256\": \"88aa33d4cf89b876bae051b043ef37842f3cd25303b4c3e6e69ca874d0b35b65\",\n          \"body_bytes\": 260,\n          \"data_class\": \"synthetic-public\"\n        },\n        \"expected\": {\n          \"initial_outcome\": \"unknown\",\n          \"reason\": \"provider_or_readback_failure\",\n          \"decision\": \"allow\",\n          \"recovery_outcome\": \"confirmed\",\n          \"new_comments\": 1\n        }\n      }\n    ],\n    \"max_comment_calls\": 12,\n    \"expected_comment_objects\": 5\n  },\n  \"setup\": {\n    \"issue\": {\n      \"url\": \"https://api.github.com/repos/OndCo/Action-Effect-Bench/issues/2\",\n      \"repository_url\": \"https://api.github.com/repos/OndCo/Action-Effect-Bench\",\n      \"labels_url\": \"https://api.github.com/repos/OndCo/Action-Effect-Bench/issues/2/labels{/name}\",\n      \"comments_url\": \"https://api.github.com/repos/OndCo/Action-Effect-Bench/issues/2/comments\",\n      \"events_url\": \"https://api.github.com/repos/OndCo/Action-Effect-Bench/issues/2/events\",\n      \"html_url\": \"https://github.com/OndCo/Action-Effect-Bench/issues/2\",\n      \"id\": 5924829067,\n      \"node_id\": \"I_kwDOVO_Vvc8AAAABYSW3iw\",\n      \"number\": 2,\n      \"title\": \"Owned real-use acceptance and recovery: owned-write-20261019\",\n      \"user\": {\n        \"login\": \"jw-ond\",\n        \"id\": 67523717,\n        \"node_id\": \"MDQ6VXNlcjY3NTIzNzE3\",\n        \"avatar_url\": \"https://avatars.githubusercontent.com/u/67523717?v=4\",\n        \"gravatar_id\": \"\",\n        \"url\": \"https://api.github.com/users/jw-ond\",\n        \"html_url\": \"https://github.com/jw-ond\",\n        \"followers_url\": \"https://api.github.com/users/jw-ond/followers\",\n        \"following_url\": \"https://api.github.com/users/jw-ond/following{/other_user}\",\n        \"gists_url\": \"https://api.github.com/users/jw-ond/gists{/gist_id}\",\n        \"starred_url\": \"https://api.github.com/users/jw-ond/starred{/owner}{/repo}\",\n        \"subscriptions_url\": \"https://api.github.com/users/jw-ond/subscriptions\",\n        \"organizations_url\": \"https://api.github.com/users/jw-ond/orgs\",\n        \"repos_url\": \"https://api.github.com/users/jw-ond/repos\",\n        \"events_url\": \"https://api.github.com/users/jw-ond/events{/privacy}\",\n        \"received_events_url\": \"https://api.github.com/users/jw-ond/received_events\",\n        \"type\": \"User\",\n        \"user_view_type\": \"public\",\n        \"site_admin\": false\n      },\n      \"labels\": [],\n      \"state\": \"open\",\n      \"locked\": false,\n      \"assignees\": [],\n      \"milestone\": null,\n      \"comments\": 0,\n      \"created_at\": \"2026-10-19T13:32:00Z\",\n      \"updated_at\": \"2026-10-19T13:32:00Z\",\n      \"closed_at\": null,\n      \"assignee\": null,\n      \"author_association\": \"MEMBER\",\n      \"issue_field_values\": [],\n      \"type\": null,\n      \"active_lock_reason\": null,\n      \"sub_issues_summary\": {\n        \"total\": 0,\n        \"completed\": 0,\n        \"percent_completed\": 0\n      },\n      \"issue_dependencies_summary\": {\n        \"blocked_by\": 0,\n        \"total_blocked_by\": 0,\n        \"blocking\": 0,\n        \"total_blocking\": 0\n      },\n      \"body\": \"# Owned real-use and recovery study\\n\\nRun: owned-write-20261019\\n\\nThis dedicated public issue holds two eligible, unmodified outputs from the already recorded real-model maintainer run, plus explicitly synthetic recovery controls. Four over-budget model outputs stay withheld.\\n\\nAuthorized ceiling: 12 new comment calls; five comment objects are expected, not pre-asserted. SDK and the pinned official GitHub MCP server are used. Controlled process kills, acknowledgment loss, revocation and narrowed authority are evaluated separately from task quality. No automatic resend after an unknown outcome.\\n\\nThis is same-project, owned-resource testing, not external validation or customer-production evidence. No customer data, Studio/Hook changes, or collaboration invitations are involved.\\n\\nFrozen implementation: https://github.com/OndCo/Action-Effect-Bench/tree/349138520169588752305ee02c145fadddd0ea24\\nProtocol and report: https://github.com/OndCo/Action-Effect-Bench/blob/main/docs/implementation-plan-2026-10-19-owned-write-recovery.md\\n\",\n      \"closed_by\": null,\n      \"reactions\": {\n        \"url\": \"https://api.github.com/repos/OndCo/Action-Effect-Bench/issues/2/reactions\",\n        \"total_count\": 0,\n        \"+1\": 0,\n        \"-1\": 0,\n        \"laugh\": 0,\n        \"hooray\": 0,\n        \"confused\": 0,\n        \"heart\": 0,\n        \"rocket\": 0,\n        \"eyes\": 0\n      },\n      \"timeline_url\": \"https://api.github.com/repos/OndCo/Action-Effect-Bench/issues/2/timeline\",\n      \"performed_via_github_app\": null,\n      \"state_reason\": null,\n      \"pinned_comment\": null\n    },\n    \"initial_comments\": [],\n    \"native_readonly_preflight\": {\n      \"inventory\": {\n        \"executable_sha256\": \"2d431e46617f06b1516818fa09917096ff6dfc3664b37b0bdb31e1c1a35be368\",\n        \"pins\": {\n          \"source_commit\": \"eb47a99ddb866ca2b8a162920e6bda9521f33ebb\",\n          \"archive_sha256\": \"5d9b38511bffc84d2272eb6189129eb721c8900e45784d8ea7eaf25f8d3dd835\",\n          \"executable_sha256\": \"2d431e46617f06b1516818fa09917096ff6dfc3664b37b0bdb31e1c1a35be368\"\n        },\n        \"transport\": \"stdio\",\n        \"read_only\": true,\n        \"selected_tools\": [\n          \"issue_read\"\n        ],\n        \"protocol_version\": \"2025-11-25\",\n        \"server\": {\n          \"name\": \"github-mcp-server\",\n          \"title\": \"GitHub MCP Server\",\n          \"icons\": [\n            {\n              \"src\": \"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAADK0lEQVRIibWVQWhcVRSGv3Pfy0zGdBIMRWk7iziMTpORptpqiNSNG1dNizaFFlxIoYuCC7NwJdiVlhYprtwpighCF9GtuhCRtuCoaWdqGF7HkE4aWm1CpklmJpl3j4vMS99M2k4G9N+8d8659/8u9553H/zPkscVM5lMf03do6iOKbJXIAGgUBJ0GpHvolKfzOfzCx0BEonRWDRemRD0PaC3zSKXED1fLfdcLJUuV9oC0ukXdluxkyq81Ma4VX9Y4x4p5rOzjwSkUvsSdMkVYE+H5oHmjM9IoTA1FyRM8JJIjMbokm83zUW/Vvi5raXwC8rnjWiPdXRyYGCgOyi7wUs0XpkAXmyEa/XV8qmZmZnqc0P7XrXKW2BuKDovgorqLoWMFb4p3rj2I4w7qcHCMSAOctDt7n0X+GiDT6NbrPsXDw50xftzKg7odvcmtXf4DsJTjXBpzbXPzF6/vmgAauoepblbnGTyQLvu2VQmk4kgxEKpvui6cwSCM1Ada5qheq5YzC5tF5DP59dQzjYlZcOzccgyGK65mC+2ax7IWPfLcGxhKARgV7i4vBy70ymgUMj+A9SDWGB3GOCEB/f0VJ/sFJBKjfQS6srAOwD8HR7su/7BTgE2Umn98u9uAgR+ayqpnOkUIK1zZMPTACjyQzOA11ND+z+E8aate4TMs4PD7wu80ezP940nJJMH+ky0XgKeAHkH1TcRXgNywFeoueJN//5T2CCZGT7kWBlV9CSwvwV6n/XuhOddLRuAYjG7hMjHgEH1tEb0BEgWeB44J8aebF2243Nc0fMPMUfgguddLUOoe/r7dlwWJzqGMCxq6q5Wz/jSVQZ+Nb795N69u4thk/6dT7uInNiyYcoU9ZW3FxYWfAjdpp7n1XzjHAbmUJ3wTXQ8gvOZb+oXV1d3zLf6WEcWW3MoJXX9w57n1YKUCdeL+eysOv4oyrQqn65Tv+1adz4WrxzaskXWNs0V5Jq6/is3c7lb4byhRTdzuVvUV0ZQPgDuA6jqlj+fqhvkllE9q+vLL7eab4Afo1RqpJdI9Rhr3ZeCQwuUTqfjvoket7WuS51cjP+5/gWC8y5uIkrtDQAAAABJRU5ErkJggg==\",\n              \"mimeType\": \"image/png\",\n              \"theme\": \"light\"\n            },\n            {\n              \"src\": \"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAB8ElEQVRIibWVu09UQRSHv9k1IgW7AY0RBWKsTGx9ND4qS5F/wEYLDb0xAY0UxkdrZ2NHYWfsaYyVT4iJwZpNjJooLBQEYz6LvZsdxmH3LtFfN3PO+X5zzzwu/GeFbkF1BJgCJoHjwFgRagDLwAvgeQjhR1+u6qA6q67ZW6vqjDpYFn5YfV0CnOqDOtELPqY2dgFvq6Ee6daWd1HyvPqyBPSV+jQav1H3tbkhMpgF7hXDLaAeQthUzwFXgE/AF0BgFDgBPAshLKhV4CcwVNTPhBAexKsfcfuGbqhdT1imA1+j+lV1GKBSxKeAWpRfTca94HuB+BTVgcuxwWRS8zCEsFbWIISwBcwl0x2m+jnZuKNl4RHjQMJYjoPNJFju0vxt8itiNKHTomqSO7wLeA3YE01VYoPvSf7Jfg2AU8n4W2zwPglO78Igrekw1enMDb1fXKCuUivq7Uz99Tiprq6rvwuzhSLpo3pLvZABn1Vv2nrkUjWLPdlWMFcEF9WD6tuo4EnG4HEG3Nad3KcOqEtRe/bb+ic8Uo9l8i/tAF9UB3bq54StJ3dTvaGOqofM3IuiRalW1PH8bnUKx4tVxLqYyTuf5Czl4JV0IoSwApwB7gLr7enMWtpzG7TeodNFbXmpNfWq6YloxYbUa2q9L+i/1h8/EAGdUrF9ZQAAAABJRU5ErkJggg==\",\n              \"mimeType\": \"image/png\",\n              \"theme\": \"dark\"\n            }\n          ],\n          \"version\": \"2.0.2\"\n        },\n        \"tools\": [\n          {\n            \"name\": \"issue_read\",\n            \"icons\": [\n              {\n                \"src\": \"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAC2UlEQVRIicWVMUyTaRjHf/+vVUpOJOdilOYoUvVreq2CDmLOwdlAS5xMbrrhBifjYG7QjYuJw108nZx1huLgYlw0QshxChUK2koxHHcuCmgsFfieG0or3kGPSoz/8X3f5/97nvfN8z7wmaVqm9FodFfR/EnMugy5giCAwYwgI9Ff9Hl9L9Lp1zUBgsGO+rqGwnlhF4CdwBSyAUwvS1G220zHBSFgHtmVxYWvfp2ZGSj8LyAcjgfZphTQZtAr7OdsZvSP9RIJR+LtQhcNusF+d1aUfPp05M8NAavmg8AOk3cmN56+s1Hpa7U/cviUYbcw3jgex9ZCKoBgsKM+0PDuAdBq2He5zOiTzZiXtc+NxRw598GeLRcWTuTz+UUAp3ygrqFwHmgzeWdqNQd4PpFOy/gedNQfaDz3UQXRaHRX0fNPGdzNZUZO12q+VuHIoV7g5Hu/1/IinX7tABTNnwR2SvRsxRzAzOsBGuuWfAkoX5FZFzCVHR95tFVAbiI9DEwj6wLwl5YVMTRYLTDsxjuRrgGYYz/kxkbvbXRWMOBB24cKYI9ks1X8hXQDaAaa5XG9WjImZgV71wI+m8qAv8y0t1pSmP0ITANTmHO2qqvRZDALlTdgHKyjWkx2YvQ2cHtTacMxYBhWK5DoF4TCkXj7Jg02VKsbOwI0Y+qvALZrOQXMC13cKkDSJWBuJUCqAhgbG3uF7IpBcn/k8KlPNQ+78U5QQuhy/vHjuQoAYPndwi9gw4bd2ufGYrWatxz8No50ExhaKsz9Vl6vAPL5/KKzoiTGG0fOg1oqCbvxTp/juw/M+zynu/yTwjoD58CBQ02ez/pAR4E+M69ntf3/o1Y3dqR050oAQz7P6Z6cfPRRw647MkOhUMAfaDyH+AloBKYNPRT292rQHoMOSp09J3TZlt5ezWazxX97VR3638RiX9ct+RImSyBcrDT0ETMyMp4ptRIgVX7QL6J/ALSUEwJ5rdg2AAAAAElFTkSuQmCC\",\n                \"mimeType\": \"image/png\",\n                \"theme\": \"light\"\n              },\n              {\n                \"src\": \"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAABxElEQVRIibWVvW4TURCFv0vlNEDcIHAkKAERJOIKSjoUArwBPwUFFaKIIngAJARCPIgdh4cgRBYt6ZIAEYEqdhpEw0fhCbkKa68dxyNtsfNzzpnZu3NhwpYGBdUqcA+4A1wEZiK0DawD74FWSml3JAJ1CngGLAIngU1gFfgZKWeAG8AFoAu8At6mlH6VtqTOqJ/UP2pDnRuQO6c27VlbrQ0Dvq121Fulag7q5qPmW18SdSqUd9Qrw4Jn9bNR21YrRQkvYixDKy/AuB3jWjocqKpdtXFU8AxrOTqZzp2PgvnaMRDUA+tB7mypG+OCZ3hbahPgRPguAR9LihaicEu9WcKxClzOi/fU1wPAk7rjgX0uEfNG3cs7mJjtE+wA5/olpZQEHgNf6K2NJyW4NeD7v7c4WptjSc0svlMjdzyM2fbdOyOA7x/T+7mzGj9H8xgIWuquevpw4HmsivkxwBdC/WJRsBKLqqPOHgH8aqybtcJlF0m1WLndUToJ5V31q9r3NOYk7Wh1Wa0PyK3HzA3l/4H3uzIrwFNgCThF7/x/AH5EylngOnAe6AAvgXcppd9DEWRE08DdeIou/RVgJaXUGYQzUfsL+zmwV7BtIq0AAAAASUVORK5CYII=\",\n                \"mimeType\": \"image/png\",\n                \"theme\": \"dark\"\n              }\n            ],\n            \"description\": \"Get information about a specific issue in a GitHub repository.\",\n            \"inputSchema\": {\n              \"type\": \"object\",\n              \"properties\": {\n                \"issue_number\": {\n                  \"type\": \"number\",\n                  \"description\": \"The number of the issue\"\n                },\n                \"method\": {\n                  \"type\": \"string\",\n                  \"description\": \"The read operation to perform on a single issue.\\nOptions are:\\n1. get - Get issue details. Also returns best-effort hierarchy flags (`has_parent`, `has_children`); `parent` and `sub_issues_summary` are optional relationship summaries, and `closed_by_pull_requests` summarizes the pull requests configured to close the issue as `total_count` plus up to 5 `references`.\\n2. get_comments - Get issue comments.\\n3. get_sub_issues - Get sub-issues (children) of the issue.\\n4. get_parent - Get the parent issue, if this issue is a sub-issue of another.\\n5. get_labels - Get labels assigned to the issue.\\n\",\n                  \"enum\": [\n                    \"get\",\n                    \"get_comments\",\n                    \"get_sub_issues\",\n                    \"get_parent\",\n                    \"get_labels\"\n                  ]\n                },\n                \"owner\": {\n                  \"type\": \"string\",\n                  \"description\": \"The owner of the repository\",\n                  \"x-mcp-header\": \"owner\"\n                },\n                \"page\": {\n                  \"type\": \"number\",\n                  \"description\": \"Page number for pagination (min 1)\",\n                  \"minimum\": 1\n                },\n                \"perPage\": {\n                  \"type\": \"number\",\n                  \"description\": \"Results per page for pagination (min 1, max 100)\",\n                  \"minimum\": 1,\n                  \"maximum\": 100\n                },\n                \"repo\": {\n                  \"type\": \"string\",\n                  \"description\": \"The name of the repository\",\n                  \"x-mcp-header\": \"repo\"\n                }\n              },\n              \"required\": [\n                \"method\",\n                \"owner\",\n                \"repo\",\n                \"issue_number\"\n              ]\n            },\n            \"annotations\": {\n              \"title\": \"Get issue details\",\n              \"readOnlyHint\": true,\n              \"idempotentHint\": false\n            }\n          }\n        ],\n        \"tools_sha256\": \"9128ca15615f692da8409129bbf3a7078e3b45e0d43b2755e8f9ba6c7482bd78\"\n      },\n      \"existing_public_issue_read\": {\n        \"content\": [\n          {\n            \"type\": \"text\",\n            \"text\": \"{\\\"number\\\":1,\\\"title\\\":\\\"Action-Effect controlled runtime pilot\\\",\\\"body\\\":\\\"This issue is a dedicated, public test receiver for the Action-Effect runtime\\\\ninteroperability pilot. Comments contain synthetic text only. The pilot compares\\\\nMCP and SDK entry points with a conditional effect description and a complete\\\\nstructured-adapter baseline, both using actual OPA authorization.\\\\n\\\\nThe scheduled run permits at most 12 new comments. Other cases must withhold\\\\nexecution, or reconcile an already sent comment without posting it again. This\\\\nis not a vulnerability report or a claim of independent external validation.\\\\n\\\\nRun results, source identities, limitations and read-only verification instructions\\\\nwill be linked from this repository. We keep the comments as observable evidence;\\\\ntheir current contents do not prove all internal GitHub consequences or execution\\\\nprovenance. GitHub notifications and webhooks are explicitly outside our complete\\\\nobservation coverage.\\\\n\\\",\\\"state\\\":\\\"open\\\",\\\"html_url\\\":\\\"https://github.com/OndCo/Action-Effect-Bench/issues/1\\\",\\\"user\\\":{\\\"login\\\":\\\"jw-ond\\\",\\\"id\\\":67523717,\\\"profile_url\\\":\\\"https://github.com/jw-ond\\\",\\\"avatar_url\\\":\\\"https://avatars.githubusercontent.com/u/67523717?v=4\\\"},\\\"author_association\\\":\\\"MEMBER\\\",\\\"assignees\\\":[],\\\"comments\\\":12,\\\"reactions\\\":{\\\"total_count\\\":0,\\\"+1\\\":0,\\\"-1\\\":0,\\\"laugh\\\":0,\\\"confused\\\":0,\\\"heart\\\":0,\\\"hooray\\\":0,\\\"rocket\\\":0,\\\"eyes\\\":0},\\\"created_at\\\":\\\"2026-10-19T03:55:58Z\\\",\\\"updated_at\\\":\\\"2026-10-19T04:26:03Z\\\",\\\"has_parent\\\":false,\\\"has_children\\\":false,\\\"closed_by_pull_requests\\\":{\\\"total_count\\\":0,\\\"references\\\":[]}}\"\n          }\n        ]\n      }\n    },\n    \"separate_from_comment_profile\": true\n  }\n}\n",
+  "cases": [],
+  "phases": [],
+  "supervisor_journal": {
+    "valid": true,
+    "complete": true,
+    "records": 5,
+    "sha256": "56606c0d6dda97405ae02abada76d3209df9710bb48d417b60b5720d89a4fa36",
+    "file": "owned-write-20261019.supervisor.jsonl"
+  },
+  "write_permits": [],
+  "current_comments": [],
+  "total_duration_ms": 1461.1909999999998,
+  "source_inventory_unchanged": true,
+  "scopes": {
+    "live_owned_github": true,
+    "new_model_requests": 0,
+    "independent_human_evaluation": false,
+    "synthetic_faults_separate": true,
+    "provider_wire_attempt_count": "not_measured",
+    "remote_atomic_revoke_or_exactly_once": false,
+    "customer_production": false,
+    "automatic_resend": false
+  }
+}

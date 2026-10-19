@@ -1,7 +1,8 @@
-import { readFileSync } from 'node:fs';
+import { readFileSync, realpathSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import { isDeepStrictEqual } from 'node:util';
 import { digestBytes, assertPublicValue } from './artifacts.mjs';
-import { readCommittedBlob } from './provenance.mjs';
+import { readCommittedBlob, verifyProvenance } from './provenance.mjs';
 import { buildWritePlan } from './write-plan.mjs';
 
 const REFERENCES = {
@@ -27,6 +28,11 @@ export function validateWriteManifest(manifest) {
   assertPublicValue(manifest);
   if (manifest?.format !== 'action-effect-owned-write-manifest/1'
     || manifest.provenance?.environment?.opa_binary?.matches_release_pin !== true) throw new Error('write_manifest');
+  const environment = manifest.provenance.environment;
+  const opa = JSON.parse(readFileSync(new URL('../runtime-pilot/tools.json', import.meta.url))).opa;
+  const expectedBinary = opa.assets[`${environment.platform}-${environment.architecture}`]?.sha256;
+  if (!expectedBinary || environment.opa_binary.sha256 !== expectedBinary
+    || environment.opa_binary.pinned_version !== opa.version) throw new Error('write_opa_recorded_identity');
   const inputs = frozenWriteInputs();
   if (!isDeepStrictEqual(manifest.inputs, inputs.references)
     || !isDeepStrictEqual(manifest.tools, JSON.parse(readFileSync(new URL('./tools.json', import.meta.url))))) {
@@ -35,5 +41,14 @@ export function validateWriteManifest(manifest) {
   const expected = buildWritePlan({ report: inputs.report, review: inputs.review,
     target: manifest.target, principal: manifest.principal, runId: manifest.run_id });
   if (!isDeepStrictEqual(manifest.plan, expected)) throw new Error('write_manifest_plan');
+  return true;
+}
+
+export function assertWriteFreshness(manifest) {
+  if (!verifyProvenance(manifest.provenance)) throw new Error('write_source_drift');
+  const path = fileURLToPath(new URL('../runtime-pilot/.tools/opa', import.meta.url));
+  if (realpathSync(path) !== path || digestBytes(readFileSync(path)) !== manifest.provenance.environment.opa_binary.sha256) {
+    throw new Error('write_opa_current_identity');
+  }
   return true;
 }

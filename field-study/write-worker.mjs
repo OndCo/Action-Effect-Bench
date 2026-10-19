@@ -2,14 +2,14 @@ import { performance } from 'node:perf_hooks';
 import { mkdirSync, realpathSync } from 'node:fs';
 import { dirname, join, isAbsolute, basename } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { isDeepStrictEqual } from 'node:util';
+import { jsonHash } from '../runtime-pilot/mapping.mjs';
 import { executeAction, reconcileAction, prepareAction } from '../runtime-pilot/gate.mjs';
 import { authorize } from '../runtime-pilot/authorization.mjs';
 import { load } from '../runtime-pilot/ledger.mjs';
 import { githubProvider } from '../runtime-pilot/provider.mjs';
 import { assertPublicValue, createJournal } from './artifacts.mjs';
 import { readState, writeState, claimWritePermit } from './write-artifacts.mjs';
-import { validateWriteManifest } from './write-config.mjs';
+import { validateWriteManifest, assertWriteFreshness } from './write-config.mjs';
 import { verifyProvenance } from './provenance.mjs';
 import { openNativeMcp } from './native-mcp.mjs';
 import { createFieldWriteProvider } from './native-writer.mjs';
@@ -24,6 +24,18 @@ export function publicGateResult(result) {
   const output = { ...rest, ...(authorization === undefined ? {} : { authority: authorization }) };
   assertPublicValue(output);
   return output;
+}
+
+export function pairedPreparations(scenario, policy) {
+  const preparations = [];
+  for (const strategy of ['protocol', 'structured']) {
+    const prepared = prepareAction(scenario.native, scenario.context, strategy);
+    if (prepared.status !== 'accepted_partial' || jsonHash(prepared.projection) !== jsonHash(scenario.reference_projection)) {
+      throw new Error('preparation_reference_mismatch');
+    }
+    preparations.push({ strategy, prepared, authority: authorize(prepared.projection, scenario.context, policy) });
+  }
+  return preparations;
 }
 
 export async function runScenario({ scenario, mode, policyFile, ledgerDir, provider, record,
@@ -96,6 +108,7 @@ export async function runOwnedWorker(args) {
   const root = realpathSync(dirname(manifestPath)), manifest = readState(manifestPath, manifestSha).value;
   validateWriteManifest(manifest);
   if (basename(root) !== manifest.run_id || !verifyProvenance(manifest.provenance)) throw new Error('worker_source_drift');
+  assertWriteFreshness(manifest);
   const scenario = manifest.plan.scenarios.find(row => row.id === id);
   if (!scenario) throw new Error('worker_scenario');
   const phaseId = `${id}.${mode}`, journalRoot = join(root, 'journals'), resultRoot = join(root, 'phases');
@@ -108,6 +121,8 @@ export async function runOwnedWorker(args) {
     if (journalFailed) throw new Error('worker_journal_failed');
     try {
       if (event.type === 'native_write_attempt') {
+        if (mode !== 'execute') throw new Error('read_only_phase');
+        assertWriteFreshness(manifest);
         const permit = claimWritePermit(join(root, 'permits'), manifest.run_id, scenario.occurrence);
         journal.append({ type: 'write_permit', permit });
       }
@@ -119,14 +134,7 @@ export async function runOwnedWorker(args) {
     const initialLedger = ledgerSnapshot(ledgerDir, scenario.occurrence);
     record({ type: 'ledger_before', state: initialLedger });
     const policyBefore = readState(policyFile).value;
-    const preparations = [];
-    for (const strategy of ['protocol', 'structured']) {
-      const prepared = prepareAction(scenario.native, scenario.context, strategy);
-      if (prepared.status !== 'accepted_partial' || !isDeepStrictEqual(prepared.projection, scenario.reference_projection)) {
-        throw new Error('preparation_reference_mismatch');
-      }
-      preparations.push({ strategy, prepared, authority: authorize(prepared.projection, scenario.context, policyBefore) });
-    }
+    const preparations = pairedPreparations(scenario, policyBefore);
     record({ type: 'paired_preparation', policy: policyBefore, preparations });
     const sdk = githubProvider();
     // Recovery and duplicate probes have no MCP mutation transport at all.
@@ -148,6 +156,7 @@ export async function runOwnedWorker(args) {
     if (session) await session.close();
     session = undefined;
     if (journalFailed || !verifyProvenance(manifest.provenance)) throw new Error('worker_postcheck');
+    assertWriteFreshness(manifest);
     const ledgerAfter = ledgerSnapshot(ledgerDir, scenario.occurrence), policyAfter = readState(policyFile).value;
     record({ type: 'ledger_after', state: ledgerAfter, policy: policyAfter });
     const sealed = journal.seal(result.outcome);

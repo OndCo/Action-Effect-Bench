@@ -4,6 +4,7 @@ import { createHash } from 'node:crypto';
 import { mkdtemp, writeFile, rm, realpath } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
+import { disconnectAfterMutationReply } from '../fault-transport.mjs';
 
 const api = await import('../native-mcp.mjs').catch(error => {
   if (error.code === 'ERR_MODULE_NOT_FOUND' && error.message.includes('/field-study/native-mcp.mjs')) return {};
@@ -133,6 +134,51 @@ test('launches a minimal read-only stdio connection and records observed invento
   await session.close();
   await session.close();
   assert.equal(h.state.closes, 1);
+});
+
+for (const rejects of [false, true]) test(`close retains ${rejects ? 'rejected' : 'pending'} transport cleanup after SDK onclose`, async () => {
+  const h = harness({ tools: WRITE_TOOLS.map(tool), respond: () => comment('9') });
+  let finishCleanup;
+  const cleanup = new Promise(resolve => { finishCleanup = resolve; });
+  const events = [];
+  const transportFactory = disconnectAfterMutationReply({
+    transportFactory: parameters => {
+      const transport = h.options.transportFactory(parameters);
+      transport.close = async () => {
+        h.state.closes += 1;
+        transport.onclose?.();
+        await cleanup;
+        if (rejects) throw new Error(SECRET);
+      };
+      return transport;
+    },
+    record: event => { events.push(event); },
+  });
+  const session = await open({ ...h.options, writable: true, selectedTools: WRITE_TOOLS, transportFactory });
+  try {
+    await assert.rejects(() => session.call('add_issue_comment', POST), safeError('mcp_transport_error', 'unknown'));
+    let settled = false;
+    const first = session.close();
+    const second = session.close();
+    const observed = Promise.allSettled([first, second]).then(results => { settled = true; return results; });
+    await new Promise(resolve => setImmediate(resolve));
+    if (!rejects) assert.equal(settled, false, 'session close must await actual transport cleanup');
+    finishCleanup();
+    const results = await observed;
+    for (const result of results) {
+      assert.equal(result.status, rejects ? 'rejected' : 'fulfilled');
+      if (rejects) safeError('mcp_close_failed')(result.reason);
+    }
+    if (rejects) await assert.rejects(() => session.close(), safeError('mcp_close_failed'));
+    else await session.close();
+    assert.equal(h.state.closes, 1);
+    assert.equal(calls(h.state).length, 1);
+    assert.equal(events.length, 1);
+    assert.equal(events[0].type, 'fault_mcp_reply_discarded');
+  } finally {
+    finishCleanup();
+    await session.close().catch(() => {});
+  }
 });
 
 test('collects paginated inventory before exposing calls', async () => {

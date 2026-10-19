@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { buildWritePlan } from '../write-plan.mjs';
+import { captureProvenance } from '../provenance.mjs';
 import * as config from '../write-config.mjs';
 
 test('owned write inputs load exact already committed report and review bytes', () => {
@@ -18,7 +19,7 @@ function manifest() {
     target, inputs: inputs.references, plan: buildWritePlan({ report: inputs.report, review: inputs.review,
       target, principal: 'fixture-user', runId: 'unit-owned' }),
     tools: JSON.parse(readFileSync(new URL('../tools.json', import.meta.url))),
-    provenance: { environment: { opa_binary: { matches_release_pin: true } } } };
+    provenance: captureProvenance() };
 }
 
 test('manifest validates against a fresh reconstruction of the fixed six candidates', () => {
@@ -33,6 +34,7 @@ for (const mutation of [
   value => { value.inputs.report.sha256 = '0'.repeat(64); },
   value => { value.tools.github_mcp.executable_sha256 = '0'.repeat(64); },
   value => { value.provenance.environment.opa_binary.matches_release_pin = false; },
+  value => { value.provenance.environment.opa_binary.sha256 = '0'.repeat(64); },
   value => { value.principal = 'another-user'; },
   value => { value.run_id = '../outside'; },
 ]) {
@@ -41,3 +43,10 @@ for (const mutation of [
     assert.throws(() => config.validateWriteManifest(value));
   });
 }
+
+test('freshness rechecks current files and the actual OPA binary, not just a stored flag', () => {
+  const value = manifest();
+  assert.equal(config.assertWriteFreshness(value), true);
+  value.provenance.field_sources[0].sha256 = '0'.repeat(64);
+  assert.throws(() => config.assertWriteFreshness(value), /write_source_drift/);
+});

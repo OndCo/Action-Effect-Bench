@@ -4,7 +4,7 @@ import { mkdtempSync } from 'node:fs';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 import { performance } from 'node:perf_hooks';
-import { assertPublicValue } from '../artifacts.mjs';
+import { assertPublicValue, digestBytes } from '../artifacts.mjs';
 import { replaceState, scenarioPolicy, writeState } from '../write-artifacts.mjs';
 import { load } from '../../runtime-pilot/ledger.mjs';
 import * as worker from '../write-worker.mjs';
@@ -134,4 +134,18 @@ test('journal failure at the checkpoint never reaches a provider mutation', asyn
 test('live worker refuses an incomplete CLI configuration before any authentication', async () => {
   await assert.rejects(() => worker.runOwnedWorker([]), /worker_arguments/);
   await assert.rejects(() => worker.runOwnedWorker(['/tmp/missing', 'not-a-hash', 'case', 'execute']), /worker_arguments/);
+});
+
+test('paired wire-value comparison accepts the Python consumer null prototype', () => {
+  const f = fixture();
+  const params = f.scenario.native.call;
+  const reference = { operation: 'create_issue_comment', repository: 'OndCo/Action-Effect-Bench', issue_number: 2,
+    endpoint: 'https://api.github.com/repos/OndCo/Action-Effect-Bench/issues/2/comments',
+    body_sha256: digestBytes(params.body), body_bytes: Buffer.byteLength(params.body), data_class: 'synthetic-public' };
+  f.scenario.reference_projection = reference;
+  const rows = worker.pairedPreparations(f.scenario, scenarioPolicy(f.scenario, 'initial'));
+  assert.equal(rows.length, 2);
+  assert.ok(rows.every(row => row.prepared.status === 'accepted_partial' && row.authority.decision === 'allow'));
+  f.scenario.reference_projection.body_bytes++;
+  assert.throws(() => worker.pairedPreparations(f.scenario, scenarioPolicy(f.scenario, 'initial')), /preparation_reference_mismatch/);
 });

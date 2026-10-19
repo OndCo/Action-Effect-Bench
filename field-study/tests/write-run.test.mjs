@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 import * as run from '../write-run.mjs';
 
 const scenario = { expected: { initial_outcome: 'confirmed', reason: null, decision: 'allow', recovery_outcome: null, new_comments: 1 } };
@@ -48,3 +49,23 @@ test('retry probe must return duplicate suppression rather than another successf
   p.result = phase.result;
   assert.equal(run.assessPhase(p, scenario, 'probe'), false);
 });
+
+function stoppedAttempt() {
+  return { previous: JSON.parse(readFileSync(new URL('../../reports/owned-write-study-2026-10-19T13-32-22.199Z-ab5303e5.json', import.meta.url))),
+    bytes: readFileSync(new URL('../../reports/owned-write-20261019.normal-release-integrity.execute.jsonl', import.meta.url)) };
+}
+
+test('reuse of the one created issue is allowed only for the retained pre-reservation failure', () => {
+  const f = stoppedAttempt();
+  assert.equal(run.assertUnstartedAttempt(f.previous, f.bytes), true);
+});
+for (const mutate of [
+  value => { value.write_permits.push({ slot: 0 }); },
+  value => { value.phases.push({ result: 'unknown' }); },
+  value => { value.failure = 'provider_or_readback_failure'; },
+]) {
+  test(`uncertain prior work must not be resumed under a fresh occurrence ${String(mutate)}`, () => {
+    const f = stoppedAttempt(); mutate(f.previous);
+    assert.throws(() => run.assertUnstartedAttempt(f.previous, f.bytes), /cannot_adopt_started_attempt/);
+  });
+}
