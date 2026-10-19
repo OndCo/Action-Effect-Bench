@@ -1,0 +1,11 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "task_id": { "type": "string" },
+    "report_markdown": { "type": "string" },
+    "conclusion": { "type": "string" },
+    "citations": { "type": "array", "items": { "type": "string" } }
+  },
+  "required": ["task_id", "report_markdown", "conclusion", "citations"]
+}

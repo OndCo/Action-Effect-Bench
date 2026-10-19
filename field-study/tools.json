@@ -1,0 +1,33 @@
+{
+  "format": "action-effect-field-tools/1",
+  "github_mcp": {
+    "repository": "github/github-mcp-server",
+    "version": "v2.0.2",
+    "source_commit": "eb47a99ddb866ca2b8a162920e6bda9521f33ebb",
+    "platform": "darwin-arm64",
+    "archive_url": "https://github.com/github/github-mcp-server/releases/download/v2.0.2/github-mcp-server_Darwin_arm64.tar.gz",
+    "archive_size": 8848361,
+    "archive_sha256": "5d9b38511bffc84d2272eb6189129eb721c8900e45784d8ea7eaf25f8d3dd835",
+    "executable_sha256": "2d431e46617f06b1516818fa09917096ff6dfc3664b37b0bdb31e1c1a35be368",
+    "source_review": "Pinned local comment handler makes one application-level CreateComment call. HTTP redirect/transport behavior is not an exactly-one-wire-attempt guarantee. Hosted MCP behavior was not audited."
+  },
+  "azure_model": {
+    "resource": "ond-resource",
+    "resource_group": "Ond_OAI",
+    "deployment": "gpt-6-astra",
+    "model_version": "2026-09-03",
+    "region": "swedencentral",
+    "api": "Responses v1",
+    "endpoint": "https://ond-resource.openai.azure.com/openai/v1/responses",
+    "store": false,
+    "reasoning_effort": "low",
+    "max_output_tokens": 6000,
+    "timeout_ms": 180000,
+    "max_rounds_per_task": 12,
+    "max_tool_calls_per_task": 18
+  },
+  "sdk_dependencies": "../runtime-pilot/package-lock.json",
+  "editorial_timezone": "America/Toronto",
+  "event_timestamps": "UTC",
+  "scope": "Read-only real maintainer tasks first. New provider writes require a separately confirmed owned-resource boundary. No Studio or Hook changes."
+}

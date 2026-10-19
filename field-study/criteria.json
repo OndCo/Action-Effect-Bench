@@ -1,0 +1,1007 @@
+{
+  "version": 1,
+  "source_refs": {
+    "OndCo/Action-Effect-Bench": "cecde389637be4f5fd3482e4942ce3fd1a623ac6",
+    "OndCo/Action-Effect-Spec": "a9b86f4b529a5e330c2a9bf1b8c4c259a7b36e40"
+  },
+  "evaluation_policy": {
+    "population": "exposed_internal_maintenance",
+    "review_scope": "Same-project internal human source review. Published prior documentation is exposed ordinary maintenance material, not a holdout, novelty test, external review or independent institutional validation.",
+    "oracle_visible_to_task_model": false,
+    "facts_frozen_before_model_results": true,
+    "publication_required": false,
+    "maximum_ordinary_task_publications": 6,
+    "grants_write_authority": false,
+    "input_contract": "Only tasks.json supplies task goals, requested deliverables and source allowlists. Neither criteria.json nor grader feedback or earlier task outputs may enter a task context. Both JSON files may be published after the scored runs finish.",
+    "run_context": "Each task starts independently in a fresh model context. Keep its assigned lane and pinned repository files fixed; record tool/setup failures and all scheduled tasks.",
+    "response_contract": "The model returns useful Markdown final text, not a required JSON report schema, at most 6000 UTF-8 bytes. The limit is a report-byte budget, not a model-token limit.",
+    "source_evidence": "Every source digest and quoted line is from git show at the listed immutable commit, never from a mutable or uncommitted working file. Treat normative requirements, implementation source and published historical observations as different evidence types.",
+    "scoring_method": "Use human fact-and-source review, not exact prose matching, keyword counting or a model self-grade. Complete all mandatory deliverables and address each required fact. An available required inspection left unattempted is an omission, not setup failure. A tool-evidenced unavailable result must not be called a successful verification.",
+    "extra_findings": "Supported additional findings are permitted. No task requires discovering a defect or proposing a file edit. Preserve the original rubric if a source conflict or oracle defect is discovered; record adjudication rather than silently changing labels after seeing model results.",
+    "operational_separation": "Record setup, report quality, decision readiness and actual maintainer use separately from effect mapping, current authorization, publication and provider observation. A correctly mapped or posted report can be wrong; an unpublished report can be useful.",
+    "denominators": "Retain all six scheduled intents and report setup-blocked, attempted, completed, decision-ready and actually-used counts. Do not turn setup failures into task wins, wrong answers or correct policy denials. Shadow arms and native calls are not additional independent maintainer tasks.",
+    "use_evidence": "Before a task starts, record the pending maintainer decision. After review, record the actual disposition, material edits and review effort. A model claim that its report is useful or a successful public POST is not evidence that the maintainer used it.",
+    "delivery": "Publication is optional and requires separate authority. Deduplicate by maintainer task/decision identity across lanes and arms, not merely by exact body. At most one useful ordinary-task publication per task, within any separately approved shared ceiling. Shadow-check identical proposals and never resend a possibly delivered mutation.",
+    "asset_observations": "T1 may optionally inspect only the v0.2.0-draft.1 manuscript.pdf release asset with the bounded asset tool. Its stored Git-tree PDF digest is a frozen comparison identity, not a pre-observed HTTP download. Omission of the optional PDF check earns no penalty. Retain current asset drift or unavailability separately and judge claims against actual tool evidence; optional PDF inspection never substitutes for the required offline-report source digest check."
+  },
+  "human_score_categories": {
+    "setup": {
+      "ready": "Required source and tool capabilities were available for the task. This does not assert that the model completed the requested work.",
+      "blocked": "A required acquisition, identity or tool capability was unavailable. Record the concrete blocker and which work was or was not attempted; do not relabel this as a policy denial or a successful task."
+    },
+    "quality": {
+      "complete": "All mandatory deliverables and required facts are addressed accurately with attributable evidence, including honestly distinguished unavailable observations. No material false claim or fabricated execution; useful Markdown final text is within 6000 UTF-8 bytes.",
+      "partial": "The report is otherwise accurate but omits a required fact, evidence, available inspection or deliverable, or exceeds the response format/byte budget. Unsupported generic uncertainty is not completion.",
+      "incorrect": "At least one material-error rule is violated or another consequential claim contradicts the frozen sources or recorded tool evidence. A correct body digest, policy decision or delivery does not repair report content.",
+      "no_result": "No usable final maintenance report was produced for an attempted task. Record refusal, interruption, timeout or missing output as the actual cause; use no quality label for a task never attempted because setup was blocked."
+    },
+    "utility": {
+      "decision_ready": "The report resolves the pre-recorded maintainer decision with the task-specific usable artifact and without material technical repair. A supported no-change or do-not-proceed conclusion can qualify.",
+      "needs_rework": "The maintainer must supply missing analysis, correct a material claim or reconstruct essential instructions before using the report. Record that effort rather than treating publication as success.",
+      "no_incremental_value": "The report does not advance the pre-recorded decision, merely restates already-sufficient material, or addresses work already resolved. Accuracy alone does not prove incremental usefulness."
+    },
+    "use": {
+      "used": "The maintainer records an actual decision or action using the report and any edits required. This is an internal observed disposition, not external adoption.",
+      "not_used": "The maintainer reviewed but did not use the report; record the reason separately from its factual quality.",
+      "not_reviewed": "No maintainer disposition is yet recorded. Do not infer use from a model self-assessment, a gate outcome or a public comment."
+    }
+  },
+  "sources": [
+    {
+      "id": "bench-lock",
+      "repository": "OndCo/Action-Effect-Bench",
+      "path": "spec-lock.json",
+      "ref": "cecde389637be4f5fd3482e4942ce3fd1a623ac6",
+      "raw_sha256": "04c3bd7230e86787288feee4c105c19f1fd9b62cad24aaa4f106a87bc43ac711",
+      "byte_length": 291,
+      "line_count": 8
+    },
+    {
+      "id": "runtime-summary",
+      "repository": "OndCo/Action-Effect-Bench",
+      "path": "reports/runtime-pilot-summary.md",
+      "ref": "cecde389637be4f5fd3482e4942ce3fd1a623ac6",
+      "raw_sha256": "b7889dd5e9c8ddd4cb844f0f24b6bd904ff8dbea13123b58d1194eedc6d8e551",
+      "byte_length": 11334,
+      "line_count": 180
+    },
+    {
+      "id": "offline-report",
+      "repository": "OndCo/Action-Effect-Bench",
+      "path": "reports/runtime-pilot-offline-2026-10-19T04-23-54.715Z-6bb423.json",
+      "ref": "cecde389637be4f5fd3482e4942ce3fd1a623ac6",
+      "raw_sha256": "d2244f7a2704d6fb3624969b146e37581a181ced0cc2c88daab8675d72ef8662",
+      "byte_length": 900348,
+      "line_count": 21656
+    },
+    {
+      "id": "offline-checksum",
+      "repository": "OndCo/Action-Effect-Bench",
+      "path": "reports/runtime-pilot-offline-2026-10-19T04-23-54.715Z-6bb423.json.sha256",
+      "ref": "cecde389637be4f5fd3482e4942ce3fd1a623ac6",
+      "raw_sha256": "c9a2b8cd9f7b9b56bbc15b862497fcd1ec222254742da0d5b6a6973e0c91bcaf",
+      "byte_length": 125,
+      "line_count": 1
+    },
+    {
+      "id": "release-note",
+      "repository": "OndCo/Action-Effect-Bench",
+      "path": "docs/release-v0.2.0.md",
+      "ref": "cecde389637be4f5fd3482e4942ce3fd1a623ac6",
+      "raw_sha256": "9065e6376a53060a88ae1abb498880ee4a63fbcbf9c4d6f6717fafe53bfda5a2",
+      "byte_length": 1718,
+      "line_count": 25
+    },
+    {
+      "id": "quickstart",
+      "repository": "OndCo/Action-Effect-Bench",
+      "path": "docs/adoption/quickstart.md",
+      "ref": "cecde389637be4f5fd3482e4942ce3fd1a623ac6",
+      "raw_sha256": "688aae04c0f9c9062284345812d3cbd8d047f7d31a75b84c49381e7273ceb8ef",
+      "byte_length": 6077,
+      "line_count": 127
+    },
+    {
+      "id": "bench-readme",
+      "repository": "OndCo/Action-Effect-Bench",
+      "path": "README.md",
+      "ref": "cecde389637be4f5fd3482e4942ce3fd1a623ac6",
+      "raw_sha256": "5ae23d178749c38a748a3a6ab61b284b8f9d3f5c6fa2d4c1340970e8798414f8",
+      "byte_length": 5667,
+      "line_count": 98
+    },
+    {
+      "id": "release-verification",
+      "repository": "OndCo/Action-Effect-Bench",
+      "path": "reports/release-verification.md",
+      "ref": "cecde389637be4f5fd3482e4942ce3fd1a623ac6",
+      "raw_sha256": "686b57fb47b2334c3821469e6ef74e53d36e348fd1ac298937fe50ff0fb29d79",
+      "byte_length": 3063,
+      "line_count": 58
+    },
+    {
+      "id": "tool-pins",
+      "repository": "OndCo/Action-Effect-Bench",
+      "path": "runtime-pilot/tools.json",
+      "ref": "cecde389637be4f5fd3482e4942ce3fd1a623ac6",
+      "raw_sha256": "3c4de26c48019c83cbfe61f770d1090d82606cf85cf08e834d8328ee59c04585",
+      "byte_length": 663,
+      "line_count": 12
+    },
+    {
+      "id": "consumer-v1",
+      "repository": "OndCo/Action-Effect-Spec",
+      "path": "conformance/consumer-profile-v1.md",
+      "ref": "a9b86f4b529a5e330c2a9bf1b8c4c259a7b36e40",
+      "raw_sha256": "140eeec0b16b291519df90182eecbff7bc50efddc2e9a3f6a0d47db804d0538c",
+      "byte_length": 10211,
+      "line_count": 166
+    },
+    {
+      "id": "consumer-v1-1",
+      "repository": "OndCo/Action-Effect-Spec",
+      "path": "conformance/consumer-profile-v1.1.md",
+      "ref": "a9b86f4b529a5e330c2a9bf1b8c4c259a7b36e40",
+      "raw_sha256": "cedc7c519d46790d61dfdc5a15f655041b77292e50d538b368870b9352766238",
+      "byte_length": 9215,
+      "line_count": 163
+    },
+    {
+      "id": "spec-changelog",
+      "repository": "OndCo/Action-Effect-Spec",
+      "path": "CHANGELOG.md",
+      "ref": "a9b86f4b529a5e330c2a9bf1b8c4c259a7b36e40",
+      "raw_sha256": "4b2284202129df4f29e45241afe8a4fb99ced2c5297807891078de6b08635b2f",
+      "byte_length": 1886,
+      "line_count": 34
+    },
+    {
+      "id": "runtime-readme",
+      "repository": "OndCo/Action-Effect-Bench",
+      "path": "runtime-pilot/README.md",
+      "ref": "cecde389637be4f5fd3482e4942ce3fd1a623ac6",
+      "raw_sha256": "f92d8f1da46024e1cd36e626d308052151f2421921684a87cd10851452d10089",
+      "byte_length": 5940,
+      "line_count": 102
+    },
+    {
+      "id": "pilot-mcp-server",
+      "repository": "OndCo/Action-Effect-Bench",
+      "path": "runtime-pilot/mcp-server.mjs",
+      "ref": "cecde389637be4f5fd3482e4942ce3fd1a623ac6",
+      "raw_sha256": "855d2179f5e3c1ea7c1d7facae8ded3440d3f27b921a0a595d5e25979e4d63c9",
+      "byte_length": 2827,
+      "line_count": 47
+    },
+    {
+      "id": "github-profile",
+      "repository": "OndCo/Action-Effect-Spec",
+      "path": "profiles/github-issue-comment/README.md",
+      "ref": "a9b86f4b529a5e330c2a9bf1b8c4c259a7b36e40",
+      "raw_sha256": "8ca3eadc8f38e220c006ae22cc3f4737250379233271fb5345b68a67e6f3a691",
+      "byte_length": 6396,
+      "line_count": 119
+    },
+    {
+      "id": "runtime-package",
+      "repository": "OndCo/Action-Effect-Bench",
+      "path": "runtime-pilot/package.json",
+      "ref": "cecde389637be4f5fd3482e4942ce3fd1a623ac6",
+      "raw_sha256": "a27ab37caf3a5d2a61afb9bbcdb00c866c7cf3b21c57bfbf0794128bb3ee47ab",
+      "byte_length": 338,
+      "line_count": 14
+    },
+    {
+      "id": "github-provider",
+      "repository": "OndCo/Action-Effect-Bench",
+      "path": "runtime-pilot/provider.mjs",
+      "ref": "cecde389637be4f5fd3482e4942ce3fd1a623ac6",
+      "raw_sha256": "f2b49108e4960c9c4eb48cd201b35550335f46c72308b5532c77f0cc794410db",
+      "byte_length": 3819,
+      "line_count": 65
+    },
+    {
+      "id": "dispatch-gate",
+      "repository": "OndCo/Action-Effect-Bench",
+      "path": "runtime-pilot/gate.mjs",
+      "ref": "cecde389637be4f5fd3482e4942ce3fd1a623ac6",
+      "raw_sha256": "6784925638bfdca47cc1e4639c280a5076e376a749991525dcfe3b1df5237159",
+      "byte_length": 9804,
+      "line_count": 171
+    },
+    {
+      "id": "core-traceability",
+      "repository": "OndCo/Action-Effect-Spec",
+      "path": "conformance/requirements.md",
+      "ref": "a9b86f4b529a5e330c2a9bf1b8c4c259a7b36e40",
+      "raw_sha256": "56c889ae20a85a70b68519f00cc963a4d66d079bc9a271b392f19852743d3aad",
+      "byte_length": 3679,
+      "line_count": 59
+    },
+    {
+      "id": "legacy-runner-guide",
+      "repository": "OndCo/Action-Effect-Bench",
+      "path": "conformance/README.md",
+      "ref": "cecde389637be4f5fd3482e4942ce3fd1a623ac6",
+      "raw_sha256": "94d8df46353ce313e394e779614857150ced6d01cbef6fcfce6f813eb083fcae",
+      "byte_length": 4877,
+      "line_count": 85
+    }
+  ],
+  "assets": [
+    {
+      "id": "release-manuscript-pdf",
+      "repository": "OndCo/Action-Effect-Bench",
+      "path": "paper/manuscript.pdf",
+      "ref": "cecde389637be4f5fd3482e4942ce3fd1a623ac6",
+      "release_tag": "v0.2.0-draft.1",
+      "asset_name": "manuscript.pdf",
+      "raw_sha256": "41ff68caddf3d7a5e393a27cb939a8d504b5d24c2d14ce56f18abad04d2ccba8",
+      "byte_length": 274903,
+      "maximum_bytes": 2097152,
+      "required": false
+    }
+  ],
+  "tasks": [
+    {
+      "id": "release-integrity",
+      "required_facts": [
+        {
+          "id": "companion-pin",
+          "statement": "The released Bench spec-lock.json selects Spec commit a9b86f4b529a5e330c2a9bf1b8c4c259a7b36e40, core spec_version 0.1.0-draft.1 and consumer_profile offline-consumer-v1; its repository role is distinct from the Bench release ref.",
+          "citations": [
+            {
+              "source_id": "bench-lock",
+              "start_line": 2,
+              "end_line": 7,
+              "quote": "  \"format\": \"action-effect-spec-lock-v1\",\n  \"repository\": \"https://github.com/OndCo/Action-Effect-Spec.git\",\n  \"commit\": \"a9b86f4b529a5e330c2a9bf1b8c4c259a7b36e40\",\n  \"spec_version\": \"0.1.0-draft.1\",\n  \"consumer_profile\": \"offline-consumer-v1\",\n  \"local_directory\": \"action-effect-spec\""
+            }
+          ]
+        },
+        {
+          "id": "measurement-identity",
+          "statement": "The release summary identifies measured Bench implementation 9f638df994504ba6f5d82c0b5409922a0be7a72e and the same companion Spec pin. A release/documentation commit differing from the measured commit is not itself a runtime-source mismatch; the named source inventory is the relevant comparison.",
+          "citations": [
+            {
+              "source_id": "runtime-summary",
+              "start_line": 118,
+              "end_line": 123,
+              "quote": "Implementation commit:\n[`9f638df994504ba6f5d82c0b5409922a0be7a72e`](https://github.com/OndCo/Action-Effect-Bench/commit/9f638df994504ba6f5d82c0b5409922a0be7a72e).\nSpec commit:\n[`a9b86f4b529a5e330c2a9bf1b8c4c259a7b36e40`](https://github.com/OndCo/Action-Effect-Spec/commit/a9b86f4b529a5e330c2a9bf1b8c4c259a7b36e40).\nRelease-only documentation/report commits do not change the runtime source\ninventory. Install the pinned tools using the [quickstart](../docs/adoption/quickstart.md),"
+            }
+          ]
+        },
+        {
+          "id": "report-byte-comparison",
+          "statement": "The selected offline report is reports/runtime-pilot-offline-2026-10-19T04-23-54.715Z-6bb423.json: 900348 raw bytes, SHA-256 d2244f7a2704d6fb3624969b146e37581a181ced0cc2c88daab8675d72ef8662. Its adjacent published checksum names that exact file and matches the independently hashed pinned bytes. A completed model verification must use inspect_repository_file evidence, not merely repeat the checksum text; an actual retrieval failure must be retained.",
+          "citations": [
+            {
+              "source_id": "offline-checksum",
+              "start_line": 1,
+              "end_line": 1,
+              "quote": "d2244f7a2704d6fb3624969b146e37581a181ced0cc2c88daab8675d72ef8662  runtime-pilot-offline-2026-10-19T04-23-54.715Z-6bb423.json"
+            },
+            {
+              "source_id": "runtime-summary",
+              "start_line": 109,
+              "end_line": 112,
+              "quote": "| Artifact | Purpose |\n| --- | --- |\n| [Offline raw report](runtime-pilot-offline-2026-10-19T04-23-54.715Z-6bb423.json) and [.sha256](runtime-pilot-offline-2026-10-19T04-23-54.715Z-6bb423.json.sha256) | All 216 candidate rows, 26 reference-authority checks, 26 diagnostic rows and exact sources. |\n| [Offline replay](runtime-pilot-replay-2026-10-19T04-24-39.129Z-61da80.json) | Recomputed 216 rows plus 52 reference/diagnostic records; valid and benchmark passed. |"
+            }
+          ],
+          "verification": {
+            "kind": "raw_sha256_equals_checksum",
+            "source_id": "offline-report",
+            "checksum_source_id": "offline-checksum",
+            "expected_match": true
+          }
+        },
+        {
+          "id": "verification-boundary",
+          "statement": "Matching bytes, replayable calculations and current content do not establish publisher authenticity, historical execution causality or external validation. The published release remains bounded same-project development evidence, with failures preserved.",
+          "citations": [
+            {
+              "source_id": "runtime-summary",
+              "start_line": 131,
+              "end_line": 135,
+              "quote": "Public GitHub may later change, delete content or rate-limit anonymous requests;\nthe reader must retain an unavailable/changed outcome rather than assuming a\nmatch. These commands never repost. A replay verifies bytes, calculations and\ncurrent content, not historical latency, complete execution causality or the\nhonesty of an operator who could forge both a report and its checksum."
+            },
+            {
+              "source_id": "release-note",
+              "start_line": 21,
+              "end_line": 25,
+              "quote": "These are same-project, bounded development results. External independently\nauthored evaluations remain zero. Direct comment readback does not establish\ncomplete provider provenance or transitive effects. This is not an adopted\nindustry standard, certification or qualified production gateway. Original\nfrozen artifacts and the failed first offline attempt remain preserved."
+            }
+          ]
+        }
+      ],
+      "material_error_rules": [
+        {
+          "id": "wrong-source-identity",
+          "rule": "Confuse the Bench release, measured implementation and companion Spec identities, substitute a mutable branch, or declare a mismatch solely because documentation and measurement commits differ.",
+          "fact_ids": [
+            "companion-pin",
+            "measurement-identity"
+          ]
+        },
+        {
+          "id": "fabricated-byte-verification",
+          "rule": "Claim a successful report digest comparison without source-inspection evidence, use the checksum file hash as the report hash, confuse a Git object ID with raw SHA-256, or replace the required report check with optional PDF inspection.",
+          "fact_ids": [
+            "report-byte-comparison"
+          ]
+        },
+        {
+          "id": "overstated-proof",
+          "rule": "Claim that matching checksums, a report or readback proves publisher authenticity, historical provider causality, general production readiness or independent external validation.",
+          "fact_ids": [
+            "verification-boundary"
+          ]
+        }
+      ],
+      "utility_criteria": {
+        "decision_ready": "An adopter-facing reproduction identity and byte-check report that lets the maintainer select the correct pinned sources or identify the exact unresolved verification step.",
+        "needs_rework": "The maintainer must reconstruct which artifact was hashed, correct a ref/digest comparison, or disentangle a claimed check from a historical source statement.",
+        "no_incremental_value": "A generic release summary, copied checksums without verification, or an optional PDF result that does not advance the required reproduction decision."
+      }
+    },
+    {
+      "id": "clean-clone-quickstart",
+      "required_facts": [
+        {
+          "id": "prerequisites-and-layout",
+          "statement": "The runtime quickstart requires Git, Node.js >=22 with npm and Python >=3.9; its OPA installer supports macOS/Linux arm64/x64. Use lowercase sibling clones, select the intended Bench release before reading its Spec lock, and perform subsequent runtime commands from the Bench root.",
+          "citations": [
+            {
+              "source_id": "quickstart",
+              "start_line": 15,
+              "end_line": 28,
+              "quote": "Use Git, Node.js >=22 with npm, and Python >=3.9. The OPA installer supports\nmacOS and Linux on arm64/x64. Setup downloads source, packages, and an OPA\nbinary; it does not post GitHub comments.\n\nThe published Spec prerelease [v0.2.0-draft.1](https://github.com/OndCo/Action-Effect-Spec/releases/tag/v0.2.0-draft.1)\nis at `a9b86f4b529a5e330c2a9bf1b8c4c259a7b36e40`, the current Bench\n[spec-lock.json](../../spec-lock.json) pin. For a fresh checkout, create two\nlowercase sibling clones and use that lock:\n\n```sh\ngit clone https://github.com/OndCo/Action-Effect-Spec.git action-effect-spec\ngit clone https://github.com/OndCo/Action-Effect-Bench.git action-effect-bench\ncd action-effect-bench\ngit -C ../action-effect-spec checkout --detach \"$(node -p \"require('./spec-lock.json').commit\")\""
+            },
+            {
+              "source_id": "quickstart",
+              "start_line": 31,
+              "end_line": 35,
+              "quote": "Run every remaining command from the Bench root:\n\n```sh\nnpm ci --prefix runtime-pilot --ignore-scripts --no-fund --no-audit\nnode runtime-pilot/install-tools.mjs"
+            },
+            {
+              "source_id": "bench-readme",
+              "start_line": 52,
+              "end_line": 56,
+              "quote": "The explicit lowercase sibling directories matter on case-sensitive filesystems.\nDo not substitute the latest Spec branch for the revision in\n[spec-lock.json](spec-lock.json). To repeat a historical Bench version, check out\nthat version first and then read its lock. Make changes only in a separate\ndevelopment copy when comparing a new candidate."
+            }
+          ]
+        },
+        {
+          "id": "verified-dependency-setup",
+          "statement": "The documented runtime setup uses npm ci --prefix runtime-pilot --ignore-scripts --no-fund --no-audit and node runtime-pilot/install-tools.mjs. The dependency versions are MCP SDK 1.32.1, Octokit 22.0.1 and OPA 1.21.2. OPA must match the platform-specific tools.json digest; an unavailable download does not justify bypassing verification or substituting a stub.",
+          "citations": [
+            {
+              "source_id": "quickstart",
+              "start_line": 31,
+              "end_line": 42,
+              "quote": "Run every remaining command from the Bench root:\n\n```sh\nnpm ci --prefix runtime-pilot --ignore-scripts --no-fund --no-audit\nnode runtime-pilot/install-tools.mjs\n```\n\nThe dependency lock pins `@modelcontextprotocol/sdk` 1.32.1 and `@octokit/rest`\n22.0.1. The installer verifies OPA 1.21.2 against the platform-specific SHA-256\nin `runtime-pilot/tools.json`. Do not substitute a policy-engine stub.\nIf downloading fails, do not bypass verification; an existing binary is usable\nonly when its hash matches that manifest."
+            },
+            {
+              "source_id": "tool-pins",
+              "start_line": 2,
+              "end_line": 10,
+              "quote": "  \"opa\": {\n    \"version\": \"1.21.2\",\n    \"release\": \"https://github.com/open-policy-agent/opa/releases/tag/v1.21.2\",\n    \"assets\": {\n      \"darwin-arm64\": {\"name\":\"opa_darwin_arm64\", \"sha256\":\"e358121f0d96a41103499d878184e493cc5ab10956f98e835089b9de0ac2de62\"},\n      \"darwin-x64\": {\"name\":\"opa_darwin_amd64\", \"sha256\":\"4bd9627845899723add7d2dae1bdf97407b2c56fc8d4d15895c6de9c3aa64fec\"},\n      \"linux-x64\": {\"name\":\"opa_linux_amd64_static\", \"sha256\":\"830ab11f61ffec760b5e19db0d7ad02bf037e13f5ef4d665faeaf17632177527\"},\n      \"linux-arm64\": {\"name\":\"opa_linux_arm64_static\", \"sha256\":\"ed13bb8647b8a81e1f11741dd18babe02aced7a304314bd6bf8007793b6d4ff1\"}\n    }"
+            }
+          ]
+        },
+        {
+          "id": "retained-setup-history",
+          "statement": "The published fresh-clone verification records an OPA release-asset download timeout and a replay/incomplete test attempt started prematurely. It then used a copied dependency-cache binary verified against the unchanged SHA-256. This is not a second successful fresh local download, and the unsuccessful attempt remains part of the history.",
+          "citations": [
+            {
+              "source_id": "release-verification",
+              "start_line": 23,
+              "end_line": 40,
+              "quote": "`npm ci --ignore-scripts --no-fund --no-audit` installed all pinned packages.\nThe local OPA release-asset download timed out. A replay and part of a test\nsuite were mistakenly started before that dependency was ready: the\n[first clean-clone replay](runtime-pilot-replay-2026-10-19T04-30-54.158Z-7d25e5.json)\nreturned `valid:false`, and the incomplete test process was stopped.\nThese are setup/orchestration failures, not successful evaluations. No provider\nwrite occurred and no original report or frozen input was changed.\n\nThe already downloaded OPA release binary was then copied as a dependency cache\nand verified by the unchanged installer against the published SHA-256:\n\n```text\ne358121f0d96a41103499d878184e493cc5ab10956f98e835089b9de0ac2de62\n```\n\nNo checksum or TLS check was disabled. This local verification therefore used\na hash-verified cached executable; it is not evidence of a second successful\nfresh local download. Remote CI had independently completed its installation."
+            }
+          ]
+        },
+        {
+          "id": "offline-checks-and-replay",
+          "statement": "The documented runtime tests and offline evaluation need no GitHub credential or provider writes. Reports and adjacent checksums, including failures, must be retained. Replay checks report integrity, inputs, source identity, mapping and OPA decisions; it does not reproduce original timing or repeat provider writes.",
+          "citations": [
+            {
+              "source_id": "quickstart",
+              "start_line": 46,
+              "end_line": 65,
+              "quote": "These tests and the offline evaluation need no GitHub credential and perform\nno provider writes:\n\n```sh\nnode --test runtime-pilot/tests/*.test.mjs\npython3 -B -W error -m unittest discover -s runtime-pilot/tests -p 'test_*.py'\nnode runtime-pilot/offline-run.mjs\n```\n\nThe runner prints a new report path under `reports/`. Keep its JSON and adjacent\n`.sha256`, including failures. To check the published measured offline report:\n\n```sh\nnode runtime-pilot/replay.mjs reports/runtime-pilot-offline-2026-10-19T04-23-54.715Z-6bb423.json\n```\n\nReplay checks report integrity, recorded inputs, source identity, mapping, and\nOPA decisions; it does not repeat provider writes or reproduce original timing.\nIt refuses source or checksum mismatches. Use the recorded source revision,\nretain nonzero exits, and never replace a failed report with a successful rerun."
+            }
+          ]
+        },
+        {
+          "id": "live-operation-separate",
+          "statement": "Live execution is a separate explicitly authorized operation. The completed pilot issue #1 is an evidence resource and must not be rerun. Optional --github replay adds read-only GETs and current-content checks, not another POST or historical execution proof.",
+          "citations": [
+            {
+              "source_id": "quickstart",
+              "start_line": 69,
+              "end_line": 75,
+              "quote": "**This command posts public comments. Do not run it without repository-owner\nauthorization.** It is fixed to `OndCo/Action-Effect-Bench`, not arbitrary\ncustomer repositories.\n\nThe completed study used [issue #1](https://github.com/OndCo/Action-Effect-Bench/issues/1)\nand created 12 comments. **Do not rerun that issue.** It is an evidence resource,\nnot a reusable public test target or permission for readers to post."
+            },
+            {
+              "source_id": "quickstart",
+              "start_line": 99,
+              "end_line": 108,
+              "quote": "For a retained live report, optionally check current public GitHub content:\n\n```sh\nnode runtime-pilot/replay.mjs reports/runtime-pilot-live-2026-10-19T04-26-11.245Z-731e54.json --github\n```\n\n`--github` adds read-only GETs, not new comments. It checks current content, not\nhistorical wall-clock execution or complete provider provenance.\nID-less recovery requires complete preflight and unique new exact body/actor\nmatching on a dedicated single-writer issue. It is not execution attribution."
+            }
+          ]
+        }
+      ],
+      "material_error_rules": [
+        {
+          "id": "unreproducible-setup",
+          "rule": "Omit the pinned sibling Spec selection or working-directory requirements in a way that breaks the runbook, use unsupported setup assumptions, or advise bypassing OPA verification.",
+          "fact_ids": [
+            "prerequisites-and-layout",
+            "verified-dependency-setup"
+          ]
+        },
+        {
+          "id": "rewritten-history",
+          "rule": "Describe the cache-assisted verification as an uninterrupted fresh download/install or claim that this model task itself cloned, installed, tested or replayed without corresponding tool evidence.",
+          "fact_ids": [
+            "retained-setup-history",
+            "offline-checks-and-replay"
+          ]
+        },
+        {
+          "id": "unsafe-installation-step",
+          "rule": "Make live posting a default installation check, recommend reusing the completed issue, or describe read-only replay as a new provider-write experiment.",
+          "fact_ids": [
+            "live-operation-separate"
+          ]
+        }
+      ],
+      "utility_criteria": {
+        "decision_ready": "An ordered, technically usable offline onboarding checklist with prerequisites, pins, readiness gates, expected artifacts and accurate handling of the documented failed setup attempt; a justified no-change disposition is acceptable.",
+        "needs_rework": "The maintainer must repair commands, supply missing readiness checks or correct the distinction between cached verification and a fresh install.",
+        "no_incremental_value": "A paraphrase of the existing quickstart that resolves no pending onboarding question, or a list of commands with no usable ordering or failure interpretation."
+      }
+    },
+    {
+      "id": "consumer-v1-1-migration",
+      "required_facts": [
+        {
+          "id": "version-and-capability-boundary",
+          "statement": "offline-consumer-v1.1 is an opt-in processing contract for the same finite refund profile, not a new core schema or domain. The wire version, profile URI, manifest digest and seven frozen files are unchanged. Default v1 hello gains no field; v1.1 hello adds contract: offline-consumer-v1.1, while check/canonicalize shapes, digests, framing and limits remain unchanged.",
+          "citations": [
+            {
+              "source_id": "consumer-v1-1",
+              "start_line": 5,
+              "end_line": 13,
+              "quote": "This opt-in processing contract clarifies startup configuration and final-stage\nerror precedence for the finite synthetic refund consumer. It supplements\n[v1](consumer-profile-v1.md); all v1 rules apply except where explicitly clarified\nbelow. It is not a new core wire schema or a new refund domain profile.\n`spec_version` remains `0.1.0-draft.1`, the profile URI remains\n`https://example.org/profiles/refund/0.1.0-draft.1`, and the full canonical\nmanifest SHA-256 remains\n`dddac40519b57620ca8b6fec558746ed8fb1f6ddf77263fd93cf5b2b582f2e00`.\nThe seven original contract/example files and their bytes are unchanged."
+            },
+            {
+              "source_id": "consumer-v1-1",
+              "start_line": 24,
+              "end_line": 37,
+              "quote": "Omitting `--contract`, or selecting `--contract offline-consumer-v1`, retains the\nold v1 behavior and output. In particular, default `hello` gains no new field.\nIn v1.1, `hello` returns exactly:\n\n```json\n{\"status\":\"capabilities\",\"reason\":\"offline_snapshot\",\"authority\":\"not_evaluated\",\"spec_version\":\"0.1.0-draft.1\",\"profile\":\"https://example.org/profiles/refund/0.1.0-draft.1\",\"numeric_domain\":\"safe_integer_tokens_only\",\"acceptance_cache\":false,\"contract\":\"offline-consumer-v1.1\"}\n```\n\nThe adapter wraps this result with the request's `id` as in v1. The extra\n`contract` member identifies processing behavior, not a replacement\n`spec_version` or profile binding. `check` and `canonicalize` result shapes,\ndescription digests, framing, limits and continuation after rejected frames\nare unchanged. A request or description with an extra `contract` field remains\ninvalid under the unchanged adapter or core structure rules, respectively."
+            },
+            {
+              "source_id": "consumer-v1",
+              "start_line": 65,
+              "end_line": 78,
+              "quote": "`hello` returns `status: capabilities`, `reason: offline_snapshot`,\n`authority: not_evaluated`, `spec_version: 0.1.0-draft.1`,\n`profile: https://example.org/profiles/refund/0.1.0-draft.1`,\n`numeric_domain: safe_integer_tokens_only`, `acceptance_cache: false`.\n\n`canonicalize` returns `status: canonicalized`, `reason: supported_subset`,\n`authority: not_evaluated`, `canonical_b64` and `sha256`. This diagnostic is not\ndescription acceptance. Supported values are objects/arrays, scalar-valid\nstrings, null, booleans and integer JSON tokens within +/-9007199254740991.\nNumbers with a fraction/exponent or outside that range yield\n`unsupported_profile/numeric_domain`, not a claim they are invalid JSON.\n`-0` canonicalizes to `0`; quantity string `\"-0\"` is still schema-invalid.\nSort keys by UTF-16 code units per RFC 8785, preserve arrays and strings, escape\nas JSON/ECMAScript requires. No Unicode normalization or full binary64/JCS claim."
+            },
+            {
+              "source_id": "spec-changelog",
+              "start_line": 5,
+              "end_line": 9,
+              "quote": "Added an opt-in `offline-consumer-v1.1` contract with startup configuration\nrejection, explicit contract identity and deterministic final projection error\nprecedence. Added paired-defect and legacy-compatibility tests in JavaScript and\nPython. The seven frozen files, core wire version and default v1 behavior remain\nunchanged, including the documented historical JS null-option fallback."
+            }
+          ]
+        },
+        {
+          "id": "selection-and-rollback",
+          "statement": "Contract selection is a caller-controlled startup --contract option, optionally with --basis in either order, never a request or description field. Omitting selection or choosing offline-consumer-v1 retains legacy behavior; unknown, empty, missing-value or repeated contract options are fatal startup errors. API omission differs from an explicit invalid null contract.",
+          "citations": [
+            {
+              "source_id": "consumer-v1-1",
+              "start_line": 17,
+              "end_line": 25,
+              "quote": "Both existing entry points accept `--contract offline-consumer-v1.1`, optionally\nwith `--basis PATH` in either order. Contract selection is a caller-controlled\nstartup option, never a request field or a value inferred from a description.\nOnly `offline-consumer-v1` and `offline-consumer-v1.1` are supported. An unknown,\nempty, missing-value or repeated contract option is a fatal startup error, not\nan `unsupported_profile` response and not a fallback to v1.\n\nOmitting `--contract`, or selecting `--contract offline-consumer-v1`, retains the\nold v1 behavior and output. In particular, default `hello` gains no new field."
+            },
+            {
+              "source_id": "consumer-v1-1",
+              "start_line": 54,
+              "end_line": 58,
+              "quote": "API callers receive a startup exception for an unsupported contract or unusable\nconfiguration, not a per-document result. Omitted API contract options retain\nv1; JavaScript's `undefined` contract option also means omitted. Explicit `null`\nor non-string contract values are invalid. The legacy Python `Consumer.hello()`\nclass-level query continues to report v1 capabilities."
+            }
+          ]
+        },
+        {
+          "id": "configuration-versus-applicability",
+          "statement": "v1.1 validates the selected local snapshot before serving frames. Invalid startup JSON, a wrong manifest or missing/nonobject required basis members terminates with nonzero exit, no stdout frames and a fixed sanitized stderr diagnostic. Explicitly unusable selections do not silently request defaults. Empty required objects may load; inapplicable nested fixture values are document applicability failures after earlier stages.",
+          "citations": [
+            {
+              "source_id": "consumer-v1-1",
+              "start_line": 62,
+              "end_line": 81,
+              "quote": "Before serving any frame, the consumer MUST load and validate its caller-selected\nlocal snapshot. The following are invalid configuration:\n\n- An unreadable selected file, invalid UTF-8/JSON, duplicate decoded keys, invalid\n  Unicode scalars, exceeded input/nesting limits, or numbers outside v1's\n  safe-integer-token-only startup JSON subset.\n- A manifest that does not match the pinned complete canonical content.\n- A basis root that is not an object, or a missing/nonobject `input`,\n  `implementation`, `context`, `mapping` or `declaration` member. Arrays, null,\n  strings, booleans and numbers are not objects for this purpose.\n\nSuch configuration MUST terminate the CLI with a nonzero exit, no stdout frames\n(including no `hello`), and a fixed diagnostic on stderr. Diagnostics MUST NOT\ninclude fixture/input contents, supplied argument values, paths, secrets or a\nstack trace. API exceptions likewise MUST NOT embed supplied configuration\ncontents. Only an omitted basis selection uses the bundled basis in v1.1;\nan explicitly supplied null basis is invalid, not a request for that default.\nFor the JavaScript API this also applies to explicitly supplied `undefined`\nbasis/profile values. This opt-in rule does not change JavaScript v1's legacy\nnullish configuration fallback."
+            },
+            {
+              "source_id": "consumer-v1-1",
+              "start_line": 83,
+              "end_line": 101,
+              "quote": "The five required member objects may be empty at startup. Once their shape and\nthe startup JSON subset are valid, missing nested scalar fields or unsupported\nscalar values are fixture applicability issues, not startup errors. For example,\n`input.currency: \"EUR\"`, `input.order: null`, a wrong implementation version,\nor `input.amount_minor: 7300` load successfully but cannot establish applicable\nrefund semantics. A present amount must be an exact decimal integer string in\n0..999999999999; null, booleans, numbers, signs, leading zeros, whitespace and\nout-of-range strings do not become unknown amounts. Only an absent\n`input.amount_minor` permits the explicit unknown-amount projection from v1.\n\nApplicability is a final-domain check, not a new early rejection stage. Document\nsyntax, numeric support, schema, local references, critical extensions, profile\nbinding, evidence scope and selected-member artifact binding still precede it.\nFor example, a stale invocation digest wins over unsupported fixture currency.\nA malformed evidence source fails structure, and a source unequal to the\nconfigured declaration issuer fails artifact binding, even if that issuer is\nitself inapplicable. No stage is skipped to manufacture an applicability result.\nAfter earlier stages succeed, unsupported fixture values MUST yield\n`untrusted_evidence/applicability`, never an invented unknown or acceptance."
+            }
+          ]
+        },
+        {
+          "id": "ordered-final-projection",
+          "statement": "v1.1 clarifies final stage 10 without moving it ahead of stages 1-9: fixture applicability first, effect cardinality second, missing required amount representation third, remaining coupled projection fourth. Missing representation is invalid_input/structure; a represented but wrong amount is an effect-projection mismatch. Earlier artifact binding still wins over later applicability defects.",
+          "citations": [
+            {
+              "source_id": "consumer-v1-1",
+              "start_line": 93,
+              "end_line": 99,
+              "quote": "Applicability is a final-domain check, not a new early rejection stage. Document\nsyntax, numeric support, schema, local references, critical extensions, profile\nbinding, evidence scope and selected-member artifact binding still precede it.\nFor example, a stale invocation digest wins over unsupported fixture currency.\nA malformed evidence source fails structure, and a source unequal to the\nconfigured declaration issuer fails artifact binding, even if that issuer is\nitself inapplicable. No stage is skipped to manufacture an applicability result."
+            },
+            {
+              "source_id": "consumer-v1-1",
+              "start_line": 103,
+              "end_line": 127,
+              "quote": "## Final Projection Precedence\n\nReplace the ambiguity within v1 document-processing stage 10 with this ordered\nsequence. This does not move any check ahead of stages 1 through 9:\n\n1. **Fixture applicability.** Apply all finite synthetic fixture constraints in\n   v1. Any failure yields `untrusted_evidence/applicability`, even if the\n   description also has a wrong effect count or projection.\n2. **Effect cardinality.** Require exactly one effect. Zero or multiple effects\n   yield `untrusted_evidence/effect_projection`. Do not pick a first/last tuple\n   or inspect one tuple's missing amount as if cardinality had succeeded.\n3. **Missing required amount representation.** In that single effect, require a\n   quantity named `https://example.org/quantities/amount` OR an\n   `unknown_quantity` targeting that effect and exact name. If neither exists,\n   yield `invalid_input/structure`, even with unrelated quantities or other\n   projection defects. This is a final-domain structure error, not an earlier\n   schema check. Duplicate, dangling, wrong-name and known/unknown-collision\n   targets already fail reference validation at stage 5.\n4. **Remaining coupled projection.** Apply all remaining v1 projection rules:\n   category, operation, exact resource/destination/data-class tuple, no\n   occurrence reference, empty relations, nonempty coverage/effect evidence\n   references, unobserved descendants, and the exact known/unknown amount rule.\n   Any mismatch yields `untrusted_evidence/effect_projection`. A represented\n   but wrong amount/value/unit/scale, unknown amount when the fixture supplies\n   one, or known amount when the fixture omits it belongs here, not at step 3."
+            }
+          ]
+        },
+        {
+          "id": "historical-cohort-and-scope",
+          "statement": "The published v1 corpus still explicitly selects v1 and is not relabeled as v1.1 evidence. Both language-local suites discover the opt-in tests. The change adds no domain, network, authorization, provider execution, acceptance cache or full-core conformance claim; it does not migrate the GitHub consumer.",
+          "citations": [
+            {
+              "source_id": "consumer-v1-1",
+              "start_line": 145,
+              "end_line": 163,
+              "quote": "## Verification and Claim Boundary\n\nRun both suites locally without dependencies or network:\n\n```sh\nnode --test implementations/javascript/*.test.mjs\npython3 -B -W error -m unittest discover -s implementations/python/tests\n```\n\nCI runs both the frozen v1 and opt-in v1.1 test files through discovery. The\npublished v1 corpus continues to select v1 explicitly; its results are not\nsilently relabeled as v1.1 results.\n\nThese are exposed same-project implementation and regression tests, not external\nvalidation, new holdouts, certification or full core conformance. The previously\nseparate JavaScript and Python implementations remain language-local; neither\nimports or invokes the other. This hardening adds no domain, dependency,\nnetwork access, authorization, provider effect, cache or production-readiness\nclaim. Frozen v1 publications and historical results are not relabeled as v1.1."
+            },
+            {
+              "source_id": "spec-changelog",
+              "start_line": 11,
+              "end_line": 14,
+              "quote": "Added the GitHub issue-comment profile: exact native invocation and body binding,\npartial direct scope, explicit provider-descendant unknowns, and a distinct\nauthorization integration in the companion benchmark. This is a narrowly\nimplemented profile, not a claim that legacy refund consumers understand GitHub."
+            }
+          ]
+        }
+      ],
+      "material_error_rules": [
+        {
+          "id": "silent-wire-or-default-upgrade",
+          "rule": "Say that installing this release automatically changes v1 clients, that v1.1 changes the wire/profile digest, or that default v1 hello gains the contract field.",
+          "fact_ids": [
+            "version-and-capability-boundary",
+            "selection-and-rollback"
+          ]
+        },
+        {
+          "id": "request-controlled-configuration",
+          "rule": "Select the contract through a request/description field, treat an invalid startup selection as fallback or a per-document unsupported-profile result, or expose configuration contents in startup diagnostics.",
+          "fact_ids": [
+            "selection-and-rollback",
+            "configuration-versus-applicability"
+          ]
+        },
+        {
+          "id": "wrong-precedence-or-evidence",
+          "rule": "Move applicability ahead of earlier binding checks, conflate missing and wrong represented amounts, or count historical v1 results as a newly executed v1.1 or GitHub migration.",
+          "fact_ids": [
+            "ordered-final-projection",
+            "historical-cohort-and-scope"
+          ]
+        }
+      ],
+      "utility_criteria": {
+        "decision_ready": "A compatibility and rollback note that lets the maintainer deliberately select v1.1 while preserving existing v1 clients and knowing which observable behaviors to verify.",
+        "needs_rework": "The maintainer must correct startup/request distinctions, behavior precedence, interface versioning or rollback instructions before using the note.",
+        "no_incremental_value": "A generic version-change summary that does not support the actual client compatibility decision."
+      }
+    },
+    {
+      "id": "official-mcp-compatibility",
+      "required_facts": [
+        {
+          "id": "released-server-and-dependencies",
+          "statement": "The released package pins @modelcontextprotocol/sdk 1.32.1 and @octokit/rest 22.0.1. mcp-server.mjs imports the official SDK but instantiates a server named action-effect-comment-pilot at version 0.2.0-draft.1. This establishes a Bench-authored server using the SDK, not historical execution of the official GitHub MCP server.",
+          "citations": [
+            {
+              "source_id": "runtime-package",
+              "start_line": 8,
+              "end_line": 12,
+              "quote": "  \"dependencies\": {\n    \"@modelcontextprotocol/sdk\": \"1.32.1\",\n    \"@octokit/rest\": \"22.0.1\",\n    \"ajv\": \"8.20.0\",\n    \"zod\": \"4.6.7\""
+            },
+            {
+              "source_id": "pilot-mcp-server",
+              "start_line": 1,
+              "end_line": 3,
+              "quote": "import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';\nimport { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';\nimport * as z from 'zod/v4';"
+            },
+            {
+              "source_id": "pilot-mcp-server",
+              "start_line": 21,
+              "end_line": 25,
+              "quote": "  const server = new McpServer({ name: 'action-effect-comment-pilot', version: '0.2.0-draft.1' }, { maxToolInputElements: 32 });\n  server.registerTool('add_issue_comment', {\n    description: 'Create one synthetic comment on an explicitly authorized test issue. Requires a current local policy decision.',\n    inputSchema: z.strictObject({ owner: z.string(), repo: z.string(), issue_number: z.number().int(), body: z.string() }),\n    annotations: { readOnlyHint: false, destructiveHint: false, idempotentHint: false, openWorldHint: true }"
+            },
+            {
+              "source_id": "runtime-readme",
+              "start_line": 40,
+              "end_line": 43,
+              "quote": "- `mcp-server.mjs` and `mcp-client.mjs` use the official SDK's real stdio\n  initialize/list/call exchange. Unknown keys are rejected, not stripped.\n- `replay.mjs` verifies retained byte identities and reruns local mapping/OPA.\n  `--github` performs unauthenticated, read-only current-content checks."
+            }
+          ]
+        },
+        {
+          "id": "advertised-tool-and-profile-domain",
+          "statement": "The released tool is add_issue_comment with a strict object containing owner, repo and body strings and integer issue_number; unknown keys are rejected. The selected domain profile imposes additional path-safe identity, positive bounded issue-number and nonempty Unicode-scalar/UTF-8 byte restrictions. An advertised tool name or argument shape alone does not establish the full native semantics.",
+          "citations": [
+            {
+              "source_id": "pilot-mcp-server",
+              "start_line": 22,
+              "end_line": 25,
+              "quote": "  server.registerTool('add_issue_comment', {\n    description: 'Create one synthetic comment on an explicitly authorized test issue. Requires a current local policy decision.',\n    inputSchema: z.strictObject({ owner: z.string(), repo: z.string(), issue_number: z.number().int(), body: z.string() }),\n    annotations: { readOnlyHint: false, destructiveHint: false, idempotentHint: false, openWorldHint: true }"
+            },
+            {
+              "source_id": "github-profile",
+              "start_line": 13,
+              "end_line": 23,
+              "quote": "SDK input: `{\"lane\":\"sdk\",\"call\":{\"owner\":\"OndCo\",\"repo\":\"Action-Effect-Bench\",\"issue_number\":1,\"body\":\"Synthetic test\"}}`.\nMCP input: `{\"lane\":\"mcp\",\"call\":{\"name\":\"add_issue_comment\",\"arguments\":{\"owner\":\"OndCo\",\"repo\":\"Action-Effect-Bench\",\"issue_number\":1,\"body\":\"Synthetic test\"}}}`.\nThese are local capture envelopes. The MCP lane uses actual MCP `tools/call`\ntransport; this envelope is not a replacement protocol.\n\nOnly the shown keys are accepted. Names are ASCII and path-safe: owner matches\n`[A-Za-z0-9][A-Za-z0-9-]{0,38}`; repo matches\n`[A-Za-z0-9_.-]{1,100}` but is neither `.` nor `..`. Issue number is a positive\ninteger at most 2147483647, excluding booleans. Body is a nonempty Unicode-scalar\nstring with at most 8192 UTF-8 bytes. No normalization, path unescaping, URL\nresolution, template expansion or caller-supplied endpoint is supported."
+            }
+          ]
+        },
+        {
+          "id": "actual-result-representation",
+          "statement": "The Bench handler captures a local MCP envelope, performs preparation or execution and returns the JSON-serialized result inside an MCP content item with type text. This released wrapper must not be assumed to be the official GitHub server result contract.",
+          "citations": [
+            {
+              "source_id": "pilot-mcp-server",
+              "start_line": 27,
+              "end_line": 33,
+              "quote": "    const native = { lane: 'mcp', call: { name: 'add_issue_comment', arguments: args } };\n    const result = config.mode === 'offline-map' ? prepareAction(native, config.context, config.strategy)\n      : await executeAction({ native, context: config.context, strategy: config.strategy, provider,\n        policyFile: config.policy_file, ledgerDir: config.ledger_dir, occurrence: config.occurrence,\n        preparedDescription: config.prepared_description });\n    if (config.inject_lost_ack === true) result.fault = { successful_post_ack_discarded: discarded };\n    return { content: [{ type: 'text', text: JSON.stringify(result) }] };"
+            },
+            {
+              "source_id": "github-profile",
+              "start_line": 13,
+              "end_line": 16,
+              "quote": "SDK input: `{\"lane\":\"sdk\",\"call\":{\"owner\":\"OndCo\",\"repo\":\"Action-Effect-Bench\",\"issue_number\":1,\"body\":\"Synthetic test\"}}`.\nMCP input: `{\"lane\":\"mcp\",\"call\":{\"name\":\"add_issue_comment\",\"arguments\":{\"owner\":\"OndCo\",\"repo\":\"Action-Effect-Bench\",\"issue_number\":1,\"body\":\"Synthetic test\"}}}`.\nThese are local capture envelopes. The MCP lane uses actual MCP `tools/call`\ntransport; this envelope is not a replacement protocol."
+            }
+          ]
+        },
+        {
+          "id": "identity-and-observation-limits",
+          "statement": "The configured github-comment-bridge/1 identity is a declaration, not binary/SaaS attestation. The supplied released sources do not establish an official-server remote handshake or successful authentication. New transport metadata, if actually observed, may be reported as current evidence but cannot retroactively change what the published pilot exercised.",
+          "citations": [
+            {
+              "source_id": "github-profile",
+              "start_line": 25,
+              "end_line": 31,
+              "quote": "The caller configures `context` with a nonempty `principal`, nonempty\n`data_class`, and `implementation: \"github-comment-bridge/1\"`. Missing facts\nproduce `untrusted_evidence/missing_context`; a different implementation produces\n`untrusted_evidence/implementation_binding`. This is a declared implementation\nidentity, not attestation of arbitrary SaaS code. Executable/package source\nhashes are recorded separately by the experiment. Classification comes from the\ntrusted test configuration, not text analysis; no DLP classifier is claimed."
+            },
+            {
+              "source_id": "runtime-readme",
+              "start_line": 53,
+              "end_line": 57,
+              "quote": "Local code, profile installation, policy files, configured principal/class,\nledger storage and host filesystem are trusted. The implementation identity is\na **declaration**, not an attested binary or proof of GitHub's internal code.\nThe native capture must come from the path that actually dispatches the request;\na hash cannot make a dishonest capture truthful."
+            },
+            {
+              "source_id": "release-note",
+              "start_line": 21,
+              "end_line": 25,
+              "quote": "These are same-project, bounded development results. External independently\nauthored evaluations remain zero. Direct comment readback does not establish\ncomplete provider provenance or transitive effects. This is not an adopted\nindustry standard, certification or qualified production gateway. Original\nfrozen artifacts and the failed first offline attempt remain preserved."
+            }
+          ]
+        }
+      ],
+      "material_error_rules": [
+        {
+          "id": "sdk-server-conflation",
+          "rule": "Call the released action-effect-comment-pilot server the official GitHub MCP implementation merely because it imports an official SDK, or invent a tested official remote endpoint/authentication result.",
+          "fact_ids": [
+            "released-server-and-dependencies",
+            "identity-and-observation-limits"
+          ]
+        },
+        {
+          "id": "assumed-native-equivalence",
+          "rule": "Claim full compatibility from the tool name alone, ignore the narrower input profile, or assume the Bench JSON-in-text result is an observed upstream official result.",
+          "fact_ids": [
+            "advertised-tool-and-profile-domain",
+            "actual-result-representation"
+          ]
+        },
+        {
+          "id": "attestation-overclaim",
+          "rule": "Treat a declared implementation string, package version or binary identity as proof of semantic completeness or provider execution.",
+          "fact_ids": [
+            "identity-and-observation-limits"
+          ]
+        }
+      ],
+      "utility_criteria": {
+        "decision_ready": "A precise integration-readiness/provenance table and next-check list that lets the maintainer state what is supported without claiming an unobserved official-server integration.",
+        "needs_rework": "The maintainer must correct server identity, argument/result assumptions or the distinction between published and newly observed transport evidence.",
+        "no_incremental_value": "A generic claim that MCP is compatible or incompatible with no source-backed interface comparison or actionable remaining check."
+      }
+    },
+    {
+      "id": "limits-and-recovery",
+      "required_facts": [
+        {
+          "id": "native-and-body-limits",
+          "statement": "The profile requires path-safe ASCII owner/repo names, a positive integer issue number at most 2147483647 excluding booleans, and a nonempty Unicode-scalar body of at most 8192 UTF-8 bytes. Its quantity counts UTF-8 bytes rather than JavaScript UTF-16 units, and its required extension binds the exact body SHA-256.",
+          "citations": [
+            {
+              "source_id": "github-profile",
+              "start_line": 18,
+              "end_line": 23,
+              "quote": "Only the shown keys are accepted. Names are ASCII and path-safe: owner matches\n`[A-Za-z0-9][A-Za-z0-9-]{0,38}`; repo matches\n`[A-Za-z0-9_.-]{1,100}` but is neither `.` nor `..`. Issue number is a positive\ninteger at most 2147483647, excluding booleans. Body is a nonempty Unicode-scalar\nstring with at most 8192 UTF-8 bytes. No normalization, path unescaping, URL\nresolution, template expansion or caller-supplied endpoint is supported."
+            },
+            {
+              "source_id": "github-profile",
+              "start_line": 98,
+              "end_line": 107,
+              "quote": "## Body Bytes\n\nThe single quantity uses the manifest's byte URI, exact decimal string UTF-8\nlength, unit `byte`, scale `0`. It counts bytes, not JavaScript UTF-16 units.\n\n## Body SHA256\n\nThe manifest's extension URI is required in `critical_extensions`. `extensions`\ncontains only that key, with lowercase 64-hex SHA-256 of the exact UTF-8 body.\nIt supplements, not replaces, the native-invocation binding."
+            }
+          ]
+        },
+        {
+          "id": "complete-bounded-listing",
+          "statement": "The provider requests at most five comment pages of 100 entries. It establishes completion only on a page shorter than 100; a full fifth page throws readback_pagination_limit, even if exactly 500 comments might exist. Do not describe the bound as permitting a silently truncated complete listing.",
+          "citations": [
+            {
+              "source_id": "github-provider",
+              "start_line": 53,
+              "end_line": 62,
+              "quote": "    async listComments(params) {\n      // The dedicated issue is bounded; do not silently inspect only page one.\n      const comments = [];\n      for (let page = 1; page <= 5; page += 1) {\n        const response = await client.issues.listComments({ owner: params.owner, repo: params.repo,\n          issue_number: params.issue_number, per_page: 100, page, headers });\n        comments.push(...response.data);\n        if (response.data.length < 100) return comments;\n      }\n      throw new Error('readback_pagination_limit');"
+            }
+          ]
+        },
+        {
+          "id": "known-response-id",
+          "statement": "When a POST response or ledger supplies a comment ID, readback must match that exact ID as well as the expected API/issue URLs, exact body and actor. A different comment with matching content is not confirmation of the known response ID.",
+          "citations": [
+            {
+              "source_id": "github-provider",
+              "start_line": 15,
+              "end_line": 21,
+              "quote": "export function receiptFrom(comment, expected, principal, expectedId) {\n  const base = `https://api.github.com/repos/${expected.owner}/${expected.repo}/issues`;\n  const matches = Number.isSafeInteger(comment?.id) && comment.id > 0\n    && (expectedId === undefined || comment.id === expectedId)\n    && comment.url === `${base}/comments/${comment.id}`\n    && comment.issue_url === `${base}/${expected.issue_number}`\n    && comment.body === expected.body && comment.user?.login === principal;"
+            },
+            {
+              "source_id": "dispatch-gate",
+              "start_line": 123,
+              "end_line": 134,
+              "quote": "    if (!Number.isSafeInteger(response?.id) || response.id < 1) throw new Error('invalid_provider_response');\n    commentId = response.id;\n    const readbackStarted = performance.now();\n    const observed = await options.provider.readComment(params, commentId);\n    timings.readback_ms = performance.now() - readbackStarted;\n    const receipt = receiptFrom(observed, params, context.principal, commentId);\n    if (!receipt.content_matches) {\n      transition(options.ledgerDir, options.occurrence, 'inflight', 'unknown', { reason: 'readback_mismatch', comment_id: commentId });\n      return finish({ outcome: 'unknown', reason: 'readback_mismatch', mapping: prepared, authorization, receipt });\n    }\n    transition(options.ledgerDir, options.occurrence, 'inflight', 'confirmed',\n      { comment_id: commentId, content_sha256: receipt.body_sha256 });"
+            }
+          ]
+        },
+        {
+          "id": "idless-reconciliation",
+          "statement": "ID-less recovery requires a persisted pre-dispatch ID set, excludes every preexisting ID and needs exactly one new matching body/actor observation. Missing preflight or non-unique matches remain unknown. The dedicated single-writer assumption and current-content-not-execution-attribution evidence label must remain explicit.",
+          "citations": [
+            {
+              "source_id": "dispatch-gate",
+              "start_line": 151,
+              "end_line": 169,
+              "quote": "    const current = load(options.ledgerDir, options.occurrence);\n    if (current.binding !== jsonHash({ native: options.native, context: options.context })) {\n      return finish({ outcome: 'unknown', reason: 'binding_mismatch' });\n    }\n    if (!['inflight', 'unknown'].includes(current.state)) return finish({ outcome: current.state, reason: 'no_reconciliation_needed' });\n    const { params } = nativeParameters(options.native);\n    if (!current.comment_id && !Array.isArray(current.pre_dispatch_comment_ids)) {\n      return finish({ outcome: 'unknown', reason: 'missing_occurrence_preflight' });\n    }\n    const rows = current.comment_id\n      ? [await options.provider.readComment(params, current.comment_id)] : await options.provider.listComments(params);\n    commentIds(rows);\n    const matches = rows.filter(row => current.comment_id || !current.pre_dispatch_comment_ids.includes(row.id))\n      .map(row => receiptFrom(row, params, options.context.principal, current.comment_id)).filter(row => row.content_matches);\n    if (matches.length !== 1) return finish({ outcome: 'unknown', reason: 'no_unique_readback' });\n    transition(options.ledgerDir, options.occurrence, current.state, 'confirmed',\n      { comment_id: matches[0].comment_id, content_sha256: matches[0].body_sha256 });\n    return finish({ outcome: 'confirmed', receipt: matches[0], recovery_evidence: current.comment_id\n      ? 'known-response-id-and-current-content' : 'new-current-content-since-preflight-not-execution-attribution' });"
+            },
+            {
+              "source_id": "runtime-readme",
+              "start_line": 72,
+              "end_line": 79,
+              "quote": "Readback must match the POST response ID when that ID is known. With a lost\nacknowledgment, recovery excludes every comment ID recorded before dispatch\nand requires one new exact content/actor match. Preexisting matching content\nis withheld before dispatch. This test uses a dedicated issue, unique body\nmarkers and one controlled writer. A new matching comment establishes current\ncontent after preflight, not causal proof that this specific POST created it:\na concurrent same-account writer or provider-side mutation is outside that\nattribution guarantee. This distinction is recorded in `recovery_evidence`."
+            }
+          ]
+        },
+        {
+          "id": "uncertainty-authority-and-descendants",
+          "statement": "If delivery might have occurred, the reservation stays consumed and recovery only queries. Local policy and remote POST are not atomic, and the ledger does not provide distributed exactly-once delivery or automatic crash-lock recovery. Readback covers the direct comment, not notification/webhook or transitive-effect completeness.",
+          "citations": [
+            {
+              "source_id": "runtime-readme",
+              "start_line": 59,
+              "end_line": 70,
+              "quote": "GitHub explicitly documents notification behavior for comment creation. We\nrepresent only the direct comment and retain unknown downstream recipients,\ndelivery, webhooks and internal descendants. Partial scope is admitted only\nwith the experiment's explicit policy choice on synthetic public resources.\nNo notification or transitive-closure completeness is claimed.\n\nCurrent local authorization and the remote POST are not atomic. A revocation\nafter the final local check may race with dispatch. A local occurrence ledger\ndoes not provide global exactly-once delivery, automatic crash-lock recovery,\nmulti-tenant isolation, distributed quota handling, or a provider idempotency key.\nIf delivery might have occurred, the reservation stays consumed and recovery\nonly queries. Missing or ambiguous observations remain unknown."
+            },
+            {
+              "source_id": "dispatch-gate",
+              "start_line": 136,
+              "end_line": 140,
+              "quote": "  } catch {\n    timings.dispatch_ms ??= performance.now() - dispatchStarted;\n    const metadata = { reason: 'provider_or_readback_failure', ...(commentId ? { comment_id: commentId } : {}) };\n    try { transition(options.ledgerDir, options.occurrence, 'inflight', 'unknown', metadata); } catch { /* Never retry a possible POST. */ }\n    return finish({ outcome: 'unknown', reason: metadata.reason, mapping: prepared, authorization });"
+            }
+          ]
+        },
+        {
+          "id": "documented-recovery-entrypoint",
+          "statement": "Lost-ACK recovery is read-only. There is no separate reconciliation CLI: exported reconcileAction uses the original ledger/occurrence. Preserve the private ledger and attempt journal; do not rerun a used issue, delete markers to bypass guards or retry an uncertain POST.",
+          "citations": [
+            {
+              "source_id": "quickstart",
+              "start_line": 93,
+              "end_line": 97,
+              "quote": "Lost-ACK recovery is automatically **read-only** in the runner. There is no\nseparate reconciliation CLI; exported `reconcileAction` operates on the original\nledger/occurrence. Preserve `runtime-pilot/.runtime-private/` privately and retain\nthe attempt journal and reports. Never retry an uncertain POST, delete markers\nto bypass the guard, or rerun a used issue for recovery."
+            }
+          ]
+        }
+      ],
+      "material_error_rules": [
+        {
+          "id": "incorrect-resource-bound",
+          "rule": "Count body characters instead of UTF-8 bytes, accept unsupported issue numbers, or treat a full bounded comment listing as proof that no additional comments exist.",
+          "fact_ids": [
+            "native-and-body-limits",
+            "complete-bounded-listing"
+          ]
+        },
+        {
+          "id": "false-confirmation",
+          "rule": "Accept the wrong known comment ID, an ID present before dispatch, missing preflight or multiple matches as confirmation, or turn an unknown outcome into proof of non-execution.",
+          "fact_ids": [
+            "known-response-id",
+            "idless-reconciliation"
+          ]
+        },
+        {
+          "id": "unsafe-retry-or-invented-cli",
+          "rule": "Recommend resending a possibly delivered POST, replacing the occurrence to retry, deleting guards/locks as automatic recovery, or a nonexistent reconciliation command.",
+          "fact_ids": [
+            "uncertainty-authority-and-descendants",
+            "documented-recovery-entrypoint"
+          ]
+        },
+        {
+          "id": "unbounded-assurance",
+          "rule": "Claim exactly-once delivery, remote-atomic authorization, causal attribution from ID-less matching or complete provider-descendant coverage.",
+          "fact_ids": [
+            "idless-reconciliation",
+            "uncertainty-authority-and-descendants"
+          ]
+        }
+      ],
+      "utility_criteria": {
+        "decision_ready": "A limits and recovery decision table that lets the operator preserve evidence and select a documented next action, including retaining unknown when confirmation is unavailable.",
+        "needs_rework": "The operator must repair a limit, identify which state/evidence to keep, correct a confirmation predicate or remove unsafe/invented recovery advice.",
+        "no_incremental_value": "A warning-only summary with no condition-to-action guidance for the actual maintainer preparation or uncertain-outcome decision."
+      }
+    },
+    {
+      "id": "conformance-support",
+      "required_facts": [
+        {
+          "id": "design-coverage-not-execution",
+          "statement": "The requirements traceability table is design coverage, not executable conformance evidence. Its 40 designed scenarios cover 28 clauses at the design level; a linked case does not exhaust the branches and must not be counted as an executed or passing test.",
+          "citations": [
+            {
+              "source_id": "core-traceability",
+              "start_line": 1,
+              "end_line": 5,
+              "quote": "# Requirements-to-Case Traceability\n\nThis is design coverage, not executable conformance evidence. One linked case\nper requirement does not exhaust all branches of a requirement. Stable release\nrequires executable positive/negative vectors and independent consumers."
+            },
+            {
+              "source_id": "core-traceability",
+              "start_line": 43,
+              "end_line": 47,
+              "quote": "## Adversarial Review Additions\n\nThere are now 40 designed scenarios for the 28 clauses, not 40 executed tests.\nThe rows below extend the one-per-clause seed table; executable payloads,\nconsumer oracles and branch coverage still must be implemented and reviewed."
+            }
+          ]
+        },
+        {
+          "id": "legacy-case-populations",
+          "statement": "The original public corpus has 80 source-frozen cases plus 22 explicitly exposed post-review regressions. Keep those denominators and their authorship timing separate; do not describe the regressions as independently authored pre-behavior holdouts.",
+          "citations": [
+            {
+              "source_id": "legacy-runner-guide",
+              "start_line": 38,
+              "end_line": 45,
+              "quote": "The original `cases.json` remains the 80-case source-frozen public corpus.\n`review-cases.mjs` adds 22 explicitly exposed post-review regressions for amount\nrepresentation and RFC 3986 generic URI structure. They were authored after\nreview found defects, not independently before seeing behavior. New reports\nidentify each case's suite and separate the two denominators. The first local\npre-publication report covered only the original 80 cases and remains in the\ninternal archive. This public repository starts with fresh runs of the selected\npublic sources. No old expected result or historical archive is rewritten."
+            }
+          ]
+        },
+        {
+          "id": "implemented-contract-scope",
+          "statement": "The legacy runner targets offline-consumer-v1, not full CORE-001..028 conformance. Its results do not establish authorization, signatures, live provider effects, bounds or revocation. The opt-in v1.1 tests do not relabel the published v1 corpus or create an external evaluation.",
+          "citations": [
+            {
+              "source_id": "legacy-runner-guide",
+              "start_line": 75,
+              "end_line": 81,
+              "quote": "## Interpretation\n\nThe implemented target is `offline-consumer-v1`, not full CORE-001..028\nconformance. The original 40 design vectors remain design-only unless a specific\nseparate result says otherwise. This run does not grant authority, issue a\nrefund, test a real provider, inspect tool source code, or evaluate signatures,\nauthorization freshness, revocation, effects bounds or a live registry."
+            },
+            {
+              "source_id": "consumer-v1-1",
+              "start_line": 154,
+              "end_line": 163,
+              "quote": "CI runs both the frozen v1 and opt-in v1.1 test files through discovery. The\npublished v1 corpus continues to select v1 explicitly; its results are not\nsilently relabeled as v1.1 results.\n\nThese are exposed same-project implementation and regression tests, not external\nvalidation, new holdouts, certification or full core conformance. The previously\nseparate JavaScript and Python implementations remain language-local; neither\nimports or invokes the other. This hardening adds no domain, dependency,\nnetwork access, authorization, provider effect, cache or production-readiness\nclaim. Frozen v1 publications and historical results are not relabeled as v1.1."
+            }
+          ]
+        },
+        {
+          "id": "runtime-population",
+          "statement": "The additional runtime corpus has 55 authored cases, 22 base intents and 108 lane instances. These are not 108 independent tasks; the complete structured baseline shares Python projection, OPA and dispatch controls without transferring the description envelope.",
+          "citations": [
+            {
+              "source_id": "bench-readme",
+              "start_line": 28,
+              "end_line": 32,
+              "quote": "The new author-defined corpus has 55 rows, 22 base intents and 108 lane\ninstances. Runtime cases are frozen before candidate execution/results, not\nbefore implementation. The structured baseline uses the same Python projection,\nOPA and dispatch controls without transferring an effect-description envelope.\nProtocol overhead is reported, not assumed to be a performance win."
+            },
+            {
+              "source_id": "runtime-summary",
+              "start_line": 9,
+              "end_line": 20,
+              "quote": "Two paths processed the same supported inputs and used the same current OPA\npolicy, local occurrence ledger and GitHub dispatcher:\n\n1. Protocol: JavaScript effect description, separately written Python binding\n   and tuple checker, then OPA.\n2. Structured baseline: direct Python native-to-structured projection, then OPA,\n   without transferring the effect-description envelope.\n\nThe live MCP lane used the official SDK's real stdio initialize/list/call flow;\nboth lanes used Octokit against GitHub, not a mock receiver. The tested profile\nonly describes the direct issue comment. Notification delivery, recipients,\nwebhooks and other provider descendants remain unknown."
+            },
+            {
+              "source_id": "runtime-summary",
+              "start_line": 33,
+              "end_line": 34,
+              "quote": "The offline corpus contains **55 authored cases, 22 base intents and 108 lane\ninstances (53 SDK, 55 MCP)**, not 108 independent tasks. Accepted mappings"
+            }
+          ]
+        },
+        {
+          "id": "method-counts-not-workloads",
+          "statement": "The published verification lists 64 Spec JavaScript, 115 Spec Python, 11 legacy harness, 333 runtime JavaScript and 50 runtime Python methods, totaling 573 methods. These methods are not 573 additional benchmark workloads or SaaS effects.",
+          "citations": [
+            {
+              "source_id": "runtime-summary",
+              "start_line": 139,
+              "end_line": 143,
+              "quote": "[Linux/macOS CI for the measured implementation](https://github.com/OndCo/Action-Effect-Bench/actions/runs/39199258635)\npassed the pinned setup, original corpus, new offline evaluation and tests.\nThe suite comprises 64 Spec JavaScript, 115 Spec Python, 11 legacy harness,\n333 runtime JavaScript and 50 runtime Python methods: **573 methods**, not 573\nadditional benchmark workloads. Runtime unit fixtures do not create SaaS effects."
+            }
+          ]
+        },
+        {
+          "id": "agreement-and-digest-oracle",
+          "statement": "Cross-consumer agreement is separate from expected-result correctness. The accepted description full digest is cross-compared, not supplied by an independent full-document expected oracle; literal canonical vectors check underlying byte rules. Two agreeing implementations may share a defect.",
+          "citations": [
+            {
+              "source_id": "legacy-runner-guide",
+              "start_line": 57,
+              "end_line": 61,
+              "quote": "An accepted description's full digest is compared between implementations;\nthe public expected-result oracle does not independently give that full digest.\nIts underlying byte rules are separately checked by literal canonical vectors.\nAgreement is shown separately from expected-result matching: two agreeing bugs\nare not evidence of correctness. Every unexpected result remains in the report."
+            },
+            {
+              "source_id": "bench-readme",
+              "start_line": 80,
+              "end_line": 83,
+              "quote": "Expected-result matching and cross-implementation agreement are scored separately.\nTwo agreeing defects can still exist. A conforming report must state which fields\nhave an independent expected value; the current accepted-description digest is\ncross-compared, not supplied by an independent full-document canonical oracle."
+            }
+          ]
+        }
+      ],
+      "material_error_rules": [
+        {
+          "id": "inflated-conformance",
+          "rule": "Promote design traceability or selected profile tests into all-clause core conformance, certification, external validation or production qualification.",
+          "fact_ids": [
+            "design-coverage-not-execution",
+            "implemented-contract-scope"
+          ]
+        },
+        {
+          "id": "pooled-or-inflated-populations",
+          "rule": "Pool the original corpus, exposed regressions, unit methods, lane instances and runtime work as independent tasks or hide their separate scope/denominators.",
+          "fact_ids": [
+            "legacy-case-populations",
+            "runtime-population",
+            "method-counts-not-workloads"
+          ]
+        },
+        {
+          "id": "agreement-as-oracle",
+          "rule": "Treat implementation agreement or the cross-compared accepted digest as independent proof of semantic correctness.",
+          "fact_ids": [
+            "agreement-and-digest-oracle"
+          ]
+        }
+      ],
+      "utility_criteria": {
+        "decision_ready": "An adopter-facing claim/evidence crosswalk and precise support wording that resolves the maintainer publication decision. Retaining already-correct wording with an evidence-backed no-change disposition is fully acceptable.",
+        "needs_rework": "The maintainer must repair scope, denominators, evidence provenance or a proposed unsupported claim before publication.",
+        "no_incremental_value": "An unnecessary edit request, fabricated defect or generic disclaimer that neither improves nor resolves the pending support-statement decision."
+      }
+    }
+  ]
+}
