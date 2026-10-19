@@ -18,7 +18,7 @@ From their common parent directory:
 
 ```sh
 node action-effect-bench/conformance/case-source.mjs --check
-node --test action-effect-bench/conformance/runner.test.mjs
+node --test action-effect-bench/conformance/runner.test.mjs action-effect-bench/conformance/entrypoints.test.mjs
 node action-effect-bench/conformance/run.mjs
 ```
 

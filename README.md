@@ -17,7 +17,8 @@ separately; those tracks are not all implemented here.
 
 Use Node.js 22+ and Python 3.9+ on `PATH`; supported current releases are
 recommended. No dependency installation, OSuite account, credentials or cloud
-resource is needed. In a new directory:
+resource is needed. The qualified CI targets are Linux and macOS, not Windows.
+In a new directory:
 
 ```sh
 git clone https://github.com/OndCo/Action-Effect-Bench.git action-effect-bench
@@ -25,7 +26,7 @@ git clone https://github.com/OndCo/Action-Effect-Spec.git action-effect-spec
 SPEC_COMMIT=$(node -p "require('./action-effect-bench/spec-lock.json').commit")
 git -C action-effect-spec checkout --detach "$SPEC_COMMIT"
 node action-effect-bench/conformance/case-source.mjs --check
-node --test action-effect-spec/implementations/javascript/consumer.test.mjs action-effect-spec/implementations/javascript/cli.test.mjs action-effect-bench/conformance/runner.test.mjs
+node --test action-effect-spec/implementations/javascript/consumer.test.mjs action-effect-spec/implementations/javascript/cli.test.mjs action-effect-bench/conformance/runner.test.mjs action-effect-bench/conformance/entrypoints.test.mjs
 python3 -B -W error -m unittest discover -s action-effect-spec/implementations/python/tests
 node action-effect-bench/conformance/run.mjs
 ```

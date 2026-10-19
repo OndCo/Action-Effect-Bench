@@ -235,3 +235,17 @@ native parsing is used only for value-equivalence checks, with negative zero
 handled explicitly. No case input, expected canonical byte, expected outcome,
 or generated corpus hash changed as a result. The corrected checks are included
 in `verifySuite` so they can be repeated without a consumer.
+
+## Public-Checkout Packaging Correction
+
+The later clean-clone release check found that command-line startup through a
+filesystem symlink could silently skip the generator and runner. The correction
+changes only their entry-point detection to compare real filesystem identities.
+New entry-point tests first reproduced the silent exit, then required an actual
+corpus-check result or the expected usage failure. Importing these modules from
+stdin remains side-effect-free.
+
+The original seven contract hashes, case inputs, expected outcomes and generated
+`cases.json` hash are unchanged. This packaging fix is not a new oracle, an
+independent evaluation or a retroactive amendment to the initial authoring
+record. A command that emitted no report is not counted as a successful run.

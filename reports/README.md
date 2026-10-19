@@ -23,7 +23,24 @@ Reproduce using [the pinned instructions](../README.md#reproduce). Process start
 and communication are included in per-invocation diagnostic timings; those values
 must not be interpreted as a runtime performance ranking or an execution SLA.
 
-## Initial Public Source Run
+## Current Verified Snapshot
+
+Spec commit: `ff5de37da6402c5a0e42d1a9cc7d4880579e374d`.
+Run: 19 October 2026, 02:28:28 UTC / 18 October 2026, 22:28:28 America/Toronto.
+
+The [current report](offline-consumers-2026-10-19T02-28-28-994Z.md) and
+[raw JSON](offline-consumers-2026-10-19T02-28-28-994Z.json) cover the
+[entry-point repair](../CHANGELOG.md). Both consumers matched all 102 expected
+results; all 102 cross-consumer comparisons agreed, with zero adapter faults.
+The report records 52 stable source hashes and 204 original response frames.
+
+The unit suite now has **144 passing methods**: 36 JavaScript consumer/adapter,
+97 Python and 11 benchmark harness/entry-point tests. The five new methods
+exercise symbolic-link startup and import safety; they do not add five new
+semantic benchmark cases. The corpus remains 80 original cases plus 22
+post-review regressions, byte-identical to its original generated contents.
+
+## Historical Initial Public Source Run
 
 Spec commit: `971cad977ee1cc5c8d78cc56bc075fcd0e5898f4`.
 Run: 19 October 2026, 02:21:28 UTC / 18 October 2026, 22:21:28 America/Toronto.

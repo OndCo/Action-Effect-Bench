@@ -2,9 +2,8 @@
 // No consumer, candidate canonicalizer, network client, or subprocess is used.
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
-import { readFileSync, writeFileSync } from 'node:fs';
-import { resolve } from 'node:path';
-import { pathToFileURL } from 'node:url';
+import { readFileSync, realpathSync, writeFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 
 const ROOT = new URL('../../', import.meta.url);
 const OUTPUT = new URL('./cases.json', import.meta.url);
@@ -609,7 +608,16 @@ export function verifySuite(suite) {
   } };
 }
 
-if (process.argv[1] && pathToFileURL(resolve(process.argv[1])).href === import.meta.url) {
+function isEntryPoint() {
+  try {
+    return Boolean(process.argv[1])
+      && realpathSync(process.argv[1]) === realpathSync(fileURLToPath(import.meta.url));
+  } catch {
+    return false;
+  }
+}
+
+if (isEntryPoint()) {
   assert(process.argv.length <= 3, 'Usage: node case-source.mjs [--write|--check]');
   const mode = process.argv[2] ?? '--write';
   assert(['--write', '--check'].includes(mode), 'Usage: node case-source.mjs [--write|--check]');
