@@ -47,9 +47,11 @@ or a causal experiment isolating one intervention.
   Keep credential acquisition in memory and out of command arguments/evidence.
 - Start with read-only integration and model tasks. Any new GitHub writes use a
   new dedicated owned issue, never the completed v0.2 pilot issue. The proposed
-  ceiling is twelve new comments, including fault-control writes; the separate
-  resource choice is being confirmed with the user. Do not infer consent from a
-  preselected UI answer.
+  ceiling is twelve new comments, including fault-control writes. The user
+  explicitly confirmed this resource boundary after publication of v0.3.0-draft.1.
+  The read-only release remains unchanged; the newly authorized write/recovery
+  extension has its own source freeze, issue and evidence. Do not infer consent
+  for any additional resource or higher ceiling.
 - No Studio, Hook, private customer data, protected collaboration cases, or
   Matoi source changes. Matoi is a read-only structural reference, not a source
   of experimental results for this paper.
