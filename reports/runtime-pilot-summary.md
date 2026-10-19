@@ -141,6 +141,9 @@ passed the pinned setup, original corpus, new offline evaluation and tests.
 The suite comprises 64 Spec JavaScript, 115 Spec Python, 11 legacy harness,
 333 runtime JavaScript and 50 runtime Python methods: **573 methods**, not 573
 additional benchmark workloads. Runtime unit fixtures do not create SaaS effects.
+The [fresh public-clone verification](release-verification.md) also passed
+after a dependency-download/setup failure was resolved with the exact
+hash-verified binary cache; both the failed and successful replays are retained.
 
 The [first offline attempt](runtime-pilot-offline-2026-10-19T03-40-48.927Z-769420.json)
 is retained as **failed**. A scorer incorrectly distinguished null-prototype and

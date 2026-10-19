@@ -1,0 +1,1222 @@
+{
+  "format": "action-effect-paper-sources-v1",
+  "editorial_date": "2026-10-18",
+  "editorial_revision_date": "2026-10-19",
+  "editorial_timezone": "America/Toronto",
+  "editorial_utc_offset": "-04:00",
+  "date_note": "Initial drafting was 18 October in Toronto (EDT); this release-checkpoint revision is 19 October in Toronto. Source retrieval times remain UTC. Spec release publication and any later manuscript publication are separate events.",
+  "manuscript_status": "Working paper for public review; bounded offline and live results and both replays integrated; no external evaluation.",
+  "scope": "Focused primary-source compatibility inspection plus separately identified same-project measured evidence. Not a systematic scholarly novelty review, independent evaluation, production qualification or raw-source archive.",
+  "retrieval_method": "curl 8.7.1 performed HTTP GETs with redirects followed, bounded timeouts and no implicit retries. gh api was used to locate official source commits and paths. Raw response bodies were hashed in memory before excerpt inspection; only metadata and original editorial analysis are distributed.",
+  "identity_warning": "A retrieval digest identifies received bytes, not semantic truth, operator authentication or permission. Documentation snapshots, extracted interface data, source commits and measured reports have distinct evidence roles.",
+  "rights_note": "The repositories' MIT approval covers selected original work. Referenced third-party publications retain their own rights; no legal/patent clearance or standards-body approval is asserted.",
+  "sources": [
+    {
+      "id": "S1",
+      "title": "Model Context Protocol 2025-11-25 schema",
+      "publisher": "Model Context Protocol",
+      "version": "2025-11-25",
+      "version_status": "Selected published schema path; not asserted to be the latest MCP revision.",
+      "source_commit": "c4c367f9f58296a7053f5c78a52fd02bfbb56a49",
+      "display_url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/c4c367f9f58296a7053f5c78a52fd02bfbb56a49/schema/2025-11-25/schema.ts",
+      "sections": [
+        "ToolAnnotations",
+        "Tool"
+      ],
+      "supports": [
+        "Tool annotations are hints, with read-only, destructive, idempotence and open-world fields.",
+        "The schema warns against tool-use decisions based on annotations from untrusted servers."
+      ],
+      "limits": [
+        "Does not establish invocation-specific completeness, independent evidence, authorization or a registered Action-Effect extension.",
+        "This source version is not the MCP SDK package version or the protocol version negotiated in a run."
+      ],
+      "verification_scope": "Complete response retrieved; listed relevant source sections inspected.",
+      "retrieval": {
+        "official_url": "https://api.github.com/repos/modelcontextprotocol/modelcontextprotocol/contents/schema/2025-11-25/schema.ts?ref=c4c367f9f58296a7053f5c78a52fd02bfbb56a49",
+        "effective_url": "https://api.github.com/repos/modelcontextprotocol/modelcontextprotocol/contents/schema/2025-11-25/schema.ts?ref=c4c367f9f58296a7053f5c78a52fd02bfbb56a49",
+        "method": "curl HTTP GET",
+        "started_at_utc": "2026-10-19T03:22:39.688Z",
+        "retrieved_at_utc": "2026-10-19T03:22:40.428Z",
+        "http_status": 200,
+        "curl_exit_code": 0,
+        "content_type": "application/vnd.github.raw+json; charset=utf-8",
+        "body_bytes": 66671,
+        "raw_body_sha256": "e74b56e73b2e37bdb595f74ba22e428ad7f07aa3519355ba661d681298ed38ac",
+        "complete_response": true,
+        "request_accept": "application/vnd.github.raw+json"
+      }
+    },
+    {
+      "id": "S2",
+      "title": "Authorization API 1.0",
+      "publisher": "OpenID Foundation, AuthZEN Working Group",
+      "version": "1.0",
+      "version_status": "Final; published 11 January 2026 as stated in the retrieved document.",
+      "display_url": "https://openid.net/specs/authorization-api-1_0.html",
+      "sections": [
+        "5 Information Model",
+        "5.5 Decision",
+        "6 Access Evaluation API",
+        "7 Access Evaluations API"
+      ],
+      "supports": [
+        "Subject/action/resource/context authorization exchange already exists.",
+        "A successful decision has a required boolean decision and optional context; an application must explicitly map review and processing failures."
+      ],
+      "limits": [
+        "Does not standardize an Action-Effect context attribute or prove the truth of mapped effects.",
+        "Successful transport or a PDP failure is not automatically a correct semantic denial."
+      ],
+      "verification_scope": "Complete response retrieved; listed relevant source sections inspected.",
+      "retrieval": {
+        "official_url": "https://openid.net/specs/authorization-api-1_0.html",
+        "effective_url": "https://openid.net/specs/authorization-api-1_0.html",
+        "method": "curl HTTP GET",
+        "started_at_utc": "2026-10-19T03:21:47.562Z",
+        "retrieved_at_utc": "2026-10-19T03:21:47.985Z",
+        "http_status": 200,
+        "curl_exit_code": 0,
+        "content_type": "text/html",
+        "body_bytes": 244580,
+        "raw_body_sha256": "f0ee89cc4a688f9f409dc323c8342579d74c45dc776a6b04a622ba9738de82bc",
+        "complete_response": true
+      }
+    },
+    {
+      "id": "S3",
+      "title": "RFC 9396: OAuth 2.0 Rich Authorization Requests",
+      "publisher": "RFC Editor / IETF",
+      "version": "RFC 9396, May 2023",
+      "version_status": "Standards Track RFC.",
+      "display_url": "https://www.rfc-editor.org/rfc/rfc9396.txt",
+      "sections": [
+        "2 Request Parameter authorization_details",
+        "2.2 Common Data Fields",
+        "6.1 Comparing Authorization Details",
+        "7 Token Response",
+        "9 Resource Servers"
+      ],
+      "supports": [
+        "Structured authorization details and separate objects for distinct permission combinations already exist.",
+        "Type-specific semantics determine comparison; the RFC does not define a universal arbitrary-details subset comparator.",
+        "Requested details, granted details assigned to a token, and resource-server enforcement are distinct."
+      ],
+      "limits": [
+        "Tuple preservation is not novel solely because Action-Effect also requires it.",
+        "A request or effect description is not a current authority grant."
+      ],
+      "verification_scope": "Complete response retrieved; listed relevant source sections inspected.",
+      "retrieval": {
+        "official_url": "https://www.rfc-editor.org/rfc/rfc9396.txt",
+        "effective_url": "https://www.rfc-editor.org/rfc/rfc9396.txt",
+        "method": "curl HTTP GET",
+        "started_at_utc": "2026-10-19T03:21:48.028Z",
+        "retrieved_at_utc": "2026-10-19T03:21:49.768Z",
+        "http_status": 200,
+        "curl_exit_code": 0,
+        "content_type": "text/plain;charset=utf-8",
+        "body_bytes": 65926,
+        "raw_body_sha256": "d6a8f032d8a585daae1c33a8c7b6e539d199f886ec8cc1c7898436f7f2eed29c",
+        "complete_response": true
+      },
+      "additional_inspections": [
+        {
+          "official_url": "https://www.rfc-editor.org/rfc/rfc9396.txt",
+          "retrieved_at_utc": "2026-10-19T03:24:02.313Z",
+          "http_status": 200,
+          "curl_exit_code": 0,
+          "raw_body_sha256": "d6a8f032d8a585daae1c33a8c7b6e539d199f886ec8cc1c7898436f7f2eed29c",
+          "body_bytes": 65926,
+          "purpose": "Separate permission objects and type-specific comparison."
+        },
+        {
+          "official_url": "https://www.rfc-editor.org/rfc/rfc9396.txt",
+          "retrieved_at_utc": "2026-10-19T03:37:25.616Z",
+          "http_status": 200,
+          "curl_exit_code": 0,
+          "raw_body_sha256": "d6a8f032d8a585daae1c33a8c7b6e539d199f886ec8cc1c7898436f7f2eed29c",
+          "body_bytes": 65926,
+          "purpose": "Granted token response and resource-server enforcement sections."
+        }
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "OPA REST API documentation",
+      "publisher": "Open Policy Agent",
+      "version": "Documentation source snapshot 7bcf86187363b525802096f4668c2db1e058a831",
+      "version_status": "Commit-pinned documentation, not an installed-engine or release-tag claim.",
+      "source_commit": "7bcf86187363b525802096f4668c2db1e058a831",
+      "display_url": "https://github.com/open-policy-agent/opa/blob/7bcf86187363b525802096f4668c2db1e058a831/docs/docs/rest-api.md",
+      "sections": [
+        "Data API",
+        "Get a Document",
+        "Get a Document (with Input)",
+        "strict-builtin-errors query parameter"
+      ],
+      "supports": [
+        "The Data API accepts structured input and returns evaluated documents.",
+        "An undefined document can yield HTTP 200 without a result property.",
+        "Strict built-in error handling is a declared API option, not something to assume implicitly."
+      ],
+      "limits": [
+        "A required total-decision wrapper must validate outputs; HTTP status alone is insufficient.",
+        "Documentation alone does not establish the installed engine; current_measured_evidence separately records the actual OPA 1.21.2 report and binary identity."
+      ],
+      "verification_scope": "Complete response retrieved; listed relevant source sections inspected.",
+      "retrieval": {
+        "official_url": "https://api.github.com/repos/open-policy-agent/opa/contents/docs/docs/rest-api.md?ref=7bcf86187363b525802096f4668c2db1e058a831",
+        "effective_url": "https://api.github.com/repos/open-policy-agent/opa/contents/docs/docs/rest-api.md?ref=7bcf86187363b525802096f4668c2db1e058a831",
+        "method": "curl HTTP GET",
+        "started_at_utc": "2026-10-19T03:22:53.502Z",
+        "retrieved_at_utc": "2026-10-19T03:22:55.884Z",
+        "http_status": 200,
+        "curl_exit_code": 0,
+        "content_type": "application/vnd.github.raw+json; charset=utf-8",
+        "body_bytes": 72962,
+        "raw_body_sha256": "6bd4a35e82674deed8706db5004f17ac1b55977de786b3997944e53d544c516b",
+        "complete_response": true,
+        "request_accept": "application/vnd.github.raw+json"
+      }
+    },
+    {
+      "id": "S5",
+      "title": "OPA Policy Language documentation",
+      "publisher": "Open Policy Agent",
+      "version": "Documentation source snapshot 7bcf86187363b525802096f4668c2db1e058a831",
+      "version_status": "Commit-pinned documentation, not an installed-engine or release-tag claim.",
+      "source_commit": "7bcf86187363b525802096f4668c2db1e058a831",
+      "display_url": "https://github.com/open-policy-agent/opa/blob/7bcf86187363b525802096f4668c2db1e058a831/docs/docs/policy-language.md",
+      "sections": [
+        "Objects",
+        "Sets",
+        "Default Keyword",
+        "Built-in Functions / Errors"
+      ],
+      "supports": [
+        "Rego can evaluate complete structured facts; a flattened keyword baseline would be artificially weak.",
+        "Defaults, undefined values, and optional strict built-in errors have documented semantics."
+      ],
+      "limits": [
+        "Policy-language expression semantics and framework crashes must not be conflated.",
+        "No OPA performance, correctness, or matched-baseline run is established here."
+      ],
+      "verification_scope": "Complete response retrieved; listed relevant source sections inspected.",
+      "retrieval": {
+        "official_url": "https://api.github.com/repos/open-policy-agent/opa/contents/docs/docs/policy-language.md?ref=7bcf86187363b525802096f4668c2db1e058a831",
+        "effective_url": "https://api.github.com/repos/open-policy-agent/opa/contents/docs/docs/policy-language.md?ref=7bcf86187363b525802096f4668c2db1e058a831",
+        "method": "curl HTTP GET",
+        "started_at_utc": "2026-10-19T03:22:55.919Z",
+        "retrieved_at_utc": "2026-10-19T03:22:56.750Z",
+        "http_status": 200,
+        "curl_exit_code": 0,
+        "content_type": "application/vnd.github.raw+json; charset=utf-8",
+        "body_bytes": 118657,
+        "raw_body_sha256": "4b242f9eee53ae85cdb9e073e8fd8addfe60177b0d33c7de371a0c0f2cbbb7fc",
+        "complete_response": true,
+        "request_accept": "application/vnd.github.raw+json"
+      }
+    },
+    {
+      "id": "S6",
+      "title": "Cedar authorization documentation",
+      "publisher": "Cedar policy project",
+      "version": "Documentation source snapshot 3a37098eba6e02e716949cfc92b889b38db25602",
+      "version_status": "Commit-pinned documentation; no engine release or execution is claimed.",
+      "source_commit": "3a37098eba6e02e716949cfc92b889b38db25602",
+      "display_url": "https://github.com/cedar-policy/cedar-docs/blob/3a37098eba6e02e716949cfc92b889b38db25602/docs/collections/_auth/authorization.md",
+      "sections": [
+        "Request creation",
+        "Request authorization",
+        "Discussion"
+      ],
+      "supports": [
+        "Cedar requests use principal, action, resource and context.",
+        "Default deny, forbid-overrides-permit and skip-on-error are explicit semantics, with determining-policy and error diagnostics.",
+        "An error in one policy can coexist with an Allow from another policy."
+      ],
+      "limits": [
+        "Review and stricter profile failure handling require a declared wrapper rather than invented native semantics.",
+        "Cedar is a future comparison seam in this draft, not an executed pilot lane."
+      ],
+      "verification_scope": "Complete response retrieved; listed relevant source sections inspected.",
+      "retrieval": {
+        "official_url": "https://api.github.com/repos/cedar-policy/cedar-docs/contents/docs/collections/_auth/authorization.md?ref=3a37098eba6e02e716949cfc92b889b38db25602",
+        "effective_url": "https://api.github.com/repos/cedar-policy/cedar-docs/contents/docs/collections/_auth/authorization.md?ref=3a37098eba6e02e716949cfc92b889b38db25602",
+        "method": "curl HTTP GET",
+        "started_at_utc": "2026-10-19T03:22:56.784Z",
+        "retrieved_at_utc": "2026-10-19T03:22:57.456Z",
+        "http_status": 200,
+        "curl_exit_code": 0,
+        "content_type": "application/vnd.github.raw+json; charset=utf-8",
+        "body_bytes": 14707,
+        "raw_body_sha256": "44482c1359c519e73e95c3340fba50be14bde28f07d740d361a3b9e9a7d2a5bb",
+        "complete_response": true,
+        "request_accept": "application/vnd.github.raw+json"
+      }
+    },
+    {
+      "id": "S7",
+      "title": "Cedar policy validation against schema",
+      "publisher": "Cedar policy project",
+      "version": "Documentation source snapshot 3a37098eba6e02e716949cfc92b889b38db25602",
+      "version_status": "Commit-pinned documentation; no engine release or execution is claimed.",
+      "source_commit": "3a37098eba6e02e716949cfc92b889b38db25602",
+      "display_url": "https://github.com/cedar-policy/cedar-docs/blob/3a37098eba6e02e716949cfc92b889b38db25602/docs/collections/_policies/validation.md",
+      "sections": [
+        "Cedar policy validation against schema",
+        "Example of schema-based validation"
+      ],
+      "supports": [
+        "Schema-based policy validation checks application entity/action/context expectations.",
+        "Schema changes can invalidate earlier policy validation and lead to authorization errors."
+      ],
+      "limits": [
+        "Validation is not authentication or factual verification of supplied attributes.",
+        "No real Cedar adapter or result is inferred from these documents."
+      ],
+      "verification_scope": "Complete response retrieved; listed relevant source sections inspected.",
+      "retrieval": {
+        "official_url": "https://api.github.com/repos/cedar-policy/cedar-docs/contents/docs/collections/_policies/validation.md?ref=3a37098eba6e02e716949cfc92b889b38db25602",
+        "effective_url": "https://api.github.com/repos/cedar-policy/cedar-docs/contents/docs/collections/_policies/validation.md?ref=3a37098eba6e02e716949cfc92b889b38db25602",
+        "method": "curl HTTP GET",
+        "started_at_utc": "2026-10-19T03:23:59.890Z",
+        "retrieved_at_utc": "2026-10-19T03:24:00.547Z",
+        "http_status": 200,
+        "curl_exit_code": 0,
+        "content_type": "application/vnd.github.raw+json; charset=utf-8",
+        "body_bytes": 19402,
+        "raw_body_sha256": "d57e5645e5dd7113b4513c28e322607b4472460697d3489a36283898fd125264",
+        "complete_response": true,
+        "request_accept": "application/vnd.github.raw+json"
+      }
+    },
+    {
+      "id": "S8",
+      "title": "RFC 9700: Best Current Practice for OAuth 2.0 Security",
+      "publisher": "RFC Editor / IETF",
+      "version": "RFC 9700, January 2025",
+      "version_status": "Best Current Practice.",
+      "display_url": "https://www.rfc-editor.org/rfc/rfc9700.txt",
+      "sections": [
+        "2.3 Access Token Privilege Restriction"
+      ],
+      "supports": [
+        "Access-token privilege restriction and resource-server audience checking remain separate obligations.",
+        "Effect evidence must not substitute for authenticated resource authorization."
+      ],
+      "limits": [
+        "This citation is not an implemented OAuth flow, security certification, or comprehensive OAuth review."
+      ],
+      "verification_scope": "Complete response retrieved; listed relevant source sections inspected.",
+      "retrieval": {
+        "official_url": "https://www.rfc-editor.org/rfc/rfc9700.txt",
+        "effective_url": "https://www.rfc-editor.org/rfc/rfc9700.txt",
+        "method": "curl HTTP GET",
+        "started_at_utc": "2026-10-19T03:23:23.891Z",
+        "retrieved_at_utc": "2026-10-19T03:23:24.900Z",
+        "http_status": 200,
+        "curl_exit_code": 0,
+        "content_type": "text/plain;charset=utf-8",
+        "body_bytes": 124673,
+        "raw_body_sha256": "9919d061d40a97886ca866b51c69389b6c81c65cd4b979056c14fdbebfcf622a",
+        "complete_response": true
+      }
+    },
+    {
+      "id": "S9",
+      "title": "PROV-DM: The PROV Data Model",
+      "publisher": "W3C",
+      "version": "W3C Recommendation, 30 April 2013",
+      "version_status": "Dated Recommendation URL, not a mutable latest-page identity.",
+      "display_url": "https://www.w3.org/TR/2013/REC-prov-dm-20130430/",
+      "sections": [
+        "Abstract",
+        "2 PROV Overview",
+        "5 PROV-DM Types and Relations"
+      ],
+      "supports": [
+        "Entities, activities, agents and derivations provide provenance concepts."
+      ],
+      "limits": [
+        "Provenance structure alone does not authenticate the truth or completeness of the described facts."
+      ],
+      "verification_scope": "Complete response retrieved; listed relevant source sections inspected.",
+      "retrieval": {
+        "official_url": "https://www.w3.org/TR/2013/REC-prov-dm-20130430/",
+        "effective_url": "https://www.w3.org/TR/2013/REC-prov-dm-20130430/",
+        "method": "curl HTTP GET",
+        "started_at_utc": "2026-10-19T03:24:00.586Z",
+        "retrieved_at_utc": "2026-10-19T03:24:01.490Z",
+        "http_status": 200,
+        "curl_exit_code": 0,
+        "content_type": "text/html; charset=utf-8",
+        "body_bytes": 271572,
+        "raw_body_sha256": "5c925c21bc96c285b25017c3b90d82cf74251d07713b71fcb81ca60f873c9e88",
+        "complete_response": true
+      }
+    },
+    {
+      "id": "S10",
+      "title": "RFC 8785: JSON Canonicalization Scheme (JCS)",
+      "publisher": "RFC Editor, Independent Submission",
+      "version": "RFC 8785, June 2020",
+      "version_status": "Informational.",
+      "display_url": "https://www.rfc-editor.org/rfc/rfc8785.txt",
+      "sections": [
+        "3.1 Creation of Input Data",
+        "3.2 Generation of Canonical JSON Data"
+      ],
+      "supports": [
+        "Canonical JSON supports repeatable content identity, with defined numeric and string requirements.",
+        "JCS does not apply Unicode normalization; higher-precision values may require strings."
+      ],
+      "limits": [
+        "A digest is not a signature, semantic truth, current permission, or a complete effect bound.",
+        "The offline consumer's safe-integer token subset must not be called full binary64/JCS support."
+      ],
+      "verification_scope": "Complete response retrieved; listed relevant source sections inspected.",
+      "retrieval": {
+        "official_url": "https://www.rfc-editor.org/rfc/rfc8785.txt",
+        "effective_url": "https://www.rfc-editor.org/rfc/rfc8785.txt",
+        "method": "curl HTTP GET",
+        "started_at_utc": "2026-10-19T03:23:24.942Z",
+        "retrieved_at_utc": "2026-10-19T03:23:25.576Z",
+        "http_status": 200,
+        "curl_exit_code": 0,
+        "content_type": "text/plain;charset=utf-8",
+        "body_bytes": 41879,
+        "raw_body_sha256": "63d52294eb0e3f0014174288186d388b4ddbf2c67d1ce8af1d9726eb0c3ab240",
+        "complete_response": true
+      }
+    },
+    {
+      "id": "S11",
+      "title": "GitHub REST API endpoints for issue comments",
+      "publisher": "GitHub",
+      "version": "Selected REST API documentation version 2022-11-28",
+      "version_status": "Version selected by query and confirmed in the returned page; live documentation bytes are snapshot-hashed.",
+      "display_url": "https://docs.github.com/en/rest/issues/comments?apiVersion=2022-11-28",
+      "sections": [
+        "Create an issue comment",
+        "Get an issue comment"
+      ],
+      "supports": [
+        "Comment creation has a documented notification side effect and secondary-rate-limiting warning.",
+        "A separate read operation provides an interface for inspecting a comment."
+      ],
+      "limits": [
+        "This documentation snapshot is not a runtime trace. The measured provider configuration and report/source identities are recorded separately in current_measured_evidence.",
+        "Comment readback does not establish all notification recipients, delivery, webhooks or transitive effects.",
+        "Interface documentation is not independently authored governance labels or a live observation."
+      ],
+      "verification_scope": "Complete response retrieved; listed relevant source sections inspected.",
+      "retrieval": {
+        "official_url": "https://docs.github.com/en/rest/issues/comments?apiVersion=2022-11-28",
+        "effective_url": "https://docs.github.com/en/rest/issues/comments?apiVersion=2022-11-28",
+        "method": "curl HTTP GET",
+        "started_at_utc": "2026-10-19T03:23:19.406Z",
+        "retrieved_at_utc": "2026-10-19T03:23:22.445Z",
+        "http_status": 200,
+        "curl_exit_code": 0,
+        "content_type": "text/html; charset=utf-8",
+        "body_bytes": 458782,
+        "raw_body_sha256": "c9b3435542e7f73372700b9d0e2e368f8be4a3d8ba38b0ad6bedcd16eb2ea82f",
+        "complete_response": true
+      }
+    },
+    {
+      "id": "S12",
+      "title": "RFC 9110: HTTP Semantics",
+      "publisher": "RFC Editor / IETF",
+      "version": "RFC 9110, June 2022",
+      "version_status": "Standards Track RFC.",
+      "display_url": "https://www.rfc-editor.org/rfc/rfc9110.txt",
+      "sections": [
+        "9.2.2 Idempotent Methods"
+      ],
+      "supports": [
+        "Automatic retry of a non-idempotent request requires a basis for knowing it is safe or was not applied.",
+        "An uncertain response cannot simply be treated as proof of non-execution."
+      ],
+      "limits": [
+        "A local occurrence marker or MCP hint is not a provider idempotency mechanism.",
+        "No exactly-once or cross-provider atomicity guarantee follows."
+      ],
+      "verification_scope": "Complete response retrieved; listed relevant source sections inspected.",
+      "retrieval": {
+        "official_url": "https://www.rfc-editor.org/rfc/rfc9110.txt",
+        "effective_url": "https://www.rfc-editor.org/rfc/rfc9110.txt",
+        "method": "curl HTTP GET",
+        "started_at_utc": "2026-10-19T03:23:22.483Z",
+        "retrieved_at_utc": "2026-10-19T03:23:23.857Z",
+        "http_status": 200,
+        "curl_exit_code": 0,
+        "content_type": "text/plain;charset=utf-8",
+        "body_bytes": 502941,
+        "raw_body_sha256": "21c1cdce6ab0e5509b04d84a28000836c7a087cf786efe6f04877ebfff47232a",
+        "complete_response": true
+      }
+    },
+    {
+      "id": "S13",
+      "title": "Official GitHub REST API description source commit",
+      "publisher": "GitHub",
+      "version": "Commit 755ee33b4a81d51f6f07a902cce26cbec3b822f2",
+      "version_status": "Official commit identity verified; commit timestamp 2026-10-18T01:08:28Z.",
+      "source_commit": "755ee33b4a81d51f6f07a902cce26cbec3b822f2",
+      "display_url": "https://github.com/github/rest-api-description/commit/755ee33b4a81d51f6f07a902cce26cbec3b822f2",
+      "sections": [
+        "Commit identity and source-tree pointer"
+      ],
+      "supports": [
+        "The exact upstream commit supplied by the implementation team exists in the official source repository."
+      ],
+      "limits": [
+        "Only the commit metadata was inspected here, not the implementation team's extracted OpenAPI operation or complete schema.",
+        "The response hash identifies commit-API JSON, not an OpenAPI-file or extraction digest.",
+        "The implementation team reports extraction with the upstream MIT notice; exact file/version, reference closure and extraction digest remain required.",
+        "Upstream interface data is not independent governance labeling, execution permission or provider evidence."
+      ],
+      "verification_scope": "Official commit metadata identity only.",
+      "retrieval": {
+        "official_url": "https://api.github.com/repos/github/rest-api-description/commits/755ee33b4a81d51f6f07a902cce26cbec3b822f2",
+        "effective_url": "https://api.github.com/repos/github/rest-api-description/commits/755ee33b4a81d51f6f07a902cce26cbec3b822f2",
+        "method": "curl HTTP GET",
+        "started_at_utc": "2026-10-19T03:37:22.346Z",
+        "retrieved_at_utc": "2026-10-19T03:37:24.688Z",
+        "http_status": 200,
+        "curl_exit_code": 0,
+        "content_type": "application/json; charset=utf-8",
+        "body_bytes": 5801,
+        "raw_body_sha256": "ea4854ed9ae146081db5ae62c2d89a82dd31772e44675e7d9e075d1ff96b3a3c",
+        "complete_response": true
+      }
+    }
+  ],
+  "incomplete_retrievals": [
+    {
+      "source_id": "S1",
+      "requested_url": "https://raw.githubusercontent.com/modelcontextprotocol/modelcontextprotocol/c4c367f9f58296a7053f5c78a52fd02bfbb56a49/schema/2025-11-25/schema.ts",
+      "effective_url": "https://raw.githubusercontent.com/modelcontextprotocol/modelcontextprotocol/c4c367f9f58296a7053f5c78a52fd02bfbb56a49/schema/2025-11-25/schema.ts",
+      "started_at_utc": "2026-10-19T03:21:46.399Z",
+      "retrieved_at_utc": "2026-10-19T03:22:12.729Z",
+      "http_status": 200,
+      "curl_exit_code": 56,
+      "received_partial_body_bytes": 38781,
+      "received_partial_body_sha256": "efa3f61786a6314245b748936423f5ac0e2d28a1f6dde5be416084e6a9313e82",
+      "verification_status": "Not a verified complete source; HTTP 200 did not make the interrupted transfer complete.",
+      "reason": "Recv failure: Operation timed out; partial response not a verified full source.",
+      "recovery": "S1 was retrieved successfully from the official GitHub Contents API at the same commit. The partial response is not used as its source hash."
+    }
+  ],
+  "project_input_snapshots": {
+    "path_base": "Public paths below are relative to the Action-Effect-Bench repository root.",
+    "starting_spec_commit": "ff5de37da6402c5a0e42d1a9cc7d4880579e374d",
+    "starting_bench_commit": "5f439f2eb76e54a0dc870f2a8db7fc17f84e626e",
+    "status": "Editorial input identities, not a runtime measurement freeze or the final integration tree.",
+    "files": [
+      {
+        "path": "../action-effect-spec/SPEC.md",
+        "version": "0.1.0-draft.1",
+        "raw_file_sha256": "7e391c1ac5f1ed6edcf85a39aa39a1a2e852678da67baf3691927daa807ddca6"
+      },
+      {
+        "path": "../action-effect-spec/SOURCE-NOTES.md",
+        "raw_file_sha256": "b61dcd0c88ffb0158e41bf6e3f0f1cc66f09962de53cfdde6eed8f0848a84d98"
+      },
+      {
+        "path": "../action-effect-spec/PUBLICATION.md",
+        "raw_file_sha256": "e3ba6014c51350a1d885302a7c870ebf2f5b4c9266b7beadf87c4eddedb7717f"
+      },
+      {
+        "path": "docs/design/2026-10-19-runtime-pilot.md",
+        "raw_file_sha256": "dd5b0fc50cc67be5ee2ec882d1c85dc8fde529c34a17981efc8c878bd9f8fd27"
+      },
+      {
+        "path": "PROTOCOL.md",
+        "raw_file_sha256": "ae8abdc865ea65f39449c7c12c67c50151f5e703bd69edabba545261abe69b6e"
+      },
+      {
+        "path": "../action-effect-spec/profiles/github-issue-comment/README.md",
+        "version": "GitHub Issue Comment Profile 1; release v0.2.0-draft.1; core wire 0.1.0-draft.1",
+        "raw_file_sha256": "cd65fb8c74ca42ecc3c65ea758ff5c17aba2ea155e053f45c48cbe742bafd3c2",
+        "status": "Historical working-document snapshot. Released document bytes are recorded in P1; the measured profile and executable sources are identified in current_measured_evidence."
+      }
+    ],
+    "historical_context": {
+      "description": "Earlier prospective manuscript, authorized read-only editorial context; not redistributed, relabeled or used as a new runtime result.",
+      "raw_file_sha256": "9885ea5ea45dc18f867da853fe4e4b2bef0872cff81987834a76da6f44091927"
+    }
+  },
+  "project_evidence_updates": {
+    "editorial_revision_date": "2026-10-19",
+    "editorial_timezone": "America/Toronto",
+    "editorial_utc_offset": "-04:00",
+    "scope": "Historical release, CI, legacy-comparison and pre-live preparation checkpoints. These are retained for provenance, not current runtime status; current_measured_evidence identifies the completed study.",
+    "records": [
+      {
+        "id": "P1",
+        "kind": "published_project_prerelease",
+        "repository": "https://github.com/OndCo/Action-Effect-Spec",
+        "release_url": "https://github.com/OndCo/Action-Effect-Spec/releases/tag/v0.2.0-draft.1",
+        "version": "v0.2.0-draft.1",
+        "core_wire_version": "0.1.0-draft.1",
+        "release_id": 416886201,
+        "github_draft": false,
+        "github_prerelease": true,
+        "published_at_utc": "2026-10-19T03:55:59Z",
+        "published_at_toronto": "2026-10-18T23:55:59-04:00",
+        "annotated_tag_object": "3047407db1979c7e429dda4d41ba48cf93e363d6",
+        "resolved_commit": "a9b86f4b529a5e330c2a9bf1b8c4c259a7b36e40",
+        "verification_scope": "Official release metadata and annotated-tag dereference verified against the supplied commit and local Bench spec-lock. Publication is a working prerelease, not a stable standard or publication of the manuscript.",
+        "changes_relevant_to_manuscript": [
+          "GitHub Issue Comment Profile 1 is released as an additive partial direct-effect profile.",
+          "Opt-in offline-consumer-v1.1 specifies trusted startup-configuration rejection and compound final-projection error precedence without rewriting the frozen v1 contract or its legacy defaults."
+        ],
+        "spec_lock": {
+          "path": "spec-lock.json",
+          "inspected_at_utc": "2026-10-19T04:04:26.893Z",
+          "raw_file_sha256": "04c3bd7230e86787288feee4c105c19f1fd9b62cad24aaa4f106a87bc43ac711",
+          "format": "action-effect-spec-lock-v1",
+          "repository": "https://github.com/OndCo/Action-Effect-Spec.git",
+          "commit": "a9b86f4b529a5e330c2a9bf1b8c4c259a7b36e40",
+          "spec_version": "0.1.0-draft.1",
+          "consumer_profile": "offline-consumer-v1",
+          "local_directory": "action-effect-spec"
+        },
+        "released_document_snapshots": [
+          {
+            "path": "../action-effect-spec/SPEC.md",
+            "commit": "a9b86f4b529a5e330c2a9bf1b8c4c259a7b36e40",
+            "read_method": "git show of local Git object at verified released commit",
+            "inspected_at_utc": "2026-10-19T04:04:26.893Z",
+            "raw_file_sha256": "7e391c1ac5f1ed6edcf85a39aa39a1a2e852678da67baf3691927daa807ddca6",
+            "bytes": 20807
+          },
+          {
+            "path": "../action-effect-spec/PUBLICATION.md",
+            "commit": "a9b86f4b529a5e330c2a9bf1b8c4c259a7b36e40",
+            "read_method": "git show of local Git object at verified released commit",
+            "inspected_at_utc": "2026-10-19T04:04:26.893Z",
+            "raw_file_sha256": "340e4147f1bf54481c9704fc56863684cbc850926732e4588d1d529842e09535",
+            "bytes": 4626
+          },
+          {
+            "path": "../action-effect-spec/profiles/github-issue-comment/README.md",
+            "commit": "a9b86f4b529a5e330c2a9bf1b8c4c259a7b36e40",
+            "read_method": "git show of local Git object at verified released commit",
+            "inspected_at_utc": "2026-10-19T04:04:26.893Z",
+            "raw_file_sha256": "8ca3eadc8f38e220c006ae22cc3f4737250379233271fb5345b68a67e6f3a691",
+            "bytes": 6396
+          }
+        ],
+        "retrievals": [
+          {
+            "official_url": "https://api.github.com/repos/OndCo/Action-Effect-Spec/releases/tags/v0.2.0-draft.1",
+            "effective_url": "https://api.github.com/repos/OndCo/Action-Effect-Spec/releases/tags/v0.2.0-draft.1",
+            "method": "curl HTTP GET",
+            "started_at_utc": "2026-10-19T04:02:46.133Z",
+            "retrieved_at_utc": "2026-10-19T04:02:47.308Z",
+            "http_status": 200,
+            "curl_exit_code": 0,
+            "content_type": "application/json; charset=utf-8",
+            "body_bytes": 2555,
+            "raw_body_sha256": "755593e42a1d56fb571f394d62baec8c3dacf0df51f08d8206a409427c9a184e",
+            "complete_response": true
+          },
+          {
+            "official_url": "https://api.github.com/repos/OndCo/Action-Effect-Spec/git/ref/tags/v0.2.0-draft.1",
+            "effective_url": "https://api.github.com/repos/OndCo/Action-Effect-Spec/git/ref/tags/v0.2.0-draft.1",
+            "method": "curl HTTP GET",
+            "started_at_utc": "2026-10-19T04:02:47.345Z",
+            "retrieved_at_utc": "2026-10-19T04:02:47.922Z",
+            "http_status": 200,
+            "curl_exit_code": 0,
+            "content_type": "application/json; charset=utf-8",
+            "body_bytes": 409,
+            "raw_body_sha256": "5f922913990fcd7c61712ad5f69185f40fb63e7bad942857e42b007d2bd1ece3",
+            "complete_response": true
+          },
+          {
+            "official_url": "https://api.github.com/repos/OndCo/Action-Effect-Spec/git/tags/3047407db1979c7e429dda4d41ba48cf93e363d6",
+            "effective_url": "https://api.github.com/repos/OndCo/Action-Effect-Spec/git/tags/3047407db1979c7e429dda4d41ba48cf93e363d6",
+            "method": "curl HTTP GET",
+            "started_at_utc": "2026-10-19T04:03:23.499Z",
+            "retrieved_at_utc": "2026-10-19T04:03:24.197Z",
+            "http_status": 200,
+            "curl_exit_code": 0,
+            "content_type": "application/json; charset=utf-8",
+            "body_bytes": 843,
+            "raw_body_sha256": "6d246f098d4f90c10cb2e6d1d1ec689c897fb7359ddf392a21456e6ab09b398f",
+            "complete_response": true
+          }
+        ]
+      },
+      {
+        "id": "P2",
+        "kind": "spec_ci_not_runtime_measurement",
+        "source_commit": "a9b86f4b529a5e330c2a9bf1b8c4c259a7b36e40",
+        "workflow_run_url": "https://github.com/OndCo/Action-Effect-Spec/actions/runs/39196811075",
+        "jobs": [
+          {
+            "id": 117881248444,
+            "name": "unit (ubuntu-latest, 22, 3.11)",
+            "head_sha": "a9b86f4b529a5e330c2a9bf1b8c4c259a7b36e40",
+            "status": "completed",
+            "conclusion": "success",
+            "started_at": "2026-10-19T03:53:35Z",
+            "completed_at": "2026-10-19T03:53:50Z",
+            "html_url": "https://github.com/OndCo/Action-Effect-Spec/actions/runs/39196811075/job/117881248444"
+          },
+          {
+            "id": 117881248192,
+            "name": "unit (macos-latest, 24, 3.13)",
+            "head_sha": "a9b86f4b529a5e330c2a9bf1b8c4c259a7b36e40",
+            "status": "completed",
+            "conclusion": "success",
+            "started_at": "2026-10-19T03:53:40Z",
+            "completed_at": "2026-10-19T03:54:08Z",
+            "html_url": "https://github.com/OndCo/Action-Effect-Spec/actions/runs/39196811075/job/117881248192"
+          }
+        ],
+        "release_note_test_counts": {
+          "javascript": 64,
+          "python": 115
+        },
+        "test_count_source": "The official release notes retrieved in P1 report these counts. CI job success was verified from check-run metadata; test logs were not independently recounted.",
+        "limits": "Spec unit coverage and CI success are not evidence of completed MCP/Octokit/OPA runtime measurements, live effects, independent validation, or production readiness.",
+        "retrieval": {
+          "official_url": "https://api.github.com/repos/OndCo/Action-Effect-Spec/commits/a9b86f4b529a5e330c2a9bf1b8c4c259a7b36e40/check-runs?per_page=100",
+          "effective_url": "https://api.github.com/repos/OndCo/Action-Effect-Spec/commits/a9b86f4b529a5e330c2a9bf1b8c4c259a7b36e40/check-runs?per_page=100",
+          "method": "curl HTTP GET",
+          "started_at_utc": "2026-10-19T04:02:47.958Z",
+          "retrieved_at_utc": "2026-10-19T04:02:48.670Z",
+          "http_status": 200,
+          "curl_exit_code": 0,
+          "content_type": "application/json; charset=utf-8",
+          "body_bytes": 8674,
+          "raw_body_sha256": "ca90030430f13f463b3bb909cdd456778c297d5a1636be3c9910f3e48e5f395c",
+          "complete_response": true
+        }
+      },
+      {
+        "id": "P3",
+        "kind": "original_corpus_offline_comparison_rerun",
+        "path": "reports/offline-consumers-2026-10-19T03-59-16-707Z.json",
+        "inspected_at_utc": "2026-10-19T04:04:26.893Z",
+        "raw_file_sha256": "9f05a97f7d6a563d02d3e1deb37d4f86b48e775640744412c691804f3e679377",
+        "bytes": 196221,
+        "format": "offline-consumer-comparison-v1",
+        "started_at": "2026-10-19T03:59:16.707Z",
+        "completed_at": "2026-10-19T03:59:34.431Z",
+        "classification": "public-development-not-independent-external",
+        "runtimes": {
+          "javascript": "v22.18.0",
+          "python": "Python 3.9.6"
+        },
+        "scope": "Exposed development checks of one finite synthetic partial declaration profile; not policy or full core conformance.",
+        "timing_scope": "Per-process startup, transport and evaluation diagnostics; not performance rankings or execution latency.",
+        "regression_scope": "Post-review cases are controller-authored after observing defects, not independent or held-out samples.",
+        "passed": true,
+        "summary": {
+          "cases": 102,
+          "frozen_public_development_cases": 80,
+          "post_review_regression_cases": 22,
+          "frozen_public_javascript_matches": 80,
+          "frozen_public_python_matches": 80,
+          "javascript_expected_matches": 102,
+          "python_expected_matches": 102,
+          "cross_implementation_agreement": 102,
+          "javascript_adapter_failures": 0,
+          "python_adapter_failures": 0,
+          "sources_unchanged_during_run": true,
+          "external_independent_evaluations": 0,
+          "live_authorization_decisions": 0,
+          "real_provider_side_effects": 0
+        },
+        "inspection_scope": "Only top-level metadata and the summary were inspected and the raw report bytes hashed. Per-case results were not independently rescored; no new-runtime report or case JSON was inspected.",
+        "historical_archive_note": "The user reports original historical source reports remain untouched. This documentation update reads the new rerun report only and does not rewrite reports.",
+        "limits": "This exposed finite-profile comparison is not a new runtime result, live authorization result, provider-side-effect observation, or independent external cohort."
+      },
+      {
+        "id": "P4",
+        "kind": "historical_pre_live_preparation_checkpoint",
+        "issue": {
+          "id": 5917493711,
+          "number": 1,
+          "html_url": "https://github.com/OndCo/Action-Effect-Bench/issues/1",
+          "title": "Action-Effect controlled runtime pilot",
+          "state": "open",
+          "created_at": "2026-10-19T03:55:58Z",
+          "updated_at": "2026-10-19T03:55:58Z"
+        },
+        "owner_reported_checkpoint": {
+          "provenance": "Direct repository-owner/user update for this editorial revision; no exact probe timestamp or raw authenticated transcript supplied.",
+          "octokit_authentication_probe": "Reported successful and read-only.",
+          "octokit_issue_probe": "Reported successful and read-only.",
+          "comment_post_status": "No comment POST yet at the supplied checkpoint. This is not a final new-runtime observation."
+        },
+        "verification_scope": "Only public issue identity, title, state and timestamps were inspected through an unauthenticated GET. The credentialed Octokit probe was not re-executed and no comment POST was performed.",
+        "limits": "An existing issue or successful read-only probe is not permission for arbitrary readers to post, a reusable live-test target, or evidence of completed comment creation/recovery/downstream observation.",
+        "retrieval": {
+          "official_url": "https://api.github.com/repos/OndCo/Action-Effect-Bench/issues/1",
+          "effective_url": "https://api.github.com/repos/OndCo/Action-Effect-Bench/issues/1",
+          "method": "curl HTTP GET",
+          "started_at_utc": "2026-10-19T04:02:48.705Z",
+          "retrieved_at_utc": "2026-10-19T04:02:49.299Z",
+          "http_status": 200,
+          "curl_exit_code": 0,
+          "content_type": "application/json; charset=utf-8",
+          "body_bytes": 3628,
+          "raw_body_sha256": "95f88c2441862c355f67b326078859c2eb64381d3d7e29f6a56cc61bffd1627a",
+          "complete_response": true
+        }
+      }
+    ]
+  },
+  "current_evidence_pointer": "current_measured_evidence",
+  "current_measured_evidence": {
+    "status": "completed bounded offline/live study; offline and anonymous-readback live replays valid",
+    "editorial_revision_date": "2026-10-19",
+    "editorial_timezone": "America/Toronto",
+    "timezone_not_geolocation": true,
+    "source_revisions": {
+      "bench": "9f638df994504ba6f5d82c0b5409922a0be7a72e",
+      "spec": "a9b86f4b529a5e330c2a9bf1b8c4c259a7b36e40"
+    },
+    "verified_frozen_source_entries": 49,
+    "bench_dirty_state_disclosed": true,
+    "audit": {
+      "path": "paper/measurement-audit.json",
+      "raw_file_sha256": "e171e20bd82510196b258acfc2452355967aeeba845d14489bfae580deb480d6",
+      "role": "Read-only audit of retained report bytes, JSON-value arithmetic, frozen Git source hashes, journal consistency and supplied replay results. This is not another experiment, independent case authoring, an external evaluation, or operator authentication."
+    },
+    "offline": {
+      "path": "reports/runtime-pilot-offline-2026-10-19T04-23-54.715Z-6bb423.json",
+      "raw_file_sha256": "d2244f7a2704d6fb3624969b146e37581a181ced0cc2c88daab8675d72ef8662",
+      "checksum_verified": true,
+      "started_at_utc": "2026-10-19T04:23:46.811Z",
+      "finished_at_utc": "2026-10-19T04:23:54.694Z",
+      "counts": {
+        "cases": 55,
+        "base_intents": 22,
+        "sdk": 53,
+        "mcp": 55,
+        "lane_instances": 108
+      },
+      "total_strategy_rows": 216,
+      "strategies": {
+        "protocol": {
+          "rows": 108,
+          "case_count": 55,
+          "base_intents": 22,
+          "lane_counts": {
+            "sdk": 53,
+            "mcp": 55
+          },
+          "mapping_exact": 108,
+          "processing_states": {
+            "accepted_partial": 52,
+            "unsupported_profile": 1,
+            "invalid_input": 51,
+            "untrusted_evidence": 4
+          },
+          "accepted_rows": 52,
+          "accepted_cases": 26,
+          "accepted_base_intents": 13,
+          "accepted_by_lane": {
+            "sdk": 26,
+            "mcp": 26
+          },
+          "decision_eligible": 52,
+          "decision_exact": 52,
+          "decisions": {
+            "allow": 22,
+            "deny": 28,
+            "review": 2,
+            "not_evaluated": 56
+          },
+          "masked_mapping_errors": 0,
+          "operational_failures": 0,
+          "all_input_median_ms": 0.04239599999982602,
+          "accepted_input_median_ms": 50.39104199999974
+        },
+        "structured": {
+          "rows": 108,
+          "case_count": 55,
+          "base_intents": 22,
+          "lane_counts": {
+            "sdk": 53,
+            "mcp": 55
+          },
+          "mapping_exact": 108,
+          "processing_states": {
+            "accepted_partial": 52,
+            "unsupported_profile": 1,
+            "invalid_input": 51,
+            "untrusted_evidence": 4
+          },
+          "accepted_rows": 52,
+          "accepted_cases": 26,
+          "accepted_base_intents": 13,
+          "accepted_by_lane": {
+            "sdk": 26,
+            "mcp": 26
+          },
+          "decision_eligible": 52,
+          "decision_exact": 52,
+          "decisions": {
+            "allow": 22,
+            "deny": 28,
+            "review": 2,
+            "not_evaluated": 56
+          },
+          "masked_mapping_errors": 0,
+          "operational_failures": 0,
+          "all_input_median_ms": 44.50689599999987,
+          "accepted_input_median_ms": 48.46806249999986
+        }
+      },
+      "pure_authorization": {
+        "rows": 26,
+        "decision_exact": 26,
+        "base_intents": 13,
+        "decisions": {
+          "allow": 11,
+          "deny": 14,
+          "review": 1
+        }
+      },
+      "diagnostic": {
+        "rows": 26,
+        "mapping_exact": 0,
+        "decision_exact": 26,
+        "masked_mapping_errors": 26,
+        "role": "deliberately corrupted body digest, not a competing implementation or naturally observed defect"
+      },
+      "case_manifest_sha256": "17afe9ecdb4e4f8894ae410fef5e537c903b5597dd290d20c8e6d1b8447622ce",
+      "corpus_sha256": "f452e4fcb30a04bebe179ca6a3393b0a006497ddee2f110440bcd0e3b476ca17",
+      "accepted_median_difference_ms": 1.922979499999883,
+      "accepted_median_relative_difference_percent": 3.9675188171589992,
+      "cost_definition": "Difference and ratio of marginal medians over the same 52 accepted input/strategy rows; not a median paired percentage, statistical significance claim, useful-task latency, or provider throughput.",
+      "all_input_median_limit": "56 protocol inputs reject before Python startup; mixed all-input medians are not comparable useful-task speedup.",
+      "upstream_interface_check": {
+        "source_commit": "755ee33b4a81d51f6f07a902cce26cbec3b822f2",
+        "source_sha256": "3177ad6a86ca04c57a9bef3fc24e28a339efb8eb040c6f950af3d3ed2fee7fa3",
+        "operation": "issues/create-comment",
+        "request_example_valid": true,
+        "response_example_valid": true,
+        "missing_body_rejected": true,
+        "notifications_declared": true,
+        "checked": "upstream example structural compatibility; formats not asserted",
+        "independent_governance_labels": false
+      },
+      "extracted_interface_artifact_sha256": "be8b2b8f74734a7aa767dc4048713eb8664a75c476c12ecb4dda55f40d5cc940",
+      "upstream_limit": "Structural examples and notification declaration are upstream interface evidence, not independent governance labels or complete API semantics."
+    },
+    "live": {
+      "path": "reports/runtime-pilot-live-2026-10-19T04-26-11.245Z-731e54.json",
+      "raw_file_sha256": "6459f4f5494392774e6dba938fe555c223c944657bfbc772476bf551c1a8f1da",
+      "bytes": 307535,
+      "checksum_verified": true,
+      "run_id": "338f0652-715c-4095-84df-4f19d8e2f8c7",
+      "started_at_utc": "2026-10-19T04:24:32.195Z",
+      "finished_at_utc": "2026-10-19T04:26:11.245Z",
+      "passed": true,
+      "sources_stable": true,
+      "sources_equal_offline": true,
+      "plan_sha256": "b463c9495c4c7f3970a4497763e0ebd9ab527264bc7ec13d50e2b798052dad2f",
+      "scenario_count": 8,
+      "total_rows": 32,
+      "strategies": {
+        "protocol": {
+          "rows": 16,
+          "rows_passed": 16,
+          "outcomes": {
+            "confirmed": 4,
+            "withheld": 8,
+            "unknown": 2,
+            "duplicate_suppressed": 2
+          },
+          "withheld_decisions": {
+            "deny": 4,
+            "review": 2,
+            "evaluation_failure": 2
+          },
+          "recovered": 2,
+          "normal_n": 4,
+          "normal_median_ms": 3110.8481039999997
+        },
+        "structured": {
+          "rows": 16,
+          "rows_passed": 16,
+          "outcomes": {
+            "confirmed": 4,
+            "withheld": 8,
+            "unknown": 2,
+            "duplicate_suppressed": 2
+          },
+          "withheld_decisions": {
+            "deny": 4,
+            "review": 2,
+            "evaluation_failure": 2
+          },
+          "recovered": 2,
+          "normal_n": 4,
+          "normal_median_ms": 3161.2045000000016
+        }
+      },
+      "observations": {
+        "before_comment_count": 0,
+        "run_scoped_comment_count": 12,
+        "expected_new_comments": 12
+      },
+      "successful_ack_drop_witnesses": 4,
+      "read_only_recoveries": 4,
+      "automatic_recovery_resends": 0,
+      "entire_run_duration_ms": 99048.917666,
+      "comments": [
+        {
+          "comment_id": 6259619239,
+          "url": "https://github.com/OndCo/Action-Effect-Bench/issues/1#issuecomment-6259619239",
+          "body_sha256": "db5610253cf1fb60a0167b2aef9038994aab0bb30eaa7baab21f3bba0bf10948"
+        },
+        {
+          "comment_id": 6259620019,
+          "url": "https://github.com/OndCo/Action-Effect-Bench/issues/1#issuecomment-6259620019",
+          "body_sha256": "eff4b218717ec11854dad469007306342758ecb3b8703dfccb380063df7f5127"
+        },
+        {
+          "comment_id": 6259620805,
+          "url": "https://github.com/OndCo/Action-Effect-Bench/issues/1#issuecomment-6259620805",
+          "body_sha256": "db352c14c07e441c68972a7b7ecfd320f5866246d7f27aa0d3e0f7fe09c63c68"
+        },
+        {
+          "comment_id": 6259621899,
+          "url": "https://github.com/OndCo/Action-Effect-Bench/issues/1#issuecomment-6259621899",
+          "body_sha256": "61aea53e28a5bdf29c97c349253b9990c078b5475000651bcf688ce656e47ef0"
+        },
+        {
+          "comment_id": 6259622691,
+          "url": "https://github.com/OndCo/Action-Effect-Bench/issues/1#issuecomment-6259622691",
+          "body_sha256": "e16192ff157a2b8440c40ff2690dc8398f08dd557c832d95b3e1fc3dcfeda0e8"
+        },
+        {
+          "comment_id": 6259623515,
+          "url": "https://github.com/OndCo/Action-Effect-Bench/issues/1#issuecomment-6259623515",
+          "body_sha256": "a7fec80f5b0802cde30db5de89fe4ad70583c4aa4e267454a9fe3df80b4927df"
+        },
+        {
+          "comment_id": 6259624258,
+          "url": "https://github.com/OndCo/Action-Effect-Bench/issues/1#issuecomment-6259624258",
+          "body_sha256": "27f35b743185590b4bbe0d39c89e850b53f41b3f154d0fb876c787ca7cb76a7b"
+        },
+        {
+          "comment_id": 6259625037,
+          "url": "https://github.com/OndCo/Action-Effect-Bench/issues/1#issuecomment-6259625037",
+          "body_sha256": "b465c2b38fd09b1e3835676be0519e229fe16b958af7c06434d4c6d0747493e7"
+        },
+        {
+          "comment_id": 6259633673,
+          "url": "https://github.com/OndCo/Action-Effect-Bench/issues/1#issuecomment-6259633673",
+          "body_sha256": "0f7eba9a60a9d14433662ac05729526cf73d734666d039c5594b4b635fac04cb"
+        },
+        {
+          "comment_id": 6259634619,
+          "url": "https://github.com/OndCo/Action-Effect-Bench/issues/1#issuecomment-6259634619",
+          "body_sha256": "a6aa062ce8d612601ee7e180caf147bb60156b46dea1be4700e89dd7a66e8cd8"
+        },
+        {
+          "comment_id": 6259635572,
+          "url": "https://github.com/OndCo/Action-Effect-Bench/issues/1#issuecomment-6259635572",
+          "body_sha256": "e32462428efa5c745587b5869e880beb1e86ba1099d554981da627f982969b80"
+        },
+        {
+          "comment_id": 6259636603,
+          "url": "https://github.com/OndCo/Action-Effect-Bench/issues/1#issuecomment-6259636603",
+          "body_sha256": "675d39038ba5e32d9a93fa795d52b164d1ffec794ebebfaf05007aac18c48f3f"
+        }
+      ],
+      "journal": {
+        "path": "reports/runtime-pilot-live-attempt-338f0652-715c-4095-84df-4f19d8e2f8c7.jsonl",
+        "raw_file_sha256": "4d167995076ccf8b83dc86f1ecdabf3dd519a93809a4b53762154ebcd437a3de",
+        "bytes": 230612,
+        "checksum_verified": true,
+        "event_counts": {
+          "begin": 1,
+          "scheduled": 32,
+          "result": 32,
+          "end": 1
+        },
+        "result_records_match_report": true
+      },
+      "limitations": [
+        "Author-controlled local policy on real GitHub resources; no autonomous model, full provider effect coverage or external case labeling.",
+        "lost-ack discards one actual successful POST acknowledgment in the trusted adapter, not a naturally occurring outage",
+        "Readback establishes current content, not complete provider execution provenance.",
+        "Eight scripted scenarios and two related lanes/strategies; not 32 independent production incidents.",
+        "Live cost is a small sequential sample with cold subprocesses; no tail SLA or speed ranking.",
+        "Local policy and GitHub mutation are not one atomic transaction."
+      ]
+    },
+    "replays": [
+      {
+        "path": "reports/runtime-pilot-replay-2026-10-19T04-24-39.129Z-61da80.json",
+        "raw_file_sha256": "ac85e753232f86336a063c188d0b542d56d311f76dbdcfda498afb3525e307c2",
+        "bytes": 65402,
+        "checksum_verified": true,
+        "original_report_sha256": "d2244f7a2704d6fb3624969b146e37581a181ced0cc2c88daab8675d72ef8662",
+        "original_kind": "runtime-pilot-offline",
+        "valid": true,
+        "benchmark_passed": true,
+        "checked_at_utc": "2026-10-19T04:24:39.128Z",
+        "checked_rows": 216,
+        "checked_reference_records": 52,
+        "public_github_readback": false,
+        "public_readbacks": 0,
+        "reproduced_checks": 268,
+        "duplicate_rows_not_reauthorized": 0,
+        "trust_boundary": "Rehashed or forged operator reports and attempt journals are not cryptographically authenticated. Checks establish internal consistency and reproducible local calculations, not historical fsync or provider execution. Public readback establishes only current content, not original execution, notification delivery or complete provider provenance."
+      },
+      {
+        "path": "reports/runtime-pilot-replay-2026-10-19T04-26-57.109Z-690395.json",
+        "raw_file_sha256": "8ddcd30f287e4bfab8f825a576567797ffddd5a9b6125d15fefe5a8ff33ab6d1",
+        "bytes": 9492,
+        "checksum_verified": true,
+        "original_report_sha256": "6459f4f5494392774e6dba938fe555c223c944657bfbc772476bf551c1a8f1da",
+        "original_kind": "runtime-pilot-live",
+        "valid": true,
+        "benchmark_passed": true,
+        "checked_at_utc": "2026-10-19T04:26:57.108Z",
+        "checked_rows": 32,
+        "checked_reference_records": 0,
+        "public_github_readback": true,
+        "public_readbacks": 12,
+        "reproduced_checks": 32,
+        "duplicate_rows_not_reauthorized": 4,
+        "trust_boundary": "Rehashed or forged operator reports and attempt journals are not cryptographically authenticated. Checks establish internal consistency and reproducible local calculations, not historical fsync or provider execution. Public readback establishes only current content, not original execution, notification delivery or complete provider provenance."
+      }
+    ],
+    "retained_first_failure": {
+      "path": "reports/runtime-pilot-offline-2026-10-19T03-40-48.927Z-769420.json",
+      "raw_file_sha256": "4ca38729f2241005ef2d5a72cdc0292e84c36d86d37dfe01aaa18a9dd5d39a59",
+      "records_compared": 216,
+      "changed_inputs_context_or_policy": 0,
+      "changed_expected_records": 0,
+      "reported_prototype_scorer_defect": "Initial 52 apparent masked errors per strategy were not real policy-masked mapping defects.",
+      "serialized_value_reanalysis": {
+        "protocol_mapping_exact": 108,
+        "structured_mapping_exact": 100,
+        "structured_error_classification_mismatches": 8
+      },
+      "exact_initial_source_tree_archived": false,
+      "replay_limit": "Historical report retained; no exact initial-source reproduction claim."
+    },
+    "ci": {
+      "workflow_url": "https://github.com/OndCo/Action-Effect-Bench/actions/runs/39199258635",
+      "source_commit": "9f638df994504ba6f5d82c0b5409922a0be7a72e",
+      "methods": {
+        "spec_javascript": 64,
+        "legacy_bench_javascript": 11,
+        "spec_python": 115,
+        "runtime_javascript": 333,
+        "runtime_python": 50,
+        "total": 573,
+        "count_unit": "test methods, not authored benchmark cases or independent observations",
+        "source": "Operator's exact final CI totals and published results index; job success checked through the official API, logs not independently recounted."
+      },
+      "status": "Linux and macOS jobs completed successfully in official check-run metadata",
+      "verification_followup": "Operator reports clean-clone CI installation passed. A later local OPA redownload timed out; the same-hash cached binary was verified, followed by 333 runtime JavaScript and 50 runtime Python methods and successful report replays. This is verification history, not an additional external study.",
+      "raw_followup_transcript_inspected": false
+    },
+    "official_retrievals": [
+      {
+        "id": "runtime-ci",
+        "official_url": "https://api.github.com/repos/OndCo/Action-Effect-Bench/commits/9f638df994504ba6f5d82c0b5409922a0be7a72e/check-runs?per_page=100",
+        "effective_url": "https://api.github.com/repos/OndCo/Action-Effect-Bench/commits/9f638df994504ba6f5d82c0b5409922a0be7a72e/check-runs?per_page=100",
+        "method": "curl HTTP GET",
+        "started_at_utc": "2026-10-19T04:31:18.953Z",
+        "retrieved_at_utc": "2026-10-19T04:31:20.935Z",
+        "http_status": 200,
+        "curl_exit_code": 0,
+        "body_bytes": 8688,
+        "raw_body_sha256": "3b8fc1c6abb1df353c85d6661f8949a06efdfcccb986830619e33c153c1cbeca",
+        "content_type": "application/json; charset=utf-8",
+        "complete_response": true,
+        "selected": {
+          "total_count": 2,
+          "checks": [
+            {
+              "id": 117888624195,
+              "name": "compare (macos-latest, 24, 3.13)",
+              "head_sha": "9f638df994504ba6f5d82c0b5409922a0be7a72e",
+              "status": "completed",
+              "conclusion": "success",
+              "started_at": "2026-10-19T04:23:59Z",
+              "completed_at": "2026-10-19T04:24:52Z",
+              "html_url": "https://github.com/OndCo/Action-Effect-Bench/actions/runs/39199258635/job/117888624195"
+            },
+            {
+              "id": 117888624016,
+              "name": "compare (ubuntu-latest, 22, 3.11)",
+              "head_sha": "9f638df994504ba6f5d82c0b5409922a0be7a72e",
+              "status": "completed",
+              "conclusion": "success",
+              "started_at": "2026-10-19T04:23:55Z",
+              "completed_at": "2026-10-19T04:24:48Z",
+              "html_url": "https://github.com/OndCo/Action-Effect-Bench/actions/runs/39199258635/job/117888624016"
+            }
+          ]
+        }
+      },
+      {
+        "id": "runtime-commit",
+        "official_url": "https://api.github.com/repos/OndCo/Action-Effect-Bench/commits/9f638df994504ba6f5d82c0b5409922a0be7a72e",
+        "effective_url": "https://api.github.com/repos/OndCo/Action-Effect-Bench/commits/9f638df994504ba6f5d82c0b5409922a0be7a72e",
+        "method": "curl HTTP GET",
+        "started_at_utc": "2026-10-19T04:31:08.807Z",
+        "retrieved_at_utc": "2026-10-19T04:31:37.586Z",
+        "http_status": 200,
+        "curl_exit_code": 0,
+        "body_bytes": 584050,
+        "raw_body_sha256": "cb529c6591b302c8fa32025e86e2cc1fcd246a1d55060e798fc0b7e223813801",
+        "content_type": "application/json; charset=utf-8",
+        "complete_response": true,
+        "selected": {
+          "sha": "9f638df994504ba6f5d82c0b5409922a0be7a72e",
+          "html_url": "https://github.com/OndCo/Action-Effect-Bench/commit/9f638df994504ba6f5d82c0b5409922a0be7a72e",
+          "committed_at": "2026-10-19T04:23:34Z",
+          "subject": "feat: add bounded cross-runtime effect and authorization pilot"
+        }
+      }
+    ],
+    "performance_isolation": "Initial live rows overlapped same-host read-only offline replay, as reported by the operator; timing is not an isolated comparison.",
+    "external_evaluations": 0,
+    "recovery_limit": "ID-less recovery requires complete pre-dispatch IDs, a newly observed unique exact body/actor match and a dedicated single writer. recovery_evidence explicitly disclaims execution attribution.",
+    "unmeasured": [
+      "full downstream effects",
+      "execution geolocation",
+      "independent external validation",
+      "sustained throughput",
+      "tail SLA",
+      "human or monetary savings",
+      "customer deployment readiness"
+    ]
+  },
+  "historical_preparation_snapshot": {
+    "snapshot_status": "Historical 18 October 23:29 EDT declaration, retained only for provenance. Superseded as current status by current_measured_evidence.",
+    "reported_editorial_time": "18 October 2026, 23:29 EDT, America/Toronto (as supplied by the user).",
+    "mcp_sdk": "1.32.1",
+    "octokit": "22.0.1",
+    "opa": "1.21.2",
+    "version_evidence": "Direct implementation team/user update; exact package identities, lock/binary hashes, execution versions, flags and actual results are still required.",
+    "github_openapi_commit": "755ee33b4a81d51f6f07a902cce26cbec3b822f2",
+    "openapi_extraction_status": "Implementation team extracting official upstream interface data with its MIT notice. No extracted file or operation bytes inspected by this editorial review.",
+    "label_status": "Upstream interface data is not independent governance labels.",
+    "freeze_status": "Implementation proceeds in parallel from the public contract. Implementation team declares no case JSON inspection until freeze. This is pre-execution/pre-result freezing, not pre-implementation freezing. No case JSON was inspected by this editorial review.",
+    "downstream_scope": "Partial direct-effect scope; notifications, webhooks and other descendants remain explicitly unresolved.",
+    "measurement_status": "At that historical checkpoint, no new runtime results had been supplied."
+  }
+}

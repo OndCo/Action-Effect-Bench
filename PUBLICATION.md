@@ -1,6 +1,7 @@
 # Public Benchmark Scope
 
-Editorial date: 18 October 2026, America/Toronto. Run identities use UTC.
+Initial editorial date: 18 October 2026; updated 19 October 2026,
+America/Toronto. Run identities use UTC.
 
 The initial release selected the evaluation proposal, case-index schema and design
 inventory, collaboration boundaries, the 80-case source-frozen corpus and its
