@@ -10,8 +10,9 @@ Ond Holdings Inc., Toronto, Ontario, Canada.
 - [Standalone LaTeX](manuscript.tex): full manuscript with embedded references,
   algorithms, diagrams, case analyses and appendices; no external figure,
   BibTeX or shell-escape dependency.
-- [PDF](manuscript.pdf): 39-page full manuscript with eight figures. The earlier nine-page edition
-  remains unchanged in the v0.2.0-draft.1 release.
+- [PDF](manuscript.pdf): 43-page full manuscript with nine figures. The earlier
+  nine-page and 39-page editions remain unchanged in the v0.2.0-draft.1 and
+  v0.3.0-draft.1 releases.
 - [Source register](sources.json): retrieved official sources, immutable pins
   where available, and measured project artifacts.
 - [Measurement contract](measurement-contract.md): evidence requirements,
@@ -21,7 +22,13 @@ Ond Holdings Inc., Toronto, Ontario, Canada.
 - [Real maintainer use](../reports/field-study-summary.md): separate deployed-model
   and official GitHub MCP observations, output-quality review and post-review
   follow-up. These are not new customer deployments or independent labels.
-- [Release verification](../reports/release-verification-v0.3.0.md): regression,
+- [Owned native delivery and recovery](../reports/owned-write-summary.md): two
+  eligible real-model reports, six distinct fault controls, twenty fresh worker
+  processes, and current-content checks of five actual comments. This is a
+  separate, deliberately controlled same-project study.
+- [Versioned offline reproduction](../docs/replay-v0.4.0.md): complete source
+  history, pinned dependencies and no-send replay commands.
+- [Release verification](../reports/release-verification-v0.4.0.md): regression,
   artifact integrity and page-by-page PDF checks.
 
 This is a public methods/pilot working paper accompanying an experimental
@@ -31,7 +38,8 @@ Formal submission and any individual-author byline remain separate decisions.
 
 The full edition does not replace the original runtime results with the field
 study. Scripted mutation checks, autonomous read-only maintenance, packaging
-checks and internal source review have different denominators and guarantees.
+checks, native delivery/recovery and internal source review have different
+denominators and guarantees.
 The first real-use run, its output-contract conflict and factual error remain
 inspectable. Passing a request's semantic or byte checks does not establish
 that the report inside that request is factually correct.

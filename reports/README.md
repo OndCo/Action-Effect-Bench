@@ -1,5 +1,14 @@
 # Comparison Reports
 
+## Owned Delivery and Recovery 0.4
+
+The [owned-write index](owned-write-summary.md) records two actual eligible
+model reports delivered to a new issue, six separate controlled fault cases,
+twenty fresh worker processes and five actual comment objects. The previous
+pre-reservation failure is retained, and all eight duplicate probes make no
+new native call. Offline replay requires no GitHub credentials and never
+repeats a mutation. This is owned self-use, not independent human evaluation.
+
 ## Real Maintainer Use 0.3
 
 The [field-use index](field-study-summary.md) separates first-run observations,

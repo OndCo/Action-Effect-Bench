@@ -1,0 +1,171 @@
+{
+  "format": "action-effect-owned-write-replay/1",
+  "valid": true,
+  "run_id": "owned-write-20261019-b",
+  "issue": "https://github.com/OndCo/Action-Effect-Bench/issues/2",
+  "source_mode": "recorded-git",
+  "raw_journals": 21,
+  "source_files": 78,
+  "real_model_candidate_tasks": 6,
+  "eligible_ordinary_deliveries": 2,
+  "task_layer_withheld": 4,
+  "fault_scenarios": 6,
+  "worker_processes": 20,
+  "comment_calls": 5,
+  "current_comment_objects": 5,
+  "duplicate_probes_without_send": 8,
+  "recovered_confirmed": 3,
+  "retained_unknown": 1,
+  "protocol_reference_matches": 8,
+  "structured_reference_matches": 8,
+  "phases": [
+    {
+      "id": "normal-release-integrity.execute",
+      "mode": "execute",
+      "outcome": "confirmed",
+      "native_comment_calls": 1,
+      "process_ms": 4049.5129579999993
+    },
+    {
+      "id": "normal-release-integrity.probe",
+      "mode": "probe",
+      "outcome": "duplicate_suppressed",
+      "native_comment_calls": 0,
+      "process_ms": 471.9057499999999
+    },
+    {
+      "id": "normal-official-mcp-compatibility.execute",
+      "mode": "execute",
+      "outcome": "confirmed",
+      "native_comment_calls": 1,
+      "process_ms": 5346.507208
+    },
+    {
+      "id": "normal-official-mcp-compatibility.probe",
+      "mode": "probe",
+      "outcome": "duplicate_suppressed",
+      "native_comment_calls": 0,
+      "process_ms": 446.1219579999997
+    },
+    {
+      "id": "fault-revoked.execute",
+      "mode": "execute",
+      "outcome": "withheld",
+      "native_comment_calls": 0,
+      "process_ms": 1821.0374169999996
+    },
+    {
+      "id": "fault-revoked.probe",
+      "mode": "probe",
+      "outcome": "duplicate_suppressed",
+      "native_comment_calls": 0,
+      "process_ms": 480.2417920000007
+    },
+    {
+      "id": "fault-narrowed.execute",
+      "mode": "execute",
+      "outcome": "withheld",
+      "native_comment_calls": 0,
+      "process_ms": 1802.9564170000012
+    },
+    {
+      "id": "fault-narrowed.probe",
+      "mode": "probe",
+      "outcome": "duplicate_suppressed",
+      "native_comment_calls": 0,
+      "process_ms": 447.40470800000185
+    },
+    {
+      "id": "fault-pre-send-crash.execute",
+      "mode": "execute",
+      "outcome": "process-killed",
+      "native_comment_calls": 0,
+      "process_ms": 2285.8168330000008
+    },
+    {
+      "id": "fault-pre-send-crash.reconcile",
+      "mode": "reconcile",
+      "outcome": "unknown",
+      "native_comment_calls": 0,
+      "process_ms": 1507.6314590000002
+    },
+    {
+      "id": "fault-pre-send-crash.probe",
+      "mode": "probe",
+      "outcome": "duplicate_suppressed",
+      "native_comment_calls": 0,
+      "process_ms": 446.0242500000022
+    },
+    {
+      "id": "fault-post-reply-crash.execute",
+      "mode": "execute",
+      "outcome": "process-killed",
+      "native_comment_calls": 1,
+      "process_ms": 7016.926583
+    },
+    {
+      "id": "fault-post-reply-crash.reconcile",
+      "mode": "reconcile",
+      "outcome": "confirmed",
+      "native_comment_calls": 0,
+      "process_ms": 1331.7069579999952
+    },
+    {
+      "id": "fault-post-reply-crash.probe",
+      "mode": "probe",
+      "outcome": "duplicate_suppressed",
+      "native_comment_calls": 0,
+      "process_ms": 447.84429100000125
+    },
+    {
+      "id": "fault-sdk-timeout.execute",
+      "mode": "execute",
+      "outcome": "unknown",
+      "native_comment_calls": 1,
+      "process_ms": 3488.059792
+    },
+    {
+      "id": "fault-sdk-timeout.reconcile",
+      "mode": "reconcile",
+      "outcome": "confirmed",
+      "native_comment_calls": 0,
+      "process_ms": 2437.6385410000003
+    },
+    {
+      "id": "fault-sdk-timeout.probe",
+      "mode": "probe",
+      "outcome": "duplicate_suppressed",
+      "native_comment_calls": 0,
+      "process_ms": 455.5086670000019
+    },
+    {
+      "id": "fault-mcp-disconnect.execute",
+      "mode": "execute",
+      "outcome": "unknown",
+      "native_comment_calls": 1,
+      "process_ms": 4896.501124999995
+    },
+    {
+      "id": "fault-mcp-disconnect.reconcile",
+      "mode": "reconcile",
+      "outcome": "confirmed",
+      "native_comment_calls": 0,
+      "process_ms": 1323.2145419999943
+    },
+    {
+      "id": "fault-mcp-disconnect.probe",
+      "mode": "probe",
+      "outcome": "duplicate_suppressed",
+      "native_comment_calls": 0,
+      "process_ms": 449.70758399999613
+    }
+  ],
+  "limits": [
+    "Same-project owned resource, not independent evaluation.",
+    "Hash chains detect changes relative to a trusted manifest, not an untrusted operator rewriting all evidence.",
+    "Current content is not complete provider provenance or proof of atomic remote revocation.",
+    "Controlled crash/acknowledgment cuts are not naturally observed outages.",
+    "Replaying stored observations is not rerunning the model or making another provider mutation."
+  ],
+  "study_sha256": "735bfdfc5c5ae993f64b6374ec599bf4ee76429dbcf995305cc2c9c3832ff6d7"
+}

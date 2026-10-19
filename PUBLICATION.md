@@ -24,7 +24,7 @@ comments are intentionally retained on the dedicated issue as readback evidence.
 The selected upstream OpenAPI excerpt retains GitHub's MIT notice and pinned
 source provenance; it is not an independently labeled governance dataset.
 
-The later field-use extension selects `field-study/`, its no-network unit tests,
+The `v0.3.0-draft.1` field-use extension selects `field-study/`, its no-network unit tests,
 captured public repository reads, visible model tool calls and final reports,
 setup failures, source-based internal assessments and offline replay. It uses
 an existing paid Azure model deployment and the official GitHub MCP executable;
@@ -33,6 +33,17 @@ Credentials, encrypted model reasoning, installed upstream binaries and private
 configuration remain excluded. Reported token usage is not an invoice or a
 monetary cost estimate. The recorded sources are the owner's already-public
 repository files and public provider metadata, not customer records.
+
+The `v0.4.0-draft.1` owned-use continuation additionally selects the native
+writer, bounded worker/supervisor, deliberate-fault transport, replay and audit
+code, their regressions, raw public journals and current-content observations.
+It publishes two unchanged eligible report bodies and three separately labelled
+synthetic fault controls to one newly owned issue. Four failed model candidates
+stay withheld; there is no additional model run. The first pre-reservation
+failure is retained, and reuse of its still-empty issue is explicitly bound.
+Source-history bundles contain only the selected public main histories of these
+two repositories. They are not installed environments: private configuration,
+credentials, dependencies and upstream executables remain excluded.
 
 The first field run and its instruction conflict remain immutable in Git.
 Follow-up runs are explicitly post-review repetitions, not fresh independent

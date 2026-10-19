@@ -239,3 +239,52 @@ setup inventory, task prompts, visible model outputs, tool order, counters,
 captured bytes and terminal results are reconstructed. Valid replay can
 faithfully establish the presence of failed task outcomes; it does not turn
 those failures into success or recreate stochastic generation.
+
+## Owned Native Delivery and Recovery Addendum
+
+This subsequent cohort is separate from both read-only model runs and the
+older scripted mutation pilot. Its source is
+`f93b1cfcbf2c2665b4acc7c5dc8fb92d1ba8d6b6`, with the unchanged Spec pin.
+It reuses the amended run's exact six report candidates and internal review.
+T1/T4 qualify; the four task-budget failures remain withheld. No new model
+answer, changed fact label or automatic shortening enters the cohort.
+
+The [raw study](../reports/owned-write-study-2026-10-19T13-50-36.691Z-ff5e0a2c.json)
+has SHA-256 `735bfdfc5c5ae993f64b6374ec599bf4ee76429dbcf995305cc2c9c3832ff6d7`.
+Its frozen plan defines two ordinary deliveries and six distinct fault
+conditions, eight initial native proposals, four recoveries, eight duplicate
+probes and twenty actual worker processes. Both preparations match eight
+initial references, but only one strategy dispatches per scenario. Therefore
+sixteen shadow matches are not sixteen independent/live cases.
+
+The report contains five native comment-call permits and five actual objects
+on [issue #2](https://github.com/OndCo/Action-Effect-Bench/issues/2). Two objects
+are eligible model reports and three are synthetic fault controls. Two current
+authority denials send nothing; three delivered-but-unacknowledged actions
+recover by reads; the pre-send crash remains unknown. All eight probes make
+no further call. The earlier pre-reservation failure remains required evidence
+for adopting the same empty issue, not an omitted attempted run.
+
+Twenty worker journals plus the supervisor contain 283 records. Offline replay
+checks source blobs, manifest bytes, references, current policy, process exits,
+ledger continuity, replies, permits and final content. A separate six-GET
+[anonymous audit](../reports/owned-write-audit-2026-10-19T13-58-07.840Z-d8467612.json)
+matches the issue and all five comment body/ID/URL/author commitments at the
+recorded observation times. These checks do not authenticate an untrusted
+operator or observe complete provider descendants.
+
+Whole-run cost is 52436.647875 ms; nested gate, process, consumer, networking
+and fault waits must not be added twice. Killed workers lack terminal gate
+timers: missing is not zero. Gate and process costs are descriptive, not
+paired live strategy comparisons. The SDK/MCP task goals differ and shadow
+order is fixed. Actual human usefulness, multi-host recovery, atomic remote
+revocation and production SLA remain unmeasured.
+
+```sh
+node field-study/write-replay.mjs reports/owned-write-study-2026-10-19T13-50-36.691Z-ff5e0a2c.json
+node analysis/owned-write-audit.mjs
+```
+
+Both commands are offline. Explicit `--public` on the audit adds only six
+fixed anonymous GETs, retaining any rate limit, content change or failure; it
+never sends a mutation, credentials, redirect or retry.

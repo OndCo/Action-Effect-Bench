@@ -3,7 +3,7 @@
 **Test shared effect semantics without treating agreement as correctness,
 refusal as useful completion, or a description as permission.**
 
-Release series `v0.3.0-draft.1`. Public development benchmark and evaluation-protocol
+Release series `v0.4.0-draft.1`. Public development benchmark and evaluation-protocol
 proposal. Not a leaderboard, external certification or completed protected study.
 
 This repository is separate from
@@ -25,12 +25,20 @@ post-review repairs. Loop completion is not silently counted as useful output.
 - [Full technical manuscript](paper/manuscript.md) and [PDF](paper/manuscript.pdf).
 - [Read-only field-use guide](field-study/README.md): setup, scope and replay.
 - [Field-use results and limits](reports/field-study-summary.md).
+- [Owned native delivery and recovery](reports/owned-write-summary.md): two
+  eligible model reports delivered, six separate fault cases, twenty fresh
+  worker processes, five comment calls and eight no-send duplicate probes.
+- [Live public evidence](https://github.com/OndCo/Action-Effect-Bench/issues/2)
+  and [versioned no-send replay guide](docs/replay-v0.4.0.md).
+- [Original 0.3 release](https://github.com/OndCo/Action-Effect-Bench/releases/tag/v0.3.0-draft.1): unchanged read-only runs and 39-page manuscript.
 - [Original 0.2 release](https://github.com/OndCo/Action-Effect-Bench/releases/tag/v0.2.0-draft.1): unchanged evidence and short paper.
 
 Offline replay needs neither Azure access nor GitHub credentials. A new model
 run requires explicitly configured credentials and incurs model costs. These
-observations are internal self-use, not external certification, a new autonomous
-write qualification or evidence that a correct adapter needs this wire format.
+observations are internal self-use, not external certification, arbitrary
+autonomous-write qualification or evidence that a correct adapter needs this
+wire format. Four of the six amended model outputs still fail the task budget;
+successful delivery of two does not reclassify the other four.
 
 ## Runtime Pilot
 

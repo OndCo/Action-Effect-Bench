@@ -17,6 +17,22 @@ delivery. No provider mutation is available to the replay path.
 **Tech Stack:** Node, pinned Octokit and official GitHub MCP v2.0.2, existing
 Python checker/OPA, local durable artifacts, GitHub REST readback, LaTeX.
 
+## Recorded Outcome
+
+The original planning checklist below is retained as the approved scope, not a
+live task tracker. The implementation, actual owned-resource execution,
+recovery, offline replay, local regression and manuscript work are complete.
+See the [owned-write evidence](../reports/owned-write-summary.md) and
+[v0.4 verification record](../reports/release-verification-v0.4.0.md): twenty
+fresh workers, five comment calls, three read-only recovery confirmations, one
+unknown, eight no-send duplicate probes, 1,623 passing software methods and a
+43-page manuscript. All four original task-budget failures remain withheld.
+
+Final remote CI, source-bundle reproduction and public download verification
+are separate publication gates recorded in the
+[v0.4 release](https://github.com/OndCo/Action-Effect-Bench/releases/tag/v0.4.0-draft.1).
+They are not inferred from the local test result or a checked planning box.
+
 ## 1. Fix the Population Before Delivery
 
 - [ ] Load the immutable second field report at evidence commit

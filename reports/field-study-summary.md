@@ -12,7 +12,9 @@ The task sources were immutable public revisions of these two repositories.
 
 This is same-project self-use, not customer production or independent external
 validation. Reads were constrained by an allowlist outside the comment profile.
-No new GitHub write was made. The earlier [12-comment controlled live
+No GitHub write was made during these read-only runs. The separately recorded
+[owned-write continuation](owned-write-summary.md) delivers two eligible
+outputs and tests six fault conditions without rerunning the model. The earlier [12-comment controlled live
 experiment](runtime-pilot-summary.md) remains a separate population, with its
 own custom MCP server and deliberately injected failures.
 
@@ -163,7 +165,7 @@ otherwise exit without running. Three entry-point regressions cover both
 analysis commands and import safety. Existing calculations and retained
 packaging reports are unchanged.
 
-Final local regression: 408 existing JavaScript methods, 115 Spec Python,
+The v0.3 local regression: 408 existing JavaScript methods, 115 Spec Python,
 50 runtime Python, and 520 field/analysis methods: **1,093 passing methods**.
 They are software tests, not 1,093 independent real-use tasks. Both original
 field runs and their unsuccessful outcomes still pass strict evidence replay.
@@ -210,9 +212,11 @@ executed automatically.
 
 ## Readiness Boundary
 
-The observations justify a concrete technical review of an inspectable draft,
-not customer deployment qualification. The new official-server comment-write
-path, model-driven write delivery, newly proposed process-kill/transport-fault
-subset, hosted MCP authentication, independent evaluation and sustained
-production operation remain unmeasured. No new external invitation or customer
-action was issued during this round. Studio and its Hook were not changed.
+The observations justify concrete technical review, not customer deployment
+qualification. The [v0.4 continuation](owned-write-summary.md) now observes
+two eligible report deliveries, official-server writes and six controlled
+process/acknowledgment conditions. It does not add model intents or turn the
+four failed candidates into successes. Hosted MCP authentication, independent
+evaluation, multi-host recovery, human usefulness and sustained production
+remain unmeasured. No external invitation or customer action was issued;
+Studio and its Hook were not changed.

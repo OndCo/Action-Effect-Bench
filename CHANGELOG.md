@@ -1,5 +1,26 @@
 # Draft Change Record
 
+## Owned Native Delivery and Recovery 0.4
+
+Delivers the two eligible real-model reports through SDK and official GitHub
+MCP to one new owned issue. The four over-budget task outputs stay failed.
+Six separately labelled fault scenarios exercise actual child-process kills,
+current revocation/narrowing, a withheld SDK reply and official-MCP stdio loss.
+Twenty fresh workers make five native comment calls; eight duplicate probes
+make none. Three delivered effects recover by reads, one pre-send case remains
+unknown. Frozen-source replay and six anonymous public GETs verify their stated
+evidence boundaries without automatic resend or an external-validation claim.
+
+The original pre-reservation equality failure is retained. Corrections compare
+wire JSON rather than host-object prototypes, clean owned process groups,
+propagate transport-close failures and check current source/OPA bytes before
+sending. The full manuscript now includes the new population, fault cuts,
+cost decomposition, counterexamples, raw evidence and public readback.
+
+No core wire/profile revision, Studio/Hook change, new model run, cloud-resource
+creation, protected-data release, customer rollout or external invitation occurs.
+Older reports, tags and release assets remain available unchanged.
+
 ## Real Maintainer Use and Full Manuscript 0.3
 
 Adds bounded real-model maintenance tasks over live public GitHub reads, using

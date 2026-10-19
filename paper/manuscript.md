@@ -36,7 +36,12 @@ review marked 27 of 30 facts met, two partial, and one incorrect. An amended
 repeat completed two tasks and retained four byte-budget failures; all six
 fully packaged repeat outputs nevertheless fit the larger comment-profile
 limit. Its separate review marked 28 facts met, two partial, and none incorrect,
-without reclassifying failed loops. Human utility remained unmeasured. These observations show why semantic mapping,
+without reclassifying failed loops. A subsequent owned-resource study delivered
+the two eligible reports through SDK and official MCP, then exercised six
+separate process/acknowledgment faults. Twenty fresh workers made five comment
+calls; all eight duplicate probes made none. Three delivered effects were
+recovered read-only, while one pre-send interruption correctly remained unknown.
+Human utility remained unmeasured. These observations show why semantic mapping,
 useful output, and delivered effects
 need distinct evidence. The contribution is an implemented interchange,
 factorized evaluation, and inspectable conditional recovery contract, with
@@ -82,7 +87,9 @@ cost increase, plus controlled recovery and concrete native-integration findings
 The first real-model run also exposed an output-contract mismatch that successful
 loop and citation checks did not detect. The amended repeat retained four
 task-budget failures even though all six final comment preparations fit the
-native profile. These findings motivate an engineering
+native profile. Actual delivery then preserved the two-eligible/four-withheld
+split, and real-process recovery retained uncertainty instead of resending.
+These findings motivate an engineering
 question: when does interoperable description checking justify its additional
 integration and runtime cost relative to a complete direct adapter?
 
@@ -977,7 +984,8 @@ Two executions used the same six real read-only maintainer goals, reported
 separately in Sections 8.9 and 8.10. The second is a post-review repeat under an
 amended output contract, not six new independent intents. The larger design
 also specifies new write and delivery-fault experiments; neither field run
-executed those populations.
+executed those populations. Section 8.12 reports their separately frozen
+owned-write continuation.
 
 Ordinary tasks inspect real public release material and produce maintainer
 reports about source/release binding, installation, contract migration, native
@@ -1014,8 +1022,9 @@ delivery may have started, continuation is read-only. Unfinished model tasks,
 stale locks, unknowns, setup failures and operator intervention remain visible.
 Writes stop on unexpected targets, source drift, missing journals, exhausted
 budgets or unexplained outcomes. Model safety stops are retained, not bypassed
-by switching interfaces. These requirements define what subsequent evidence must
-show; they are not completed field-study measurements.
+by switching interfaces. These requirements define the write/fault boundary;
+the read-only runs do not measure it. The separately reported continuation
+must be assessed on its own counts and observations.
 
 ### 5.5 Official-Server Compatibility Boundary
 
@@ -1204,7 +1213,10 @@ is not a complete task outcome.
 | Amended repeat | Same six goals, fresh contexts | Two completed loops; four retained byte-budget failures | Causal improvement or twelve independent intents |
 | Retained-content review | Thirty fixed facts per run, same-project reviewer | First: 27 met/2 partial/1 incorrect; repeat: 28/2/0 | Independent ground truth or human acceptance |
 | Publication fit | Each run's six outputs, two forms, two strategies | 24 related rows per run; equal categories across strategies | Policy approval, task success or public delivery |
-| Task usefulness | Original legitimate goals and source-based completion checks | Separate rubric and actual-use disposition | An authorized comment is automatically correct |
+| Owned native delivery | Two eligible outputs from the amended six-task cohort | One SDK and one official-MCP publication, exact body readback | Six successful tasks or independent human usefulness |
+| Owned fault behavior | Six deliberate conditions, four recovery processes | Two denials, three recovered deliveries, one retained unknown | Natural outage rate or multi-host atomicity |
+| Duplicate suppression | Eight fresh-process probes of existing occurrences | No further native comment calls | Exactly-once across lost ledgers or different occurrences |
+| Task usefulness | Original legitimate goals and source-based completion checks | Same-project rubric; human use/disposition remains unknown | An authorized comment is automatically correct |
 | Reproducibility | Reports, source inventory and journal | Local semantic replay/current GETs | Operator authentication or replayed historical time |
 
 ```text
@@ -1221,7 +1233,11 @@ is not a complete task outcome.
 
 6 read-only goals x 2 runs --> 6 retained outputs per run
                          --> 24 packaging preparations per run
-new native-write / authorization-shadow / delivery-fault populations: unexecuted
+second-run cohort: 2 eligible / 4 task-layer withheld
+2 ordinary deliveries + 6 fault scenarios --> 8 initial proposals
+8 initial + 4 read-only recovery + 8 duplicate probes --> 20 workers
+5 native comment calls --> 5 objects (2 reports + 3 fault controls)
+paired initial preparations: 8 per strategy, not 16 live trials
 ```
 
 **Figure 6. Denominator map.** Each arrow changes the unit; it does not create
@@ -1247,9 +1263,10 @@ be suppressed from the engineering account because it is outside task accuracy.
 Notifications, recipients, webhooks, and other descendants remain unknown; all
 accepted mappings are partial. The original live inputs were synthetic public
 data. Real-model maintenance adds bounded reading and report generation, not
-profile-governed semantics for arbitrary reads or new observed official-server
-mutations. The publication-fit analysis prepares captured content without OPA,
-ledger reservation, or provider delivery.
+profile-governed semantics for arbitrary reads. The publication-fit analysis
+does not dispatch; the distinct owned-write continuation in Section 8.12 does
+observe official-server mutations and uses the same finite direct-comment
+profile. Its deliberately injected faults are not naturally observed outages.
 
 **Trust and concurrency.** The host, configured principal/class, provider adapter,
 policy files, and same-host ledger are trusted. Bridge identity is declared,
@@ -1725,7 +1742,7 @@ targeted regression tests passed after repair; 35 had failed against the old
 runner. This is injected software-failure qualification, not a cloud rerun,
 power-loss test, or retroactive property of measured `dff6ba7`.
 
-Final local verification passed 1093 methods: 408 prior JavaScript, 115 Spec
+The v0.3 local verification passed 1093 methods: 408 prior JavaScript, 115 Spec
 Python, 50 runtime Python, 510 field and 10 analysis. These are software-test
 methods, not workload cases or extra evidence of human utility. Both normal
 strict replays remained valid at 242 and 246 journal records. No third model
@@ -1816,6 +1833,164 @@ standalone report + sources        immutable linked handoff
 final native body, not the earlier model field or its token budget, determine
 profile fit. The dotted boundary is unexecuted in this preparation-only analysis.
 
+### 8.12 Owned Delivery, Real Process Failure, and Recovery
+
+The [owned-write report](../reports/owned-write-study-2026-10-19T13-50-36.691Z-ff5e0a2c.json)
+continues the amended cohort without generating new model answers. It freezes
+execution source `f93b1cfcbf2c2665b4acc7c5dc8fb92d1ba8d6b6`, the same Spec
+revision, 78 source-file entries, and the exact committed task and review
+records. Both source checkouts were clean. A fixed plan admits T1 and T4 only;
+the four task-budget failures remain withheld before authorization. This is
+not a third six-task model trial or a repair of their failed outputs.
+
+**Apparatus and observations.** The sole destination is a newly created owned
+[issue #2](https://github.com/OndCo/Action-Effect-Bench/issues/2); older issue #1
+is untouched. The plan permits at most twelve application-level comment calls
+across all processes, but expects five actual objects. It renders the two
+reports without rewriting their conclusions or source citations and adds
+explicit same-project review/evidence references. Final bodies are 6917 and
+7659 bytes: both within this profile's 8192-byte comment-body bound, not a claim
+about GitHub's platform maximum. The six fault scenarios use
+distinct, clearly labelled synthetic bodies, not additional useful model tasks.
+
+Each initial execution, reconciliation and duplicate probe starts a new OS
+process with its own journal; twenty distinct worker PIDs are retained. The
+supervisor kills only process groups it created. Four initial scenarios select
+SDK and four select official GitHub MCP v2.0.2 over stdio. Identity, preflight
+and observation use the SDK for both lanes. Recovery/probe processes expose no
+native mutation transport. Each native proposal is prepared through both the
+protocol and complete structured path and compared with a literal seven-field
+reference; only the selected path may dispatch. The eight initial proposals
+match in both paths, with no mismatches. Repeated shadow checks in recovery and
+probe phases are not independent cases or extra live trials.
+
+**Owned delivery outcomes.** P = protocol preparation;
+S = complete structured preparation. Every duplicate probe returns
+`duplicate_suppressed`, with zero native comment calls.
+
+| Scenario | Native lane / selected path | Initial outcome | Fresh-process recovery | New comments |
+| --- | --- | --- | --- | ---: |
+| Release-integrity report | SDK / P | Confirmed | Not needed | 1 |
+| Official-MCP compatibility report | MCP / S | Confirmed | Not needed | 1 |
+| Revoke after preflight | MCP / P | Withheld: revoked | Not needed | 0 |
+| Narrow body limit after preflight | SDK / S | Withheld: body too large | Not needed | 0 |
+| Kill after inflight persistence, before call | SDK / P | SIGKILL | Unknown: no unique readback | 0 |
+| Kill after actual MCP reply, before receipt | MCP / P | SIGKILL | Confirmed current content | 1 |
+| Discard actual SDK reply, expire timer | SDK / S | Unknown | Confirmed current content | 1 |
+| Discard actual MCP reply, close stdio | MCP / P | Unknown | Confirmed current content | 1 |
+
+The two authority changes occur after provider preflight and before the gate's
+final policy load. The current deny prevents either mutation; it is not a
+subsequent audit alert. In the first crash, durable inflight state exists but
+the native writer was not called. The restarted gate finds no unique matching
+comment and retains occurrence ownership and `unknown`. This conservative
+answer is intentional: the recovery mechanism must not turn missing evidence
+into permission to send, even when the experiment supervisor knows where it
+stopped the earlier process.
+
+In the post-reply crash, the official server's actual reply is journaled before
+the supervisor sends SIGKILL, but the gate has not persisted a confirmed
+receipt. The timeout scenario likewise observes a real successful SDK reply,
+withholds it from the gate and waits for a real 500 ms timer. The disconnect
+scenario captures a real mutation JSON-RPC response, discards it and closes the
+actual stdio transport. These are controlled acknowledgment-delivery failures,
+not claims that GitHub or an internet connection spontaneously failed. The
+three subsequent processes perform only GET-based reconciliation and confirm
+the matching current objects; no second POST is used to obtain success.
+
+```text
+Actual local/remote boundary                    Fresh process, same occurrence
+reserve -> preflight -> current policy
+                         | deny -----------------> no mutation
+                         v
+                    persist inflight
+                         X kill before call ------> unknown; no resend
+                         |
+                    native GitHub call
+                         |
+              actual object + actual reply
+                         X kill / lose ACK --------> read-only reconciliation
+                         |                              |
+                    persist receipt               unique current content
+                                                        |
+                                                     confirmed
+All eight later duplicate probes retain the original occurrence: no new call.
+```
+
+**Figure 9. Real fault cuts and the information available after restart.** The
+cuts were executed in the stated order, not simulated by fabricated success
+responses. A recovery receipt establishes current content under the single-writer
+assumption; it does not prove atomic remote revocation or provider-wide effects.
+
+**Cost without a fabricated speed contest.** The complete supervisor run took
+52436.648 ms, including fresh workers, paired shadow preparation, current-source
+checks, real networking, fault synchronization and final observations. Earlier
+issue creation and setup are excluded, separate costs. These costs are retained
+rather than reporting only a local predicate's runtime.
+The two ordinary gates took 3589.962 ms (SDK/P) and 4775.226 ms (MCP/S);
+their full worker lifetimes were 4049.513 and 5346.507 ms. Current OPA costs were
+20.581 and 20.339 ms, whereas the native dispatch spans were 1551.673 and
+1827.885 ms and readbacks 876.455 and 599.670 ms. The nested consumer timing is
+part of mapping time, not another cost to add twice. Source verification and
+journal work immediately before a native call are included in dispatch spans.
+
+**Measured costs.** Whole-process and gate costs, not a throughput benchmark.
+
+| Phase class | n | Gate/reconciliation time, ms | Whole worker time, ms |
+| --- | ---: | --- | --- |
+| Ordinary SDK/P | 1 | 3589.962 | 4049.513 |
+| Ordinary MCP/S | 1 | 4775.226 | 5346.507 |
+| Pre-send unknown recovery | 1 | 1089.062 | 1507.631 |
+| Confirming read-only recovery | 3 | 898.529--2008.267 | 1323.215--2437.639 |
+| Duplicate probes, no send | 8 | 34.610--41.902 | 446.024--480.242 |
+
+One live path per different scenario cannot identify a protocol-versus-baseline
+causal cost difference. Shadow preparation always runs protocol then structured;
+its raw samples remain available, but order and warm-up are confounders. The
+earlier paired offline study's 3.97% overhead is still the relevant bounded
+comparison, not a claim of live speedup. No p99, enterprise SLA, natural outage
+rate or statistical zero-risk bound is inferred from this small planned run.
+
+**Retained failure and correction.** The first attempt created issue #2 but
+stopped before any occurrence reservation or comment-call permit. Its
+[raw failure](../reports/owned-write-pre-reservation-failure.md) remains public.
+The Python consumer's parsed projection had a null JavaScript prototype, while
+the literal reference had a normal object prototype. Host-object deep equality
+rejected identical JSON values before dispatch. A regression reproduced the
+failure; comparison now uses the profile's canonical JSON digest and still
+rejects a changed field. The continued run adopted the same unchanged, empty
+issue only after fresh inspection, with the original failed record bound into
+its new manifest. It did not retry an uncertain mutation or erase the failure.
+Additional review hardened owned-child cleanup, actual MCP-close error handling,
+and pre-call source/OPA identity checks. Those fixture-based regressions are
+software qualification, not additional observed GitHub incidents.
+
+**Audit boundary.** The
+[offline replay](../reports/owned-write-replay-2026-10-19T13-50-51.561Z-2e5d127c.json)
+reconstructs twenty worker journals plus the supervisor journal: 283 records,
+five consumed call permits, five current objects, eight no-send probes, three
+confirmed recoveries and one retained unknown. It checks the frozen plan,
+historical source blobs, literal projections, current policy results, process
+signals, ledger continuity, native replies and final content. Corrupt/missing
+journals and altered outcome/permit records are rejected. Public GitHub readers
+can independently fetch the five objects, but this still does not authenticate
+every historical event supplied by the operator. A separate
+[anonymous audit](../reports/owned-write-audit-2026-10-19T13-58-07.840Z-d8467612.json)
+made six credential-free GETs at 13:58:03--13:58:07 UTC on 19 October: the issue
+and all five exact comment IDs returned HTTP 200 and matched their committed
+body hashes, identifiers, URLs and authors. Raw replies, hashes and observation
+times are retained. This is a new current-state observation, not a new write
+or proof of the earlier execution time.
+
+The findings close the gap between read-only report generation and an observed
+native effect for this profile. They do not establish high general model task
+reliability: two of six candidates qualified, and independent human usefulness
+is unknown. The dedicated issue, same-host durable ledger, single writer, trusted
+adapter and deliberately bounded partial coverage remain important conditions.
+Policy changes after the last local check but before remote commit, another
+same-account writer, lost storage and unobserved notification descendants still
+require separate treatment.
+
 ## 9. Adoption, Rights, and Publication Boundary
 
 Adoption is staged and interface-only: implement a bounded profile, test it
@@ -1858,7 +2033,11 @@ The amended repeat retained four task-budget failures even though all its
 native preparations fit; profile acceptance is not task completion.
 Final rendering also changes profile fit; three fully cited reports exceeded
 the body limit while immutable linked handoffs fit in both strategies.
-The resulting artifact is a reconstructable interchange, measurement method,
+The owned continuation then delivered the two eligible reports using real SDK
+and official-MCP writes, denied current revoked/narrowed authority, and recovered
+three delivered effects without resending while preserving one unknown. Eight
+duplicate probes made no further calls. The resulting artifact is a
+reconstructable interchange, measurement method,
 and conditional recovery contract. Broader portability and useful deployment
 remain empirical questions, with the same complete-baseline and retained-failure
 standards applied to future work.
@@ -2035,6 +2214,11 @@ quickstart. Do not modify the source inventory to make an old report pass.
 | `field-study-replay-2026-10-19T07-18-25.099Z-3c9423af.json` | Strict second-run replay with explicit release-envelope gap |
 | `field-study-publication-fit-2026-10-19T07-18-12.145Z-b1330df7.json` | 24 preparation-only rows from all six second-run candidates |
 | `field-study-review-audit-2026-10-19T07-23-39.012Z-f5138821.json` | 30 literal quotations, frozen facts, bytes and grade arithmetic |
+| `owned-write-study-2026-10-19T13-32-22.199Z-ab5303e5.json` | Preserved pre-reservation failure; no comment calls |
+| `owned-write-study-2026-10-19T13-50-36.691Z-ff5e0a2c.json` | Two ordinary deliveries, six fault cases, twenty fresh workers |
+| `owned-write-20261019-b.*.jsonl` | Twenty worker journals plus supervisor, 283 records |
+| `owned-write-replay-2026-10-19T13-50-51.561Z-2e5d127c.json` | Source, plan, policy, process, receipt and no-resend reconstruction |
+| `owned-write-audit-2026-10-19T13-58-07.840Z-d8467612.json` | Timing arithmetic and six anonymous current-content GETs |
 
 All artifacts reside under `reports/`; JSON reports have adjacent checksums,
 and the field journal is hash-bound by its use report. The v0.2 digest inventory
@@ -2082,6 +2266,16 @@ the checker loads recorded execution sources rather than relabeling the run
 with its own later revision. Section 8.9 distinguishes the original consistency
 pass, the stronger post-review reconstruction, and the retained native-release
 coverage gap. Checker revisions do not authorize changes to historical evidence.
+
+The owned-write source is `f93b1cfcbf2c2665b4acc7c5dc8fb92d1ba8d6b6`.
+Its report and first successful replay have SHA-256, respectively,
+`735bfdfc5c5ae993f64b6374ec599bf4ee76429dbcf995305cc2c9c3832ff6d7`
+and `50a150f868ae00b065bbae35b1f782988a474cb0533cc526746f7f217302d384`.
+The retained pre-reservation failure is also required by the continuation's
+manifest. Run `node field-study/write-replay.mjs REPORT.json` from a full clone
+with the recorded Git history available. Replay reads historical source as
+data; it does not check out arbitrary old source or repeat a mutation. Live
+setup/execution commands in `field-study/OWNED-WRITE.md` are not replay commands.
 
 ## Appendix E. Compatibility and Deployment Decisions
 
