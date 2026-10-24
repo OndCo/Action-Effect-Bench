@@ -1,6 +1,7 @@
 # Action Effect profile readiness implementation
 
-Status: approved scope; implementation in progress.
+Status: internal implementation and one scheduled real-use attempt completed;
+the stable-release gate remains closed pending external and deployment evidence.
 
 Editorial date: 2026-10-24 (America/Toronto). Raw experiment events use UTC.
 
@@ -66,3 +67,14 @@ deploy a product or label the historical manuscript updated by this round.
 The close-out must distinguish completed engineering, experimental results,
 unmeasured usefulness, unresolved trust/authority obligations and external
 dependencies. No single total test count substitutes for that separation.
+
+## Execution Record
+
+Spec implementation: `92f4a686e80c22ee88e964b2281ec1660ea5c81b`.
+Bench runtime freeze: `c6345b588e1c15bd6b7e3fb8928663f9240b7354`.
+The [results and exact replay inputs](../reports/profile-readiness-2026-10-24.md)
+record five contract-ready reports, one transport failure, all rejected drafts,
+unknown usage and the higher cost. No follow-up run was selected to erase that
+failure. Requirement accountability, candidate pinning, error-path tests and the
+adopter handoff are complete within the stated scope; they do not complete the
+independent implementation, custody, recipient-use or stable-profile gates.

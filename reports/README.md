@@ -1,5 +1,16 @@
 # Comparison Reports
 
+## Candidate Readiness Follow-Up
+
+The [24 October results](profile-readiness-2026-10-24.md) retain all six real
+read-only tasks: five contract-ready final reports and one model transport
+failure. Twelve local draft checks retain seven rejected drafts. Readiness,
+missing source observations, unknown usage and increased cost are separate;
+this is not semantic accuracy or independent validation. The new report is
+replayable without credentials and does not overwrite earlier results.
+The separate internal content review records three complete reports, two partial
+reports and one no-result task; the unavailable integrity check remains explicit.
+
 ## Owned Delivery and Recovery 0.4
 
 The [owned-write index](owned-write-summary.md) records two actual eligible

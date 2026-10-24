@@ -88,6 +88,9 @@ jobs:
       - name: Reconstruct the post-review run including recorded task failures (no network)
         working-directory: action-effect-bench
         run: node field-study/replay.mjs reports/field-study-use-2026-10-19T07-15-38.744Z-a76953f1.json
+      - name: Reconstruct report preflight including the retained transport failure (no network)
+        working-directory: action-effect-bench
+        run: node field-study/replay.mjs reports/field-study-use-2026-10-24T14-59-47.404Z-d49779b4.json
       - name: Check internal review quotations and frozen criterion arithmetic
         working-directory: action-effect-bench
         run: node analysis/review-audit.mjs reports/field-study-use-2026-10-19T06-33-57.736Z-0e238334.json analysis/review-first-field-use.json

@@ -21,6 +21,10 @@ and implement without changing its wire identity. Start with the
 [implementer handoff](docs/adoption/profile-candidate-handoff.md), the
 [explicit report-contract preflight](field-study/REPORT-CONTRACT.md), and the
 [execution scope](docs/implementation-plan-2026-10-24-profile-readiness.md).
+The [completed six-task follow-up](reports/profile-readiness-2026-10-24.md)
+reports five contract-ready finals, one retained transport failure and increased
+cost, rather than presenting a perfect or faster result. Separate internal
+content review finds two reports still need factual-detail additions.
 
 The preflight is an opt-in field-study edition. It retains the six exposed
 tasks and 6000-byte report limit, counts draft revisions and their cost, and
