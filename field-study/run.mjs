@@ -13,13 +13,16 @@ import { createGithubReader } from './github-reader.mjs';
 import { createReadTools, FieldStudyJournalError } from './read-tools.mjs';
 import { runScheduledTasks, taskPrompt } from './study.mjs';
 import { inspectTask, summarizeStudy } from './scoring.mjs';
+import { createReportPreflight, auditReportContract, summarizeReportContracts } from './report-contract.mjs';
 
-if (process.argv.length !== 3 || process.argv[2] !== '--real-readonly') {
-  throw new Error('Use --real-readonly for paid model and live public reads. Replay is a separate offline command.');
+const reportPreflight = process.argv.length === 4 && process.argv[3] === '--report-preflight';
+if ((!reportPreflight && process.argv.length !== 3) || process.argv[2] !== '--real-readonly') {
+  throw new Error('Use --real-readonly [--report-preflight] for paid model and live public reads. Replay is a separate offline command.');
 }
 const readJSON = name => JSON.parse(readFileSync(new URL(name, import.meta.url)));
 const manifest = readJSON('./tasks.json'), config = readJSON('./tools.json'), reportSchema = readJSON('./report-format.json');
-const amendmentBytes = readFileSync(new URL('./amendment-2.json', import.meta.url));
+const amendmentFile = reportPreflight ? 'amendment-3.json' : 'amendment-2.json';
+const amendmentBytes = readFileSync(new URL(`./${amendmentFile}`, import.meta.url));
 const amendment = JSON.parse(amendmentBytes);
 const criteriaBytes = readFileSync(new URL('./criteria.json', import.meta.url));
 const output = fileURLToPath(new URL('../reports/', import.meta.url));
@@ -29,7 +32,7 @@ const freeze = saveArtifact(output, 'field-study-freeze', {
   format: 'field-study-freeze/1', created_before_scored_model_requests: true,
   tasks_sha256: digestBytes(readFileSync(new URL('./tasks.json', import.meta.url))),
   criteria_sha256: digestBytes(criteriaBytes), model_configuration: config.azure_model,
-  amendment: { file: 'field-study/amendment-2.json', sha256: digestBytes(amendmentBytes), value: amendment },
+  amendment: { file: `field-study/${amendmentFile}`, sha256: digestBytes(amendmentBytes), value: amendment },
   task_inputs: manifest, provenance, population: 'exposed-internal-maintainer-use',
   selected_task_order: manifest.tasks.map(t => t.id), new_provider_writes_enabled: false,
 });
@@ -81,12 +84,17 @@ try {
           executable_sha256: setup.inventory.executable_sha256,
         }, negotiated_protocol: setup.inventory.protocol_version, startup_observed: setup.status === 'ready',
       } : { lane: 'sdk', transport: 'GitHub REST over HTTPS', client: '@octokit/rest 22.0.1', startup_observed: false };
-      const prompt = `${taskPrompt(task)}\n\nCurrent execution-channel metadata recorded by this runner:\n${JSON.stringify(channel)}\nThese tools make real public GitHub reads when a tool result reports success. The MCP server is a local stdio process, not a hosted MCP authentication experiment. Reading historical source code or documentation does not mean that code's tests or mutation endpoints ran. No write tool is available. Distinguish current observed reads from the historical pilot described in the pinned files.`;
+      const prompt = `${taskPrompt(task)}\n\nCurrent execution-channel metadata recorded by this runner:\n${JSON.stringify(channel)}\nThese tools make real public GitHub reads when a tool result reports success. The MCP server is a local stdio process, not a hosted MCP authentication experiment. Reading historical source code or documentation does not mean that code's tests or mutation endpoints ran. No write tool is available. Distinguish current observed reads from the historical pilot described in the pinned files.${reportPreflight ? `\n\n${amendment.prompt_addition}` : ''}`;
       append({ type: 'scheduled_task_start', task_id: task.id, lane: task.lane, prompt, prompt_sha256: digestBytes(prompt) });
       console.log(JSON.stringify({ task: task.id, lane: task.lane, status: 'started' }));
-      const tools = createReadTools({ task, sdk, mcp, journal: { append: event => append({ ...event, task_id: task.id }) } });
+      const tools = { ...createReadTools({ task, sdk, mcp, journal: { append: event => append({ ...event, task_id: task.id }) } }) };
+      const durableTrace = [];
+      if (reportPreflight) tools.check_report_contract = createReportPreflight({ taskId: task.id, trace: durableTrace });
       const result = await runAgent({ task: { id: task.id, prompt }, model, tools,
-        journal: event => append({ type: 'agent_event', task_id: task.id, event }),
+        journal: event => {
+          append({ type: 'agent_event', task_id: task.id, event });
+          durableTrace.push(structuredClone(event));
+        },
         limits: { rounds: modelConfig.max_rounds_per_task, toolCalls: modelConfig.max_tool_calls_per_task,
           reportBytes: amendment.response_contract.report_max_utf8_bytes } });
       if (result.reason === 'journal_error') failJournal();
@@ -117,18 +125,28 @@ try {
   }
 }
 const summary = summarizeStudy(manifest.tasks, rows);
+const contractSummary = reportPreflight ? summarizeReportContracts(rows) : null;
+if (reportPreflight) {
+  summary.model_tool_calls = summary.read_tool_calls;
+  summary.read_tool_calls = contractSummary.read_tool_calls;
+  summary.local_preflight_calls = contractSummary.local_preflight_calls;
+}
 const sourceUnchanged = verifyProvenance(provenance);
 const status = sourceUnchanged && !closeFailure ? 'recorded' : 'invalidated';
 const duration_ms = performance.now() - started;
 const sealed = journalOperation(() => journal.seal({ status, duration_ms, summary, source_inventory_unchanged: sourceUnchanged }));
-const artifact = saveArtifact(output, 'field-study-use', { format: 'field-study-use/1',
+const artifact = saveArtifact(output, 'field-study-use', { format: reportPreflight ? 'field-study-use/2' : 'field-study-use/1',
   population: 'same-project-real-model-maintainer-use', status, duration_ms,
   freeze: { file: basename(freeze.path), sha256: freeze.sha256 },
   journal: { file: basename(sealed.path), sha256: sealed.sha256 }, provenance,
   configuration: config, native_setup: setup, source_inventory_unchanged: sourceUnchanged,
-  summary, tasks: rows.map((row, i) => ({ ...row, mechanical_checks: inspectTask(manifest.tasks[i], row.result) })),
+  summary, ...(reportPreflight ? { contract_summary: contractSummary } : {}),
+  tasks: rows.map((row, i) => ({ ...row, mechanical_checks: inspectTask(manifest.tasks[i], row.result),
+    ...(reportPreflight ? { contract_checks: auditReportContract(row.id, row.result) } : {}) })),
   scopes: { customer_production: false, independent_external_evaluation: false, new_provider_writes: false,
     read_tools_are_profile_authorization: false, quality_requires_separate_review: true },
 });
-console.log(JSON.stringify({ status, report: artifact.path, sha256: artifact.sha256, summary }));
-if (status !== 'recorded' || summary.failed_or_blocked_tasks) process.exitCode = 1;
+console.log(JSON.stringify({ status, report: artifact.path, sha256: artifact.sha256, summary,
+  ...(reportPreflight ? { contract_summary: contractSummary } : {}) }));
+if (status !== 'recorded' || summary.failed_or_blocked_tasks ||
+  (reportPreflight && contractSummary.tasks_ready_for_maintainer_review !== manifest.tasks.length)) process.exitCode = 1;

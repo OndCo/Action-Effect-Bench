@@ -1,0 +1,28 @@
+{
+  "format": "field-study-amendment/1",
+  "study_version": 3,
+  "population": "post-review-repeat-of-six-exposed-maintenance-intents",
+  "holdout": false,
+  "prior_report": {
+    "file": "field-study-use-2026-10-19T07-15-38.744Z-a76953f1.json",
+    "sha256": "e6d9fe0e27ca93932fb9102cc5d5b7f16e4c7c138cd72c79eeeaaf1cb2961999",
+    "evidence_commit": "6d4f3c358ca5f68040a1416d751328e9aab041f5"
+  },
+  "tasks_sha256": "2c7fdb9d451c5c6474f7a0688d92e22d3bc3b8b32d444ec03f96d768a777a0d5",
+  "criteria_sha256": "ff7a7e6472414a916e39e377f3ed5e3181d9fa554d69ff0de848bc39c7a641ac",
+  "frozen_fact_records_sha256": "bbf1996cc43ff3d9429326623dac61f4399a77d6bcb34372f6abee4d420b5872",
+  "reason": "Edition two still had four oversized reports. Add explicit local contract feedback within the existing task budget, retaining failures and separating first-draft fit from checked final readiness. Do not raise limits, change tasks, supply answer keys, silently shorten outputs or relabel the prior run.",
+  "response_contract": {
+    "format": "field-report-contract/1",
+    "report_max_utf8_bytes": 6000,
+    "recommended_target_utf8_bytes": 5000,
+    "max_conclusion_utf8_bytes": 4096,
+    "max_citations": 128,
+    "final_requires_matching_accepted_draft": true,
+    "oversize_behavior": "Draft receives measured feedback and remains in the journal; a failed final is retained, not automatically retried. A completed loop is not necessarily a ready report."
+  },
+  "prompt_addition": "Before your final answer, call check_report_contract with the complete proposed report (all four fields). It is local and makes no provider request. It checks exact decoded Markdown UTF-8 bytes and citations observed in this task, not semantic quality or authorization. Aim for 4500-5000 bytes; the unchanged hard limit is 6000. If a draft fails, you may explicitly revise and check again within the existing 12-round/18-tool-call budget; these calls and costs are recorded. After an accepted check, return the same field values exactly. Do not silently drop a required deliverable to fit; if the task cannot fit, report that limitation rather than invent success. No write or publication is authorized.",
+  "automatic_model_retries": false,
+  "review": "Mechanical contract checks only. Semantic review remains same-project and separate; no independent human usefulness assessment is implied.",
+  "scope": "Same task bytes, pinned source files, six tasks, lanes and model configuration as edition two. Fresh context and preflight observations per task. A sequential repeat, not a randomized causal comparison. No new provider writes, no customer data, no Shuwen cases."
+}

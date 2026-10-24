@@ -33,6 +33,96 @@ function fixture() {
   return { root, policyFile, comments, provider, options, close: () => rmSync(root, { recursive: true, force: true }) };
 }
 
+// Compound fault regressions use the real mapper, Python consumer, OPA and
+// filesystem ledger, but a synthetic provider. They are not new SaaS trials.
+for (const strategy of ['protocol', 'structured']) for (const lane of ['sdk', 'mcp']) {
+  const input = body => lane === 'sdk'
+    ? { lane, call: { ...params, body } }
+    : { lane, call: { name: 'add_issue_comment', arguments: { ...params, body } } };
+  const title = name => `compound ${strategy}/${lane}: ${name}`;
+
+  test(title('revocation during preparation stays withheld after authority restoration'), async () => {
+    const f = fixture();
+    try {
+      Object.assign(f.options, { strategy, native: input(params.body) });
+      if (strategy === 'protocol') f.options.preparedDescription = makeDescription(f.options.native, context);
+      const list = f.provider.listComments;
+      f.provider.listComments = async (...args) => {
+        writeFileSync(f.policyFile, JSON.stringify({ ...policy, revision: 'p2', revoked: true }));
+        return list(...args);
+      };
+      const denied = await executeAction(f.options);
+      assert.equal(denied.outcome, 'withheld');
+      assert.equal(denied.authorization.decision, 'deny');
+      assert.equal(f.comments.length, 0);
+      writeFileSync(f.policyFile, JSON.stringify({ ...policy, revision: 'p3' }));
+      f.provider.listComments = list;
+      assert.equal((await executeAction(f.options)).outcome, 'duplicate_suppressed');
+      assert.equal((await executeAction({ ...f.options, occurrence: 'new-after-restore' })).outcome, 'confirmed');
+      assert.equal(f.comments.length, 1);
+    } finally { f.close(); }
+  });
+
+  test(title('lost acknowledgement then revocation separates past completion from new authority'), async () => {
+    const f = fixture();
+    try {
+      Object.assign(f.options, { strategy, native: input(params.body) });
+      const post = f.provider.createComment;
+      let sends = 0;
+      f.provider.createComment = async value => { sends++; await post(value); throw new Error('fixture lost acknowledgement'); };
+      assert.equal((await executeAction(f.options)).outcome, 'unknown');
+      writeFileSync(f.policyFile, JSON.stringify({ ...policy, revision: 'revoked', revoked: true }));
+      assert.equal((await executeAction(f.options)).outcome, 'duplicate_suppressed');
+      const recovered = await reconcileAction(f.options);
+      assert.equal(recovered.outcome, 'confirmed');
+      assert.equal(recovered.automatic_resend, false);
+      const next = await executeAction({ ...f.options, occurrence: 'new-denied', native: input('different proposed report') });
+      assert.equal(next.outcome, 'withheld');
+      assert.equal(next.authorization.decision, 'deny');
+      assert.equal(sends, 1);
+      assert.equal(f.comments.length, 1);
+    } finally { f.close(); }
+  });
+
+  test(title('uncertainty plus ambiguous readback never retries when grants return'), async () => {
+    const f = fixture();
+    try {
+      Object.assign(f.options, { strategy, native: input(params.body) });
+      const otherWriter = f.provider.createComment;
+      let sends = 0;
+      f.provider.createComment = async () => { sends++; throw new Error('fixture unknown delivery'); };
+      assert.equal((await executeAction(f.options)).outcome, 'unknown');
+      await otherWriter(params);
+      await otherWriter(params);
+      writeFileSync(f.policyFile, JSON.stringify({ ...policy, revision: 'narrowed', grants: [] }));
+      assert.equal((await reconcileAction(f.options)).outcome, 'unknown');
+      writeFileSync(f.policyFile, JSON.stringify({ ...policy, revision: 'restored' }));
+      assert.equal((await reconcileAction(f.options)).outcome, 'unknown');
+      assert.equal((await executeAction(f.options)).outcome, 'duplicate_suppressed');
+      assert.equal(sends, 1);
+    } finally { f.close(); }
+  });
+
+  test(title('policy parse failure cannot be reused as approval on a later request'), async () => {
+    const f = fixture();
+    try {
+      Object.assign(f.options, { strategy, native: input(params.body) });
+      writeFileSync(f.policyFile, '{broken');
+      const failed = await executeAction(f.options);
+      assert.equal(failed.authorization.decision, 'evaluation_failure');
+      assert.equal(failed.outcome, 'withheld');
+      writeFileSync(f.policyFile, JSON.stringify(policy));
+      assert.equal((await executeAction(f.options)).outcome, 'duplicate_suppressed');
+      assert.equal((await executeAction({ ...f.options, occurrence: 'fresh-request' })).outcome, 'confirmed');
+      f.provider.principal = async () => 'another-principal';
+      const wrongActor = await executeAction({ ...f.options, occurrence: 'different-principal', native: input('another report') });
+      assert.equal(wrongActor.reason, 'provider_principal_mismatch');
+      assert.equal(wrongActor.outcome, 'withheld');
+      assert.equal(f.comments.length, 1);
+    } finally { f.close(); }
+  });
+}
+
 test('allowed action is read back; the same occurrence is never posted twice', async () => {
   const f = fixture();
   try {

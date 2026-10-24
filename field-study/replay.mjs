@@ -110,7 +110,7 @@ export function auditReadEvidence(events, criteria) {
 
 export function replayStudy(reportPath) {
   const root = dirname(resolve(reportPath)), checked = readCheckedArtifact(root, basename(reportPath)), report = checked.value;
-  if (report.format !== 'field-study-use/1' || !['recorded', 'invalidated'].includes(report.status)) throw new Error('invalid_study_status');
+  if (!['field-study-use/1', 'field-study-use/2'].includes(report.format) || !['recorded', 'invalidated'].includes(report.status)) throw new Error('invalid_study_status');
   const frozen = readCheckedArtifact(root, report.freeze.file);
   if (frozen.sha256 !== report.freeze.sha256 || frozen.value.format !== 'field-study-freeze/1') throw new Error('freeze_binding');
   const sources = loadRecordedSources(report.provenance);
@@ -127,7 +127,8 @@ export function replayStudy(reportPath) {
   auditReadEvidence(events, criteria);
   const observations = auditSourceObservations(groups, context);
   return { valid: true, report_sha256: checked.sha256, journal_records: records.length, ...observations, summary,
-    source_revisions: sources.revisions, study_version: manifest.version,
+    source_revisions: sources.revisions, study_version: context.version,
+    ...(context.version === 3 ? { contract_summary: report.contract_summary } : {}),
     status: report.status, study_recorded: report.status === 'recorded',
     model_requests_replayed: 0, provider_requests_replayed: 0,
     scope: 'Recomputes captured integrity and mechanical checks. Does not reproduce stochastic model generation or externally certify task quality.' };

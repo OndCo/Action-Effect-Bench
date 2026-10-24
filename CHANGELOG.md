@@ -1,5 +1,22 @@
 # Draft Change Record
 
+## Candidate Readiness Development (24 October 2026)
+
+Adds an opt-in third field-study edition with visible local report preflight,
+unchanged six-task inputs and byte budget, separately counted local checks and
+native read calls, and final-versus-draft binding. Old invocation behavior and
+old reports remain intact. Replay understands the new report format without
+regrading the first two editions. Source pinning rejects an unsupported report
+checker instead of silently replaying it with different semantics.
+
+Sixteen compound regressions check the real mapper, Python consumer, OPA and
+filesystem ledger across SDK/MCP and protocol/structured paths with a synthetic
+provider. A past completion can be reconciled after revocation without granting
+authority for a new action. Uncertain occurrences are not automatically resent.
+The implementer handoff states the missing external/custody/deployment gates.
+This does not alter the core wire, enable a Hook, deploy Studio, update the
+manuscript, or constitute a stable standards release.
+
 ## Owned Native Delivery and Recovery 0.4
 
 Delivers the two eligible real-model reports through SDK and official GitHub

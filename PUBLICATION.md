@@ -3,6 +3,15 @@
 Initial editorial date: 18 October 2026; updated 19 October 2026,
 America/Toronto. Run identities use UTC.
 
+The 24 October candidate-readiness continuation additionally selects additive
+coverage/handoff documentation, report-contract preflight, source-bound replay
+and compound error-path regressions. A new readonly model run, when recorded,
+is a third sequential attempt on the six exposed tasks, not independent
+evaluation. Old reports, task/criteria bytes, manuscript and prior release
+assets remain unchanged. Draft feedback never grants authority or substitutes
+for recipient review. No new provider writes, Studio deployment, protected case
+release or external invitation is part of this continuation.
+
 The initial release selected the evaluation proposal, case-index schema and design
 inventory, collaboration boundaries, the 80-case source-frozen corpus and its
 generator, 22 post-review regression cases, process runner and scorer tests.

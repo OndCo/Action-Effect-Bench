@@ -57,6 +57,13 @@ jobs:
           ref: ${{ steps.spec.outputs.commit }}
           path: action-effect-spec
           persist-credentials: false
+          fetch-depth: 0
+      - name: Verify the partial accountability inventory
+        run: node action-effect-spec/scripts/check-coverage.mjs
+      - name: Verify the immutable GitHub candidate components
+        run: node action-effect-spec/scripts/verify-candidate.mjs
+      - name: Candidate integrity regressions (not full core conformance)
+        run: node --test action-effect-spec/scripts/tests/*.test.mjs
       - name: Verify frozen public case sources
         run: node action-effect-bench/conformance/case-source.mjs --check
       - name: JavaScript consumer and harness tests

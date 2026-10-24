@@ -4,6 +4,7 @@ import { digestBytes } from './artifacts.mjs';
 import { parseJSON, inspectModelResponse } from './model-client.mjs';
 import { readCommittedBlob } from './provenance.mjs';
 import { decodeFileResult } from './native-mcp.mjs';
+import { auditReportContract, summarizeReportContracts, PREFLIGHT_TOOL } from './report-contract.mjs';
 
 const check = (condition, code) => { if (!condition) throw new Error(code); };
 const object = value => value !== null && typeof value === 'object' && !Array.isArray(value);
@@ -11,6 +12,7 @@ const count = value => Number.isSafeInteger(value) && value >= 0;
 const time = value => typeof value === 'number' && Number.isFinite(value) && value >= 0;
 const TOOL_NAMES = ['read_repository_file', 'inspect_repository_file', 'inspect_release', 'inspect_release_asset'];
 const SCORING_V1 = '403ae830915eaed61a79e665f38f9ec7106c850419f0c10f4453602962887e2d';
+const REPORT_CONTRACT_V1 = '124db619a34542e25bb233e5ecaa4bb8dc163d50077d23fbdf0eecd98e1ecc1c';
 
 function auditReferences(manifest, criteria) {
   const repositories = { 'OndCo/Action-Effect-Bench': 'bench', 'OndCo/Action-Effect-Spec': 'spec' }, references = new Set();
@@ -37,7 +39,7 @@ function auditReferences(manifest, criteria) {
   }
 }
 
-/** Only the two disclosed study contracts are supported; historical code is data. */
+/** Only disclosed study contracts are supported; historical code is data. */
 export function auditFrozenInputs(report, frozen, read) {
   const taskBytes = read('bench/field-study/tasks.json'), criteriaBytes = read('bench/field-study/criteria.json');
   const manifest = parseJSON(taskBytes.toString('utf8'), 'tasks_json');
@@ -45,6 +47,7 @@ export function auditFrozenInputs(report, frozen, read) {
   const config = parseJSON(read('bench/field-study/tools.json').toString('utf8'), 'configuration_json');
   const schema = parseJSON(read('bench/field-study/report-format.json').toString('utf8'), 'report_schema_json');
   check([1, 2].includes(manifest.version) && manifest.version === criteria.version, 'study_version');
+  check(report.format !== 'field-study-use/2' || manifest.version === 2, 'study_version');
   check(digestBytes(taskBytes) === frozen.tasks_sha256 && digestBytes(criteriaBytes) === frozen.criteria_sha256
     && same(frozen.task_inputs, manifest), 'task_or_criteria_drift');
   check(same(config, report.configuration) && same(config.azure_model, frozen.model_configuration), 'configuration_binding');
@@ -61,7 +64,29 @@ export function auditFrozenInputs(report, frozen, read) {
   check(count(limits.rounds) && limits.rounds <= 100 && count(limits.toolCalls) && limits.toolCalls <= 1000, 'configuration_binding');
   let amendment = null;
   if (manifest.version === 1) check(!Object.hasOwn(frozen, 'amendment'), 'amendment_binding');
-  else {
+  else if (report.format === 'field-study-use/2') {
+    check(digestBytes(read('bench/field-study/report-contract.mjs')) === REPORT_CONTRACT_V1, 'unsupported_report_contract');
+    const bytes = read('bench/field-study/amendment-3.json');
+    amendment = parseJSON(bytes.toString('utf8'), 'amendment_json');
+    check(manifest.version === 2 && same(frozen.amendment, { file: 'field-study/amendment-3.json', sha256: digestBytes(bytes), value: amendment })
+      && amendment.format === 'field-study-amendment/1' && amendment.study_version === 3 && amendment.holdout === false
+      && amendment.automatic_model_retries === false && amendment.response_contract?.format === 'field-report-contract/1'
+      && amendment.response_contract.report_max_utf8_bytes === 6000 && amendment.response_contract.max_conclusion_utf8_bytes === 4096
+      && amendment.response_contract.max_citations === 128 && amendment.response_contract.final_requires_matching_accepted_draft === true
+      && amendment.tasks_sha256 === digestBytes(taskBytes) && amendment.criteria_sha256 === digestBytes(criteriaBytes)
+      && amendment.frozen_fact_records_sha256 === digestBytes(JSON.stringify(criteria.tasks))
+      && typeof amendment.prompt_addition === 'string' && amendment.prompt_addition.length > 0, 'amendment_binding');
+    const prior = amendment.prior_report;
+    check(object(prior) && /^field-study-use-[A-Za-z0-9._-]+\.json$/.test(prior.file), 'amendment_binding');
+    const priorBytes = readCommittedBlob('bench', prior.evidence_commit, `reports/${prior.file}`);
+    const priorReport = parseJSON(priorBytes.toString('utf8'), 'amendment_prior_json');
+    check(digestBytes(priorBytes) === prior.sha256 && priorReport.format === 'field-study-use/1', 'amendment_binding');
+    const previous = priorReport.provenance.environment.repositories.bench.head;
+    check(digestBytes(readCommittedBlob('bench', previous, 'field-study/tasks.json')) === amendment.tasks_sha256
+      && digestBytes(readCommittedBlob('bench', previous, 'field-study/criteria.json')) === amendment.criteria_sha256
+      && same(parseJSON(readCommittedBlob('bench', previous, 'field-study/tools.json').toString('utf8'), 'configuration_json'), config), 'amendment_binding');
+    limits.reportBytes = 6000;
+  } else {
     const bytes = read('bench/field-study/amendment-2.json');
     amendment = parseJSON(bytes.toString('utf8'), 'amendment_json');
     check(same(frozen.amendment, { file: 'field-study/amendment-2.json', sha256: digestBytes(bytes), value: amendment })
@@ -81,7 +106,7 @@ export function auditFrozenInputs(report, frozen, read) {
       && same(identity(priorTasks.tasks), identity(manifest.tasks)), 'amendment_binding');
     limits.reportBytes = amendment.response_contract.report_max_utf8_bytes;
   }
-  return { version: manifest.version, manifest, criteria, config, limits, amendment };
+  return { version: report.format === 'field-study-use/2' ? 3 : manifest.version, manifest, criteria, config, limits, amendment };
 }
 
 export function expectedPrompt(task, context, setup) {
@@ -100,10 +125,13 @@ export function expectedPrompt(task, context, setup) {
     server: { name: setup.inventory.server.name, version: setup.inventory.server.version, executable_sha256: setup.inventory.executable_sha256 },
     negotiated_protocol: setup.inventory.protocol_version, startup_observed: setup.status === 'ready' }
     : { lane: 'sdk', transport: 'GitHub REST over HTTPS', client: '@octokit/rest 22.0.1', startup_observed: false };
-  return `${parts.join('\n\n')}\n\nCurrent execution-channel metadata recorded by this runner:\n${JSON.stringify(channel)}\nThese tools make real public GitHub reads when a tool result reports success. The MCP server is a local stdio process, not a hosted MCP authentication experiment. Reading historical source code or documentation does not mean that code's tests or mutation endpoints ran. No write tool is available. Distinguish current observed reads from the historical pilot described in the pinned files.`;
+  return `${parts.join('\n\n')}\n\nCurrent execution-channel metadata recorded by this runner:\n${JSON.stringify(channel)}\nThese tools make real public GitHub reads when a tool result reports success. The MCP server is a local stdio process, not a hosted MCP authentication experiment. Reading historical source code or documentation does not mean that code's tests or mutation endpoints ran. No write tool is available. Distinguish current observed reads from the historical pilot described in the pinned files.${context.version === 3 ? `\n\n${context.amendment.prompt_addition}` : ''}`;
 }
 
 function argumentShape(task, name, args) {
+  if (name === PREFLIGHT_TOOL) return object(args) && Object.keys(args).sort().join(',') === 'citations,conclusion,report_markdown,task_id'
+    && ['task_id', 'report_markdown', 'conclusion'].every(key => typeof args[key] === 'string')
+    && Array.isArray(args.citations) && args.citations.every(value => typeof value === 'string');
   const names = ['read_repository_file', 'inspect_repository_file'].includes(name) ? ['repository', 'path']
     : name === 'inspect_release_asset' ? ['repository', 'asset_name'] : ['repository'];
   return object(args) && Object.keys(args).length === names.length && names.every(key => typeof args[key] === 'string')
@@ -126,6 +154,7 @@ export function reconstructTask(task, trace, context, prompt, responseIds = new 
     && event.task_id === task.id && !Object.hasOwn(event, 'journal_status')), 'task_event_order');
   let cursor = 0, rounds = 0, toolCalls = 0, measured = 0;
   const usages = [], seenCalls = new Set(), pairs = [];
+  const toolNames = context.version === 3 ? [...TOOL_NAMES, PREFLIGHT_TOOL] : TOOL_NAMES;
   const take = type => { const event = trace[cursor++]; check(event?.type === type, 'task_event_order'); return event; };
   const start = take('task_start');
   check(start.prompt === prompt && same(start.limits, context.limits), 'task_prompt_binding');
@@ -139,7 +168,7 @@ export function reconstructTask(task, trace, context, prompt, responseIds = new 
   };
   while (rounds < context.limits.rounds) {
     const request = take('model_request');
-    check(request.round === ++rounds && same(request.tool_names, TOOL_NAMES), 'model_event');
+    check(request.round === ++rounds && same(request.tool_names, toolNames), 'model_event');
     const response = take('model_result');
     check(response.round === rounds && time(response.duration_ms) && Array.isArray(response.output), 'model_event');
     measured += response.duration_ms;
@@ -164,7 +193,7 @@ export function reconstructTask(task, trace, context, prompt, responseIds = new 
       let report;
       try { report = parseJSON(final, 'invalid_final_output'); }
       catch { return finish('failed', 'invalid_final_output'); }
-      if (context.version === 2) {
+      if (context.version >= 2) {
         if (!object(report) || Object.keys(report).sort().join(',') !== 'citations,conclusion,report_markdown,task_id'
           || report.task_id !== task.id || !['report_markdown', 'conclusion'].every(key => typeof report[key] === 'string' && report[key].trim())
           || !Array.isArray(report.citations) || !report.citations.every(value => typeof value === 'string')) return finish('failed', 'invalid_final_output');
@@ -176,7 +205,7 @@ export function reconstructTask(task, trace, context, prompt, responseIds = new 
     let rejected;
     for (const call of calls) {
       let reason, args;
-      if (!TOOL_NAMES.includes(call.name)) reason = 'unsupported_tool';
+      if (!toolNames.includes(call.name)) reason = 'unsupported_tool';
       else if (seenCalls.has(call.call_id) || batch.has(call.call_id)) reason = 'duplicate_call_id';
       else {
         try { args = parseJSON(call.arguments, 'invalid_tool_arguments'); check(argumentShape(task, call.name, args), 'invalid_tool_arguments'); }
@@ -256,6 +285,7 @@ export function reconstructStudy(report, records, context) {
     if (result.reason === 'journal_error') stop = 'study_stopped_after_journal_error';
     const checks = mechanicalChecks(task, result);
     check(same(checks, row.mechanical_checks), 'task_check_mismatch');
+    if (context.version === 3) check(same(auditReportContract(task.id, result), row.contract_checks), 'contract_check_mismatch');
     rows.push({ id: task.id, lane: task.lane, result });
   }
   if (events[cursor]?.type === 'native_close_failed') {
@@ -264,6 +294,13 @@ export function reconstructStudy(report, records, context) {
   }
   check(cursor === events.length - 1 && events[cursor].type === 'end', 'study_event_order');
   const summary = studySummary(context.manifest.tasks, rows);
+  if (context.version === 3) {
+    const contracts = summarizeReportContracts(rows);
+    check(same(contracts, report.contract_summary), 'contract_summary_mismatch');
+    summary.model_tool_calls = summary.read_tool_calls;
+    summary.read_tool_calls = contracts.read_tool_calls;
+    summary.local_preflight_calls = contracts.local_preflight_calls;
+  }
   check(same(summary, report.summary), 'summary_mismatch');
   check(report.duration_ms + 0.001 >= summary.task_wall_ms + report.native_setup.duration_ms
     && report.duration_ms <= dates.at(-1) - dates[0] + 1, 'study_timing');
@@ -368,6 +405,10 @@ export function auditSourceObservations(groups, context) {
       const endIndex = events.findIndex(event => event.type === 'agent_event' && event.event.sequence === result.sequence);
       check(startIndex >= 0 && endIndex > startIndex, 'read_event_order');
       const slice = events.slice(startIndex + 1, endIndex);
+      if (attempt.name === PREFLIGHT_TOOL) {
+        check(context.version === 3 && slice.length === 0, 'preflight_native_call');
+        continue;
+      }
       slice.forEach(event => { check(event.type !== 'agent_event', 'read_event_order'); accounted.add(event); });
       const common = { tool: attempt.name, tool_call_index: ++toolIndex, lane: task.lane };
       const args = attempt.arguments, repository = args.repository, [owner, repo] = repository.split('/');

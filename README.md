@@ -14,6 +14,26 @@ Python checker, actual OPA authorization, official MCP transport/Octokit, a
 local occurrence ledger and read-only provider reconciliation. No OSuite
 server or account is required. It is not a general-purpose production gateway.
 
+## Candidate Readiness Work
+
+The post-0.4 development work makes the first bounded profile easier to inspect
+and implement without changing its wire identity. Start with the
+[implementer handoff](docs/adoption/profile-candidate-handoff.md), the
+[explicit report-contract preflight](field-study/REPORT-CONTRACT.md), and the
+[execution scope](docs/implementation-plan-2026-10-24-profile-readiness.md).
+
+The preflight is an opt-in field-study edition. It retains the six exposed
+tasks and 6000-byte report limit, counts draft revisions and their cost, and
+checks the actual final report rather than crediting a different earlier draft.
+It grants no permission and is not semantic review. Sixteen added compound
+regressions cover revocation, lost acknowledgements, ambiguous recovery and
+policy errors in both lanes/strategies, using real local components with a
+synthetic provider, not additional customer or SaaS experiments.
+
+The 0.4 release, old results and manuscript remain unchanged. External
+implementation, protected evaluation, real recipient acceptance and stable
+profile status remain separate gates, not accomplishments implied by this work.
+
 ## Real Maintainer Use and Full Manuscript
 
 The [field-use evidence](reports/field-study-summary.md) records real model-led

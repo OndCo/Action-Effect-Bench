@@ -9,6 +9,7 @@ import { runAgent } from '../agent-loop.mjs';
 import { createReadTools, FieldStudyJournalError } from '../read-tools.mjs';
 import { runScheduledTasks, taskPrompt } from '../study.mjs';
 import { inspectTask, summarizeStudy } from '../scoring.mjs';
+import { createReportPreflight, auditReportContract, summarizeReportContracts } from '../report-contract.mjs';
 
 const runnerUrl = new URL('../run.mjs', import.meta.url);
 const source = readFileSync(runnerUrl, 'utf8');
@@ -23,7 +24,7 @@ const REF = 'a'.repeat(40);
 const SOURCE_URL = `https://github.com/${REPOSITORY}/blob/${REF}/README.md`;
 const SECRET = 'fixture-private-journal-failure';
 
-async function runFixture({ cut, persistedBeforeThrow = false, networkFailure = false, externalFailure, closeFailure = false } = {}) {
+async function runFixture({ cut, persistedBeforeThrow = false, networkFailure = false, externalFailure, closeFailure = false, reportPreflight = false } = {}) {
   const state = { modelRequests: 0, nativeReads: 0, sessionsOpened: 0, sessionCloses: 0,
     journalFailed: false, sealed: false, attemptsAfterFailure: [], persisted: [], artifacts: [], logs: [] };
   const tasks = ['sdk', 'mcp'].map((lane, index) => ({ id: `fixture-${index}`, title: 'Fixture maintenance',
@@ -32,9 +33,11 @@ async function runFixture({ cut, persistedBeforeThrow = false, networkFailure = 
     sources: [{ repository: REPOSITORY, path: 'README.md', ref: REF }] }));
   const config = { github_mcp: { source_commit: REF, archive_sha256: 'b'.repeat(64), executable_sha256: 'c'.repeat(64) },
     azure_model: { endpoint: 'https://example.invalid/responses', deployment: 'fixture-model',
-      timeout_ms: 100, max_output_tokens: 100, max_rounds_per_task: 2, max_tool_calls_per_task: 1 } };
+      timeout_ms: 100, max_output_tokens: 100, max_rounds_per_task: reportPreflight ? 3 : 2, max_tool_calls_per_task: reportPreflight ? 2 : 1 } };
   const inputs = { 'tasks.json': { version: 2, tasks }, 'tools.json': config, 'criteria.json': {},
-    'report-format.json': {}, 'amendment-2.json': { study_version: 2, response_contract: { report_max_utf8_bytes: 6000 } } };
+    'report-format.json': {}, 'amendment-2.json': { study_version: 2, response_contract: { report_max_utf8_bytes: 6000 } },
+    'amendment-3.json': { study_version: 3, response_contract: { report_max_utf8_bytes: 6000 },
+      prompt_addition: 'Check the final report locally before handing it off.' } };
 
   function markJournalFailure() {
     state.journalFailed = true;
@@ -70,16 +73,20 @@ async function runFixture({ cut, persistedBeforeThrow = false, networkFailure = 
     state.modelRequests++;
     const taskId = history[1].content.match(/^Task ID: ([^\n]+)/)[1];
     const observed = history.find(item => item.type === 'function_call_output');
-    const output = observed ? [{ type: 'message', role: 'assistant', status: 'completed', content: [{ type: 'output_text',
-      text: JSON.stringify({ task_id: taskId, report_markdown: '# Fixture\nNo real API was called.',
+    const proposed = { task_id: taskId, report_markdown: '# Fixture\nNo real API was called.',
         conclusion: networkFailure ? 'The fixture read was unavailable.' : 'The fixture read succeeded.',
-        citations: networkFailure ? [] : [SOURCE_URL] }) }] }] : [{ type: 'function_call', status: 'completed',
+        citations: networkFailure ? [] : [SOURCE_URL] };
+    const checked = history.some(item => item.type === 'function_call' && item.name === 'check_report_contract');
+    const output = observed && reportPreflight && !checked ? [{ type: 'function_call', name: 'check_report_contract',
+      call_id: `fixture_check_${state.modelRequests}`, arguments: JSON.stringify(proposed), status: 'completed' }]
+      : observed ? [{ type: 'message', role: 'assistant', status: 'completed', content: [{ type: 'output_text',
+      text: JSON.stringify(proposed) }] }] : [{ type: 'function_call', status: 'completed',
       name: 'read_repository_file', call_id: `fixture_call_${state.modelRequests}`,
       arguments: JSON.stringify({ repository: REPOSITORY, path: 'README.md' }) }];
     return { response_id: `fixture_response_${state.modelRequests}`, model: 'fixture-model', status: 'completed',
       duration_ms: 1, usage: { input_tokens: 1, output_tokens: 1, total_tokens: 2 }, output };
   } };
-  const processFixture = { argv: ['node', fileURLToPath(runnerUrl), '--real-readonly'],
+  const processFixture = { argv: ['node', fileURLToPath(runnerUrl), '--real-readonly', ...(reportPreflight ? ['--report-preflight'] : [])],
     exit(code) { this.exitCode = code; throw new Error('fixture_process_exit'); } };
   const dependencies = {
     readFileSync(url, encoding) {
@@ -115,11 +122,11 @@ async function runFixture({ cut, persistedBeforeThrow = false, networkFailure = 
     NativeMcpError: class extends Error {},
     createNativeReader() { externalJournalFailure('reader-init'); return reader; }, createGithubReader: () => reader,
     createReadTools(options) { externalJournalFailure('read-tools-init'); return createReadTools(options); },
-    runScheduledTasks, taskPrompt, inspectTask, summarizeStudy,
+    runScheduledTasks, taskPrompt, inspectTask, summarizeStudy, createReportPreflight, auditReportContract, summarizeReportContracts,
     process: processFixture, console: { log: (...args) => state.logs.push(args), error: (...args) => state.logs.push(args) },
     fetch: () => assert.fail('Real network access is forbidden in runner journal fixtures'),
   };
-  try { await new AsyncFunction(...Object.keys(dependencies), body)(...Object.values(dependencies)); }
+  try { await new AsyncFunction(...Object.keys(dependencies), `'use strict';\n${body}`)(...Object.values(dependencies)); }
   catch (error) { state.error = error; }
   state.exitCode = processFixture.exitCode;
   return state;
@@ -197,5 +204,34 @@ for (const networkFailure of [false, true]) {
     assert.equal(report.summary.scheduled_tasks, 2);
     assert.equal(report.summary.completed_task_loops, 2);
     assert.equal(report.summary.provider_write_attempts, 0);
+  });
+}
+
+test('opt-in preflight edition separates local checks, read calls and handoff readiness', async () => {
+  const state = await runFixture({ reportPreflight: true });
+  assert.equal(state.error, undefined);
+  const report = state.artifacts.find(({ value }) => value.format === 'field-study-use/2').value;
+  assert.equal(report.contract_summary.tasks_ready_for_maintainer_review, 2);
+  assert.equal(report.summary.read_tool_calls, 2);
+  assert.equal(report.summary.local_preflight_calls, 2);
+  assert.equal(report.summary.model_tool_calls, 4);
+  assert.equal(state.nativeReads, 2);
+  assert.equal(state.modelRequests, 6);
+  assert(report.tasks.every(row => row.contract_checks.ready));
+});
+
+test('opt-in edition does not label unavailable sources ready', async () => {
+  const state = await runFixture({ reportPreflight: true, networkFailure: true });
+  assert.equal(state.error, undefined);
+  const report = state.artifacts.find(({ value }) => value.format === 'field-study-use/2').value;
+  assert.equal(report.summary.completed_task_loops, 2);
+  assert.equal(report.contract_summary.tasks_ready_for_maintainer_review, 0);
+  assert.equal(state.exitCode, 1);
+});
+
+for (const persistedBeforeThrow of [false, true]) {
+  test(`preflight feedback persistence failure stops the whole study (${persistedBeforeThrow})`, async () => {
+    assertFailStop(await runFixture({ reportPreflight: true, persistedBeforeThrow,
+      cut: { matches: event => event.type === 'agent_event' && event.event.type === 'tool_result' && event.event.name === 'check_report_contract' } }));
   });
 }
