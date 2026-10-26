@@ -1,5 +1,11 @@
 # Draft Change Record
 
+## Badge Note (26 October 2026)
+
+The README now describes the Ambit tested and Ambit verified badges for
+implementations tested with this suite, and how to ask for a listing or a re-run.
+No case, task, criteria, report, manuscript, pin or source-frozen input changed.
+
 ## Ambit Context Note (26 October 2026)
 
 The README now names Ambit and this benchmark's role as the conformance suite

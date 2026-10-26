@@ -138,6 +138,26 @@ Two agreeing defects can still exist. A conforming report must state which field
 have an independent expected value; the current accepted-description digest is
 cross-compared, not supplied by an independent full-document canonical oracle.
 
+## Claims and Badges
+
+An implementation tested with this suite can show one of two badges, each linked
+to a public claim that follows
+[CORE-028](https://github.com/OndCo/Action-Effect-Spec/blob/main/SPEC.md#10-conformance-and-standards-status)
+in Action Effect Spec:
+
+- **Ambit tested**: you ran the Bench yourself and published the claim and raw
+  report.
+- **Ambit verified**: Ond re-ran the Bench version your claim names against the
+  implementation you identify, and published its own report.
+
+The claim names the Bench version and case hash, the Spec revision and profiles,
+the implementation identity, and passed, failed and unsupported cases. A limited
+run is labelled as limited. Neither badge is a certification, a security
+guarantee or conformance with a future stable release, and Ond does not verify
+its own products. To be listed or to request a re-run, open an
+[issue](https://github.com/OndCo/Action-Effect-Bench/issues) in this repository.
+Rules and badge files are at [ond.cc/ambit/verified](https://ond.cc/ambit/verified).
+
 ## Extend the Work
 
 - [PROTOCOL.md](PROTOCOL.md): separate tracks, competent baselines, failure
