@@ -6,6 +6,12 @@ refusal as useful completion, or a description as permission.**
 Release series `v0.4.0-draft.1`. Public development benchmark and evaluation-protocol
 proposal. Not a leaderboard, external certification or completed protected study.
 
+**Part of Ambit.** Action Effect Bench is the conformance and evaluation suite
+for the effects layer of [Ambit](https://ond.cc/ambit), an open protocol for
+describing, authorizing and proving agent actions. It tests
+[Action Effect Spec](https://github.com/OndCo/Action-Effect-Spec)
+implementations and needs no OSuite server or account.
+
 This repository is separate from
 [Action Effect Spec](https://github.com/OndCo/Action-Effect-Spec). The runnable
 part retains the original two offline refund-profile consumers and adds a

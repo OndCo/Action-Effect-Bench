@@ -1,5 +1,11 @@
 # Draft Change Record
 
+## Ambit Context Note (26 October 2026)
+
+The README now names Ambit and this benchmark's role as the conformance suite
+for its effects layer. No case, task, criteria, report, manuscript, pin or
+source-frozen input changed.
+
 ## Candidate Readiness Development (24 October 2026)
 
 Adds an opt-in third field-study edition with visible local report preflight,
